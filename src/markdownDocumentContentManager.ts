@@ -9,17 +9,12 @@ import * as path from "path";
 let fileUrl = require("file-url");
 
 
-enum SourceType {
-    SCRIPT,
-    STYLE
-}
-
 export class MarkdownDocumentContentManager {
     
     // 生成当前编辑页面的HTML代码片段
-    public createHtmlSnippet(): string {
+    public createContentSnippet(): string {
         let editor = window.activeTextEditor;
-        if (editor.document.languageId !== "html" && editor.document.languageId !== "jade") {
+        if (editor.document.languageId !== "markdown") {
             return this.errorSnippet("Active editor doesn't show a HTML or Jade document - no properties to preview.");
         }
         return this.preview(editor);
@@ -28,30 +23,8 @@ export class MarkdownDocumentContentManager {
     // 获得错误信息对应的html代码片段
     private errorSnippet(error: string): string {
         return `
-                <body>
-                    ${error}
-                </body>`;
-    }
-    
-    // 生成本地文件对应URI的html标签代码片段
-    private createLocalSource(file: string, type: SourceType) {
-        // __dirname 是package.json中"main"字段对应的绝对目录
-        // 生成本地文件绝对路径URI
-        let source_path = fileUrl(
-            path.join(
-                __dirname,
-                "..",
-                "..",
-                "static",
-                file
-            )
-        );
-        switch (type) {
-            case SourceType.SCRIPT:
-                return `<script src="${source_path}"></script>`;
-            case SourceType.STYLE:
-                return `<link href="${source_path}" rel="stylesheet" />`;
-        }
+                #${error}
+                `;
     }
 
     // 将html中将非http或\/开头的URI增加本地待预览html所在目录的前缀
@@ -80,6 +53,6 @@ export class MarkdownDocumentContentManager {
     public preview(editor: TextEditor): string {
         // 获取当前编辑页面对应的文档
         let doc = editor.document;
-        return this.createLocalSource("header_fix.css", SourceType.STYLE) + this.fixLinks(doc.getText(), doc.fileName);
+        return this.fixLinks(doc.getText(), doc.fileName);
     }
 }

@@ -17,7 +17,7 @@ enum SourceType {
 export class HtmlDocumentContentManager {
     
     // 生成当前编辑页面的HTML代码片段
-    public createHtmlSnippet(): string {
+    public createContentSnippet(): string {
         let editor = window.activeTextEditor;
         if (editor.document.languageId !== "html" && editor.document.languageId !== "jade") {
             return this.errorSnippet("Active editor doesn't show a HTML or Jade document - no properties to preview.");
