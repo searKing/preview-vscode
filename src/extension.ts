@@ -97,13 +97,13 @@ class PreviewDocumentContentProvider implements TextDocumentContentProvider {
         switch (editor.document.languageId) {
             case "html":
             case "jade":
-                snippet = this._htmlDocumentContentManager.createHtmlSnippet();
+                snippet = this._htmlDocumentContentManager.createContentSnippet();
                 break;
             case "markdown":
-                snippet = this._markdownDocumentContentManager.createHtmlSnippet();
+                snippet = this._markdownDocumentContentManager.createContentSnippet();
                 break;        
             default:
-                snippet = this._htmlDocumentContentManager.createHtmlSnippet();
+                snippet = this._htmlDocumentContentManager.createContentSnippet();
                 break;
         }
         return snippet;
