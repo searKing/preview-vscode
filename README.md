@@ -9,7 +9,7 @@ An extension to preview Markdown, HTML or Jade files while editing them in VSCod
 The extension can be activated in two ways
 
 * Toggle Preview - `ctrl+shift+v`
-* Open Preview to the Side - `ctrl+shift+v v`
+* Open Preview to the Side - `ctrl+k v`
 
 ## Note
 

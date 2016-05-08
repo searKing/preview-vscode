@@ -1,0 +1,71 @@
+{
+    "name": "preview-vscode",
+    "displayName": "Preview",
+    "description": "A Markdown, HTML or Jade previewer",
+    "version": "0.0.1",
+    "publisher": "searKing",
+    "author": "Haixin Chen",
+    "license": "MIT",
+    "readme": "README.md",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/searKing/preview-vscode"
+    },
+    "galleryBanner": {
+        "color": "#78d6f0",
+        "theme": "light"
+    },
+    "bugs": "https://github.com/searKing/preview-vscode/issues",
+    "homepage": "https://github.com/searKing/preview-vscode/blob/master/README.md",
+    "icon": "images/icon.png",
+    "main": "./out/src/extension",
+    "engines": {
+        "vscode": "^0.10.8"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:extension.preview",
+        "onCommand:extension.previewToSide"
+    ],
+    "contributes": {
+        "keybindings": [
+            {
+                "command": "extension.preview",
+                "key": "ctrl+shift+v",
+                "when": "editorTextFocus"
+            },
+            {
+                "command": "extension.previewToSide",
+                "key": "ctrl+k v",
+                "when": "editorTextFocus"
+            }
+        ],
+        "commands": [
+            {
+                "command": "extension.preview",
+                "title": "Toggle Preview",
+                "category": "HTML"
+            },
+            {
+                "command": "extension.previewToSide",
+                "title": "Open Preview to the Side",
+                "category": "HTML"
+            }
+        ]
+    },
+    "scripts": {
+        "vscode:prepublish": "node ./node_modules/vscode/bin/compile",
+        "compile": "node ./node_modules/vscode/bin/compile -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "pkgvars": "node ./node_modules/vscode/bin/install"
+    },
+    "dependencies": {
+        "file-url": "^1.0.1"
+    },
+    "devDependencies": {
+        "typescript": "^1.8.2",
+        "vscode": "^0.11.1"
+    }
+}
