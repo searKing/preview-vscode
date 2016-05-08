@@ -7,6 +7,7 @@ import { workspace, window, ExtensionContext, commands,
 import * as fs from "fs";
 import * as path from "path";
 import * as htmlDocumentContentManager from "./htmlDocumentContentManager";
+import * as markdownDocumentContentManager from "./markdownDocumentContentManager";
 let fileUrl = require("file-url");
 let previewScheme = "";
 enum TextDocumentType {
@@ -85,6 +86,8 @@ class PreviewDocumentContentProvider implements TextDocumentContentProvider {
     // 观察者模式，生成一个事件发生器
     private _onDidChange = new EventEmitter<Uri>();
     private _htmlDocumentContentManager = new htmlDocumentContentManager.HtmlDocumentContentManager();
+    private _markdownDocumentContentManager = new markdownDocumentContentManager.MarkdownDocumentContentManager();
+   
     // @Override 生成当前html规范化的代码文本，编辑器会自动根据该函数的返回值创建一个只读文档
     // uri是scheme
     public provideTextDocumentContent(uri: Uri): string {
@@ -96,7 +99,9 @@ class PreviewDocumentContentProvider implements TextDocumentContentProvider {
             case "jade":
                 snippet = this._htmlDocumentContentManager.createHtmlSnippet();
                 break;
-        
+            case "markdown":
+                snippet = this._markdownDocumentContentManager.createHtmlSnippet();
+                break;        
             default:
                 snippet = this._htmlDocumentContentManager.createHtmlSnippet();
                 break;

@@ -14,7 +14,7 @@ enum SourceType {
     STYLE
 }
 
-export class HtmlDocumentContentManager {
+export class MarkdownDocumentContentManager {
     
     // 生成当前编辑页面的HTML代码片段
     public createHtmlSnippet(): string {
