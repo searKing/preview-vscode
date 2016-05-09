@@ -19,7 +19,7 @@ JavaScript code does not run in the previewer
 
 ## Contributing
 
-If you want to develop and debug this extension from source code, please run 'sudo npm run pkgvars ' under the root dir of this extension,
+If you want to develop and debug this extension from source code, please run 'sudo npm run postinstall ' under the root dir of this extension,
 according to [Cannot find module 'vscode' – where is vscode.d.ts now installed? #2810](https://github.com/Microsoft/vscode/issues/2810)
 
 ## Thanks to
