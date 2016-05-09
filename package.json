@@ -46,12 +46,12 @@
             {
                 "command": "extension.preview",
                 "title": "Toggle Preview",
-                "category": "HTML"
+                "category": "Preview"
             },
             {
                 "command": "extension.previewToSide",
                 "title": "Open Preview to the Side",
-                "category": "HTML"
+                "category": "Preview"
             }
         ]
     },
