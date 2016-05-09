@@ -41,6 +41,24 @@ export function activate(context: ExtensionContext) {
         // 给vscode发送预览该临时HTML文件的命令
         return provider.sendPreviewCommand(displayColumn);
     }
+    // 调用vscode系统命令预览当前之前的页面
+    function sendBackviewCommand(): PromiseLike<void> {
+        // 给vscode发送返回预览之前页面的位置
+        return commands.executeCommand("workbench.action.navigateBack").then((success) => {
+            }, (reason) => {
+                console.warn(reason);
+                window.showErrorMessage(reason);
+            });
+    }
+    // 调用vscode系统命令预览当前之前的页面
+    function sendCloseviewCommand(): PromiseLike<void> {
+        // 给vscode发送返回预览之前页面的位置
+        return commands.executeCommand("workbench.action.closeActiveEditor").then((success) => {
+            }, (reason) => {
+                console.warn(reason);
+                window.showErrorMessage(reason);
+            });
+    }
     function getSpiltColumn():ViewColumn{
         let displayColumn: ViewColumn;
         // 在拆分窗口右侧显示预览界面，若当前待预览HTML文件在最右侧，则覆盖显示
@@ -61,6 +79,9 @@ export function activate(context: ExtensionContext) {
     // 命令回调函数，该命令在package.json中与快捷方式、菜单选项等关联
     // 侧边栏打开预览界面
     let previewToSide = commands.registerCommand("extension.previewToSide", () => {
+        if (window.activeTextEditor == undefined) {
+            return sendCloseviewCommand();
+        }
         let displayColumn: ViewColumn = getSpiltColumn();
         return sendPreviewCommand(displayColumn);
     });
@@ -68,8 +89,7 @@ export function activate(context: ExtensionContext) {
     // 覆盖显示预览界面
     let preview = commands.registerCommand("extension.preview", () => {
         if (window.activeTextEditor == undefined) {
-            window.showWarningMessage("window.activeTextEditor is undefined");
-            return ;
+            return sendBackviewCommand();
         }
         return sendPreviewCommand(window.activeTextEditor.viewColumn);
     });

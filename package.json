@@ -33,13 +33,13 @@
         "keybindings": [
             {
                 "command": "extension.preview",
-                "key": "ctrl+shift+v",
-                "when": "editorTextFocus"
+                "key": "ctrl+shift+v" //,
+                // "when": "editorTextFocus"
             },
             {
                 "command": "extension.previewToSide",
-                "key": "ctrl+k v",
-                "when": "editorTextFocus"
+                "key": "ctrl+k v" //,
+                // "when": "editorTextFocus"
             }
         ],
         "commands": [
