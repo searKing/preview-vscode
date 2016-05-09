@@ -29,6 +29,13 @@ export function activate(context: ExtensionContext) {
             provider.update();
         }
     });
+    
+    window.onDidChangeTextEditorSelection((e: TextEditorSelectionChangeEvent) => {
+        if (e.textEditor === window.activeTextEditor) {
+            provider.update();
+        }
+    })
+
     function registerPreviewDocumentContentProvider(){
         provider = new previewDocumentContentProvider.PreviewDocumentContentProvider();
         // 向vscode为文本内容数据库注册一个URI的协议scheme，以后均可通过该协议与文本内容数据库进行交互

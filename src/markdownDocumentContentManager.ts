@@ -24,7 +24,7 @@ export class MarkdownDocumentContentManager  implements documentContentManagerIn
     // @Override
     public createContentSnippet(): string {
         let editor = window.activeTextEditor;
-        if (editor.document.languageId !== "markdown") {
+        if (editor.document.languageId === "markdown") {
             return this.errorSnippet("Active editor doesn't show a MarkDown document - no properties to preview.");
         }
         return this.generatePreviewSnippet(editor);
