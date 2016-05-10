@@ -19,8 +19,11 @@ JavaScript code does not run in the previewer
 
 ## Contributing
 
-If you want to develop and debug this extension from source code, please run 'sudo npm run postinstall ' under the root dir of this extension,
++ If you want to develop and debug this extension from source code, please run 'sudo npm run postinstall ' under the root dir of this extension,
 according to [Cannot find module 'vscode' – where is vscode.d.ts now installed? #2810](https://github.com/Microsoft/vscode/issues/2810)
+
++ Node.js's version is too old ? following this [NodeSource Node.js Binary Distributions](https://github.com/nodesource/distributions), and you will get the latest version installed automatically !
+
 
 ## Thanks to
 [html-preview-vscode](https://github.com/tht13/html-preview-vscode.git).
