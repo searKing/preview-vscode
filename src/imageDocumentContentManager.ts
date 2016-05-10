@@ -11,6 +11,7 @@ export class ImageDocumentContentManager implements documentContentManagerInterf
 
     private COMMAND: string = "vscode.previewHtml";
     private IMAGE_TYPE_SUFFIX = ['png', 'jpg', 'jpeg', 'gif', 'bmp'];
+    private IMAGE_TYPE_SPLIT = ['\n', '\r', '\t', ' '];
     // 生成当前编辑页面的可预览代码片段
     // @Override
     public createContentSnippet(): string {
@@ -42,11 +43,73 @@ export class ImageDocumentContentManager implements documentContentManagerInterf
         if (imageUri == undefined) {
             return this.errorSnippet(`Active editor doesn't show any  ${this.IMAGE_TYPE_SUFFIX} - no properties to preview.`);
         }
+        let sa = `<img src='${imageUri}'/>`;
         return `<img src='${imageUri}'/>`;
 
     }
 
-    private getSelectedImageUri(editor: TextEditor): string {
+
+    private getSelectedFirstSplitPostion(editor: TextEditor): number {
+        // 获取当前页面文本
+        let text = editor.document.getText();
+        // 获取当前鼠标选中段落的起始位置        
+        let startPosOfSelectionText = editor.document.offsetAt(editor.selection.anchor);
+
+        var closetPosOfSupportedImageSplit = -1;
+        var isSplitFound = false;
+        this.IMAGE_TYPE_SPLIT.forEach(split => {
+            // 获取当前扩展名的起始位置
+            let startPosOfSplit = text.indexOf(split, startPosOfSelectionText);
+            if (startPosOfSplit < 0) {
+                return;
+            }
+            if (!isSplitFound || startPosOfSplit < closetPosOfSupportedImageSplit) {
+                isSplitFound = true;
+                closetPosOfSupportedImageSplit = startPosOfSplit;
+                return;
+            }
+        });
+
+        if (isSplitFound) {
+            return closetPosOfSupportedImageSplit;
+        }
+        return -1;
+    }
+    private getSelectedLastSuffixNextCharPostion(editor: TextEditor, startPosOfSpilt: number): number {
+        // 获取当前页面文本
+        let text = editor.document.getText();
+        // 获取当前鼠标选中段落的起始位置        
+        let startPosOfSelectionText = editor.document.offsetAt(editor.selection.anchor);
+        let startPosOfImageUrl = text.lastIndexOf('http', startPosOfSelectionText);
+
+
+        var farthestPosOfSupportetSuffix = -1;
+        var isSuffixFound = false;
+        var selectedSuffix = '';
+        this.IMAGE_TYPE_SUFFIX.forEach(suffix => {
+            // 获取当前扩展名的起始位置
+            let startPosOfSuffix = text.indexOf(suffix, startPosOfSelectionText);
+            if (startPosOfSuffix < 0) {
+                return;
+            }
+            if (startPosOfSpilt > 0 && startPosOfSuffix > startPosOfSpilt) {
+                return;
+            }
+            if (!isSuffixFound
+                || (startPosOfSuffix > farthestPosOfSupportetSuffix)) {
+                isSuffixFound = true;
+                selectedSuffix = suffix;
+                farthestPosOfSupportetSuffix = startPosOfSuffix;
+                return;
+            }
+        });
+
+        if (isSuffixFound) {
+            return farthestPosOfSupportetSuffix + selectedSuffix.length;
+        }
+        return -1;
+    }
+    private getFirstSelectedImageUri(editor: TextEditor): string {
         // 获取当前页面文本
         let text = editor.document.getText();
         // 获取当前鼠标选中段落的起始位置        
@@ -56,29 +119,35 @@ export class ImageDocumentContentManager implements documentContentManagerInterf
         if (startPosOfImageUrl < 0) {
             return undefined;
         }
-        var firstSupportedImageSuffix = '';
-        var postionWhereSuffixIsFound = -1;
-        this.IMAGE_TYPE_SUFFIX.forEach(suffix => {
-            // 获取当前扩展名的起始位置
-            let startPosOfSuffix = text.indexOf(suffix, startPosOfSelectionText);
 
-            if (startPosOfSuffix > 0) {
-                if (postionWhereSuffixIsFound < 0 || startPosOfSuffix < postionWhereSuffixIsFound) {
-                    postionWhereSuffixIsFound = startPosOfSuffix;
-                    firstSupportedImageSuffix = suffix;
-                }
-            }
-        });
+        let startPosOfSpilt = this.getSelectedFirstSplitPostion(editor);
 
-        if (postionWhereSuffixIsFound >= 0) {
-            let imgSrcUri: string = text.slice(startPosOfImageUrl, postionWhereSuffixIsFound + firstSupportedImageSuffix.length);
-            return imgSrcUri;
+        let nextCharPostionWhereSuffixIsFound = this.getSelectedLastSuffixNextCharPostion(editor, startPosOfSpilt);
+
+
+        let endNextPosOfImageUrl: number = -1;
+        let needFixCSS = false;
+        if (nextCharPostionWhereSuffixIsFound < 0 && startPosOfSpilt < 0) {
+            return undefined;
         }
+        else if (nextCharPostionWhereSuffixIsFound < 0) {
+            // 没找到后缀，则表示图片没有后缀，需要手动设置像素宽高
+            needFixCSS = true;
+            endNextPosOfImageUrl = startPosOfSpilt;
+        }
+        else {
+            endNextPosOfImageUrl = nextCharPostionWhereSuffixIsFound;
+        }
+        let imgSrcUri: string = text.slice(startPosOfImageUrl, endNextPosOfImageUrl);
+        if (needFixCSS) {
+            imgSrcUri += "' width='389' height='389";
+        }
+        return imgSrcUri;
     }
 
     // 生成预览编辑页面
     private generatePreviewSnippet(editor: TextEditor): string {
-        return this.imageSrcSnippet(this.getSelectedImageUri(editor));
+        return this.imageSrcSnippet(this.getFirstSelectedImageUri(editor));
     }
 
 }
