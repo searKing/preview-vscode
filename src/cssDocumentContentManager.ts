@@ -48,7 +48,7 @@ export class CssDocumentContentManager implements documentContentManagerInterfac
         if (properties == undefined) {
             return this.errorSnippet(`Active editor doesn't show any css properity - no properties to preview.`);
         }
-        return `<style>
+        return `<style type=\"text/css\">
                 #css_property {
                     ${properties}
                     }
@@ -68,7 +68,7 @@ export class CssDocumentContentManager implements documentContentManagerInterfac
         // 获取当前鼠标选中段落的起始位置        
         let startPosOfSelectionText = editor.document.offsetAt(editor.selection.anchor);
         let startPosOfCSSProperity = text.lastIndexOf('{', startPosOfSelectionText);
-        let endPosOfCSSProperity = text.indexOf('}', startPosOfSelectionText);
+        let endPosOfCSSProperity = text.indexOf('}', startPosOfCSSProperity);
 
         if (startPosOfCSSProperity === -1 || endPosOfCSSProperity === -1) {
             return this.errorSnippet("Cannot determine the rule's properties.");
