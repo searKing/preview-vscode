@@ -15,8 +15,8 @@ enum SourceType {
     STYLE
 }
 
-export class HtmlDocumentContentManager implements documentContentManagerInterface.DocumentContentManager{
-    private COMMAND : string = "vscode.previewHtml";
+export class HtmlDocumentContentManager implements documentContentManagerInterface.DocumentContentManager {
+    private COMMAND: string = "vscode.previewHtml";
     // 生成当前编辑页面的HTML代码片段
     // @Override
     public createContentSnippet(): string {
@@ -26,17 +26,17 @@ export class HtmlDocumentContentManager implements documentContentManagerInterfa
         }
         return this.generatePreviewSnippet(editor);
     }
-    
-    
+
+
     // @Override
-    public sendPreviewCommand(previewUri: Uri, displayColumn: ViewColumn):Thenable<void> {
+    public sendPreviewCommand(previewUri: Uri, displayColumn: ViewColumn): Thenable<void> {
         return commands.executeCommand(this.COMMAND, previewUri, displayColumn).then((success) => {
-            }, (reason) => {
-                console.warn(reason);
-                window.showErrorMessage(reason);
-            });
+        }, (reason) => {
+            console.warn(reason);
+            window.showErrorMessage(reason);
+        });
     }
-    
+
     // 生成预览编辑页面
     // @Override
     private generatePreviewSnippet(editor: TextEditor): string {
@@ -44,7 +44,7 @@ export class HtmlDocumentContentManager implements documentContentManagerInterfa
         let doc = editor.document;
         return this.createLocalSource("header_fix.css", SourceType.STYLE) + this.fixLinks(doc.getText(), doc.fileName);
     }
-    
+
     // 获得错误信息对应的html代码片段
     private errorSnippet(error: string): string {
         return `
@@ -52,7 +52,7 @@ export class HtmlDocumentContentManager implements documentContentManagerInterfa
                     ${error}
                 </body>`;
     }
-    
+
     // 生成本地文件对应URI的html标签代码片段
     private createLocalSource(file: string, type: SourceType) {
         // __dirname 是package.json中"main"字段对应的绝对目录
@@ -95,5 +95,5 @@ export class HtmlDocumentContentManager implements documentContentManagerInterfa
             }
         );
     }
-    
+
 }

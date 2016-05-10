@@ -9,9 +9,9 @@ import * as path from "path";
 let fileUrl = require("file-url");
 
 export interface DocumentContentManager {
-    
+
     // 生成当前编辑页面的HTML代码片段
     createContentSnippet(): string;
-            
-    sendPreviewCommand(previewUri: Uri, displayColumn: ViewColumn):Thenable<void>;
+
+    sendPreviewCommand(previewUri: Uri, displayColumn: ViewColumn): Thenable<void>;
 }

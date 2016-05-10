@@ -14,12 +14,12 @@ enum PreviewWindowType {
     OVERRIDE,
     SIDE_BY_SIDE
 }
-export class MarkdownDocumentContentManager  implements documentContentManagerInterface.DocumentContentManager{
-    
-    
-    private COMMAND_TOGGLE_PREVIEW : string = "workbench.action.markdown.togglePreview";    
-    private COMMAND_OPEN_PREVIEW_SIDE_BY_SIDE : string = "workbench.action.markdown.openPreviewSideBySide";   
-    private COMMAND_BUTT : string = "";
+export class MarkdownDocumentContentManager implements documentContentManagerInterface.DocumentContentManager {
+
+
+    private COMMAND_TOGGLE_PREVIEW: string = "workbench.action.markdown.togglePreview";
+    private COMMAND_OPEN_PREVIEW_SIDE_BY_SIDE: string = "workbench.action.markdown.openPreviewSideBySide";
+    private COMMAND_BUTT: string = "";
     // 生成当前编辑页面的可预览代码片段
     // @Override
     public createContentSnippet(): string {
@@ -29,29 +29,29 @@ export class MarkdownDocumentContentManager  implements documentContentManagerIn
         }
         return this.generatePreviewSnippet(editor);
     }
-    
+
     // @Override
-    public sendPreviewCommand(previewUri: Uri, displayColumn: ViewColumn):Thenable<void> {
-        let command:string = this.getPreviewCommandTag(displayColumn);
-        if (command != this.COMMAND_BUTT) {            
+    public sendPreviewCommand(previewUri: Uri, displayColumn: ViewColumn): Thenable<void> {
+        let command: string = this.getPreviewCommandTag(displayColumn);
+        if (command != this.COMMAND_BUTT) {
             return commands.executeCommand(command).then((success) => {
             }, (reason) => {
                 console.warn(reason);
                 window.showErrorMessage(reason);
             });
         }
-    
+
     }
 
-    
-    private getPreviewCommandTag(displayColumn: ViewColumn):string{
-        let command:string = "";
+
+    private getPreviewCommandTag(displayColumn: ViewColumn): string {
+        let command: string = "";
         if (displayColumn == window.activeTextEditor.viewColumn) {
             return this.COMMAND_TOGGLE_PREVIEW
         }
         return this.COMMAND_OPEN_PREVIEW_SIDE_BY_SIDE;
     }
-    
+
     // 获得错误信息对应的html代码片段
     private errorSnippet(error: string): string {
         return `
@@ -80,12 +80,12 @@ export class MarkdownDocumentContentManager  implements documentContentManagerIn
             }
         );
     }
-    
+
     // 生成预览编辑页面
     private generatePreviewSnippet(editor: TextEditor): string {
         // 获取当前编辑页面对应的文档
         let doc = editor.document;
         return this.fixLinks(doc.getText(), doc.fileName);
     }
-    
+
 }

@@ -19,11 +19,11 @@ export class ImageDocumentContentManager implements documentContentManagerInterf
     // @Override
     public createContentSnippet(): string {
         let editor = window.activeTextEditor;
-        
-        let previewSnippet : string = this.generatePreviewSnippet(editor);
+
+        let previewSnippet: string = this.generatePreviewSnippet(editor);
         if (previewSnippet == undefined) {
             return this.errorSnippet(`Active editor doesn't show any  ${this.IMAGE_TYPE_SUFFIX} - no properties to preview.`);
-        } 
+        }
         return this.generatePreviewSnippet(editor);
     }
 
@@ -45,7 +45,7 @@ export class ImageDocumentContentManager implements documentContentManagerInterf
     private imageSrcSnippet(imageUri: string): string {
         if (imageUri == undefined) {
             return this.errorSnippet(`Active editor doesn't show any  ${this.IMAGE_TYPE_SUFFIX} - no properties to preview.`);
-        } 
+        }
         return `<img src='${imageUri}'/>`;
 
     }
@@ -56,7 +56,7 @@ export class ImageDocumentContentManager implements documentContentManagerInterf
         // 获取当前鼠标选中段落的起始位置        
         let startPosOfSelectionText = editor.document.offsetAt(editor.selection.anchor);
         let startPosOfImageUrl = text.lastIndexOf('http', startPosOfSelectionText);
-        
+
         if (startPosOfImageUrl < 0) {
             return undefined;
         }
