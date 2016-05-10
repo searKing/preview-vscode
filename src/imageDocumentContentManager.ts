@@ -43,8 +43,9 @@ export class ImageDocumentContentManager implements documentContentManagerInterf
         if (imageUri == undefined) {
             return this.errorSnippet(`Active editor doesn't show any  ${this.IMAGE_TYPE_SUFFIX} - no properties to preview.`);
         }
-        let sa = `<img src='${imageUri}'/>`;
-        return `<img src='${imageUri}'/>`;
+        let snippet = `<img src='${imageUri}'/>`;
+        console.info(snippet); 
+        return snippet;
 
     }
 
