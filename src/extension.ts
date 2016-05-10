@@ -4,16 +4,9 @@ import { workspace, window, ExtensionContext, commands,
     Event, Uri, TextDocumentChangeEvent, ViewColumn,
     TextEditorSelectionChangeEvent,
     TextDocument, Disposable } from "vscode";
-import * as fs from "fs";
-import * as path from "path";
 import * as documentContentManagerInterface from "./documentContentManagerInterface";
 import * as previewDocumentContentProvider from "./previewDocumentContentProvider";
-let fileUrl = require("file-url");
-let previewScheme = "";
-enum TextDocumentType {
-    HTML,
-    MARKDOWN
-}
+
 // 主函数
 export function activate(context: ExtensionContext) {
 

@@ -4,9 +4,6 @@ import { workspace, window, ExtensionContext, commands,
     Event, Uri, TextDocumentChangeEvent, ViewColumn,
     TextEditorSelectionChangeEvent,
     TextDocument, Disposable } from "vscode";
-import * as fs from "fs";
-import * as path from "path";
-let fileUrl = require("file-url");
 
 export interface DocumentContentManager {
 

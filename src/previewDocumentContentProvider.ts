@@ -4,14 +4,12 @@ import { workspace, window, ExtensionContext, commands,
     Event, Uri, TextDocumentChangeEvent, ViewColumn,
     TextEditorSelectionChangeEvent,
     TextDocument, Disposable } from "vscode";
-import * as fs from "fs";
 import * as path from "path";
 import * as documentContentManagerInterface from "./documentContentManagerInterface";
 import * as htmlDocumentContentManager from "./htmlDocumentContentManager";
 import * as markdownDocumentContentManager from "./markdownDocumentContentManager";
 import * as imageDocumentContentManager from "./imageDocumentContentManager";
 import * as cssDocumentContentManager from "./cssDocumentContentManager"
-let fileUrl = require("file-url");
 enum TextDocumentType {
     HTML,
     MARKDOWN

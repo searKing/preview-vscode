@@ -1,8 +1,8 @@
 {
     "name": "preview-vscode",
     "displayName": "Preview",
-    "description": "A Markdown, HTML or Jade previewer",
-    "version": "0.0.3",
+    "description": "A Markdown, HTML, Jade, Image, CSS previewer",
+    "version": "0.0.4",
     "publisher": "searKing",
     "author": "Haixin Chen",
     "license": "MIT",
@@ -30,28 +30,22 @@
         "onCommand:extension.previewToSide"
     ],
     "contributes": {
-        "keybindings": [
-            {
-                "command": "extension.preview",
-                "key": "ctrl+shift+v"
-            },
-            {
-                "command": "extension.previewToSide",
-                "key": "ctrl+k v"
-            }
-        ],
-        "commands": [
-            {
-                "command": "extension.preview",
-                "title": "Toggle Preview",
-                "category": "Preview"
-            },
-            {
-                "command": "extension.previewToSide",
-                "title": "Open Preview to the Side",
-                "category": "Preview"
-            }
-        ]
+        "keybindings": [{
+            "command": "extension.preview",
+            "key": "ctrl+shift+v"
+        }, {
+            "command": "extension.previewToSide",
+            "key": "ctrl+k v"
+        }],
+        "commands": [{
+            "command": "extension.preview",
+            "title": "Toggle Preview",
+            "category": "Preview"
+        }, {
+            "command": "extension.previewToSide",
+            "title": "Open Preview to the Side",
+            "category": "Preview"
+        }]
     },
     "scripts": {
         "vscode:prepublish": "node ./node_modules/vscode/bin/compile",
