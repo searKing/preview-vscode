@@ -10,6 +10,7 @@ import * as documentContentManagerInterface from "./documentContentManagerInterf
 import * as htmlDocumentContentManager from "./htmlDocumentContentManager";
 import * as markdownDocumentContentManager from "./markdownDocumentContentManager";
 import * as imageDocumentContentManager from "./imageDocumentContentManager";
+import * as cssDocumentContentManager from "./cssDocumentContentManager"
 let fileUrl = require("file-url");
 enum TextDocumentType {
     HTML,
@@ -23,6 +24,7 @@ export class PreviewDocumentContentProvider implements TextDocumentContentProvid
     private _htmlDocumentContentManager = new htmlDocumentContentManager.HtmlDocumentContentManager();
     private _markdownDocumentContentManager = new markdownDocumentContentManager.MarkdownDocumentContentManager();
     private _imageDocumentContentManager = new imageDocumentContentManager.ImageDocumentContentManager();
+    private _cssDocumentContentManager = new cssDocumentContentManager.CssDocumentContentManager();
 
     private _documentContentManager: documentContentManagerInterface.DocumentContentManager = this._markdownDocumentContentManager;
 
@@ -39,6 +41,9 @@ export class PreviewDocumentContentProvider implements TextDocumentContentProvid
                 break;
             case "markdown":
                 this._documentContentManager = this._markdownDocumentContentManager;
+                break;
+            case "css":
+                this._documentContentManager = this._cssDocumentContentManager;
                 break;
             default:
                 // window.showWarningMessage(editor.document.languageId);

@@ -24,7 +24,7 @@ export class ImageDocumentContentManager implements documentContentManagerInterf
         if (previewSnippet == undefined) {
             return this.errorSnippet(`Active editor doesn't show any  ${this.IMAGE_TYPE_SUFFIX} - no properties to preview.`);
         }
-        return previewSnippet;
+        return this.generatePreviewSnippet(editor);
     }
 
     // @Override

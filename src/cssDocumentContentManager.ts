@@ -10,7 +10,7 @@ import * as documentContentManagerInterface from "./documentContentManagerInterf
 let fileUrl = require("file-url");
 
 
-export class ImageDocumentContentManager implements documentContentManagerInterface.DocumentContentManager {
+export class CssDocumentContentManager implements documentContentManagerInterface.DocumentContentManager {
 
 
     private COMMAND: string = "vscode.previewHtml";
@@ -22,7 +22,7 @@ export class ImageDocumentContentManager implements documentContentManagerInterf
 
         let previewSnippet: string = this.generatePreviewSnippet(editor);
         if (previewSnippet == undefined) {
-            return this.errorSnippet(`Active editor doesn't show any  ${this.IMAGE_TYPE_SUFFIX} - no properties to preview.`);
+            return this.errorSnippet("Active editor doesn't show a CSS document - no properties to preview.");
         }
         return previewSnippet;
     }
@@ -38,51 +38,50 @@ export class ImageDocumentContentManager implements documentContentManagerInterf
 
     // 获得错误信息对应的html代码片段
     private errorSnippet(error: string): string {
+
         return `
+                <body>
                 #${error}
+                </body>
                 `;
     }
-    private imageSrcSnippet(imageUri: string): string {
-        if (imageUri == undefined) {
+    private CSSSnippet(properties: string): string {
+        if (properties == undefined) {
             return this.errorSnippet(`Active editor doesn't show any  ${this.IMAGE_TYPE_SUFFIX} - no properties to preview.`);
         }
-        return `<img src='${imageUri}'/>`;
+        return `<style>
+                #el {
+                    '${properties}'/>
+                    }
+                </style>
+                <body>
+                    <div>Preview of the CSS properties</dev>
+                    <hr>
+                    <div id=\"el\">Lorem ipsum dolor sit amet, mi et mauris nec ac luctus lorem, proin leo nulla integer metus vestibulum lobortis, eget</div>\n
+                </body>
+                `;
 
     }
 
-    private getSelectedImageUri(editor: TextEditor): string {
+    private getSelectedCSSProperity(editor: TextEditor): string {
         // 获取当前页面文本
         let text = editor.document.getText();
         // 获取当前鼠标选中段落的起始位置        
         let startPosOfSelectionText = editor.document.offsetAt(editor.selection.anchor);
-        let startPosOfImageUrl = text.lastIndexOf('http', startPosOfSelectionText);
+        let startPosOfCSSProperity = text.lastIndexOf('{', startPosOfSelectionText);
+        let endPosOfCSSProperity = text.indexOf('}', startPosOfSelectionText);
 
-        if (startPosOfImageUrl < 0) {
-            return undefined;
+        if (startPosOfCSSProperity === -1 || endPosOfCSSProperity === -1) {
+            return this.errorSnippet("Cannot determine the rule's properties.");
         }
-        var firstSupportedImageSuffix = '';
-        var postionWhereSuffixIsFound = -1;
-        this.IMAGE_TYPE_SUFFIX.forEach(suffix => {
-            // 获取当前扩展名的起始位置
-            let startPosOfSuffix = text.indexOf(suffix, startPosOfSelectionText);
-
-            if (startPosOfSuffix > 0) {
-                if (postionWhereSuffixIsFound < 0 || startPosOfSuffix < postionWhereSuffixIsFound) {
-                    postionWhereSuffixIsFound = startPosOfSuffix;
-                    firstSupportedImageSuffix = suffix;
-                }
-            }
-        });
-
-        if (postionWhereSuffixIsFound >= 0) {
-            let imgSrcUri: string = text.slice(startPosOfImageUrl, postionWhereSuffixIsFound + firstSupportedImageSuffix.length);
-            return imgSrcUri;
-        }
+        
+        var properties = text.slice(startPosOfCSSProperity + 1, endPosOfCSSProperity);
+        return properties;
     }
 
     // 生成预览编辑页面
     private generatePreviewSnippet(editor: TextEditor): string {
-        return this.imageSrcSnippet(this.getSelectedImageUri(editor));
+        return this.CSSSnippet(this.getSelectedCSSProperity(editor));
     }
 
 }
