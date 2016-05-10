@@ -1,6 +1,6 @@
 # preview-vscode
 
-A previewer of Markdown, HTML, Jade files or Image's URI for Visual Studio Code
+A previewer of Markdown, HTML, Jade files, Image's URI or CSS properties for Visual Studio Code
 # README
 
 An extension to preview Markdown, HTML or Jade files or Image's while editing them in VSCode
@@ -11,7 +11,17 @@ The extension can be activated in two ways
 * Open|Close Preview to the Side - `ctrl+k v`
 
 Just press the same key when you want to recover the original view.
-If file type is not Markdown, HTML or Jade, Just Click on a URI (http|https) and use the key as defined to preview images. 
+
+## DETAIL
+
++ If file type is Markdown, HTML or Jade
+    - Just do as the operation as mentioned.
++ If file type is CSS
+    - Just click or select on a CSS property : between{} 
+    - Just do as the operation as mentioned.
++ If file type is other
+    + Just click on a URI (http|https). 
+    - Just do as the operation as mentioned.
 
 ## Note
 
@@ -40,5 +50,6 @@ sudo n v6.0.0
 ```
 
 ## Thanks to
+
 [html-preview-vscode](https://github.com/tht13/html-preview-vscode.git).
 [vscode-imagepreview](https://github.com/buzzfrog/vscode-imagepreview.git).
