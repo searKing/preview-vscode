@@ -1,0 +1,19 @@
+h1 {
+    color: red
+}
+
+p {
+    color: blue
+}
+
+<style>     
+ #el {
+     'color:red'
+}
+ 
+</style> 
+<body> 
+<div>Preview of the CSS properties</div> 
+<hr>
+<div id="el">Hello World</div> 
+</body>

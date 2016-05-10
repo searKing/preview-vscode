@@ -14,7 +14,6 @@ export class CssDocumentContentManager implements documentContentManagerInterfac
 
 
     private COMMAND: string = "vscode.previewHtml";
-    private IMAGE_TYPE_SUFFIX = ['png', 'jpg', 'jpeg', 'gif', 'bmp'];
     // 生成当前编辑页面的可预览代码片段
     // @Override
     public createContentSnippet(): string {
@@ -47,17 +46,17 @@ export class CssDocumentContentManager implements documentContentManagerInterfac
     }
     private CSSSnippet(properties: string): string {
         if (properties == undefined) {
-            return this.errorSnippet(`Active editor doesn't show any  ${this.IMAGE_TYPE_SUFFIX} - no properties to preview.`);
+            return this.errorSnippet(`Active editor doesn't show any css properity - no properties to preview.`);
         }
         return `<style>
                 #el {
-                    '${properties}'/>
+                    ${properties}
                     }
                 </style>
                 <body>
-                    <div>Preview of the CSS properties</dev>
+                    <div>Preview of the CSS properties</div>
                     <hr>
-                    <div id=\"el\">Lorem ipsum dolor sit amet, mi et mauris nec ac luctus lorem, proin leo nulla integer metus vestibulum lobortis, eget</div>\n
+                    <div id=\"el\">Hello World</div>
                 </body>
                 `;
 
@@ -74,7 +73,7 @@ export class CssDocumentContentManager implements documentContentManagerInterfac
         if (startPosOfCSSProperity === -1 || endPosOfCSSProperity === -1) {
             return this.errorSnippet("Cannot determine the rule's properties.");
         }
-        
+
         var properties = text.slice(startPosOfCSSProperity + 1, endPosOfCSSProperity);
         return properties;
     }
