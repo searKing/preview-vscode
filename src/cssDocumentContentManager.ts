@@ -49,14 +49,14 @@ export class CssDocumentContentManager implements documentContentManagerInterfac
             return this.errorSnippet(`Active editor doesn't show any css properity - no properties to preview.`);
         }
         return `<style>
-                #el {
+                #css_property {
                     ${properties}
                     }
                 </style>
                 <body>
                     <div>Preview of the CSS properties</div>
                     <hr>
-                    <div id=\"el\">Hello World</div>
+                    <div id=\"css_property\">Hello World</div>
                 </body>
                 `;
 
