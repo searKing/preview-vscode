@@ -19,33 +19,30 @@ export class PreviewDocumentContentProvider implements TextDocumentContentProvid
     static PREVIEW_SCHEME: string = "vscode-preview";
     // 观察者模式，生成一个事件发生器
     private _onDidChange = new EventEmitter<Uri>();
-    private _htmlDocumentContentManager = new htmlDocumentContentManager.HtmlDocumentContentManager();
-    private _markdownDocumentContentManager = new markdownDocumentContentManager.MarkdownDocumentContentManager();
-    private _imageDocumentContentManager = new imageDocumentContentManager.ImageDocumentContentManager();
-    private _cssDocumentContentManager = new cssDocumentContentManager.CssDocumentContentManager();
 
-    private _documentContentManager: documentContentManagerInterface.DocumentContentManager = this._markdownDocumentContentManager;
+    private _documentContentManager: documentContentManagerInterface.DocumentContentManager = null;
 
     static get previewScheme(): string {
         return PreviewDocumentContentProvider.PREVIEW_SCHEME;
     }
+
 
     private refreshCurrentDocumentContentProvide() {
         let editor = window.activeTextEditor;
         switch (editor.document.languageId) {
             case "html":
             case "jade":
-                this._documentContentManager = this._htmlDocumentContentManager;
+                this._documentContentManager = htmlDocumentContentManager.getInstance();
                 break;
             case "markdown":
-                this._documentContentManager = this._markdownDocumentContentManager;
+                this._documentContentManager = markdownDocumentContentManager.getInstance();
                 break;
             case "css":
-                this._documentContentManager = this._cssDocumentContentManager;
+                this._documentContentManager = cssDocumentContentManager.getInstance();
                 break;
             default:
                 // window.showWarningMessage(editor.document.languageId);
-                this._documentContentManager = this._imageDocumentContentManager;
+                this._documentContentManager = imageDocumentContentManager.getInstance();
                 break;
         }
 

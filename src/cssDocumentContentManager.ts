@@ -7,7 +7,15 @@ import { workspace, window, ExtensionContext, commands,
 import * as documentContentManagerInterface from "./documentContentManagerInterface";
 
 
-export class CssDocumentContentManager implements documentContentManagerInterface.DocumentContentManager {
+var _instance: CssDocumentContentManager = null;
+export function getInstance() {
+    if (!_instance) {
+        _instance = new CssDocumentContentManager();
+    }
+
+    return _instance;
+}
+class CssDocumentContentManager implements documentContentManagerInterface.DocumentContentManager {
 
 
     private COMMAND: string = "vscode.previewHtml";

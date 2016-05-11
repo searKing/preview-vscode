@@ -15,7 +15,15 @@ enum SourceType {
     STYLE
 }
 
-export class HtmlDocumentContentManager implements documentContentManagerInterface.DocumentContentManager {
+var _instance: HtmlDocumentContentManager = null;
+export function getInstance() {
+    if (!_instance) {
+        _instance = new HtmlDocumentContentManager();
+    }
+
+    return _instance;
+}
+class HtmlDocumentContentManager implements documentContentManagerInterface.DocumentContentManager {
     private COMMAND: string = "vscode.previewHtml";
     // 生成当前编辑页面的HTML代码片段
     // @Override

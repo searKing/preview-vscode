@@ -6,7 +6,15 @@ import { workspace, window, ExtensionContext, commands,
     TextDocument, Disposable } from "vscode";
 import * as documentContentManagerInterface from "./documentContentManagerInterface";
 
-export class ImageDocumentContentManager implements documentContentManagerInterface.DocumentContentManager {
+var _instance: ImageDocumentContentManager = null;
+export function getInstance() {
+    if (!_instance) {
+        _instance = new ImageDocumentContentManager();
+    }
+
+    return _instance;
+}
+class ImageDocumentContentManager implements documentContentManagerInterface.DocumentContentManager {
 
 
     private COMMAND: string = "vscode.previewHtml";

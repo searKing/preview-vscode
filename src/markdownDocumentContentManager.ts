@@ -14,6 +14,15 @@ enum PreviewWindowType {
     OVERRIDE,
     SIDE_BY_SIDE
 }
+
+var _instance: MarkdownDocumentContentManager = null;
+export function getInstance() {
+    if (!_instance) {
+        _instance = new MarkdownDocumentContentManager();
+    }
+
+    return _instance;
+}
 export class MarkdownDocumentContentManager implements documentContentManagerInterface.DocumentContentManager {
 
 
