@@ -97,7 +97,7 @@ class ImageDocumentContentManager implements documentContentManagerInterface.Doc
         var selectedSuffix = '';
         this.IMAGE_TYPE_SUFFIX.forEach(suffix => {
             // 获取当前扩展名的起始位置
-            let startPosOfSuffix = text.indexOf(suffix, startPosOfSelectionText);
+            let startPosOfSuffix = text.indexOf(suffix, startPosOfImageUrl);
             if (startPosOfSuffix < 0) {
                 return;
             }
