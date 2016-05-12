@@ -5,7 +5,7 @@ import { workspace, window, ExtensionContext, commands,
     TextEditorSelectionChangeEvent,
     TextDocument, Disposable } from "vscode";
 import * as path from "path";
-import * as documentContentManagerInterface from "./documentContentManagerInterface";
+import {DocumentContentManagerInterface} from "./documentContentManagerInterface";
 import * as htmlDocumentContentManager from "./htmlDocumentContentManager";
 import * as markdownDocumentContentManager from "./markdownDocumentContentManager";
 import * as imageDocumentContentManager from "./imageDocumentContentManager";
@@ -20,7 +20,7 @@ export class PreviewDocumentContentProvider implements TextDocumentContentProvid
     // 观察者模式，生成一个事件发生器
     private _onDidChange = new EventEmitter<Uri>();
 
-    private _documentContentManager: documentContentManagerInterface.DocumentContentManager = null;
+    private _documentContentManager: DocumentContentManagerInterface = null;
 
     static get previewScheme(): string {
         return PreviewDocumentContentProvider.PREVIEW_SCHEME;

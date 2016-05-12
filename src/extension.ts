@@ -4,14 +4,13 @@ import { workspace, window, ExtensionContext, commands,
     Event, Uri, TextDocumentChangeEvent, ViewColumn,
     TextEditorSelectionChangeEvent,
     TextDocument, Disposable } from "vscode";
-import * as documentContentManagerInterface from "./documentContentManagerInterface";
-import * as previewDocumentContentProvider from "./previewDocumentContentProvider";
+import { PreviewDocumentContentProvider } from "./previewDocumentContentProvider";
 
 // 主函数
 export function activate(context: ExtensionContext) {
 
     // 文本内容提供者
-    let provider: previewDocumentContentProvider.PreviewDocumentContentProvider;
+    let provider: PreviewDocumentContentProvider;
     let registration: Disposable;
 
     // 向vscode注册当前文件发生变化时的回调函数
@@ -30,10 +29,10 @@ export function activate(context: ExtensionContext) {
     })
 
     function registerPreviewDocumentContentProvider() {
-        provider = new previewDocumentContentProvider.PreviewDocumentContentProvider();
+        provider = new PreviewDocumentContentProvider();
         // 向vscode为文本内容数据库注册一个URI的协议scheme，以后均可通过该协议与文本内容数据库进行交互
         // html-preview 通过这个scheme访问的内容，都是通过该provider获得的
-        registration = workspace.registerTextDocumentContentProvider(previewDocumentContentProvider.PreviewDocumentContentProvider.previewScheme, provider);
+        registration = workspace.registerTextDocumentContentProvider(PreviewDocumentContentProvider.previewScheme, provider);
     }
     // 调用vscode系统命令预览当前HTML页面
     function sendPreviewCommand(displayColumn: ViewColumn): PromiseLike<void> {

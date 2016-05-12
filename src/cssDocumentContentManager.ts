@@ -4,7 +4,8 @@ import { workspace, window, ExtensionContext, commands,
     Event, Uri, TextDocumentChangeEvent, ViewColumn,
     TextEditorSelectionChangeEvent,
     TextDocument, Disposable } from "vscode";
-import * as documentContentManagerInterface from "./documentContentManagerInterface";
+import {DocumentContentManagerInterface} from "./documentContentManagerInterface";
+import {HtmlUtil, SourceType} from "./utils/htmlUtil";
 
 
 var _instance: CssDocumentContentManager = null;
@@ -15,7 +16,7 @@ export function getInstance() {
 
     return _instance;
 }
-class CssDocumentContentManager implements documentContentManagerInterface.DocumentContentManager {
+class CssDocumentContentManager implements DocumentContentManagerInterface {
 
 
     private COMMAND: string = "vscode.previewHtml";
@@ -26,44 +27,21 @@ class CssDocumentContentManager implements documentContentManagerInterface.Docum
 
         let previewSnippet: string = this.generatePreviewSnippet(editor);
         if (previewSnippet == undefined) {
-            return this.errorSnippet("Active editor doesn't show a CSS document - no properties to preview.");
+            return HtmlUtil.errorSnippet("Active editor doesn't show a CSS document - no properties to preview.");
         }
         return previewSnippet;
     }
 
     // @Override
     public sendPreviewCommand(previewUri: Uri, displayColumn: ViewColumn): Thenable<void> {
-        return commands.executeCommand(this.COMMAND, previewUri, displayColumn).then((success) => {
-        }, (reason) => {
-            console.warn(reason);
-            window.showErrorMessage(reason);
-        });
+        return HtmlUtil.sendPreviewCommand(previewUri, displayColumn);
     }
 
-    // 获得错误信息对应的html代码片段
-    private errorSnippet(error: string): string {
-
-        return `
-                <body>
-                #${error}
-                </body>
-                `;
-    }
     private CSSSnippet(properties: string): string {
         if (properties == undefined) {
-            return this.errorSnippet(`Active editor doesn't show any css properity - no properties to preview.`);
+            return HtmlUtil.errorSnippet(`Active editor doesn't show any css properity - no properties to preview.`);
         }
-        return `<style type=\"text/css\">
-                #css_property {
-                    ${properties}
-                    }
-                </style>
-                <body>
-                    <div>Preview of the CSS properties</div>
-                    <hr>
-                    <div id=\"css_property\">Hello World</div>
-                </body>
-                `;
+        return HtmlUtil.createRemoteSource(properties, SourceType.STYLE);
 
     }
 
@@ -76,7 +54,7 @@ class CssDocumentContentManager implements documentContentManagerInterface.Docum
         let endPosOfCSSProperity = text.indexOf('}', startPosOfCSSProperity);
 
         if (startPosOfCSSProperity === -1 || endPosOfCSSProperity === -1) {
-            return this.errorSnippet("Cannot determine the rule's properties.");
+            return HtmlUtil.errorSnippet("Cannot determine the rule's properties.");
         }
 
         var properties = text.slice(startPosOfCSSProperity + 1, endPosOfCSSProperity);

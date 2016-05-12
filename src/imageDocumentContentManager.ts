@@ -4,14 +4,12 @@ import { workspace, window, ExtensionContext, commands,
     Event, Uri, TextDocumentChangeEvent, ViewColumn,
     TextEditorSelectionChangeEvent,
     TextDocument, Disposable } from "vscode";
-import * as documentContentManagerInterface from "./documentContentManagerInterface";
+import {DocumentContentManagerInterface} from "./documentContentManagerInterface";
+import {HtmlUtil, SourceType} from "./utils/htmlUtil";
+
 import * as path from "path";
 let fileUrl = require("file-url");
 
-enum SourceType {
-    SCRIPT,
-    STYLE
-}
 var _instance: ImageDocumentContentManager = null;
 export function getInstance() {
     if (!_instance) {
@@ -20,7 +18,7 @@ export function getInstance() {
 
     return _instance;
 }
-class ImageDocumentContentManager implements documentContentManagerInterface.DocumentContentManager {
+class ImageDocumentContentManager implements DocumentContentManagerInterface {
 
 
     private COMMAND: string = "vscode.previewHtml";
@@ -33,38 +31,28 @@ class ImageDocumentContentManager implements documentContentManagerInterface.Doc
 
         let previewSnippet: string = this.generatePreviewSnippet(editor);
         if (previewSnippet == undefined) {
-            return this.errorSnippet(`Active editor doesn't show any  ${this.IMAGE_TYPE_SUFFIX} - no properties to preview.`);
+            return HtmlUtil.errorSnippet(`Active editor doesn't show any  ${this.IMAGE_TYPE_SUFFIX} - no properties to preview.`);
         }
         return previewSnippet;
     }
 
     // @Override
     public sendPreviewCommand(previewUri: Uri, displayColumn: ViewColumn): Thenable<void> {
-        return commands.executeCommand(this.COMMAND, previewUri, displayColumn).then((success) => {
-        }, (reason) => {
-            console.warn(reason);
-            window.showErrorMessage(reason);
-        });
+        return HtmlUtil.sendPreviewCommand(previewUri, displayColumn);
     }
 
-    // 获得错误信息对应的html代码片段
-    private errorSnippet(error: string): string {
-        return `
-                #${error}
-                `;
-    }
     private imageSrcSnippet(imageUri: string): string {
         if (imageUri == undefined) {
-            return this.errorSnippet(`Active editor doesn't show any  ${this.IMAGE_TYPE_SUFFIX} - no properties to preview.`);
+            return HtmlUtil.errorSnippet(`Active editor doesn't show any  ${this.IMAGE_TYPE_SUFFIX} - no properties to preview.`);
         }
-        let snippet = `<img src='${imageUri}'/>`;
-        console.info(snippet); 
+        let snippet = HtmlUtil.createRemoteSource(imageUri, SourceType.IMAGE);
+        console.info(snippet);
         return snippet;
 
     }
 
     // 获取指定位置开始后的第一个分隔符的位置
-    private getSelectedFirstSplitPostion(editor: TextEditor, startPosOfSelectionText:number): number {
+    private getSelectedFirstSplitPostion(editor: TextEditor, startPosOfSelectionText: number): number {
         // 获取当前页面文本
         let text = editor.document.getText();
 
@@ -134,7 +122,7 @@ class ImageDocumentContentManager implements documentContentManagerInterface.Doc
             return undefined;
         }
 
-        let startPosOfSpilt = this.getSelectedFirstSplitPostion(editor,startPosOfImageUrl);
+        let startPosOfSpilt = this.getSelectedFirstSplitPostion(editor, startPosOfImageUrl);
 
         let nextCharPostionWhereSuffixIsFound = this.getSelectedLastSuffixNextCharPostion(editor, startPosOfSpilt);
 
@@ -152,31 +140,12 @@ class ImageDocumentContentManager implements documentContentManagerInterface.Doc
         }
         let imgSrcUri: string = text.slice(startPosOfImageUrl, endNextPosOfImageUrl);
         return imgSrcUri;
-    }    
-    // 生成本地文件对应URI的html标签代码片段
-    private createLocalSource(file: string, type: SourceType) {
-        // __dirname 是package.json中"main"字段对应的绝对目录
-        // 生成本地文件绝对路径URI
-        let source_path = fileUrl(
-            path.join(
-                __dirname,
-                "..",
-                "..",
-                "static",
-                file
-            )
-        );
-        switch (type) {
-            case SourceType.SCRIPT:
-                return `<script src="${source_path}"></script>`;
-            case SourceType.STYLE:
-                return `<link href="${source_path}" rel="stylesheet" />`;
-        }
     }
+
 
     // 生成预览编辑页面
     private generatePreviewSnippet(editor: TextEditor): string {
-        return this.createLocalSource("header_fix.css",SourceType.STYLE)+ this.imageSrcSnippet(this.getFirstSelectedImageUri(editor));
+        return HtmlUtil.createLocalSource("header_fix.css", SourceType.LINK) + this.imageSrcSnippet(this.getFirstSelectedImageUri(editor));
     }
 
 }

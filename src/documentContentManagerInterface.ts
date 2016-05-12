@@ -5,7 +5,7 @@ import { workspace, window, ExtensionContext, commands,
     TextEditorSelectionChangeEvent,
     TextDocument, Disposable } from "vscode";
 
-export interface DocumentContentManager {
+export interface DocumentContentManagerInterface {
 
     // 生成当前编辑页面的HTML代码片段
     createContentSnippet(): string;
