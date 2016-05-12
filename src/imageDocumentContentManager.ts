@@ -57,12 +57,10 @@ class ImageDocumentContentManager implements documentContentManagerInterface.Doc
 
     }
 
-
-    private getSelectedFirstSplitPostion(editor: TextEditor): number {
+    // 获取指定位置开始后的第一个分隔符的位置
+    private getSelectedFirstSplitPostion(editor: TextEditor, startPosOfSelectionText:number): number {
         // 获取当前页面文本
         let text = editor.document.getText();
-        // 获取当前鼠标选中段落的起始位置        
-        let startPosOfSelectionText = editor.document.offsetAt(editor.selection.anchor);
 
         var closetPosOfSupportedImageSplit = -1;
         var isSplitFound = false;
@@ -84,6 +82,7 @@ class ImageDocumentContentManager implements documentContentManagerInterface.Doc
         }
         return -1;
     }
+    // 获取指定位置开始后的第一个分隔符前的最后一个后缀的位置
     private getSelectedLastSuffixNextCharPostion(editor: TextEditor, startPosOfSpilt: number): number {
         // 获取当前页面文本
         let text = editor.document.getText();
@@ -129,7 +128,7 @@ class ImageDocumentContentManager implements documentContentManagerInterface.Doc
             return undefined;
         }
 
-        let startPosOfSpilt = this.getSelectedFirstSplitPostion(editor);
+        let startPosOfSpilt = this.getSelectedFirstSplitPostion(editor,startPosOfImageUrl);
 
         let nextCharPostionWhereSuffixIsFound = this.getSelectedLastSuffixNextCharPostion(editor, startPosOfSpilt);
 
