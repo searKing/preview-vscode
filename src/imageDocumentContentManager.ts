@@ -5,7 +5,13 @@ import { workspace, window, ExtensionContext, commands,
     TextEditorSelectionChangeEvent,
     TextDocument, Disposable } from "vscode";
 import * as documentContentManagerInterface from "./documentContentManagerInterface";
+import * as path from "path";
+let fileUrl = require("file-url");
 
+enum SourceType {
+    SCRIPT,
+    STYLE
+}
 var _instance: ImageDocumentContentManager = null;
 export function getInstance() {
     if (!_instance) {
@@ -139,23 +145,38 @@ class ImageDocumentContentManager implements documentContentManagerInterface.Doc
             return undefined;
         }
         else if (nextCharPostionWhereSuffixIsFound < 0) {
-            // 没找到后缀，则表示图片没有后缀，需要手动设置像素宽高
-            needFixCSS = true;
             endNextPosOfImageUrl = startPosOfSpilt;
         }
         else {
             endNextPosOfImageUrl = nextCharPostionWhereSuffixIsFound;
         }
         let imgSrcUri: string = text.slice(startPosOfImageUrl, endNextPosOfImageUrl);
-        if (needFixCSS) {
-            imgSrcUri += "' width='389' height='389";
-        }
         return imgSrcUri;
+    }    
+    // 生成本地文件对应URI的html标签代码片段
+    private createLocalSource(file: string, type: SourceType) {
+        // __dirname 是package.json中"main"字段对应的绝对目录
+        // 生成本地文件绝对路径URI
+        let source_path = fileUrl(
+            path.join(
+                __dirname,
+                "..",
+                "..",
+                "static",
+                file
+            )
+        );
+        switch (type) {
+            case SourceType.SCRIPT:
+                return `<script src="${source_path}"></script>`;
+            case SourceType.STYLE:
+                return `<link href="${source_path}" rel="stylesheet" />`;
+        }
     }
 
     // 生成预览编辑页面
     private generatePreviewSnippet(editor: TextEditor): string {
-        return this.imageSrcSnippet(this.getFirstSelectedImageUri(editor));
+        return this.createLocalSource("header_fix.css",SourceType.STYLE)+ this.imageSrcSnippet(this.getFirstSelectedImageUri(editor));
     }
 
 }
