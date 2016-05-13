@@ -6,7 +6,7 @@ import { workspace, window, ExtensionContext, commands,
     TextDocument, Disposable } from "vscode";
 import {DocumentContentManagerInterface} from "./documentContentManagerInterface";
 import {HtmlUtil, SourceType} from "./utils/htmlUtil";
-
+import {TextUtil, TextUtilReturnType} from "./utils/textUtil"
 import * as path from "path";
 let fileUrl = require("file-url");
 
@@ -51,40 +51,23 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
         return snippet;
 
     }
-    
+
     // 获取指定位置开始后的第一个分隔符的位置
-    private getFirtMarkPostion(editor: TextEditor,startPos:number, marks:string[]): number {
-        // 获取当前页面文本
-        let text = editor.document.getText();
-
-        var closestPosOfMarks = -1;
-        var isAnyMarkFound = false;
-        marks.forEach(mark => {
-            // 获取当前扩展名的起始位置
-            let startPosOfMark = text.indexOf(mark, startPos);
-            if (startPosOfMark < 0) {
-                return;
-            }
-            if (!isAnyMarkFound || startPosOfMark < closestPosOfMarks) {
-                isAnyMarkFound = true;
-                closestPosOfMarks = startPosOfMark;
-                return;
-            }
-        });
-
-        if (isAnyMarkFound) {
-            return closestPosOfMarks;
-        }
-        return -1;
+    private indexOfSplit(editor: TextEditor, startPos: number): TextUtilReturnType {
+        return TextUtil.indexOf(editor, startPos, this.IMAGE_TYPE_SPLIT);
     }
-    // 获取指定位置开始后的第一个分隔符的位置
-    private getSelectedFirstSplitPostion(editor: TextEditor, startPos:number): number {
-        // 获取当前页面文本
-        let text = editor.document.getText();
+    // 获取指定位置开始后的第一个后缀的位置
+    private indexOfSuffix(editor: TextEditor, startPos: number): TextUtilReturnType {
+        return TextUtil.indexOf(editor, startPos, this.IMAGE_TYPE_SUFFIX);
+    }
+    // 获取指定位置开始前的第一个资源前缀的位置
+    private lastIndexOfPrefix(editor: TextEditor, startPos: number): TextUtilReturnType {
+        return TextUtil.lastIndexOf(editor, startPos, this.IMAGE_TYPE_PREFFIX);
+    }
+    // 获取指定位置开始前的第一个资源前缀的位置
+    private lastIndexOfSuffix(editor: TextEditor, startPos: number):TextUtilReturnType {
+        return TextUtil.lastIndexOf(editor, startPos, this.IMAGE_TYPE_SUFFIX);
 
-        var closestPosOfSupportedImageSplit = this.getFirtMarkPostion(editor,startPos,this.IMAGE_TYPE_SPLIT);      
-
-        return closestPosOfSupportedImageSplit;
     }
     // 获取指定位置开始后的第一个分隔符前的最后一个后缀的位置
     private getSelectedLastSuffixNextCharPostion(editor: TextEditor, startPosOfSpilt: number): number {
@@ -92,8 +75,19 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
         let text = editor.document.getText();
         // 获取当前鼠标选中段落的起始位置        
         let startPosOfSelectionText = editor.document.offsetAt(editor.selection.anchor);
-        let startPosOfImageUrl = this.getSelectedLastPreffixPosition(editor);
 
+        let startPosOfImageUrl = this.lastIndexOfPrefix(editor, startPosOfSelectionText).pos;
+        if (startPosOfImageUrl < 0) {
+            return -1;
+        }
+        let startPosOfSplit = this.indexOfSplit(editor, startPosOfImageUrl).pos;
+        if (startPosOfSpilt < 0) {
+            startPosOfSpilt = editor.document.getText().length;
+        }
+        let startPosOfSuffix = this.lastIndexOfSuffix(editor, startPosOfSpilt).pos;
+        if (startPosOfSuffix > startPosOfImageUrl) {
+            return -1
+        }
 
         var farthestPosOfSupportetSuffix = -1;
         var isSuffixFound = false;
@@ -121,31 +115,16 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
         }
         return -1;
     }
-    // 获取指定位置开始前的第一个资源前缀的位置
-    private getSelectedLastPreffixPosition(editor: TextEditor) : number{
-        // 获取当前页面文本
-        let text = editor.document.getText();
+    private getFirstSelectedImageUri(editor: TextEditor): string {
         // 获取当前鼠标选中段落的起始位置        
         let startPosOfSelectionText = editor.document.offsetAt(editor.selection.anchor);
-        let startPosOfImageHttpUrl = text.lastIndexOf('http', startPosOfSelectionText);
-        let startPosOfImageFileUrl = text.lastIndexOf('file://', startPosOfSelectionText);
-        if (startPosOfImageHttpUrl < 0) {
-            return startPosOfImageFileUrl;
-        }
-        else if (startPosOfImageFileUrl < 0) {
-            return startPosOfImageHttpUrl;
-        }
-        else {
-            return startPosOfImageHttpUrl > startPosOfImageFileUrl ? startPosOfImageHttpUrl : startPosOfImageFileUrl;
-        }
-    }
-    private getFirstSelectedImageUri(editor: TextEditor): string {
-        let startPosOfImageUrl : number = this.getSelectedLastPreffixPosition(editor);
+
+        let startPosOfImageUrl: number = this.lastIndexOfPrefix(editor, startPosOfSelectionText).pos;
         if (startPosOfImageUrl < 0) {
             return undefined;
         }
 
-        let startPosOfSpilt = this.getSelectedFirstSplitPostion(editor,startPosOfImageUrl);
+        let startPosOfSpilt = this.indexOfSplit(editor, startPosOfImageUrl).pos;
 
         let nextCharPostionWhereSuffixIsFound = this.getSelectedLastSuffixNextCharPostion(editor, startPosOfSpilt);
 
@@ -161,10 +140,10 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
         else {
             endNextPosOfImageUrl = nextCharPostionWhereSuffixIsFound;
         }
-        let imgSrcUri: string = editor.document.getText().slice(startPosOfImageUrl, endNextPosOfImageUrl);      
+        let imgSrcUri: string = editor.document.getText().slice(startPosOfImageUrl, endNextPosOfImageUrl);
         return imgSrcUri;
     }
-    
+
 
     // 生成预览编辑页面
     private generatePreviewSnippet(editor: TextEditor): string {
