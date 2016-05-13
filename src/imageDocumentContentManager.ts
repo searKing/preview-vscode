@@ -57,7 +57,7 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
         // 获取当前页面文本
         let text = editor.document.getText();
 
-        var closetPosOfMarks = -1;
+        var closestPosOfMarks = -1;
         var isAnyMarkFound = false;
         marks.forEach(mark => {
             // 获取当前扩展名的起始位置
@@ -65,15 +65,15 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
             if (startPosOfMark < 0) {
                 return;
             }
-            if (!isAnyMarkFound || startPosOfMark < closetPosOfMarks) {
+            if (!isAnyMarkFound || startPosOfMark < closestPosOfMarks) {
                 isAnyMarkFound = true;
-                closetPosOfMarks = startPosOfMark;
+                closestPosOfMarks = startPosOfMark;
                 return;
             }
         });
 
         if (isAnyMarkFound) {
-            return closetPosOfMarks;
+            return closestPosOfMarks;
         }
         return -1;
     }
@@ -82,9 +82,9 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
         // 获取当前页面文本
         let text = editor.document.getText();
 
-        var closetPosOfSupportedImageSplit = this.getFirtMarkPostion(editor,startPos,this.IMAGE_TYPE_SPLIT);      
+        var closestPosOfSupportedImageSplit = this.getFirtMarkPostion(editor,startPos,this.IMAGE_TYPE_SPLIT);      
 
-        return closetPosOfSupportedImageSplit;
+        return closestPosOfSupportedImageSplit;
     }
     // 获取指定位置开始后的第一个分隔符前的最后一个后缀的位置
     private getSelectedLastSuffixNextCharPostion(editor: TextEditor, startPosOfSpilt: number): number {
