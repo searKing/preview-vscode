@@ -22,7 +22,7 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
 
 
     private COMMAND: string = "vscode.previewHtml";
-    private IMAGE_TYPE_PREFFIX = ['http', "file://"];
+    private IMAGE_TYPE_PREFFIX = ["http", "file://", " /", " ./", "[a-z]"];
     private IMAGE_TYPE_SUFFIX = ['png', 'jpg', 'jpeg', 'gif', 'bmp'];
     private IMAGE_TYPE_SPLIT = ['\n', '\r', '\t', ' '];
     // 生成当前编辑页面的可预览代码片段
@@ -75,9 +75,7 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
         let text = editor.document.getText();
         // 获取当前鼠标选中段落的起始位置        
         let startPosOfSelectionText = editor.document.offsetAt(editor.selection.anchor);
-        let startIndexOfImageUrl: TextUtilReturnType = this.lastIndexOfPrefix(editor, startPosOfSelectionText);
-        let startPosOfImageUrl = startIndexOfImageUrl.pos;
-        let selectedSuffix = startIndexOfImageUrl.mark;
+        let startPosOfImageUrl = this.lastIndexOfPrefix(editor, startPosOfSelectionText).pos;
         if (startPosOfImageUrl < 0) {
             return -1;
         }
@@ -85,7 +83,9 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
         if (startPosOfSpilt < 0) {
             startPosOfSpilt = editor.document.getText().length;
         }
-        let startPosOfSuffix = this.lastIndexOfSuffix(editor, startPosOfSpilt).pos;
+        let startIndexOfSuffix: TextUtilReturnType = this.lastIndexOfSuffix(editor, startPosOfSpilt);
+        let startPosOfSuffix = startIndexOfSuffix.pos;
+        let selectedSuffix = startIndexOfSuffix.mark;
         if (startPosOfSuffix > startPosOfImageUrl) {
             return -1
         }
