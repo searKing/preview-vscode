@@ -75,36 +75,40 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
         let text = editor.document.getText();
         // 获取当前鼠标选中段落的起始位置        
         let startPosOfSelectionText = editor.document.offsetAt(editor.selection.anchor);
-        let startPosOfImageUrl = this.lastIndexOfPrefix(editor, startPosOfSelectionText).pos;
+        let startPosIndexOfImageUrl = this.lastIndexOfPrefix(editor, startPosOfSelectionText);
+        let startPosOfImageUrl = startPosIndexOfImageUrl.pos;
+        let selectPrefix = startPosIndexOfImageUrl.mark;
         if (startPosOfImageUrl < 0) {
             return -1;
         }
-        let startPosOfSplit = this.indexOfSplit(editor, startPosOfImageUrl).pos;
+        let startPosOfSplit = this.indexOfSplit(editor, startPosOfImageUrl+ selectPrefix.length).pos;
         if (startPosOfSpilt < 0) {
             startPosOfSpilt = editor.document.getText().length;
         }
         let startIndexOfSuffix: TextUtilReturnType = this.lastIndexOfSuffix(editor, startPosOfSpilt);
         let startPosOfSuffix = startIndexOfSuffix.pos;
         let selectedSuffix = startIndexOfSuffix.mark;
-        if (startPosOfSuffix > startPosOfImageUrl) {
+        if (startPosOfSuffix < 0) {
+            return -1;
+        }
+        if (startPosOfSuffix < startPosOfImageUrl) {
             return -1
         }
 
-        if (startPosOfSuffix > 0) {
-            return startPosOfSuffix + selectedSuffix.length;
-        }
-        return -1;
+        return startPosOfSuffix + selectedSuffix.length;
     }
     private getFirstSelectedImageUri(editor: TextEditor): string {
         // 获取当前鼠标选中段落的起始位置        
         let startPosOfSelectionText = editor.document.offsetAt(editor.selection.anchor);
 
-        let startPosOfImageUrl: number = this.lastIndexOfPrefix(editor, startPosOfSelectionText).pos;
+        let startIndexOfImageUrl = this.lastIndexOfPrefix(editor, startPosOfSelectionText);
+        let startPosOfImageUrl = startIndexOfImageUrl.pos;
+        let selectPrefix = startIndexOfImageUrl.mark;
         if (startPosOfImageUrl < 0) {
             return undefined;
         }
 
-        let startPosOfSpilt = this.indexOfSplit(editor, startPosOfImageUrl).pos;
+        let startPosOfSpilt = this.indexOfSplit(editor, startPosOfImageUrl + selectPrefix.length).pos;
 
         let nextCharPostionWhereSuffixIsFound = this.getSelectedLastSuffixNextCharPostion(editor, startPosOfSpilt);
 
