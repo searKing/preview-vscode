@@ -22,6 +22,7 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
 
 
     private COMMAND: string = "vscode.previewHtml";
+    private IMAGE_TYPE_PREFFIX = ['http', "file：//"];
     private IMAGE_TYPE_SUFFIX = ['png', 'jpg', 'jpeg', 'gif', 'bmp'];
     private IMAGE_TYPE_SPLIT = ['\n', '\r', '\t', ' '];
     // 生成当前编辑页面的可预览代码片段
@@ -50,31 +51,40 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
         return snippet;
 
     }
-
+    
     // 获取指定位置开始后的第一个分隔符的位置
-    private getSelectedFirstSplitPostion(editor: TextEditor, startPosOfSelectionText: number): number {
+    private getFirtMarkPostion(editor: TextEditor,startPos:number, marks:string[]): number {
         // 获取当前页面文本
         let text = editor.document.getText();
 
-        var closetPosOfSupportedImageSplit = -1;
-        var isSplitFound = false;
-        this.IMAGE_TYPE_SPLIT.forEach(split => {
+        var closetPosOfMarks = -1;
+        var isAnyMarkFound = false;
+        marks.forEach(mark => {
             // 获取当前扩展名的起始位置
-            let startPosOfSplit = text.indexOf(split, startPosOfSelectionText);
-            if (startPosOfSplit < 0) {
+            let startPosOfMark = text.indexOf(mark, startPos);
+            if (startPosOfMark < 0) {
                 return;
             }
-            if (!isSplitFound || startPosOfSplit < closetPosOfSupportedImageSplit) {
-                isSplitFound = true;
-                closetPosOfSupportedImageSplit = startPosOfSplit;
+            if (!isAnyMarkFound || startPosOfMark < closetPosOfMarks) {
+                isAnyMarkFound = true;
+                closetPosOfMarks = startPosOfMark;
                 return;
             }
         });
 
-        if (isSplitFound) {
-            return closetPosOfSupportedImageSplit;
+        if (isAnyMarkFound) {
+            return closetPosOfMarks;
         }
         return -1;
+    }
+    // 获取指定位置开始后的第一个分隔符的位置
+    private getSelectedFirstSplitPostion(editor: TextEditor, startPos:number): number {
+        // 获取当前页面文本
+        let text = editor.document.getText();
+
+        var closetPosOfSupportedImageSplit = this.getFirtMarkPostion(editor,startPos,this.IMAGE_TYPE_SPLIT);      
+
+        return closetPosOfSupportedImageSplit;
     }
     // 获取指定位置开始后的第一个分隔符前的最后一个后缀的位置
     private getSelectedLastSuffixNextCharPostion(editor: TextEditor, startPosOfSpilt: number): number {
@@ -151,10 +161,10 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
         else {
             endNextPosOfImageUrl = nextCharPostionWhereSuffixIsFound;
         }
-        let imgSrcUri: string = editor.document.getText().slice(startPosOfImageUrl, endNextPosOfImageUrl);
+        let imgSrcUri: string = editor.document.getText().slice(startPosOfImageUrl, endNextPosOfImageUrl);      
         return imgSrcUri;
     }
-
+    
 
     // 生成预览编辑页面
     private generatePreviewSnippet(editor: TextEditor): string {
