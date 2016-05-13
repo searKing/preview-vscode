@@ -70,33 +70,29 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
 
     }
     // 获取指定位置开始后的第一个分隔符前的最后一个后缀的位置
-    private getSelectedLastSuffixNextCharPostion(editor: TextEditor, startPosOfSpilt: number): number {
-        // 获取当前页面文本
-        let text = editor.document.getText();
-        // 获取当前鼠标选中段落的起始位置        
-        let startPosOfSelectionText = editor.document.offsetAt(editor.selection.anchor);
-        let startPosIndexOfImageUrl = this.lastIndexOfPrefix(editor, startPosOfSelectionText);
-        let startPosOfImageUrl = startPosIndexOfImageUrl.pos;
-        let selectPrefix = startPosIndexOfImageUrl.mark;
-        if (startPosOfImageUrl < 0) {
-            return -1;
-        }
-        let startPosOfSplit = this.indexOfSplit(editor, startPosOfImageUrl+ selectPrefix.length).pos;
-        if (startPosOfSpilt < 0) {
-            startPosOfSpilt = editor.document.getText().length;
-        }
-        let startIndexOfSuffix: TextUtilReturnType = this.lastIndexOfSuffix(editor, startPosOfSpilt);
+    private getEndOfImageUrl(editor: TextEditor, startPosOfImageUrl: number, startPosOfSplit: number): number {
+        let startIndexOfSuffix: TextUtilReturnType = this.lastIndexOfSuffix(editor, startPosOfSplit);
         let startPosOfSuffix = startIndexOfSuffix.pos;
         let selectedSuffix = startIndexOfSuffix.mark;
         if (startPosOfSuffix < 0) {
-            return -1;
+            return startPosOfSplit;
         }
-        if (startPosOfSuffix < startPosOfImageUrl) {
-            return -1
+        else {
+            if (startPosOfSuffix < startPosOfImageUrl) {
+                return -1;
+            }
+            return startPosOfSuffix + selectedSuffix.length;
         }
-
-        return startPosOfSuffix + selectedSuffix.length;
     }
+    private getSplitOfImageUrl(editor: TextEditor, startIndexOfImageUrl: TextUtilReturnType): number {
+  
+        let startPosOfSplit = this.indexOfSplit(editor, startIndexOfImageUrl.pos + startIndexOfImageUrl.mark.length).pos;
+        if (startPosOfSplit < 0) {
+            startPosOfSplit = editor.document.getText().length;
+        }
+        return startPosOfSplit;
+    }
+
     private getFirstSelectedImageUri(editor: TextEditor): string {
         // 获取当前鼠标选中段落的起始位置        
         let startPosOfSelectionText = editor.document.offsetAt(editor.selection.anchor);
@@ -108,21 +104,12 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
             return undefined;
         }
 
-        let startPosOfSpilt = this.indexOfSplit(editor, startPosOfImageUrl + selectPrefix.length).pos;
+        let startPosOfSplit = this.getSplitOfImageUrl(editor, startIndexOfImageUrl);
 
-        let nextCharPostionWhereSuffixIsFound = this.getSelectedLastSuffixNextCharPostion(editor, startPosOfSpilt);
-
-
-        let endNextPosOfImageUrl: number = -1;
-        let needFixCSS = false;
-        if (nextCharPostionWhereSuffixIsFound < 0 && startPosOfSpilt < 0) {
+        let endNextPosOfImageUrl: number = this.getEndOfImageUrl(editor, startPosOfImageUrl, startPosOfSplit);
+        
+        if (endNextPosOfImageUrl < 0) {
             return undefined;
-        }
-        else if (nextCharPostionWhereSuffixIsFound < 0) {
-            endNextPosOfImageUrl = startPosOfSpilt;
-        }
-        else {
-            endNextPosOfImageUrl = nextCharPostionWhereSuffixIsFound;
         }
         let imgSrcUri: string = editor.document.getText().slice(startPosOfImageUrl, endNextPosOfImageUrl);
         return imgSrcUri;
