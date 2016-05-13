@@ -22,7 +22,7 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
 
 
     private COMMAND: string = "vscode.previewHtml";
-    private IMAGE_TYPE_PREFFIX = ['http', "file：//"];
+    private IMAGE_TYPE_PREFFIX = ['http', "file://"];
     private IMAGE_TYPE_SUFFIX = ['png', 'jpg', 'jpeg', 'gif', 'bmp'];
     private IMAGE_TYPE_SPLIT = ['\n', '\r', '\t', ' '];
     // 生成当前编辑页面的可预览代码片段
@@ -65,7 +65,7 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
         return TextUtil.lastIndexOf(editor, startPos, this.IMAGE_TYPE_PREFFIX);
     }
     // 获取指定位置开始前的第一个资源前缀的位置
-    private lastIndexOfSuffix(editor: TextEditor, startPos: number):TextUtilReturnType {
+    private lastIndexOfSuffix(editor: TextEditor, startPos: number): TextUtilReturnType {
         return TextUtil.lastIndexOf(editor, startPos, this.IMAGE_TYPE_SUFFIX);
 
     }
@@ -75,8 +75,9 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
         let text = editor.document.getText();
         // 获取当前鼠标选中段落的起始位置        
         let startPosOfSelectionText = editor.document.offsetAt(editor.selection.anchor);
-
-        let startPosOfImageUrl = this.lastIndexOfPrefix(editor, startPosOfSelectionText).pos;
+        let startIndexOfImageUrl: TextUtilReturnType = this.lastIndexOfPrefix(editor, startPosOfSelectionText);
+        let startPosOfImageUrl = startIndexOfImageUrl.pos;
+        let selectedSuffix = startIndexOfImageUrl.mark;
         if (startPosOfImageUrl < 0) {
             return -1;
         }
@@ -89,29 +90,8 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
             return -1
         }
 
-        var farthestPosOfSupportetSuffix = -1;
-        var isSuffixFound = false;
-        var selectedSuffix = '';
-        this.IMAGE_TYPE_SUFFIX.forEach(suffix => {
-            // 获取当前扩展名的起始位置
-            let startPosOfSuffix = text.indexOf(suffix, startPosOfImageUrl);
-            if (startPosOfSuffix < 0) {
-                return;
-            }
-            if (startPosOfSpilt > 0 && startPosOfSuffix > startPosOfSpilt) {
-                return;
-            }
-            if (!isSuffixFound
-                || (startPosOfSuffix > farthestPosOfSupportetSuffix)) {
-                isSuffixFound = true;
-                selectedSuffix = suffix;
-                farthestPosOfSupportetSuffix = startPosOfSuffix;
-                return;
-            }
-        });
-
-        if (isSuffixFound) {
-            return farthestPosOfSupportetSuffix + selectedSuffix.length;
+        if (startPosOfSuffix > 0) {
+            return startPosOfSuffix + selectedSuffix.length;
         }
         return -1;
     }
