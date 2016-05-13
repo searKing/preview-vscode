@@ -82,7 +82,7 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
         let text = editor.document.getText();
         // 获取当前鼠标选中段落的起始位置        
         let startPosOfSelectionText = editor.document.offsetAt(editor.selection.anchor);
-        let startPosOfImageUrl = text.lastIndexOf('http', startPosOfSelectionText);
+        let startPosOfImageUrl = this.getSelectedLastPreffixPosition(editor);
 
 
         var farthestPosOfSupportetSuffix = -1;
@@ -111,18 +111,31 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
         }
         return -1;
     }
-    private getFirstSelectedImageUri(editor: TextEditor): string {
+    // 获取指定位置开始前的第一个资源前缀的位置
+    private getSelectedLastPreffixPosition(editor: TextEditor) : number{
         // 获取当前页面文本
         let text = editor.document.getText();
         // 获取当前鼠标选中段落的起始位置        
         let startPosOfSelectionText = editor.document.offsetAt(editor.selection.anchor);
-        let startPosOfImageUrl = text.lastIndexOf('http', startPosOfSelectionText);
-
+        let startPosOfImageHttpUrl = text.lastIndexOf('http', startPosOfSelectionText);
+        let startPosOfImageFileUrl = text.lastIndexOf('file://', startPosOfSelectionText);
+        if (startPosOfImageHttpUrl < 0) {
+            return startPosOfImageFileUrl;
+        }
+        else if (startPosOfImageFileUrl < 0) {
+            return startPosOfImageHttpUrl;
+        }
+        else {
+            return startPosOfImageHttpUrl > startPosOfImageFileUrl ? startPosOfImageHttpUrl : startPosOfImageFileUrl;
+        }
+    }
+    private getFirstSelectedImageUri(editor: TextEditor): string {
+        let startPosOfImageUrl : number = this.getSelectedLastPreffixPosition(editor);
         if (startPosOfImageUrl < 0) {
             return undefined;
         }
 
-        let startPosOfSpilt = this.getSelectedFirstSplitPostion(editor, startPosOfImageUrl);
+        let startPosOfSpilt = this.getSelectedFirstSplitPostion(editor,startPosOfImageUrl);
 
         let nextCharPostionWhereSuffixIsFound = this.getSelectedLastSuffixNextCharPostion(editor, startPosOfSpilt);
 
@@ -138,7 +151,7 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
         else {
             endNextPosOfImageUrl = nextCharPostionWhereSuffixIsFound;
         }
-        let imgSrcUri: string = text.slice(startPosOfImageUrl, endNextPosOfImageUrl);
+        let imgSrcUri: string = editor.document.getText().slice(startPosOfImageUrl, endNextPosOfImageUrl);
         return imgSrcUri;
     }
 
