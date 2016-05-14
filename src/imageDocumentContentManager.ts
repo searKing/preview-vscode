@@ -22,9 +22,12 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
 
 
     private COMMAND: string = "vscode.previewHtml";
-    private IMAGE_TYPE_PREFFIX = ["http", "file://", " /", " ./", "[a-z]"];
+    private IMAGE_TYPE_PREFFIX = ["http", "file://", " /", " ./", " ../"];
     private IMAGE_TYPE_SUFFIX = ['png', 'jpg', 'jpeg', 'gif', 'bmp'];
     private IMAGE_TYPE_SPLIT = ['\n', '\r', '\t', ' '];
+    private IMAGE_TYPE_REGREX_PREFFIX: RegExp = /http[s]{0,1}:\/\/|file:\/\/|\s[\.]{0,2}\//;
+    private IMAGE_TYPE_REGREX_SUFFIX: RegExp = /png|jpg|jpeg|gif|bmp/;
+    private IMAGE_TYPE_REGREX_SPLIT: RegExp = /\s/;
     // 生成当前编辑页面的可预览代码片段
     // @Override
     public createContentSnippet(): string {
@@ -34,7 +37,7 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
         if (previewSnippet == undefined) {
             return HtmlUtil.errorSnippet(`Active editor doesn't show any  ${this.IMAGE_TYPE_SUFFIX} - no properties to preview.`);
         }
-        console.info("previewSnippet = "+previewSnippet);
+        console.info("previewSnippet = " + previewSnippet);
         return previewSnippet;
     }
 
@@ -54,19 +57,20 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
 
     // 获取指定位置开始后的第一个分隔符的位置
     private indexOfSplit(editor: TextEditor, startPos: number): TextUtilReturnType {
-        return TextUtil.indexOf(editor, startPos, this.IMAGE_TYPE_SPLIT);
+        return TextUtil.regexIndexOf(editor, startPos, this.IMAGE_TYPE_REGREX_SPLIT);
     }
     // 获取指定位置开始后的第一个后缀的位置
     private indexOfSuffix(editor: TextEditor, startPos: number): TextUtilReturnType {
-        return TextUtil.indexOf(editor, startPos, this.IMAGE_TYPE_SUFFIX);
+        return TextUtil.regexIndexOf(editor, startPos, this.IMAGE_TYPE_REGREX_SUFFIX);
     }
     // 获取指定位置开始前的第一个资源前缀的位置
     private lastIndexOfPrefix(editor: TextEditor, startPos: number): TextUtilReturnType {
-        return TextUtil.lastIndexOf(editor, startPos, this.IMAGE_TYPE_PREFFIX);
+        return TextUtil.regexLastIndexOf(editor, startPos, this.IMAGE_TYPE_REGREX_PREFFIX);
+
     }
     // 获取指定位置开始前的第一个资源前缀的位置
     private lastIndexOfSuffix(editor: TextEditor, startPos: number): TextUtilReturnType {
-        return TextUtil.lastIndexOf(editor, startPos, this.IMAGE_TYPE_SUFFIX);
+        return TextUtil.regexLastIndexOf(editor, startPos, this.IMAGE_TYPE_REGREX_SUFFIX);
 
     }
     // 获取指定位置开始后的第一个分隔符前的最后一个后缀的位置
@@ -87,6 +91,7 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
     private getSplitOfImageUrl(editor: TextEditor, startIndexOfImageUrl: TextUtilReturnType): number {
 
         let startPosOfSplit = this.indexOfSplit(editor, startIndexOfImageUrl.pos + startIndexOfImageUrl.mark.length).pos;
+
         if (startPosOfSplit < 0) {
             startPosOfSplit = editor.document.getText().length;
         }
@@ -117,9 +122,9 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
 
 
     // 生成预览编辑页面
-    private generatePreviewSnippet(editor: TextEditor): string {    
+    private generatePreviewSnippet(editor: TextEditor): string {
         return HtmlUtil.createLocalSource("header_fix.css", SourceType.LINK)
-            +"\n"
+            + "\n"
             + HtmlUtil.fixImageSrcLinks(this.imageSrcSnippet(this.getFirstSelectedImageUri(editor)));
     }
 
