@@ -2,7 +2,7 @@
     "name": "preview-vscode",
     "displayName": "Preview",
     "description": "A Markdown, HTML, Jade, Image, CSS previewer",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "publisher": "searKing",
     "author": "Haixin Chen",
     "license": "MIT",
