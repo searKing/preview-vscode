@@ -52,6 +52,16 @@ sudo n 6.0.0
 sudo n v6.0.0
 ```
 
++ 'vsce publish' failed?
+```bash
+Executing prepublish script 'node ./node_modules/vscode/bin/compile'...
+Error: Command failed: node ./node_modules/vscode/bin/compile
+```
+    - execute this command and you will get the error message in the console
+```bash
+node ./node_modules/vscode/bin/compile
+```
+    - fix the error and retry 'vsce publish'
 ## Thanks to
 
 + [html-preview-vscode](https://github.com/tht13/html-preview-vscode.git).
