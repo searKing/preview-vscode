@@ -7,14 +7,10 @@ import { workspace, window, ExtensionContext, commands,
 import * as fs from "fs";
 import * as path from "path";
 import {DocumentContentManagerInterface} from "./documentContentManagerInterface";
-import {HtmlUtil} from "./utils/htmlUtil";
+import {HtmlUtil, SourceType} from "./utils/htmlUtil";
 let fileUrl = require("file-url");
 
 
-enum SourceType {
-    SCRIPT,
-    STYLE
-}
 
 var _instance: HtmlDocumentContentManager = null;
 export function getInstance() {
@@ -47,8 +43,9 @@ class HtmlDocumentContentManager implements DocumentContentManagerInterface {
     private generatePreviewSnippet(editor: TextEditor): string {
         // 获取当前编辑页面对应的文档
         let doc = editor.document;
-        return HtmlUtil.createLocalSource("header_fix.css", SourceType.STYLE) + HtmlUtil.fixNoneNetLinks(doc.getText(), doc.fileName);
+        return HtmlUtil.createLocalSource("header_fix.css", SourceType.STYLE)
+            + "\n"
+            + HtmlUtil.fixNoneNetLinks(doc.getText(), doc.fileName);
     }
-
 
 }

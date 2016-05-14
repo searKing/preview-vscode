@@ -12,7 +12,11 @@ export enum SourceType {
     SCRIPT,
     LINK,
     IMAGE,
-    STYLE
+    STYLE,
+    STYLE_SAMPLE,
+    DIVISION,
+    BODY,
+    HR
 }
 
 export class HtmlUtil {
@@ -29,14 +33,7 @@ export class HtmlUtil {
 
 
     public static errorSnippet(error: string): string {
-        return `
-                <body>
-                    ${error}
-                </body>`;
-    }
-    public static imageSnippet(imageUri: string): string {
-        return `<img src="${imageUri}"></img>`;
-
+        return this.createRemoteSource(this.createRemoteSource(error, SourceType.DIVISION),SourceType.BODY);
     }
 
     // 生成本地文件对应URI的html标签代码片段
@@ -50,6 +47,11 @@ export class HtmlUtil {
                 return `<img src="${content}"/>`;
             case SourceType.STYLE:
                 return `<style type=\"text/css\">
+                            ${content}
+                        </style>
+                        `;
+            case SourceType.STYLE_SAMPLE:
+                return `<style type=\"text/css\">
                             #css_property {
                                 ${content}
                             }
@@ -59,7 +61,15 @@ export class HtmlUtil {
                             <hr>
                             <div id=\"css_property\">Hello World</div>
                         </body>
-                `;
+                        `;
+            case SourceType.DIVISION:
+                return `<div>${content}</div>`;
+            case SourceType.BODY:
+                return `<body>
+                            ${content}
+                        </body>`;
+            case SourceType.HR:
+                return `<hr>`;
         }
     }
     // 生成本地文件对应URI的html标签代码片段

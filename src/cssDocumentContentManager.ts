@@ -41,7 +41,7 @@ class CssDocumentContentManager implements DocumentContentManagerInterface {
         if (properties == undefined) {
             return HtmlUtil.errorSnippet(`Active editor doesn't show any css properity - no properties to preview.`);
         }
-        return HtmlUtil.createRemoteSource(properties, SourceType.STYLE);
+        return HtmlUtil.createRemoteSource(properties, SourceType.STYLE_SAMPLE);
 
     }
 
@@ -50,20 +50,23 @@ class CssDocumentContentManager implements DocumentContentManagerInterface {
         let text = editor.document.getText();
         // 获取当前鼠标选中段落的起始位置        
         let startPosOfSelectionText = editor.document.offsetAt(editor.selection.anchor);
-        let startPosOfCSSProperity = text.lastIndexOf('{', startPosOfSelectionText);
-        let endPosOfCSSProperity = text.indexOf('}', startPosOfCSSProperity);
+        let startPosOfCSSProperty = text.lastIndexOf('{', startPosOfSelectionText);
+        let endPosOfCSSProperty = text.indexOf('}', startPosOfCSSProperty);
 
-        if (startPosOfCSSProperity === -1 || endPosOfCSSProperity === -1) {
+        if (startPosOfCSSProperty === -1 || endPosOfCSSProperty === -1) {
             return HtmlUtil.errorSnippet("Cannot determine the rule's properties.");
         }
 
-        var properties = text.slice(startPosOfCSSProperity + 1, endPosOfCSSProperity);
+        var properties = text.slice(startPosOfCSSProperty + 1, endPosOfCSSProperty);
         return properties;
     }
 
     // 生成预览编辑页面
     private generatePreviewSnippet(editor: TextEditor): string {
-        return this.CSSSnippet(this.getSelectedCSSProperity(editor));
+        var cssProperty = this.getSelectedCSSProperity(editor);
+        return HtmlUtil.createRemoteSource(cssProperty, SourceType.DIVISION)
+            + HtmlUtil.createRemoteSource("", SourceType.HR)
+            + this.CSSSnippet(cssProperty);
     }
 
 }
