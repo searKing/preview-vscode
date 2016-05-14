@@ -17,10 +17,11 @@ Just press the same key when you want to go back to the original view.
 + If file type is Markdown, HTML or Jade
     - Just do as the operation as mentioned.
 + If file type is CSS
-    - Just click on a CSS property between{} 
+    - Just click on a CSS property between{}
     - Just do as the operation as mentioned.
 + If file type is other
-    + Just click on a image URI (http|https|file|" /"). 
+    - Just click on a image URI (/http[s]{0,1}:\/\/|file:\/\/|\s[\.]{0,2}\//).
+        * for example: http://, https://, file://, /, ./
     - Just do as the operation as mentioned.
 
 ## Note

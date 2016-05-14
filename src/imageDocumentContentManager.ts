@@ -22,9 +22,6 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
 
 
     private COMMAND: string = "vscode.previewHtml";
-    private IMAGE_TYPE_PREFFIX = ["http", "file://", " /", " ./", " ../"];
-    private IMAGE_TYPE_SUFFIX = ['png', 'jpg', 'jpeg', 'gif', 'bmp'];
-    private IMAGE_TYPE_SPLIT = ['\n', '\r', '\t', ' '];
     private IMAGE_TYPE_REGREX_PREFFIX: RegExp = /http[s]{0,1}:\/\/|file:\/\/|\s[\.]{0,2}\//;
     private IMAGE_TYPE_REGREX_SUFFIX: RegExp = /png|jpg|jpeg|gif|bmp/;
     private IMAGE_TYPE_REGREX_SPLIT: RegExp = /\s/;
