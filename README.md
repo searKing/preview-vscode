@@ -20,7 +20,7 @@ Just press the same key when you want to go back to the original view.
     - Just click on a CSS property between{} 
     - Just do as the operation as mentioned.
 + If file type is other
-    + Just click on a URI (http|https). 
+    + Just click on a image URI (http|https|file|" /"). 
     - Just do as the operation as mentioned.
 
 ## Note
