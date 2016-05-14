@@ -32,7 +32,7 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
 
         let previewSnippet: string = this.generatePreviewSnippet(editor);
         if (previewSnippet == undefined) {
-            return HtmlUtil.errorSnippet(`Active editor doesn't show any  ${this.IMAGE_TYPE_SUFFIX} - no properties to preview.`);
+            return HtmlUtil.errorSnippet(`Active editor doesn't show any  ${this.IMAGE_TYPE_REGREX_SUFFIX} - no properties to preview.`);
         }
         console.info("previewSnippet = " + previewSnippet);
         return previewSnippet;
@@ -45,7 +45,7 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
 
     private imageSrcSnippet(imageUri: string): string {
         if (imageUri == undefined) {
-            return HtmlUtil.errorSnippet(`Active editor doesn't show any  ${this.IMAGE_TYPE_SUFFIX} - no properties to preview.`);
+            return HtmlUtil.errorSnippet(`Active editor doesn't show any  ${this.IMAGE_TYPE_REGREX_SUFFIX} - no properties to preview.`);
         }
         let snippet = HtmlUtil.createRemoteSource(imageUri, SourceType.IMAGE);
         return snippet;
