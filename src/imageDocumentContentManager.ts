@@ -34,6 +34,7 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
         if (previewSnippet == undefined) {
             return HtmlUtil.errorSnippet(`Active editor doesn't show any  ${this.IMAGE_TYPE_SUFFIX} - no properties to preview.`);
         }
+        console.info("previewSnippet = "+previewSnippet);
         return previewSnippet;
     }
 
@@ -47,7 +48,6 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
             return HtmlUtil.errorSnippet(`Active editor doesn't show any  ${this.IMAGE_TYPE_SUFFIX} - no properties to preview.`);
         }
         let snippet = HtmlUtil.createRemoteSource(imageUri, SourceType.IMAGE);
-        console.info(snippet);
         return snippet;
 
     }
@@ -85,7 +85,7 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
         }
     }
     private getSplitOfImageUrl(editor: TextEditor, startIndexOfImageUrl: TextUtilReturnType): number {
-  
+
         let startPosOfSplit = this.indexOfSplit(editor, startIndexOfImageUrl.pos + startIndexOfImageUrl.mark.length).pos;
         if (startPosOfSplit < 0) {
             startPosOfSplit = editor.document.getText().length;
@@ -107,7 +107,7 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
         let startPosOfSplit = this.getSplitOfImageUrl(editor, startIndexOfImageUrl);
 
         let endNextPosOfImageUrl: number = this.getEndOfImageUrl(editor, startPosOfImageUrl, startPosOfSplit);
-        
+
         if (endNextPosOfImageUrl < 0) {
             return undefined;
         }
@@ -117,8 +117,10 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
 
 
     // 生成预览编辑页面
-    private generatePreviewSnippet(editor: TextEditor): string {
-        return HtmlUtil.createLocalSource("header_fix.css", SourceType.LINK) + this.imageSrcSnippet(this.getFirstSelectedImageUri(editor));
+    private generatePreviewSnippet(editor: TextEditor): string {    
+        return HtmlUtil.createLocalSource("header_fix.css", SourceType.LINK)
+            +"\n"
+            + HtmlUtil.fixImageSrcLinks(this.imageSrcSnippet(this.getFirstSelectedImageUri(editor)));
     }
 
 }

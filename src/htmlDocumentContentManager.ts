@@ -47,7 +47,7 @@ class HtmlDocumentContentManager implements DocumentContentManagerInterface {
     private generatePreviewSnippet(editor: TextEditor): string {
         // 获取当前编辑页面对应的文档
         let doc = editor.document;
-        return HtmlUtil.createLocalSource("header_fix.css", SourceType.STYLE) + HtmlUtil.fixLinks(doc.getText(), doc.fileName);
+        return HtmlUtil.createLocalSource("header_fix.css", SourceType.STYLE) + HtmlUtil.fixNoneNetLinks(doc.getText(), doc.fileName);
     }
 
 
