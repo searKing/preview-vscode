@@ -15,6 +15,7 @@ export enum SourceType {
     DIVISION,       // 定义文档中的分区或节（division/section）
     DOCTYPE,        // 指示 web 浏览器关于页面使用哪个 HTML 版本进行编写的指令
     HR,             // 在 HTML 页面中创建一条水平线
+    HTML,           // 告知浏览器其自身是一个 HTML 文档,限定了文档的开始点和结束点，在它们之间是文档的头部和主体
     IMAGE,          // 向网页中嵌入一幅图像
     LINK,           // 定义文档与外部资源的链接关系，最常见的用途是链接样式表CSS
     SCRIPT,         // 定义客户端脚本
@@ -36,9 +37,15 @@ export class HtmlUtil {
 
 
     public static errorSnippet(error: string): string {
-        return this.createRemoteSource(SourceType.BODY,
-            this.createRemoteSource(SourceType.DIVISION,
-                error));
+        return this.createRemoteSource(
+            SourceType.DOCTYPE,
+            this.createRemoteSource(
+                SourceType.HTML,
+                this.createRemoteSource(
+                    SourceType.BODY,
+                    this.createRemoteSource(
+                        SourceType.DIVISION,
+                        error))));
     }
 
     // 生成本地文件对应URI的html标签代码片段
@@ -62,6 +69,11 @@ export class HtmlUtil {
                 return `<!DOCTYPE html>`;
             case SourceType.HR:
                 return `<hr>`;
+            case SourceType.HTML:
+                return `<html>
+                            ${content}
+                        </html>
+                        `;
             case SourceType.SCRIPT:
                 return `<script src="${content}"></script>`;
             case SourceType.STYLE:
