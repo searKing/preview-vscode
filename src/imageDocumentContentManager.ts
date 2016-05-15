@@ -47,7 +47,7 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
         if (imageUri == undefined) {
             return HtmlUtil.errorSnippet(`Active editor doesn't show any  ${this.IMAGE_TYPE_REGREX_SUFFIX} - no properties to preview.`);
         }
-        let snippet = HtmlUtil.createRemoteSource(imageUri, SourceType.IMAGE);
+        let snippet = HtmlUtil.createRemoteSource(SourceType.IMAGE, imageUri);
         return snippet;
 
     }
@@ -121,10 +121,10 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
     // 生成预览编辑页面
     private generatePreviewSnippet(editor: TextEditor): string {
         var imageUri = this.getFirstSelectedImageUri(editor);
-        return HtmlUtil.createLocalSource("header_fix.css", SourceType.LINK)
+        return HtmlUtil.createLocalSource(SourceType.LINK, "header_fix.css")
             + "\n"
-            + HtmlUtil.createRemoteSource(imageUri, SourceType.DIVISION)
-            + HtmlUtil.createRemoteSource("", SourceType.HR)
+            + HtmlUtil.createRemoteSource(SourceType.DIVISION, imageUri)
+            + HtmlUtil.createRemoteSource(SourceType.HR, "")
             + HtmlUtil.fixImageSrcLinks(this.imageSrcSnippet(imageUri));
     }
 

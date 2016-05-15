@@ -33,11 +33,13 @@ export class HtmlUtil {
 
 
     public static errorSnippet(error: string): string {
-        return this.createRemoteSource(this.createRemoteSource(error, SourceType.DIVISION),SourceType.BODY);
+        return this.createRemoteSource(SourceType.BODY,
+            this.createRemoteSource(SourceType.DIVISION,
+                error));
     }
 
     // 生成本地文件对应URI的html标签代码片段
-    public static createRemoteSource(content: string, type: SourceType) {
+    public static createRemoteSource(type: SourceType, content: string) {
         switch (type) {
             case SourceType.SCRIPT:
                 return `<script src="${content}"></script>`;
@@ -73,7 +75,7 @@ export class HtmlUtil {
         }
     }
     // 生成本地文件对应URI的html标签代码片段
-    public static createLocalSource(fileName: string, type: SourceType) {
+    public static createLocalSource(type: SourceType, fileName: string) {
         // __dirname 是package.json中"main"字段对应的绝对目录
         // 生成本地文件绝对路径URI
         let source_path = fileUrl(
@@ -86,7 +88,7 @@ export class HtmlUtil {
                 fileName
             )
         );
-        return this.createRemoteSource(source_path, type);
+        return this.createRemoteSource(type, source_path);
     }
 
     // 将html中将非http或\/开头的URI增加本地待预览html所在目录的前缀

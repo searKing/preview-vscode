@@ -41,7 +41,7 @@ class CssDocumentContentManager implements DocumentContentManagerInterface {
         if (properties == undefined) {
             return HtmlUtil.errorSnippet(`Active editor doesn't show any css properity - no properties to preview.`);
         }
-        return HtmlUtil.createRemoteSource(properties, SourceType.STYLE_SAMPLE);
+        return HtmlUtil.createRemoteSource(SourceType.STYLE_SAMPLE, properties);
 
     }
 
@@ -64,8 +64,8 @@ class CssDocumentContentManager implements DocumentContentManagerInterface {
     // 生成预览编辑页面
     private generatePreviewSnippet(editor: TextEditor): string {
         var cssProperty = this.getSelectedCSSProperity(editor);
-        return HtmlUtil.createRemoteSource(cssProperty, SourceType.DIVISION)
-            + HtmlUtil.createRemoteSource("", SourceType.HR)
+        return HtmlUtil.createRemoteSource(SourceType.DIVISION, cssProperty)
+            + HtmlUtil.createRemoteSource(SourceType.HR, "")
             + this.CSSSnippet(cssProperty);
     }
 
