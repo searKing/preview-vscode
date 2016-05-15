@@ -31,8 +31,8 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
         let editor = window.activeTextEditor;
 
         let previewSnippet: string = this.generatePreviewSnippet(editor);
-        if (previewSnippet == undefined) {
-            return HtmlUtil.errorSnippet(`Active editor doesn't show any  ${this.IMAGE_TYPE_REGREX_SUFFIX} - no properties to preview.`);
+        if (!previewSnippet || previewSnippet == "") {
+            return HtmlUtil.errorSnippet(this.getErrorMessage());
         }
         console.info("previewSnippet = " + previewSnippet);
         return previewSnippet;
@@ -43,12 +43,11 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
         return HtmlUtil.sendPreviewCommand(previewUri, displayColumn);
     }
 
+    private getErrorMessage(): string {
+        return `Active editor doesn't show any  ${this.IMAGE_TYPE_REGREX_SUFFIX} - no properties to preview.`;
+    }
     private imageSrcSnippet(imageUri: string): string {
-        if (imageUri == undefined) {
-            return HtmlUtil.errorSnippet(`Active editor doesn't show any  ${this.IMAGE_TYPE_REGREX_SUFFIX} - no properties to preview.`);
-        }
-        let snippet = HtmlUtil.createRemoteSource(SourceType.IMAGE, imageUri);
-        return snippet;
+        return HtmlUtil.createRemoteSource(SourceType.IMAGE, imageUri);
 
     }
 
@@ -121,11 +120,15 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
     // 生成预览编辑页面
     private generatePreviewSnippet(editor: TextEditor): string {
         var imageUri = this.getFirstSelectedImageUri(editor);
-        return HtmlUtil.createLocalSource(SourceType.LINK, "header_fix.css")
-            + "\n"
-            + HtmlUtil.createRemoteSource(SourceType.DIVISION, imageUri)
-            + HtmlUtil.createRemoteSource(SourceType.HR, "")
+        if (!imageUri || imageUri.length <= 0) {
+            return undefined;
+        }
+        var head = HtmlUtil.createLocalSource(SourceType.LINK, "header_fix.css");
+        var body = HtmlUtil.createRemoteSource(SourceType.DIVISION, imageUri)
+            + HtmlUtil.createRemoteSourceAtNewline(SourceType.HR, undefined)
+            + HtmlUtil.createRemoteSource(SourceType.CUSTOM_NEWLINE, undefined)
             + HtmlUtil.fixImageSrcLinks(this.imageSrcSnippet(imageUri));
+        return HtmlUtil.createFullHtmlSnippetFrom(head, body);
     }
 
 }
