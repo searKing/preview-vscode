@@ -9,14 +9,17 @@ let fileUrl = require("file-url");
 
 
 export enum SourceType {
-    SCRIPT,
-    LINK,
-    IMAGE,
-    STYLE,
-    STYLE_SAMPLE,
-    DIVISION,
-    BODY,
-    HR
+    BODY,           // 定义文档的主体
+    BR,             // 在文档中插入换行符
+    COMMENT,        // 在源代码中插入注释
+    DIVISION,       // 定义文档中的分区或节（division/section）
+    DOCTYPE,        // 指示 web 浏览器关于页面使用哪个 HTML 版本进行编写的指令
+    HR,             // 在 HTML 页面中创建一条水平线
+    IMAGE,          // 向网页中嵌入一幅图像
+    LINK,           // 定义文档与外部资源的链接关系，最常见的用途是链接样式表CSS
+    SCRIPT,         // 定义客户端脚本
+    STYLE,          // 为 HTML 文档定义样式信息
+    STYLE_SAMPLE
 }
 
 export class HtmlUtil {
@@ -41,12 +44,26 @@ export class HtmlUtil {
     // 生成本地文件对应URI的html标签代码片段
     public static createRemoteSource(type: SourceType, content: string) {
         switch (type) {
-            case SourceType.SCRIPT:
-                return `<script src="${content}"></script>`;
-            case SourceType.LINK:
-                return `<link href="${content}" rel="stylesheet" />`;
+            case SourceType.COMMENT:
+                return `<!-- ${content} -->`;
+            case SourceType.BODY:
+                return `<body>
+                            ${content}
+                        </body>`;
+            case SourceType.BR:
+                return `<br>`;
             case SourceType.IMAGE:
                 return `<img src="${content}"/>`;
+            case SourceType.LINK:
+                return `<link href="${content}" rel="stylesheet" />`;
+            case SourceType.DIVISION:
+                return `<div>${content}</div>`;
+            case SourceType.DOCTYPE:
+                return `<!DOCTYPE html>`;
+            case SourceType.HR:
+                return `<hr>`;
+            case SourceType.SCRIPT:
+                return `<script src="${content}"></script>`;
             case SourceType.STYLE:
                 return `<style type=\"text/css\">
                             ${content}
@@ -64,14 +81,6 @@ export class HtmlUtil {
                             <div id=\"css_property\">Hello World</div>
                         </body>
                         `;
-            case SourceType.DIVISION:
-                return `<div>${content}</div>`;
-            case SourceType.BODY:
-                return `<body>
-                            ${content}
-                        </body>`;
-            case SourceType.HR:
-                return `<hr>`;
         }
     }
     // 生成本地文件对应URI的html标签代码片段
