@@ -49,7 +49,7 @@ export class HtmlUtil {
     }
 
     // 生成本地文件对应URI的html标签代码片段
-    public static createRemoteSource(type: SourceType, content: string) {
+    public static createRemoteSource(type: SourceType, content: string): string {
         switch (type) {
             case SourceType.COMMENT:
                 return `<!-- ${content} -->`;

@@ -113,4 +113,13 @@ export class TextUtil {
         }
         return new TextUtilReturnType(closestPosOfMarks, closestMarkOfMarks);
     }
+    // 将字符串中的%1~$n 替换为输入参数列表，变长参数，因为%0是str，所以无需替换
+    // 类似C/Java的format
+    public static format(str: string): string {
+        var args = arguments;
+        var pattern = new RegExp("%([1-" + arguments.length + "])", "g");
+        return String(str).replace(pattern, function (match, index) {
+            return args[index];
+        });
+    };
 }
