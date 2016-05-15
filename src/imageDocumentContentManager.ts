@@ -31,7 +31,7 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
         let editor = window.activeTextEditor;
 
         let previewSnippet: string = this.generatePreviewSnippet(editor);
-        if (!previewSnippet || previewSnippet == "") {
+        if (!previewSnippet || previewSnippet.length <= 0) {
             return HtmlUtil.errorSnippet(this.getErrorMessage());
         }
         console.info("previewSnippet = " + previewSnippet);

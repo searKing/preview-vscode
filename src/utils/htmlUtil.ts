@@ -258,15 +258,14 @@ export class HtmlUtil {
         if (!this.isWithPayLoad(payLoad)) {
             return ``;
         }
-        return `<style type=\"text/css\">
-                    #css_property {
-                        ${payLoad}
-                    }
-                </style>
-                <body>
-                    <div>Preview of the CSS properties</div>
+
+        var head = HtmlUtil.createRemoteSource(SourceType.STYLE,
+            `#css_property {
+                ${payLoad}
+            }`);
+        var body = `<div>Preview of the CSS properties</div>
                     <hr>
-                    <div id=\"css_property\">Hello World</div>
-                </body>`;
+                    <div id=\"css_property\">Hello World</div>`;
+        return HtmlUtil.createFullHtmlSnippetFrom(head, body);
     }
 }

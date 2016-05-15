@@ -26,9 +26,10 @@ class CssDocumentContentManager implements DocumentContentManagerInterface {
         let editor = window.activeTextEditor;
 
         let previewSnippet: string = this.generatePreviewSnippet(editor);
-        if (previewSnippet == undefined) {
-            return HtmlUtil.errorSnippet("Active editor doesn't show a CSS document - no properties to preview.");
+        if (!previewSnippet || previewSnippet.length <= 0) {
+            return HtmlUtil.errorSnippet(this.getErrorMessage());
         }
+        console.info("previewSnippet = " + previewSnippet);
         return previewSnippet;
     }
 
@@ -37,10 +38,10 @@ class CssDocumentContentManager implements DocumentContentManagerInterface {
         return HtmlUtil.sendPreviewCommand(previewUri, displayColumn);
     }
 
-    private CSSSnippet(properties: string): string {
-        if (properties == undefined) {
-            return HtmlUtil.errorSnippet(`Active editor doesn't show any css properity - no properties to preview.`);
-        }
+    private getErrorMessage(): string {
+        return `Active editor doesn't show a CSS document - no properties to preview.`;
+    }
+    private CSSSampleFullSnippet(properties: string): string {
         return HtmlUtil.createRemoteSource(SourceType.STYLE_SAMPLE, properties);
 
     }
@@ -64,9 +65,11 @@ class CssDocumentContentManager implements DocumentContentManagerInterface {
     // 生成预览编辑页面
     private generatePreviewSnippet(editor: TextEditor): string {
         var cssProperty = this.getSelectedCSSProperity(editor);
-        return HtmlUtil.createRemoteSource(SourceType.DIVISION, cssProperty)
-            + HtmlUtil.createRemoteSource(SourceType.HR, "")
-            + this.CSSSnippet(cssProperty);
+        if (!cssProperty || cssProperty.length <= 0) {
+            return undefined;
+        }
+
+        return this.CSSSampleFullSnippet(cssProperty);
     }
 
 }
