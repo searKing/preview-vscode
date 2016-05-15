@@ -32,7 +32,7 @@ JavaScript code does not run in the previewer
 
 + If you want to develop and debug this extension from source code, and run 'npm install' under the root dir of this extension,
 
-+ Cannot find module 'vscode'? Please run 'sudo npm run postinstall ' under the root dir of this extension,
++ Cannot find module 'vscode'? Please run 'npm run postinstall ' under the root dir of this extension,
 according to [Cannot find module 'vscode' – where is vscode.d.ts now installed? #2810](https://github.com/Microsoft/vscode/issues/2810)
 
 + Node.js's version is too old ? following this two ways, choose one:
@@ -59,7 +59,7 @@ Error: Command failed: node ./node_modules/vscode/bin/compile
 ```
     - execute this command and you will get the error message in the console
 ```bash
-node ./node_modules/vscode/bin/compile
+npm run vscode:prepublish
 ```
     - fix the error and retry 'vsce publish'
 ## Thanks to
