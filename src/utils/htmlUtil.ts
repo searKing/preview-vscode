@@ -263,7 +263,11 @@ export class HtmlUtil {
             `#css_property {
                 ${payLoad}
             }`);
-        var body = `<div>Preview of the CSS properties</div>
+        var body = `<div>Preview of the CSS properties
+                        {
+                            ${payLoad}
+                        }
+                    </div>
                     <hr>
                     <div id=\"css_property\">Hello World</div>`;
         return HtmlUtil.createFullHtmlSnippetFrom(head, body);
