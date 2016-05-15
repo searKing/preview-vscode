@@ -99,6 +99,7 @@ export class TextUtil {
         } else if (startPos < 0) {
             startPos = 0;
         }
+
         // [start, end)
         var stringToWorkWith = text.substring(0, startPos + 1);
         var closestPosOfMarks = -1;
