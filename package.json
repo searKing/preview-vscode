@@ -30,22 +30,28 @@
         "onCommand:extension.previewToSide"
     ],
     "contributes": {
-        "keybindings": [{
-            "command": "extension.preview",
-            "key": "ctrl+shift+v"
-        }, {
-            "command": "extension.previewToSide",
-            "key": "ctrl+k v"
-        }],
-        "commands": [{
-            "command": "extension.preview",
-            "title": "Toggle Preview",
-            "category": "Preview"
-        }, {
-            "command": "extension.previewToSide",
-            "title": "Open Preview to the Side",
-            "category": "Preview"
-        }]
+        "keybindings": [
+            {
+                "command": "extension.preview",
+                "key": "ctrl+shift+v"
+            },
+            {
+                "command": "extension.previewToSide",
+                "key": "ctrl+k v"
+            }
+        ],
+        "commands": [
+            {
+                "command": "extension.preview",
+                "title": "Toggle Preview",
+                "category": "Preview"
+            },
+            {
+                "command": "extension.previewToSide",
+                "title": "Open Preview to the Side",
+                "category": "Preview"
+            }
+        ]
     },
     "scripts": {
         "vscode:prepublish": "node ./node_modules/vscode/bin/compile",
@@ -53,7 +59,8 @@
         "postinstall": "node ./node_modules/vscode/bin/install"
     },
     "dependencies": {
-        "file-url": "^1.0.1"
+        "file-url": "^1.0.1",
+        "mermaid": "^0.5.8"
     },
     "devDependencies": {
         "typescript": "^1.8.2",

@@ -96,3 +96,8 @@ export function activate(context: ExtensionContext) {
     // 注册当前插件由激活变为非激活状态后，自动销毁这些回调函数和资源
     context.subscriptions.push(preview, previewToSide, registration);
 }
+
+// this method is called when your extension is deactivated
+export function deactivate() {
+    console.log("Preview Extension Shutdown");
+}
