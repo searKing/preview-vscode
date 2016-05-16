@@ -10,6 +10,8 @@ import * as htmlDocumentContentManager from "./htmlDocumentContentManager";
 import * as markdownDocumentContentManager from "./markdownDocumentContentManager";
 import * as imageDocumentContentManager from "./imageDocumentContentManager";
 import * as cssDocumentContentManager from "./cssDocumentContentManager"
+import * as mermaidDocumentContentManager from "./mermaidDocumentContentManager"
+import {MermaidUtil} from "./utils/mermaidUtil";
 enum TextDocumentType {
     HTML,
     MARKDOWN
@@ -39,6 +41,14 @@ export class PreviewDocumentContentProvider implements TextDocumentContentProvid
                 break;
             case "css":
                 this._documentContentManager = cssDocumentContentManager.getInstance();
+                break;
+            case "plaintext":
+                if (MermaidUtil.isMermaidFile(editor)) {
+                    this._documentContentManager = mermaidDocumentContentManager.getInstance();
+                }
+                else {
+                    this._documentContentManager = imageDocumentContentManager.getInstance();
+                }
                 break;
             default:
                 // window.showWarningMessage(editor.document.languageId);

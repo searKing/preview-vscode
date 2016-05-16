@@ -6,17 +6,18 @@ import { workspace, window, ExtensionContext, commands,
     TextDocument, Disposable } from "vscode";
 import {DocumentContentManagerInterface} from "./documentContentManagerInterface";
 import {HtmlUtil, SourceType} from "./utils/htmlUtil";
+import {MermaidUtil} from "./utils/mermaidUtil";
 
 
-var _instance: CssDocumentContentManager = null;
+var _instance: MermaidDocumentContentManager = null;
 export function getInstance() {
     if (!_instance) {
-        _instance = new CssDocumentContentManager();
+        _instance = new MermaidDocumentContentManager();
     }
 
     return _instance;
 }
-class CssDocumentContentManager implements DocumentContentManagerInterface {
+class MermaidDocumentContentManager implements DocumentContentManagerInterface {
 
 
     private COMMAND: string = "vscode.previewHtml";
@@ -25,6 +26,9 @@ class CssDocumentContentManager implements DocumentContentManagerInterface {
     public createContentSnippet(): string {
         let editor = window.activeTextEditor;
 
+        if (!MermaidUtil.isMermaidFile(editor)) {
+            return HtmlUtil.errorSnippet("Active editor doesn't show a Mermaid document - no properties to preview.");
+        }
         let previewSnippet: string = this.generatePreviewSnippet(editor);
         if (!previewSnippet || previewSnippet.length <= 0) {
             return HtmlUtil.errorSnippet(this.getErrorMessage());
@@ -39,27 +43,14 @@ class CssDocumentContentManager implements DocumentContentManagerInterface {
     }
 
     private getErrorMessage(): string {
-        return `Active editor doesn't show a CSS document - no properties to preview.`;
+        return `Active editor doesn't show a Mermaid document - no properties to preview.`;
     }
-    private CSSSampleFullSnippet(properties: string): string {
-        return HtmlUtil.createRemoteSource(SourceType.CUSTOM_STYLE_SAMPLE, properties);
-
+    private MermaidSampleFullSnippet(properties: string): string {
+        return HtmlUtil.createRemoteSource(SourceType.CUSTOM_MERMAID_SAMPLE, properties);
     }
 
     private getSelectedCSSProperity(editor: TextEditor): string {
-        // 获取当前页面文本
-        let text = editor.document.getText();
-        // 获取当前鼠标选中段落的起始位置        
-        let startPosOfSelectionText = editor.document.offsetAt(editor.selection.anchor);
-        let startPosOfCSSProperty = text.lastIndexOf('{', startPosOfSelectionText);
-        let endPosOfCSSProperty = text.indexOf('}', startPosOfCSSProperty);
-
-        if (startPosOfCSSProperty === -1 || endPosOfCSSProperty === -1) {
-            return HtmlUtil.errorSnippet("Cannot determine the rule's properties.");
-        }
-
-        var properties = text.slice(startPosOfCSSProperty + 1, endPosOfCSSProperty);
-        return properties;
+        return editor.document.getText();
     }
 
     // 生成预览编辑页面
@@ -69,7 +60,7 @@ class CssDocumentContentManager implements DocumentContentManagerInterface {
             return undefined;
         }
 
-        return this.CSSSampleFullSnippet(cssProperty);
+        return this.MermaidSampleFullSnippet(cssProperty);
     }
 
 }

@@ -21,7 +21,8 @@ export enum SourceType {
     LINK,           // 定义文档与外部资源的链接关系，最常见的用途是链接样式表CSS
     SCRIPT,         // 定义客户端脚本
     STYLE,          // 为 HTML 文档定义样式信息
-    STYLE_SAMPLE,
+    CUSTOM_MERMAID_SAMPLE,
+    CUSTOM_STYLE_SAMPLE,
     CUSTOM_NEWLINE  // 返回\n
 }
 
@@ -79,8 +80,6 @@ export class HtmlUtil {
                 return this.createRemoteSourceOfBR(payLoad);
             case SourceType.COMMENT:
                 return this.createRemoteSourceOfCOMMENT(payLoad);
-            case SourceType.CUSTOM_NEWLINE:
-                return this.createRemoteSourceOfCUSTOM_NEWLINE(payLoad);
             case SourceType.DIVISION:
                 return this.createRemoteSourceOfDIVISION(payLoad);
             case SourceType.DOCTYPE:
@@ -99,8 +98,12 @@ export class HtmlUtil {
                 return this.createRemoteSourceOfSCRIPT(payLoad);
             case SourceType.STYLE:
                 return this.createRemoteSourceOfSTYLE(payLoad);
-            case SourceType.STYLE_SAMPLE:
-                return this.createRemoteSourceOfSTYLE_SAMPLE(payLoad);
+            case SourceType.CUSTOM_NEWLINE:
+                return this.createRemoteSourceOfCUSTOM_NEWLINE(payLoad);
+            case SourceType.CUSTOM_MERMAID_SAMPLE:
+                return this.createRemoteSourceOfCUSTOM_MERMAID_SAMPLE(payLoad);
+            case SourceType.CUSTOM_STYLE_SAMPLE:
+                return this.createRemoteSourceOfCUSTOM_STYLE_SAMPLE(payLoad);
         }
     }
     // 生成本地文件对应URI的html标签代码片段
@@ -186,12 +189,6 @@ export class HtmlUtil {
         }
         return `<!-- ${payLoad} -->`;
     }
-    private static createRemoteSourceOfCUSTOM_NEWLINE(payLoad?: string): string {
-        if (!this.isWithPayLoad(payLoad)) {
-            return `\n`;
-        }
-        return `\n${payLoad}`;
-    }
     private static createRemoteSourceOfDIVISION(payLoad: string): string {
         if (!this.isWithPayLoad(payLoad)) {
             return ``;
@@ -254,7 +251,38 @@ export class HtmlUtil {
                     ${payLoad}
                 </style>`;
     }
-    private static createRemoteSourceOfSTYLE_SAMPLE(payLoad: string): string {
+    private static createRemoteSourceOfCUSTOM_NEWLINE(payLoad?: string): string {
+        if (!this.isWithPayLoad(payLoad)) {
+            return `\n`;
+        }
+        return `\n${payLoad}`;
+    }
+    private static createRemoteSourceOfCUSTOM_MERMAID_SAMPLE(payLoad: string): string {
+        if (!this.isWithPayLoad(payLoad)) {
+            return ``;
+        }
+
+        var head = `<link href="${this.getExtensionPath()}/node_modules/mermaid/dist/mermaid.forest.css" rel="stylesheet">
+                    <script src="${this.getExtensionPath()}/node_modules/mermaid/dist/mermaid.min.js">
+                    <script type="text/javascript">
+                        mermaid.initialize({startOnLoad:true});
+                    </script>`;
+        var body = `
+                    <hr>
+                    <div class="mermaid">
+                        ${payLoad}
+                    </div>`;
+        return HtmlUtil.createFullHtmlSnippetFrom(head, body);
+    }
+    private static getExtensionPath(): string {
+        return path.join(
+            __dirname,
+            "..",
+            "..",
+            ".."
+        );
+    }
+    private static createRemoteSourceOfCUSTOM_STYLE_SAMPLE(payLoad: string): string {
         if (!this.isWithPayLoad(payLoad)) {
             return ``;
         }
