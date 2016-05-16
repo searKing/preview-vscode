@@ -36,7 +36,7 @@ export class HtmlUtil {
         });
     }
 
-    public static createFullHtmlSnippetFrom(headPayLoad: string, bodyPayLoad: string): string {
+    public static createFullHtmlSnippetFrom(headPayLoad?: string, bodyPayLoad?: string): string {
 
         return this.createRemoteSource(
             SourceType.DOCTYPE,
@@ -65,13 +65,13 @@ export class HtmlUtil {
         return false;
     }
     // 生成本地文件对应URI的html标签代码片段
-    public static createRemoteSourceAtNewline(type: SourceType, payLoad: string): string {
+    public static createRemoteSourceAtNewline(type: SourceType, payLoad?: string): string {
         return HtmlUtil.createRemoteSource(
             SourceType.CUSTOM_NEWLINE,
             HtmlUtil.createRemoteSource(type, payLoad));
     }
     // 生成本地文件对应URI的html标签代码片段
-    public static createRemoteSource(type: SourceType, payLoad: string): string {
+    public static createRemoteSource(type: SourceType, payLoad?: string): string {
         switch (type) {
             case SourceType.BODY:
                 return this.createRemoteSourceOfBODY(payLoad);
@@ -173,7 +173,7 @@ export class HtmlUtil {
                     ${payLoad}
                 </body>`;
     }
-    private static createRemoteSourceOfBR(payLoad: string): string {
+    private static createRemoteSourceOfBR(payLoad?: string): string {
         if (!this.isWithPayLoad(payLoad)) {
             return `<br>`;
         }
@@ -186,7 +186,7 @@ export class HtmlUtil {
         }
         return `<!-- ${payLoad} -->`;
     }
-    private static createRemoteSourceOfCUSTOM_NEWLINE(payLoad: string): string {
+    private static createRemoteSourceOfCUSTOM_NEWLINE(payLoad?: string): string {
         if (!this.isWithPayLoad(payLoad)) {
             return `\n`;
         }
@@ -198,7 +198,7 @@ export class HtmlUtil {
         }
         return `<div>${payLoad}</div>`;
     }
-    private static createRemoteSourceOfDOCTYPE(payLoad: string): string {
+    private static createRemoteSourceOfDOCTYPE(payLoad?: string): string {
         if (!this.isWithPayLoad(payLoad)) {
             return `<!DOCTYPE html>`;
         }
@@ -213,7 +213,7 @@ export class HtmlUtil {
                     ${payLoad}
                 </head>`;
     }
-    private static createRemoteSourceOfHR(payLoad: string): string {
+    private static createRemoteSourceOfHR(payLoad?: string): string {
         if (!this.isWithPayLoad(payLoad)) {
             return `<hr>`;
         }

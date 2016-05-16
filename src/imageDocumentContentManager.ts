@@ -125,8 +125,8 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
         }
         var head = HtmlUtil.createLocalSource(SourceType.LINK, "header_fix.css");
         var body = HtmlUtil.createRemoteSource(SourceType.DIVISION, imageUri)
-            + HtmlUtil.createRemoteSourceAtNewline(SourceType.HR, undefined)
-            + HtmlUtil.createRemoteSource(SourceType.CUSTOM_NEWLINE, undefined)
+            + HtmlUtil.createRemoteSourceAtNewline(SourceType.HR)
+            + HtmlUtil.createRemoteSource(SourceType.CUSTOM_NEWLINE)
             + HtmlUtil.fixImageSrcLinks(this.imageSrcSnippet(imageUri));
         return HtmlUtil.createFullHtmlSnippetFrom(head, body);
     }

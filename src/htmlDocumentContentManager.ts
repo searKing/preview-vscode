@@ -44,7 +44,7 @@ class HtmlDocumentContentManager implements DocumentContentManagerInterface {
         // 获取当前编辑页面对应的文档
         let doc = editor.document;
         return HtmlUtil.createLocalSource( SourceType.STYLE,"header_fix.css")
-            + HtmlUtil.createRemoteSource(SourceType.BR, undefined)
+            + HtmlUtil.createRemoteSource(SourceType.BR)
             + HtmlUtil.fixNoneNetLinks(doc.getText(), doc.fileName);
     }
 
