@@ -28,7 +28,7 @@ export class MermaidUtil {
         if (editor.document.languageId !== "plaintext") {
             return false;
         }
-        if (editor.document.fileName.endsWith(".mermaid")) {
+        if (editor.document.fileName.toLowerCase().endsWith(".mermaid")) {
             return true;
         }
         return false;

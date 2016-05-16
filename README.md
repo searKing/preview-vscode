@@ -1,9 +1,10 @@
 # preview-vscode
 
-A previewer of Markdown, HTML, Jade files, Image's URI or CSS properties for Visual Studio Code
+A previewer of Markdown, HTML, Jade, Mermaid files, Image's URI or CSS properties for Visual Studio Code
+
 # README
 
-An extension to preview Markdown, HTML or Jade files, Image's URI or CSS while editing them in VSCode
+An extension to preview Markdown, HTML, Jade or Mermaid files, Image's URI or CSS while editing them in VSCode
 
 The extension can be activated in two ways
 
@@ -14,7 +15,7 @@ Just press the same key when you want to go back to the original view.
 
 ## DETAIL
 
-+ If file type is Markdown, HTML or Jade
++ If file type is Markdown, HTML, Jade or Mermaid
     - Just do as the operation as mentioned.
 + If file type is CSS
     - Just click on a CSS property between{}
@@ -66,3 +67,4 @@ npm run vscode:prepublish
 
 + [html-preview-vscode](https://github.com/tht13/html-preview-vscode.git).
 + [vscode-imagepreview](https://github.com/buzzfrog/vscode-imagepreview.git).
++ [vscode-mermaid-preview](https://github.com/vstirbu/vscode-mermaid-preview.git)
