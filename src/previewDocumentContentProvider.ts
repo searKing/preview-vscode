@@ -11,6 +11,7 @@ import * as markdownDocumentContentManager from "./markdownDocumentContentManage
 import * as imageDocumentContentManager from "./imageDocumentContentManager";
 import * as cssDocumentContentManager from "./cssDocumentContentManager"
 import * as mermaidDocumentContentManager from "./mermaidDocumentContentManager"
+import * as reStructuredTextDocumentContentManager from "./reStructuredTextDocumentContentManager"
 import {MermaidUtil} from "./utils/mermaidUtil";
 enum TextDocumentType {
     HTML,
@@ -42,13 +43,11 @@ export class PreviewDocumentContentProvider implements TextDocumentContentProvid
             case "css":
                 this._documentContentManager = cssDocumentContentManager.getInstance();
                 break;
-            case "plaintext":
-                if (MermaidUtil.isMermaidFile(editor)) {
-                    this._documentContentManager = mermaidDocumentContentManager.getInstance();
-                }
-                else {
-                    this._documentContentManager = imageDocumentContentManager.getInstance();
-                }
+            case "mermaid":
+                this._documentContentManager = mermaidDocumentContentManager.getInstance();
+                break;
+            case "rst":
+                this._documentContentManager = reStructuredTextDocumentContentManager.getInstance();
                 break;
             default:
                 // window.showWarningMessage(editor.document.languageId);

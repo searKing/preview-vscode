@@ -30,6 +30,30 @@
         "onCommand:extension.previewToSide"
     ],
     "contributes": {
+		"languages": [
+			{
+				"id": "mermaid",
+				"aliases": [
+					"Mermaid",
+					"Mermaid Flowchart"
+				],
+				"extensions": [
+					".mermaid"
+				]
+			},
+			{
+				"id": "rst",
+				"aliases": [
+					"RST",
+					"ReStructured Text"
+				],
+				"extensions": [
+					".rst",
+					".rest",
+					".hrst"
+				]
+			}
+		],
         "keybindings": [
             {
                 "command": "extension.preview",
@@ -60,7 +84,8 @@
     },
     "dependencies": {
         "file-url": "^1.0.1",
-        "mermaid": "^0.5.8"
+        "mermaid": "^0.5.8",
+        "rst2mdown": "^0.1.0"
     },
     "devDependencies": {
         "typescript": "^1.8.2",
