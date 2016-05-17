@@ -66,5 +66,7 @@ npm run vscode:prepublish
 ## Thanks to
 
 + [html-preview-vscode](https://github.com/tht13/html-preview-vscode.git).
+
 + [vscode-imagepreview](https://github.com/buzzfrog/vscode-imagepreview.git).
-+ [vscode-mermaid-preview](https://github.com/vstirbu/vscode-mermaid-preview.git)
+
++ [vscode-mermaid-preview](https://github.com/vstirbu/vscode-mermaid-preview.git).
