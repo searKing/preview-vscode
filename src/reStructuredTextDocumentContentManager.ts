@@ -7,10 +7,10 @@ import { workspace, window, ExtensionContext, commands,
 import {DocumentContentManagerInterface} from "./documentContentManagerInterface";
 import {HtmlUtil, SourceType} from "./utils/htmlUtil";
 import {TextUtil, TextUtilReturnType} from "./utils/textUtil"
-import {MarkDownUtil} from "./utils/markDownUtil";
 
 import * as path from "path";
 let rst2mdown = require("rst2mdown");
+let markdown = require( "markdown" ).markdown;
 
 var _instance: ReStructuredTextDocumentContentManager = null;
 export function getInstance() {
@@ -35,8 +35,7 @@ class ReStructuredTextDocumentContentManager implements DocumentContentManagerIn
 
     // @Override
     public sendPreviewCommand(previewUri: Uri, displayColumn: ViewColumn): Thenable<void> {
-        let command: string = this.getPreviewCommandTag(displayColumn);
-        return MarkDownUtil.sendPreviewCommand(previewUri, command);
+        return HtmlUtil.sendPreviewCommand(previewUri, displayColumn);
 
     }
     
@@ -45,23 +44,14 @@ class ReStructuredTextDocumentContentManager implements DocumentContentManagerIn
     }
 
 
-    private getPreviewCommandTag(displayColumn: ViewColumn): string {
-        let command: string = "";
-        if (displayColumn == window.activeTextEditor.viewColumn) {
-            return MarkDownUtil.COMMAND_TOGGLE_PREVIEW
-        }
-        return MarkDownUtil.COMMAND_OPEN_PREVIEW_SIDE_BY_SIDE;
-    }
-
     private rstSrcSnippet(rstContent: string): string {
-        return rst2mdown(rstContent);   
+        return markdown.toHTML(rst2mdown(rstContent));   
 
     }
     // 生成预览编辑页面
     private generatePreviewSnippet(editor: TextEditor): string {
         // 获取当前编辑页面对应的文档
         let doc = editor.document;
-        let sa = HtmlUtil.fixNoneNetLinks(this.rstSrcSnippet(doc.getText()), doc.fileName);
         return HtmlUtil.fixNoneNetLinks(this.rstSrcSnippet(doc.getText()), doc.fileName);
     }
 
