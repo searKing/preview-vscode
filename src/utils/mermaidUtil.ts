@@ -24,5 +24,11 @@ export class MermaidUtil {
         }
 
     }
+    public static isMermaidFile(editor: TextEditor): boolean {
+        if (editor.document.fileName.toLowerCase().endsWith(".mermaid")) {
+            return true;
+        }
+        return false;
+    }
 
 }
