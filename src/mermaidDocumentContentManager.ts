@@ -25,10 +25,11 @@ class MermaidDocumentContentManager implements DocumentContentManagerInterface {
     // @Override
     public createContentSnippet(): string {
         let editor = window.activeTextEditor;
-
-        if (!MermaidUtil.isMermaidFile(editor)) {
-            return HtmlUtil.errorSnippet("Active editor doesn't show a Mermaid document - no properties to preview.");
+        
+        if (editor.document.languageId !== "mermaid") {
+            return HtmlUtil.errorSnippet(this.getErrorMessage());
         }
+
         let previewSnippet: string = this.generatePreviewSnippet(editor);
         if (!previewSnippet || previewSnippet.length <= 0) {
             return HtmlUtil.errorSnippet(this.getErrorMessage());
