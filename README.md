@@ -53,6 +53,9 @@ sudo n 6.0.0
 sudo n v6.0.0
 ```
 
++ Meet NPM problem: npm ERR! extraneous when you run npm list? Please run 'npm prune' to clean unneeded packages,
+according to [NPM problem: npm ERR! extraneous](http://lifeonubuntu.com/npm-problem-npm-err-extraneous/)
+
 + 'vsce publish' failed?
 ```bash
 Executing prepublish script 'node ./node_modules/vscode/bin/compile'...
