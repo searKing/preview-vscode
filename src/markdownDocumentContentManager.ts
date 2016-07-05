@@ -45,9 +45,9 @@ class MarkdownDocumentContentManager implements DocumentContentManagerInterface 
     private getPreviewCommandTag(displayColumn: ViewColumn): string {
         let command: string = "";
         if (displayColumn == window.activeTextEditor.viewColumn) {
-            return MarkDownUtil.COMMAND_TOGGLE_PREVIEW
+            return MarkDownUtil.getCommandTogglePreview();
         }
-        return MarkDownUtil.COMMAND_OPEN_PREVIEW_SIDE_BY_SIDE;
+        return MarkDownUtil.getCommandOpenPreviewSideBySide();
     }
 
     // 生成预览编辑页面
