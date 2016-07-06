@@ -32,22 +32,12 @@ class MarkdownDocumentContentManager implements DocumentContentManagerInterface 
 
     // @Override
     public sendPreviewCommand(previewUri: Uri, displayColumn: ViewColumn): Thenable<void> {
-        let command: string = this.getPreviewCommandTag(displayColumn);
-        return MarkDownUtil.sendPreviewCommand(previewUri, command);
+        return MarkDownUtil.sendPreviewCommand(previewUri, displayColumn);
 
     }
-    
+
     private getErrorMessage(): string {
         return `Active editor doesn't show a MarkDown document - no properties to preview.`;
-    }
-
-
-    private getPreviewCommandTag(displayColumn: ViewColumn): string {
-        let command: string = "";
-        if (displayColumn == window.activeTextEditor.viewColumn) {
-            return MarkDownUtil.getCommandTogglePreview();
-        }
-        return MarkDownUtil.getCommandOpenPreviewSideBySide();
     }
 
     // 生成预览编辑页面

@@ -21,7 +21,8 @@ export class MarkDownUtil {
     public static COMMAND_BUTT: string = "";
 
     // @Override
-    public static sendPreviewCommand(previewUri: Uri, command: string): Thenable<void> {
+    public static sendPreviewCommand(previewUri: Uri, displayColumn: ViewColumn): Thenable<void> {
+        let command: string = MarkDownUtil.getPreviewCommandTag(displayColumn);
         if (command != this.COMMAND_BUTT) {
             return commands.executeCommand(command).then((success) => {
             }, (reason) => {
@@ -31,14 +32,20 @@ export class MarkDownUtil {
         }
 
     }
+    private static getPreviewCommandTag(displayColumn: ViewColumn): string {
+        if (displayColumn == window.activeTextEditor.viewColumn) {
+            return MarkDownUtil.getCommandTogglePreview();
+        }
+        return MarkDownUtil.getCommandOpenPreviewSideBySide();
+    }
 
-    public static getCommandTogglePreview(): string {
+    private static getCommandTogglePreview(): string {
         if (version >= "1.3.0") {
             return MarkDownUtil.COMMAND_TOGGLE_PREVIEW_1_3_0;
         }
         return MarkDownUtil.COMMAND_TOGGLE_PREVIEW
     }
-    public static getCommandOpenPreviewSideBySide(): string {
+    private static getCommandOpenPreviewSideBySide(): string {
         if (version >= "1.3.0") {
             return MarkDownUtil.COMMAND_OPEN_PREVIEW_SIDE_BY_SIDE_1_3_0;
         }
