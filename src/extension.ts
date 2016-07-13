@@ -35,10 +35,13 @@ export function activate(context: ExtensionContext) {
         registration = workspace.registerTextDocumentContentProvider(PreviewDocumentContentProvider.previewScheme, provider);
     }
     // 调用vscode系统命令预览当前HTML页面
-    function sendPreviewCommand(displayColumn: ViewColumn): PromiseLike<void> {
+    function sendPreviewCommand(displayColumn: ViewColumn): void {
         registerPreviewDocumentContentProvider();
         // 给vscode发送预览该临时HTML文件的命令
-        return provider.sendPreviewCommand(displayColumn);
+        provider.sendPreviewCommand(displayColumn).catch(function (error) {
+            console.error("we got an error: " + error);
+        });
+        return;
     }
     // 调用vscode系统命令预览当前之前的页面
     function sendBackviewCommand(): PromiseLike<void> {

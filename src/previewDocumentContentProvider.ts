@@ -12,7 +12,11 @@ import * as imageDocumentContentManager from "./imageDocumentContentManager";
 import * as cssDocumentContentManager from "./cssDocumentContentManager"
 import * as mermaidDocumentContentManager from "./mermaidDocumentContentManager"
 import * as reStructuredTextDocumentContentManager from "./reStructuredTextDocumentContentManager"
+import * as noneDocumentContentManager from "./noneDocumentContentManager"
+
+
 import {MermaidUtil} from "./utils/mermaidUtil";
+import {VscodeUtil} from "./utils/vscodeUtil"
 enum TextDocumentType {
     HTML,
     MARKDOWN
@@ -30,37 +34,46 @@ export class PreviewDocumentContentProvider implements TextDocumentContentProvid
     }
 
 
-    private refreshCurrentDocumentContentProvide() {
+    private refreshCurrentDocumentContentProvide(): Promise<void> {
         let editor = window.activeTextEditor;
-        switch (editor.document.languageId) {
-            case "html":
-            case "jade":
-                this._documentContentManager = htmlDocumentContentManager.getInstance();
-                break;
-            case "markdown":
-                this._documentContentManager = markdownDocumentContentManager.getInstance();
-                break;
-            case "css":
-                this._documentContentManager = cssDocumentContentManager.getInstance();
-                break;
-            case "mermaid":
-                this._documentContentManager = mermaidDocumentContentManager.getInstance();
-                break;
-            case "rst":
-                this._documentContentManager = reStructuredTextDocumentContentManager.getInstance();
-                break;
-            default:
-                // window.showWarningMessage(editor.document.languageId);
-                this._documentContentManager = imageDocumentContentManager.getInstance();
-                break;
-        }
+        let thiz = this;
+        return VscodeUtil.getPreviewType(editor).then(function (previewType) {
+            switch (previewType) {
+                case "html":
+                case "jade":
+                    thiz._documentContentManager = htmlDocumentContentManager.getInstance();
+                    break;
+                case "markdown":
+                    thiz._documentContentManager = markdownDocumentContentManager.getInstance();
+                    break;
+                case "css":
+                    thiz._documentContentManager = cssDocumentContentManager.getInstance();
+                    break;
+                case "mermaid":
+                    thiz._documentContentManager = mermaidDocumentContentManager.getInstance();
+                    break;
+                case "rst":
+                    thiz._documentContentManager = reStructuredTextDocumentContentManager.getInstance();
+                    break;
+                case "image":
+                    thiz._documentContentManager = imageDocumentContentManager.getInstance();
+                    break;
+                default:
+                    thiz._documentContentManager = noneDocumentContentManager.getInstance();
+                    break;
+            }
+            return Promise.resolve();
+        });
+
 
     }
     // @Override 生成当前html规范化的代码文本，编辑器会自动根据该函数的返回值创建一个只读文档
     // uri是scheme
-    public provideTextDocumentContent(uri: Uri): string {
-        this.refreshCurrentDocumentContentProvide();
-        return this._documentContentManager.createContentSnippet();
+    public provideTextDocumentContent(uri: Uri): string | Thenable<string> {
+        let thiz = this;
+        return this.refreshCurrentDocumentContentProvide().then(function () {
+            return thiz._documentContentManager.createContentSnippet();
+        });
     }
 
     // @Override 获取文档变化这个监听事件，给vscode调用
@@ -75,13 +88,15 @@ export class PreviewDocumentContentProvider implements TextDocumentContentProvid
         this._onDidChange.fire(previewUri);
     }
 
-    public sendPreviewCommand(displayColumn: ViewColumn): Thenable<void> {
+    public sendPreviewCommand(displayColumn: ViewColumn): Promise<void> {
+        let thiz = this;
+        return this.refreshCurrentDocumentContentProvide().then(function () {
+            // 生成预览临时文件的URI
+            let previewUri: Uri = PreviewDocumentContentProvider.getPreviewUri();
+            thiz._documentContentManager.sendPreviewCommand(previewUri, displayColumn);
+            return;
 
-        this.refreshCurrentDocumentContentProvide();
-        // 生成预览临时文件的URI
-        let previewUri: Uri = PreviewDocumentContentProvider.getPreviewUri();
-
-        return this._documentContentManager.sendPreviewCommand(previewUri, displayColumn);
+        });
 
     }
 
