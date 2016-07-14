@@ -37,7 +37,8 @@ export class PreviewDocumentContentProvider implements TextDocumentContentProvid
     private refreshCurrentDocumentContentProvide(): Promise<void> {
         let editor = window.activeTextEditor;
         let thiz = this;
-        return VscodeUtil.getPreviewType(editor).then(function (previewType) {
+        //防止在一次预览命令下重复弹出选择预览类型的对话框
+        return VscodeUtil.getPreviewType(editor, !!thiz._documentContentManager).then(function (previewType) {
             switch (previewType) {
                 case "html":
                 case "jade":
@@ -59,7 +60,9 @@ export class PreviewDocumentContentProvider implements TextDocumentContentProvid
                     thiz._documentContentManager = imageDocumentContentManager.getInstance();
                     break;
                 default:
-                    thiz._documentContentManager = noneDocumentContentManager.getInstance();
+                    if (!thiz._documentContentManager) {
+                        thiz._documentContentManager = noneDocumentContentManager.getInstance();                        
+                    }
                     break;
             }
             return Promise.resolve();
@@ -94,7 +97,7 @@ export class PreviewDocumentContentProvider implements TextDocumentContentProvid
             // 生成预览临时文件的URI
             let previewUri: Uri = PreviewDocumentContentProvider.getPreviewUri();
             thiz._documentContentManager.sendPreviewCommand(previewUri, displayColumn);
-            return;
+            return Promise.resolve();
 
         });
 

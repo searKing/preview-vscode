@@ -7,3 +7,11 @@ file://media/searking/slaveofsearKing/GitHubwork/preview-vscode/images/icon.png
 file:///media/searking/slaveofsearKing/GitHubwork/preview-vscode/images/icon.png
  ./../images/icon.png
  ./images/icon.png
+
+ h1 {
+    color: red
+}
+dadadadad
+p {
+    color: blue
+}

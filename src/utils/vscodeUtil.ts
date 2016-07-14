@@ -69,7 +69,8 @@ export class VscodeUtil {
         }
 
         if (dontAsk) {
-            return Promise.resolve("Couldn't determine type to preivew, and the extenion don't let show choose box.");
+            return Promise.resolve(editor.document.languageId);
+            // throw new Error("Couldn't determine type to preivew, and the extenion don't let show choose box.");
         }
 
         //Ask what they want to do:
