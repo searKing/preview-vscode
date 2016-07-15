@@ -21,9 +21,13 @@ Just press the same key when you want to go back to the original view.
     - Just click on a CSS property between{}
     - Just do as the operation as mentioned.
 + If file type is other
-    - Just click on a image URI (/http[s]{0,1}:\/\/|file:\/\/|\s[\.]{0,2}\//).
-        * for example: http://, https://, file://, /, ./
-    - Just do as the operation as mentioned.
+    - Just click on a 
+        * image URI (/http[s]{0,1}:\/\/|file:\/\/|\s[\.]{0,2}\//).
+            * for example: http://, https://, file://, /, ./
+        * css properities ({})
+            * for example: {color: blue}
+        * others as Markdown, ReStructured Text, HTML, Jade or Mermaid
+    - Just do as the operation as mentioned and a showQuickPick will pop up to show choices.
 
 ## Note
 
