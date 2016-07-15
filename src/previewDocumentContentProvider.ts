@@ -96,8 +96,14 @@ export class PreviewDocumentContentProvider implements TextDocumentContentProvid
         return this.refreshCurrentDocumentContentProvide().then(function () {
             // 生成预览临时文件的URI
             let previewUri: Uri = PreviewDocumentContentProvider.getPreviewUri();
-            thiz._documentContentManager.sendPreviewCommand(previewUri, displayColumn);
-            return Promise.resolve();
+            return thiz._documentContentManager.sendPreviewCommand(previewUri, displayColumn)
+                .then(function () {
+                    //主动触发文本更新，因为当预览命令发生变化的时候
+                    //对于不能判断文本类型的，会弹出文本选择对话框，但是由于文本没有发生变化
+                    //所以监听者被通知内容更新，还会显示之前缓存下来的内容
+                    //故而，主动触发通知监听者强制刷新缓存
+                    return thiz.update();
+                });
 
         });
 
