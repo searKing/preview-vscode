@@ -7,7 +7,7 @@ import * as path from "path";
 let fileUrl = require("file-url");
 export class ShellUtil {
     public static execPromisLike(cmd: string): Promise<string> {
-        return new Promise<string>((resolve) => {
+        return new Promise<string>((resolve, reject) => {
             exec(cmd, (error: Error, stdout: Buffer, stderr: Buffer) => {
                 if (error) {
                     let errorMessage = [
@@ -18,7 +18,7 @@ export class ShellUtil {
                         stderr.toString()
                     ].join("\n");
                     console.error(errorMessage);
-                    throw Error(errorMessage);
+                    reject(errorMessage);
                 }
                 resolve(stdout.toString());
             });
