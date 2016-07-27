@@ -11,6 +11,12 @@ import {ShellUtil} from "./shellUtil";
 export class DoctuilsUtil {
 
     private static doctuils(command: string, fileName: string): Promise<string> {
+        return ShellUtil.execPromisLike([
+            command,
+            fileName
+        ].join(" "));
+    }
+    private static doctuilsFromSouceCode(command: string, fileName: string): Promise<string> {
 
         // __dirname 是package.json中"main"字段对应的绝对目录
         // 生成本地文件绝对路径URI
