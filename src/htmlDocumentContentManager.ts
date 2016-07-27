@@ -23,7 +23,7 @@ export function getInstance() {
 class HtmlDocumentContentManager implements DocumentContentManagerInterface {
     // 生成当前编辑页面的HTML代码片段
     // @Override
-    public createContentSnippet(): string {
+    public createContentSnippet(): string | Promise<string> {
         let editor = window.activeTextEditor;
         if (editor.document.languageId !== "html" && editor.document.languageId !== "jade") {
             return HtmlUtil.errorSnippet("Active editor doesn't show a HTML or Jade document - no properties to preview.");

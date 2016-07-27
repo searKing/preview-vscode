@@ -61,7 +61,7 @@ export class PreviewDocumentContentProvider implements TextDocumentContentProvid
                     break;
                 default:
                     if (!thiz._documentContentManager) {
-                        thiz._documentContentManager = noneDocumentContentManager.getInstance();                        
+                        thiz._documentContentManager = noneDocumentContentManager.getInstance();
                     }
                     break;
             }

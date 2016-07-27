@@ -20,7 +20,7 @@ class NoneDocumentContentManager implements DocumentContentManagerInterface {
 
     // 生成当前编辑页面的可预览代码片段
     // @Override
-    public createContentSnippet(): string {
+    public createContentSnippet(): string | Promise<string>{
         return this.getErrorMessage();
     }
 
