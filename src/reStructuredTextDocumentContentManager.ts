@@ -7,7 +7,7 @@ import { workspace, window, ExtensionContext, commands,
 import {DocumentContentManagerInterface} from "./documentContentManagerInterface";
 import {HtmlUtil, SourceType} from "./utils/htmlUtil";
 import {TextUtil, TextUtilReturnType} from "./utils/textUtil"
-import {DoctuilsUtil} from "./utils/doctuilsUtil"
+import {DocutilsUtil} from "./utils/docutilsUtil"
 
 import * as path from "path";
 let rst2mdown = require("rst2mdown");
@@ -49,13 +49,13 @@ class ReStructuredTextDocumentContentManager implements DocumentContentManagerIn
         return markdown.toHTML(rst2mdown(rstContent));
 
     }
-    private rstSrcSnippetWithDoctuils(editor: TextEditor): Promise<string> {
+    private rstSrcSnippetWithDocutils(editor: TextEditor): Promise<string> {
         // 获取当前编辑页面对应的文档
         let doc = editor.document;
-        return DoctuilsUtil.rst2html(doc.fileName);
+        return DocutilsUtil.rst2html(doc.fileName);
     }
     private rstSrcSnippet(editor: TextEditor): Promise<string> {
-        return this.rstSrcSnippetWithDoctuils(editor).catch(function (error) {
+        return this.rstSrcSnippetWithDocutils(editor).catch(function (error) {
             console.error("we got an error: " + error);
             return markdown.toHTML(rst2mdown(editor.document.getText()));
         });
