@@ -35,7 +35,7 @@ Just press the same key when you want to go back to the original view.
 
 ## Note
 
-JavaScript code does not run in the previewer
+python and docutils are recommended to be installed to Preview ReStructured Text to preview the rst more accurately.
 
 ## Contributing
 
