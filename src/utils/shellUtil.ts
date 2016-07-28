@@ -17,7 +17,6 @@ export class ShellUtil {
                         "",
                         stderr.toString()
                     ].join("\n");
-                    console.error(errorMessage);
                     reject(errorMessage);
                 }
                 resolve(stdout.toString());

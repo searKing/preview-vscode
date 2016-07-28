@@ -55,9 +55,11 @@ class ReStructuredTextDocumentContentManager implements DocumentContentManagerIn
         return DocutilsUtil.rst2html(doc.fileName);
     }
     private rstSrcSnippet(editor: TextEditor): Promise<string> {
+        let thiz = this;
         return this.rstSrcSnippetWithDocutils(editor).catch(function (error) {
             console.error("we got an error: " + error);
-            return markdown.toHTML(rst2mdown(editor.document.getText()));
+            window.showWarningMessage("try rst2html of doctutils failed, please check python and doctuils environment, we use a simple preview instead ^-)");
+            return thiz.rstSrcSnippetWithNodeModules(editor.document.getText());
         });
 
     }
