@@ -41,39 +41,58 @@ python and docutils are recommended to be installed to Preview ReStructured Text
 
 + If you want to develop and debug this extension from source code, and run 'npm install' under the root dir of this extension,
 
-+ Cannot find module 'vscode'? Please run 'npm run postinstall ' under the root dir of this extension,
++ Cannot find module 'vscode'? Please run 'npm run postinstall' under the root dir of this extension,
 according to [Cannot find module 'vscode' – where is vscode.d.ts now installed? #2810](https://github.com/Microsoft/vscode/issues/2810)
 
 + Node.js's version is too old ? following this two ways, choose one:
     - [NodeSource Node.js Binary Distributions](https://github.com/nodesource/distributions), and you will get the latest version installed automatically !
     - install n to maintain the version
         * install module n
-```bash
-sudo npm install -g n
-```
-        * update Node.js to latest stable version
-```bash
-sudo n stable
-```
-        * update Node.js to any version
-```bash
-sudo n 6.0.0
-sudo n v6.0.0
-```
 
+            ```bash
+            sudo npm install -g n
+            ```
+
+        * update Node.js
+             * latest stable version
+
+                ```bash
+                sudo n stable
+                ```
+
+             * any version
+
+                ```bash
+                sudo n 6.0.0
+                sudo n v6.0.0
+                ```
+             * manually update
+                * explore for the version you want, [click this to explore->>](https://nodejs.org/download/)
+                * download the node file, such as v7.3.0
+                    ```bash
+                    # Broken-point Continuingly-transferring is supported.
+                    wget -c https://nodejs.org/download/release/v7.3.0/node-v7.3.0-linux-x64.tar.gz
+                    ```
+                * install Node.js, such as v7.3.0
+                    ```bash
+                    mkdir -p /usr/local/n/versions/node/
+                    tar -zxvf node-v7.3.0-linux-x64.tar.gz 7.3.0/
+                    ln -sf /usr/local/n/versions/node/7.3.0/bin/node /usr/bin/node
+                    ```
 + Meet NPM problem: npm ERR! extraneous when you run npm list? Please run 'npm prune' to clean unneeded packages,
 according to [NPM problem: npm ERR! extraneous](http://lifeonubuntu.com/npm-problem-npm-err-extraneous/)
 
 + 'vsce publish' failed?
-```bash
-Executing prepublish script 'node ./node_modules/vscode/bin/compile'...
-Error: Command failed: node ./node_modules/vscode/bin/compile
-```
+    ```info
+    Executing prepublish script 'node ./node_modules/vscode/bin/compile'...
+    Error: Command failed: node ./node_modules/vscode/bin/compile
+    ```
     - execute this command and you will get the error message in the console
-```bash
-npm run vscode:prepublish
-```
+        ```bash
+        npm run vscode:prepublish
+        ```
     - fix the error and retry 'vsce publish'
+
 ## Thanks to
 
 + [html-preview-vscode](https://github.com/tht13/html-preview-vscode.git).
