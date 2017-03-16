@@ -63,8 +63,8 @@ according to [Cannot find module 'vscode' – where is vscode.d.ts now installed
              * any version
 
                 ```bash
-                sudo n 6.0.0
-                sudo n v6.0.0
+                sudo n 7.6.0
+                sudo n v7.6.0
                 ```
              * manually update
                 * explore for the version you want, [click this to explore->>](https://nodejs.org/download/)
