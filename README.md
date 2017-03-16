@@ -8,8 +8,12 @@ An extension to preview Markdown, ReStructured Text, HTML, Jade or Mermaid files
 
 The extension can be activated in two ways
 
-* Toggle Preview - `ctrl+shift+v`
-* Open|Close Preview to the Side - `ctrl+k v`
+* Toggle Preview
+    - Linux & Windows: `ctrl+shift+v`
+    - MAC:`cmd+shift+v`
+* Open|Close Preview to the Side
+    - Linux & Windows: `ctrl+k v`
+    - MAC:`cmd+k v`
 
 Just press the same key when you want to go back to the original view.
 
