@@ -58,11 +58,13 @@
         "keybindings": [
             {
                 "command": "extension.preview",
-                "key": "ctrl+shift+v"
+                "key": "ctrl+shift+v",
+                "mac": "cmd+shift+v"
             },
             {
                 "command": "extension.previewToSide",
-                "key": "ctrl+k v"
+                "key": "ctrl+k v",
+                "mac": "cmd+k v"
             }
         ],
         "commands": [
