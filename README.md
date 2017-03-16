@@ -10,10 +10,10 @@ The extension can be activated in two ways
 
 * Toggle Preview
     - Linux & Windows: `ctrl+shift+v`
-    - MAC:`cmd+shift+v`
+    - MAC:`cmd+shift+v` or `ctrl+shift+v`
 * Open|Close Preview to the Side
     - Linux & Windows: `ctrl+k v`
-    - MAC:`cmd+k v`
+    - MAC:`cmd+k v` or `ctrl+k v`
 
 Just press the same key when you want to go back to the original view.
 

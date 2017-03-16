@@ -62,9 +62,19 @@
                 "mac": "cmd+shift+v"
             },
             {
+                "command": "extension.preview",
+                "key": "ctrl+shift+v",
+                "mac": "ctrl+shift+v"
+            },
+            {
                 "command": "extension.previewToSide",
                 "key": "ctrl+k v",
                 "mac": "cmd+k v"
+            },
+            {
+                "command": "extension.previewToSide",
+                "key": "ctrl+k v",
+                "mac": "ctrl+k v"
             }
         ],
         "commands": [
