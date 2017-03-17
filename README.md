@@ -83,6 +83,18 @@ according to [Cannot find module 'vscode' – where is vscode.d.ts now installed
                     tar -zxvf node-v7.3.0-linux-x64.tar.gz 7.3.0/
                     ln -sf /usr/local/n/versions/node/7.3.0/bin/node /usr/bin/node
                     ```
++ Node Package's version is too old? following this way:
+    - install module npm-check
+        ```bash
+        npm install -g npm-check
+        ```
+    - check for installed npm packages's version
+        ```bash
+        # set flag -g for global packages, else for local packages
+        npm-check -u
+        ```
+    - do as npm-check tells
+
 + Meet NPM problem: npm ERR! extraneous when you run npm list? Please run 'npm prune' to clean unneeded packages,
 according to [NPM problem: npm ERR! extraneous](http://lifeonubuntu.com/npm-problem-npm-err-extraneous/)
 
