@@ -45,6 +45,12 @@ python and docutils are recommended to be installed to Preview ReStructured Text
 
 + If you want to develop and debug this extension from source code, and run 'npm install' under the root dir of this extension,
 
++ npm packages vscode and typescript is needed as an environment
+    ```bash
+    npm install vscode
+    npm install typescript
+    ```
+
 + Cannot find module 'vscode'? Please run 'npm run postinstall' under the root dir of this extension,
 according to [Cannot find module 'vscode' – where is vscode.d.ts now installed? #2810](https://github.com/Microsoft/vscode/issues/2810)
 
