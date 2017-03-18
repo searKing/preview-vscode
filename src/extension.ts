@@ -43,7 +43,7 @@ export function activate(context: ExtensionContext) {
         });
         return;
     }
-    // 调用vscode系统命令预览当前之前的页面
+    // 调用vscode系统命令返回当前之前的页面
     function sendBackviewCommand(): PromiseLike<void> {
         // 给vscode发送返回预览之前页面的位置
         return commands.executeCommand("workbench.action.navigateBack").then((success) => {
@@ -52,7 +52,7 @@ export function activate(context: ExtensionContext) {
             window.showErrorMessage(reason);
         });
     }
-    // 调用vscode系统命令预览当前之前的页面
+    // 调用vscode系统命令关闭当前预览的页面
     function sendCloseviewCommand(): PromiseLike<void> {
         // 给vscode发送返回预览之前页面的位置
         return commands.executeCommand("workbench.action.closeActiveEditor").then((success) => {

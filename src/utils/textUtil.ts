@@ -1,9 +1,20 @@
 "use strict";
-import { workspace, window, ExtensionContext, commands,
-    TextEditor, TextDocumentContentProvider, EventEmitter,
-    Event, Uri, TextDocumentChangeEvent, ViewColumn,
+import {
+    workspace,
+    window,
+    ExtensionContext,
+    commands,
+    TextEditor,
+    TextDocumentContentProvider,
+    EventEmitter,
+    Event,
+    Uri,
+    TextDocumentChangeEvent,
+    ViewColumn,
     TextEditorSelectionChangeEvent,
-    TextDocument, Disposable } from "vscode";
+    TextDocument,
+    Disposable
+} from "vscode";
 import * as path from "path";
 let fileUrl = require("file-url");
 
@@ -122,4 +133,45 @@ export class TextUtil {
             return args[index];
         });
     };
+
+
+    /**
+     * 版本比较 VersionCompare
+     * @param {String} currVer 当前版本.
+     * @param {String} promoteVer 比较版本.
+     * @return {Boolean} false 当前版本小于比较版本返回 true.
+     * Major_Version_Number.Minor_Version_Number[.Revision_Number[.Build_Number]]
+     * 主版本号             .子版本号              [.修正版本号       [.编译版本号  ]]
+     * 使用
+     * VersionCompare("6.3","5.2.5"); // false.
+     * VersionCompare("6.1", "6.1"); // false.
+     * VersionCompare("6.1.5", "6.2"); // true.
+     */
+    public static versionCompare(curVer: string, promoteVer: string) {
+        curVer = curVer || "0.0.0";
+        promoteVer = promoteVer || "0.0.0";
+        curVer = curVer.trim();
+        promoteVer = promoteVer.trim();
+        if (curVer == promoteVer) {
+            return 0;
+        }
+        let curVerArray = curVer.split(".")
+        let promoteVerArr = promoteVer.split(".")
+
+        let len = Math.max(curVerArray.length, promoteVerArr.length);
+        for (let i = 0; i < len; i++) {
+            let curSubVer = curVerArray[i].trim();
+            let promoteVer = promoteVerArr[i].trim();
+            // |0和~~是很好的一个例子，使用这两者可以将浮点转成整型且效率方面要比同类的parseInt,Math.round 要快。在处理像素及动画位移等效果的时候会很有用
+            let curSubVerNo = ~~curSubVer;
+            let promoteVerNo = ~~promoteVer;
+            if (curSubVerNo < promoteVerNo) {
+                return -1;
+            } else if (curSubVerNo > promoteVerNo) {
+                return 1;
+            }
+
+        }
+        return 0;
+    }
 }

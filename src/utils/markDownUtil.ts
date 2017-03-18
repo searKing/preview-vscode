@@ -1,9 +1,24 @@
 "use strict";
-import { workspace, window, ExtensionContext, commands,
-    TextEditor, TextDocumentContentProvider, EventEmitter,
-    Event, Uri, TextDocumentChangeEvent, ViewColumn,
+import {
+    workspace,
+    window,
+    ExtensionContext,
+    commands,
+    TextEditor,
+    TextDocumentContentProvider,
+    EventEmitter,
+    Event,
+    Uri,
+    TextDocumentChangeEvent,
+    ViewColumn,
     TextEditorSelectionChangeEvent,
-    TextDocument, Disposable, version } from "vscode";
+    TextDocument,
+    Disposable,
+    version
+} from "vscode";
+import {
+    TextUtil
+} from "./textUtil"
 import * as path from "path";
 let fileUrl = require("file-url");
 
@@ -21,11 +36,10 @@ export class MarkDownUtil {
     public static COMMAND_BUTT: string = "";
 
     // @Override
-    public static sendPreviewCommand(previewUri: Uri, displayColumn: ViewColumn): Thenable<void> {
+    public static sendPreviewCommand(previewUri: Uri, displayColumn: ViewColumn): Thenable < void > {
         let command: string = MarkDownUtil.getPreviewCommandTag(displayColumn);
         if (command != this.COMMAND_BUTT) {
-            return commands.executeCommand(command).then((success) => {
-            }, (reason) => {
+            return commands.executeCommand(command).then((success) => {}, (reason) => {
                 console.warn(reason);
                 window.showErrorMessage(reason);
             });
@@ -40,15 +54,16 @@ export class MarkDownUtil {
     }
 
     private static getCommandTogglePreview(): string {
-        if (version >= "1.3.0") {
-            return MarkDownUtil.COMMAND_TOGGLE_PREVIEW_1_3_0;
+        console.info("version=" + version)
+        if (TextUtil.versionCompare(version, "1.3.0") < 0) {
+            return MarkDownUtil.COMMAND_TOGGLE_PREVIEW
         }
-        return MarkDownUtil.COMMAND_TOGGLE_PREVIEW
+        return MarkDownUtil.COMMAND_TOGGLE_PREVIEW_1_3_0;
     }
     private static getCommandOpenPreviewSideBySide(): string {
-        if (version >= "1.3.0") {
-            return MarkDownUtil.COMMAND_OPEN_PREVIEW_SIDE_BY_SIDE_1_3_0;
+        if (TextUtil.versionCompare(version, "1.3.0") < 0) {
+            return MarkDownUtil.COMMAND_OPEN_PREVIEW_SIDE_BY_SIDE
         }
-        return MarkDownUtil.COMMAND_OPEN_PREVIEW_SIDE_BY_SIDE
+        return MarkDownUtil.COMMAND_OPEN_PREVIEW_SIDE_BY_SIDE_1_3_0;
     }
-} 
+}
