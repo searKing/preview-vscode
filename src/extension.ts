@@ -1,9 +1,11 @@
 "use strict";
-import { workspace, window, ExtensionContext, commands,
+import {
+    workspace, window, ExtensionContext, commands,
     TextEditor, TextDocumentContentProvider, EventEmitter,
     Event, Uri, TextDocumentChangeEvent, ViewColumn,
     TextEditorSelectionChangeEvent,
-    TextDocument, Disposable } from "vscode";
+    TextDocument, Disposable
+} from "vscode";
 import { PreviewDocumentContentProvider } from "./previewDocumentContentProvider";
 
 // 主函数
@@ -12,7 +14,7 @@ export function activate(context: ExtensionContext) {
     console.log("Preview Extension Startup");
     // 文本内容提供者
     let provider: PreviewDocumentContentProvider;
-    let registration: Disposable;
+    let registeration: Disposable;
 
     // 向vscode注册当前文件发生变化时的回调函数
     workspace.onDidChangeTextDocument((e: TextDocumentChangeEvent) => {
@@ -33,7 +35,7 @@ export function activate(context: ExtensionContext) {
         provider = new PreviewDocumentContentProvider();
         // 向vscode为文本内容数据库注册一个URI的协议scheme，以后均可通过该协议与文本内容数据库进行交互
         // html-preview 通过这个scheme访问的内容，都是通过该provider获得的
-        registration = workspace.registerTextDocumentContentProvider(PreviewDocumentContentProvider.previewScheme, provider);
+        registeration = workspace.registerTextDocumentContentProvider(PreviewDocumentContentProvider.previewScheme, provider);
     }
     // 调用vscode系统命令预览当前HTML页面
     function sendPreviewCommand(displayColumn: ViewColumn): void {
@@ -82,7 +84,7 @@ export function activate(context: ExtensionContext) {
     // 命令回调函数，该命令在package.json中与快捷方式、菜单选项等关联
     // 侧边栏打开预览界面
     let previewToSide = commands.registerCommand("extension.previewToSide", () => {
-        if (!!window.activeTextEditor) {
+        if (!window.activeTextEditor) {
             return sendCloseviewCommand();
         }
         let displayColumn: ViewColumn = getSpiltColumn();
@@ -91,14 +93,14 @@ export function activate(context: ExtensionContext) {
 
     // 覆盖显示预览界面
     let preview = commands.registerCommand("extension.preview", () => {
-        if (!!window.activeTextEditor) {
+        if (!window.activeTextEditor) {
             return sendBackviewCommand();
         }
         return sendPreviewCommand(window.activeTextEditor.viewColumn);
     });
 
     // 注册当前插件由激活变为非激活状态后，自动销毁这些回调函数和资源
-    context.subscriptions.push(preview, previewToSide, registration);
+    context.subscriptions.push(preview, previewToSide, registeration);
 }
 
 // this method is called when your extension is deactivated
