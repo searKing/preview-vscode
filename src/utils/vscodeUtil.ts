@@ -56,6 +56,9 @@ export class VscodeUtil {
             editor = vscode.window.activeTextEditor;
         }
 
+        if(!editor || !editor.document){
+            return Promise.resolve("none")
+        }
         switch (editor.document.languageId) {
             case "html":
             case "jade":

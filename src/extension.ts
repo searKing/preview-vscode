@@ -9,6 +9,7 @@ import { PreviewDocumentContentProvider } from "./previewDocumentContentProvider
 // 主函数
 export function activate(context: ExtensionContext) {
 
+    console.log("Preview Extension Startup");
     // 文本内容提供者
     let provider: PreviewDocumentContentProvider;
     let registration: Disposable;

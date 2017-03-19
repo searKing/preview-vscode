@@ -47,7 +47,13 @@ class HtmlDocumentContentManager implements DocumentContentManagerInterface {
         if (editor.document.languageId !== "html" && editor.document.languageId !== "jade") {
             return HtmlUtil.errorSnippet("Active editor doesn't show a HTML or Jade document - no properties to preview.");
         }
-        return this.generatePreviewSnippet(editor);
+
+        let previewSnippet: string = this.generatePreviewSnippet(editor);
+        if (!previewSnippet || previewSnippet.length <= 0) {
+            return HtmlUtil.errorSnippet(this.getErrorMessage());
+        }
+        console.info("previewSnippet = " + previewSnippet);
+        return previewSnippet;
     }
 
 
@@ -55,6 +61,10 @@ class HtmlDocumentContentManager implements DocumentContentManagerInterface {
     public sendPreviewCommand(previewUri: Uri, displayColumn: ViewColumn): Thenable < void > {
         return HtmlUtil.sendPreviewCommand(previewUri, displayColumn);
 
+    }
+
+    private getErrorMessage(): string {
+        return `Active editor doesn't show a HTML document - no properties to preview.`;
     }
 
     private getWindowErrorMessage(): string {

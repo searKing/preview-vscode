@@ -30,7 +30,13 @@ class MarkdownDocumentContentManager implements DocumentContentManagerInterface 
         if (editor.document.languageId !== "markdown") {
             return HtmlUtil.errorSnippet(this.getErrorMessage());
         }
-        return this.generatePreviewSnippet(editor);
+        
+        let previewSnippet: string = this.generatePreviewSnippet(editor);
+        if (!previewSnippet || previewSnippet.length <= 0) {
+            return HtmlUtil.errorSnippet(this.getErrorMessage());
+        }
+        console.info("previewSnippet = " + previewSnippet);
+        return previewSnippet;
     }
 
     // @Override

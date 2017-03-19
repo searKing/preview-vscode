@@ -46,7 +46,7 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
     private IMAGE_TYPE_REGREX_SPLIT: RegExp = /\s/;
     // 生成当前编辑页面的可预览代码片段
     // @Override
-    public createContentSnippet(): string | Promise < string > {
+    public createContentSnippet(): string | Promise<string> {
         let editor = window.activeTextEditor;
         if (!editor) {
             return HtmlUtil.errorSnippet(this.getWindowErrorMessage());
@@ -60,7 +60,7 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
     }
 
     // @Override
-    public sendPreviewCommand(previewUri: Uri, displayColumn: ViewColumn): Thenable < void > {
+    public sendPreviewCommand(previewUri: Uri, displayColumn: ViewColumn): Thenable<void> {
         return HtmlUtil.sendPreviewCommand(previewUri, displayColumn);
     }
 
