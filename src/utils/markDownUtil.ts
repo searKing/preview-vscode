@@ -54,7 +54,6 @@ export class MarkDownUtil {
     }
 
     private static getCommandTogglePreview(): string {
-        console.info("version=" + version)
         if (TextUtil.versionCompare(version, "1.3.0") < 0) {
             return MarkDownUtil.COMMAND_TOGGLE_PREVIEW
         }

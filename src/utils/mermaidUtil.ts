@@ -25,6 +25,9 @@ export class MermaidUtil {
 
     }
     public static isMermaidFile(editor: TextEditor): boolean {
+        if(!editor || !editor.document || !editor.document.fileName){
+            return false;
+        }
         if (editor.document.fileName.toLowerCase().endsWith(".mermaid")) {
             return true;
         }
