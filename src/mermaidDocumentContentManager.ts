@@ -77,7 +77,7 @@ class MermaidDocumentContentManager implements DocumentContentManagerInterface {
     }
 
     private getSelectedCSSProperity(editor: TextEditor): string {
-        if (!editor|| !editor.document) {
+        if (!editor || !editor.document) {
             return HtmlUtil.errorSnippet(this.getWindowErrorMessage());
         }
         return editor.document.getText();

@@ -1,14 +1,16 @@
 "use strict";
-import { workspace, window, ExtensionContext, commands,
+import {
+    workspace, window, ExtensionContext, commands,
     TextEditor, TextDocumentContentProvider, EventEmitter,
     Event, Uri, TextDocumentChangeEvent, ViewColumn,
     TextEditorSelectionChangeEvent,
-    TextDocument, Disposable } from "vscode";
+    TextDocument, Disposable
+} from "vscode";
 import * as fs from "fs";
 import * as path from "path";
-import {DocumentContentManagerInterface} from "./documentContentManagerInterface";
-import {HtmlUtil} from "./utils/htmlUtil";
-import {MarkDownUtil} from "./utils/markDownUtil";
+import { DocumentContentManagerInterface } from "./documentContentManagerInterface";
+import { HtmlUtil } from "./utils/htmlUtil";
+import { MarkDownUtil } from "./utils/markDownUtil";
 
 var _instance: MarkdownDocumentContentManager = null;
 export function getInstance() {
@@ -30,7 +32,7 @@ class MarkdownDocumentContentManager implements DocumentContentManagerInterface 
         if (editor.document.languageId !== "markdown") {
             return HtmlUtil.errorSnippet(this.getErrorMessage());
         }
-        
+
         let previewSnippet: string = this.generatePreviewSnippet(editor);
         if (!previewSnippet || previewSnippet.length <= 0) {
             return HtmlUtil.errorSnippet(this.getErrorMessage());

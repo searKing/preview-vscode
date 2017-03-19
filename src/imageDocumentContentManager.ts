@@ -147,15 +147,14 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
         return imgSrcUri;
     }
 
-
     // 生成预览编辑页面
     private generatePreviewSnippet(editor: TextEditor): string {
         if (!editor) {
-            return undefined;
+            return HtmlUtil.errorSnippet(this.getWindowErrorMessage());
         }
         var imageUri = this.getFirstSelectedImageUri(editor);
         if (!imageUri || imageUri.length <= 0) {
-            return undefined;
+            return HtmlUtil.errorSnippet(this.getErrorMessage());
         }
         var head = HtmlUtil.createLocalSource(SourceType.LINK, "header_fix.css");
         var body = HtmlUtil.createRemoteSource(SourceType.DIVISION, imageUri) +
