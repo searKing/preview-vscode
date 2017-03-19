@@ -101,7 +101,7 @@ according to [Cannot find module 'vscode' – where is vscode.d.ts now installed
         ```
     - do as npm-check tells
 
-+ Meet NPM problem: npm ERR! extraneous when you run npm list? Please run 'npm prune' to clean unneeded packages,
++ Meet NPM problem: npm ERR! extraneous when you run npm list? Please run 'npm prune -x' to clean unneeded packages,
 according to [NPM problem: npm ERR! extraneous](http://lifeonubuntu.com/npm-problem-npm-err-extraneous/)
 
 + 'vsce publish' failed?
