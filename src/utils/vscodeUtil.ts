@@ -5,7 +5,7 @@ export class VscodeUtil {
 
     // token or gist input
     public static getInputBox(boxTag: string) {
-        if (boxTag == "") {
+        if (!boxTag || boxTag == "") {
             boxTag = "Enter Something";
         }
         let options: vscode.InputBoxOptions = {
@@ -16,9 +16,9 @@ export class VscodeUtil {
         return options;
     };
 
-    public static getPreviewTypeQuickPick(): PromiseLike<any> {
+    public static async getPreviewTypeQuickPick(): Promise<string> {
 
-        let item: vscode.QuickPickItem[] = [
+        let items: vscode.QuickPickItem[] = [
             {
                 label: "image",
                 description: "Preview Image"
@@ -40,23 +40,23 @@ export class VscodeUtil {
             }
         ]
         //Ask what they want to do:
-        return vscode.window.showQuickPick(item, {
+        let choice = await vscode.window.showQuickPick(items, {
             matchOnDescription: true,
             placeHolder: "Couldn't determine type to preivew, please choose."
-        }).then(function (choice) {
-            if (!choice || !choice.label) {
-                throw new Error("no preview type selected");
-            }
-            return choice.label.toLowerCase();
         });
+        if (!choice || !choice.label) {
+            throw new Error("no preview type selected");
+        }
+        return choice.label.toLowerCase();
+
     }
 
-    public static getPreviewType(editor: vscode.TextEditor, dontAsk: boolean = false): Promise<string> {
+    public static async getPreviewType(editor: vscode.TextEditor, dontAsk: boolean = false): Promise<string> {
         if (!editor) {
             editor = vscode.window.activeTextEditor;
         }
 
-        if(!editor || !editor.document){
+        if (!editor || !editor.document) {
             return Promise.resolve("none")
         }
         switch (editor.document.languageId) {
