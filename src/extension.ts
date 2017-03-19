@@ -15,7 +15,7 @@ export function activate(context: ExtensionContext) {
 
     // 向vscode注册当前文件发生变化时的回调函数
     workspace.onDidChangeTextDocument((e: TextDocumentChangeEvent) => {
-        if (e.document === window.activeTextEditor.document) {
+        if (!!e && !!window.activeTextEditor && e.document === window.activeTextEditor.document) {
             // 由于文档变动必然在插件启动之后，而插件启动时就已经创建了provider
             // 因此不存在该变量未定义的问题
             provider.update();
@@ -23,7 +23,7 @@ export function activate(context: ExtensionContext) {
     });
 
     window.onDidChangeTextEditorSelection((e: TextEditorSelectionChangeEvent) => {
-        if (e.textEditor === window.activeTextEditor) {
+        if (!!e && !!e.textEditor && (e.textEditor === window.activeTextEditor)) {
             provider.update();
         }
     })
@@ -81,7 +81,7 @@ export function activate(context: ExtensionContext) {
     // 命令回调函数，该命令在package.json中与快捷方式、菜单选项等关联
     // 侧边栏打开预览界面
     let previewToSide = commands.registerCommand("extension.previewToSide", () => {
-        if (window.activeTextEditor == undefined) {
+        if (!!window.activeTextEditor) {
             return sendCloseviewCommand();
         }
         let displayColumn: ViewColumn = getSpiltColumn();
@@ -90,7 +90,7 @@ export function activate(context: ExtensionContext) {
 
     // 覆盖显示预览界面
     let preview = commands.registerCommand("extension.preview", () => {
-        if (window.activeTextEditor == undefined) {
+        if (!!window.activeTextEditor) {
             return sendBackviewCommand();
         }
         return sendPreviewCommand(window.activeTextEditor.viewColumn);

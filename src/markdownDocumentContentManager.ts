@@ -24,6 +24,9 @@ class MarkdownDocumentContentManager implements DocumentContentManagerInterface 
     // @Override
     public createContentSnippet(): string | Promise<string> {
         let editor = window.activeTextEditor;
+        if (!editor || !editor.document) {
+            return HtmlUtil.errorSnippet(this.getWindowErrorMessage());
+        }
         if (editor.document.languageId !== "markdown") {
             return HtmlUtil.errorSnippet(this.getErrorMessage());
         }
@@ -40,8 +43,15 @@ class MarkdownDocumentContentManager implements DocumentContentManagerInterface 
         return `Active editor doesn't show a MarkDown document - no properties to preview.`;
     }
 
+    private getWindowErrorMessage(): string {
+        return `No Active editor - no properties to preview.`;
+    }
+
     // 生成预览编辑页面
     private generatePreviewSnippet(editor: TextEditor): string {
+        if (!editor || !editor.document) {
+            return HtmlUtil.errorSnippet(this.getWindowErrorMessage());
+        }
         // 获取当前编辑页面对应的文档
         let doc = editor.document;
         return HtmlUtil.fixNoneNetLinks(doc.getText(), doc.fileName);

@@ -25,6 +25,10 @@ class CssDocumentContentManager implements DocumentContentManagerInterface {
     public createContentSnippet(): string {
         let editor = window.activeTextEditor;
 
+        if (!editor) {
+            return HtmlUtil.errorSnippet(this.getWindowErrorMessage());
+        }
+
         let previewSnippet: string = this.generatePreviewSnippet(editor);
         if (!previewSnippet || previewSnippet.length <= 0) {
             return HtmlUtil.errorSnippet(this.getErrorMessage());
@@ -41,12 +45,20 @@ class CssDocumentContentManager implements DocumentContentManagerInterface {
     private getErrorMessage(): string {
         return `Active editor doesn't show a CSS document - no properties to preview.`;
     }
+
+    private getWindowErrorMessage(): string {
+        return `No Active editor - no properties to preview.`;
+    }
+
     private CSSSampleFullSnippet(properties: string): string {
         return HtmlUtil.createRemoteSource(SourceType.CUSTOM_STYLE_SAMPLE, properties);
 
     }
 
     private getSelectedCSSProperity(editor: TextEditor): string {
+        if (!editor || !editor.document) {
+            return HtmlUtil.errorSnippet(this.getWindowErrorMessage());
+        }
         // 获取当前页面文本
         let text = editor.document.getText();
         // 获取当前鼠标选中段落的起始位置        
@@ -64,9 +76,12 @@ class CssDocumentContentManager implements DocumentContentManagerInterface {
 
     // 生成预览编辑页面
     private generatePreviewSnippet(editor: TextEditor): string {
+        if (!editor) {
+            return HtmlUtil.errorSnippet(this.getWindowErrorMessage());
+        }
         var cssProperty = this.getSelectedCSSProperity(editor);
         if (!cssProperty || cssProperty.length <= 0) {
-            return undefined;
+            return HtmlUtil.errorSnippet(this.getErrorMessage());
         }
 
         return this.CSSSampleFullSnippet(cssProperty);

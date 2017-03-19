@@ -27,9 +27,12 @@ export class TextUtilReturnType {
     }
 }
 export class TextUtil {
-
+    public static NoneTextUtilReturnTypeValue: TextUtilReturnType = new TextUtilReturnType(-1, undefined);
     // 获取指定位置开始后的第一个任意mark的位置
     public static indexOf(editor: TextEditor, startPos: number, marks: string[]): TextUtilReturnType {
+        if(!editor){
+            return TextUtil.NoneTextUtilReturnTypeValue;
+        }
         // 获取当前页面文本
         let text = editor.document.getText();
 
@@ -55,6 +58,9 @@ export class TextUtil {
 
     // 获取指定位置开始后的第一个任意mark的位置
     public static lastIndexOf(editor: TextEditor, startPos: number, marks: string[]): TextUtilReturnType {
+        if(!editor){
+            return TextUtil.NoneTextUtilReturnTypeValue;
+        }
         // 获取当前页面文本
         let text = editor.document.getText();
 
@@ -80,6 +86,9 @@ export class TextUtil {
     }
 
     public static regexIndexOf(editor: TextEditor, startPos: number, regex: RegExp): TextUtilReturnType {
+        if(!editor){
+            return TextUtil.NoneTextUtilReturnTypeValue;
+        }
 
         // 获取当前页面文本
         let text = editor.document.getText();
@@ -102,6 +111,9 @@ export class TextUtil {
 
     }
     public static regexLastIndexOf(editor: TextEditor, startPos: number, regex: RegExp): TextUtilReturnType {
+        if(!editor){
+            return TextUtil.NoneTextUtilReturnTypeValue;
+        }
         // 获取当前页面文本
         let text = editor.document.getText();
         regex = (regex.global) ? regex : new RegExp(regex.source, "g" + (regex.ignoreCase ? "i" : "") + (regex.multiline ? "m" : ""));

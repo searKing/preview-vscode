@@ -1,12 +1,30 @@
 "use strict";
-import { workspace, window, ExtensionContext, commands,
-    TextEditor, TextDocumentContentProvider, EventEmitter,
-    Event, Uri, TextDocumentChangeEvent, ViewColumn,
+import {
+    workspace,
+    window,
+    ExtensionContext,
+    commands,
+    TextEditor,
+    TextDocumentContentProvider,
+    EventEmitter,
+    Event,
+    Uri,
+    TextDocumentChangeEvent,
+    ViewColumn,
     TextEditorSelectionChangeEvent,
-    TextDocument, Disposable } from "vscode";
-import {DocumentContentManagerInterface} from "./documentContentManagerInterface";
-import {HtmlUtil, SourceType} from "./utils/htmlUtil";
-import {MermaidUtil} from "./utils/mermaidUtil";
+    TextDocument,
+    Disposable
+} from "vscode";
+import {
+    DocumentContentManagerInterface
+} from "./documentContentManagerInterface";
+import {
+    HtmlUtil,
+    SourceType
+} from "./utils/htmlUtil";
+import {
+    MermaidUtil
+} from "./utils/mermaidUtil";
 
 
 var _instance: MermaidDocumentContentManager = null;
@@ -25,7 +43,10 @@ class MermaidDocumentContentManager implements DocumentContentManagerInterface {
     // @Override
     public createContentSnippet(): string | Promise<string> {
         let editor = window.activeTextEditor;
-        
+
+        if (!editor || !editor.document) {
+            return HtmlUtil.errorSnippet(this.getWindowErrorMessage());
+        }
         if (editor.document.languageId !== "mermaid") {
             return HtmlUtil.errorSnippet(this.getErrorMessage());
         }
@@ -46,19 +67,30 @@ class MermaidDocumentContentManager implements DocumentContentManagerInterface {
     private getErrorMessage(): string {
         return `Active editor doesn't show a Mermaid document - no properties to preview.`;
     }
+
+    private getWindowErrorMessage(): string {
+        return `No Active editor - no properties to preview.`;
+    }
+
     private MermaidSampleFullSnippet(properties: string): string {
         return HtmlUtil.createRemoteSource(SourceType.CUSTOM_MERMAID_SAMPLE, properties);
     }
 
     private getSelectedCSSProperity(editor: TextEditor): string {
+        if (!editor|| !editor.document) {
+            return HtmlUtil.errorSnippet(this.getWindowErrorMessage());
+        }
         return editor.document.getText();
     }
 
     // 生成预览编辑页面
     private generatePreviewSnippet(editor: TextEditor): string {
+        if (!editor) {
+            return HtmlUtil.errorSnippet(this.getWindowErrorMessage());
+        }
         var cssProperty = this.getSelectedCSSProperity(editor);
         if (!cssProperty || cssProperty.length <= 0) {
-            return undefined;
+            return HtmlUtil.errorSnippet(this.getErrorMessage());
         }
 
         return this.MermaidSampleFullSnippet(cssProperty);

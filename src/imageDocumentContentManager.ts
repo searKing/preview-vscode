@@ -1,12 +1,31 @@
 "use strict";
-import { workspace, window, ExtensionContext, commands,
-    TextEditor, TextDocumentContentProvider, EventEmitter,
-    Event, Uri, TextDocumentChangeEvent, ViewColumn,
+import {
+    workspace,
+    window,
+    ExtensionContext,
+    commands,
+    TextEditor,
+    TextDocumentContentProvider,
+    EventEmitter,
+    Event,
+    Uri,
+    TextDocumentChangeEvent,
+    ViewColumn,
     TextEditorSelectionChangeEvent,
-    TextDocument, Disposable } from "vscode";
-import {DocumentContentManagerInterface} from "./documentContentManagerInterface";
-import {HtmlUtil, SourceType} from "./utils/htmlUtil";
-import {TextUtil, TextUtilReturnType} from "./utils/textUtil"
+    TextDocument,
+    Disposable
+} from "vscode";
+import {
+    DocumentContentManagerInterface
+} from "./documentContentManagerInterface";
+import {
+    HtmlUtil,
+    SourceType
+} from "./utils/htmlUtil";
+import {
+    TextUtil,
+    TextUtilReturnType
+} from "./utils/textUtil"
 import * as path from "path";
 let fileUrl = require("file-url");
 
@@ -27,9 +46,11 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
     private IMAGE_TYPE_REGREX_SPLIT: RegExp = /\s/;
     // 生成当前编辑页面的可预览代码片段
     // @Override
-    public createContentSnippet(): string | Promise<string> {
+    public createContentSnippet(): string | Promise < string > {
         let editor = window.activeTextEditor;
-
+        if (!editor) {
+            return HtmlUtil.errorSnippet(this.getWindowErrorMessage());
+        }
         let previewSnippet: string = this.generatePreviewSnippet(editor);
         if (!previewSnippet || previewSnippet.length <= 0) {
             return HtmlUtil.errorSnippet(this.getErrorMessage());
@@ -39,16 +60,18 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
     }
 
     // @Override
-    public sendPreviewCommand(previewUri: Uri, displayColumn: ViewColumn): Thenable<void> {
+    public sendPreviewCommand(previewUri: Uri, displayColumn: ViewColumn): Thenable < void > {
         return HtmlUtil.sendPreviewCommand(previewUri, displayColumn);
     }
 
     private getErrorMessage(): string {
         return `Active editor doesn't show any  ${this.IMAGE_TYPE_REGREX_SUFFIX} - no properties to preview.`;
     }
+    private getWindowErrorMessage(): string {
+        return `No Active editor - no properties to preview.`;
+    }
     private imageSrcSnippet(imageUri: string): string {
         return HtmlUtil.createRemoteSource(SourceType.IMAGE, imageUri);
-
     }
 
     // 获取指定位置开始后的第一个分隔符的位置
@@ -71,13 +94,15 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
     }
     // 获取指定位置开始后的第一个分隔符前的最后一个后缀的位置
     private getEndOfImageUrl(editor: TextEditor, startPosOfImageUrl: number, startPosOfSplit: number): number {
+        if (!editor) {
+            return -1;
+        }
         let startIndexOfSuffix: TextUtilReturnType = this.lastIndexOfSuffix(editor, startPosOfSplit);
         let startPosOfSuffix = startIndexOfSuffix.pos;
         let selectedSuffix = startIndexOfSuffix.mark;
         if (startPosOfSuffix < 0) {
             return startPosOfSplit;
-        }
-        else {
+        } else {
             if (startPosOfSuffix < startPosOfImageUrl) {
                 return -1;
             }
@@ -85,6 +110,9 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
         }
     }
     private getSplitOfImageUrl(editor: TextEditor, startIndexOfImageUrl: TextUtilReturnType): number {
+        if (!editor) {
+            return -1;
+        }
 
         let startPosOfSplit = this.indexOfSplit(editor, startIndexOfImageUrl.pos + startIndexOfImageUrl.mark.length).pos;
 
@@ -95,6 +123,9 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
     }
 
     private getFirstSelectedImageUri(editor: TextEditor): string {
+        if (!editor) {
+            return undefined;
+        }
         // 获取当前鼠标选中段落的起始位置        
         let startPosOfSelectionText = editor.document.offsetAt(editor.selection.anchor);
 
@@ -119,15 +150,18 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
 
     // 生成预览编辑页面
     private generatePreviewSnippet(editor: TextEditor): string {
+        if (!editor) {
+            return undefined;
+        }
         var imageUri = this.getFirstSelectedImageUri(editor);
         if (!imageUri || imageUri.length <= 0) {
             return undefined;
         }
         var head = HtmlUtil.createLocalSource(SourceType.LINK, "header_fix.css");
-        var body = HtmlUtil.createRemoteSource(SourceType.DIVISION, imageUri)
-            + HtmlUtil.createRemoteSourceAtNewline(SourceType.HR)
-            + HtmlUtil.createRemoteSource(SourceType.CUSTOM_NEWLINE)
-            + HtmlUtil.fixImageSrcLinks(this.imageSrcSnippet(imageUri));
+        var body = HtmlUtil.createRemoteSource(SourceType.DIVISION, imageUri) +
+            HtmlUtil.createRemoteSourceAtNewline(SourceType.HR) +
+            HtmlUtil.createRemoteSource(SourceType.CUSTOM_NEWLINE) +
+            HtmlUtil.fixImageSrcLinks(this.imageSrcSnippet(imageUri));
         return HtmlUtil.createFullHtmlSnippetFrom(head, body);
     }
 
