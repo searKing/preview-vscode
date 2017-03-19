@@ -36,49 +36,47 @@ export class PreviewDocumentContentProvider implements TextDocumentContentProvid
     }
 
 
-    private refreshCurrentDocumentContentProvide(): Promise<void> {
+    private async refreshCurrentDocumentContentProvide(): Promise<void> {
         let editor = window.activeTextEditor;
         let thiz = this;
         //防止在一次预览命令下重复弹出选择预览类型的对话框
-        return VscodeUtil.getPreviewType(editor, !!thiz._documentContentManager).then(function (previewType) {
-            switch (previewType) {
-                case "html":
-                case "jade":
-                    thiz._documentContentManager = htmlDocumentContentManager.getInstance();
-                    break;
-                case "markdown":
-                    thiz._documentContentManager = markdownDocumentContentManager.getInstance();
-                    break;
-                case "css":
-                    thiz._documentContentManager = cssDocumentContentManager.getInstance();
-                    break;
-                case "mermaid":
-                    thiz._documentContentManager = mermaidDocumentContentManager.getInstance();
-                    break;
-                case "rst":
-                    thiz._documentContentManager = reStructuredTextDocumentContentManager.getInstance();
-                    break;
-                case "image":
-                    thiz._documentContentManager = imageDocumentContentManager.getInstance();
-                    break;
-                default:
-                    if (!thiz._documentContentManager) {
-                        thiz._documentContentManager = noneDocumentContentManager.getInstance();
-                    }
-                    break;
-            }
-            return Promise.resolve();
-        });
-
-
+        let previewType = await VscodeUtil.getPreviewType(editor, !!thiz._documentContentManager);
+        switch (previewType) {
+            case "html":
+            case "jade":
+                thiz._documentContentManager = htmlDocumentContentManager.getInstance();
+                break;
+            case "markdown":
+                thiz._documentContentManager = markdownDocumentContentManager.getInstance();
+                break;
+            case "css":
+                thiz._documentContentManager = cssDocumentContentManager.getInstance();
+                break;
+            case "mermaid":
+                thiz._documentContentManager = mermaidDocumentContentManager.getInstance();
+                break;
+            case "rst":
+                thiz._documentContentManager = reStructuredTextDocumentContentManager.getInstance();
+                break;
+            case "image":
+                thiz._documentContentManager = imageDocumentContentManager.getInstance();
+                break;
+            default:
+                if (!thiz._documentContentManager) {
+                    thiz._documentContentManager = noneDocumentContentManager.getInstance();
+                }
+                break;
+        }
+        return Promise.resolve();
     }
     // @Override 生成当前html规范化的代码文本，编辑器会自动根据该函数的返回值创建一个只读文档
     // uri是scheme
     public provideTextDocumentContent(uri: Uri): string | Thenable<string> {
-        let thiz = this;
-        return this.refreshCurrentDocumentContentProvide().then(function () {
-            return thiz._documentContentManager.createContentSnippet();
-        });
+        let content = async () => {
+            await this.refreshCurrentDocumentContentProvide();
+            return this._documentContentManager.createContentSnippet();
+        }
+        return content();
     }
 
     // @Override 获取文档变化这个监听事件，给vscode调用
