@@ -36,21 +36,7 @@ class ReStructuredTextDocumentContentManager implements DocumentContentManagerIn
         if (editor.document.languageId !== "rst") {
             return HtmlUtil.errorSnippet(this.getErrorMessage());
         }
-        let previewSnippetPromise: Promise<string> = this.generatePreviewSnippet(editor);
-        if(!previewSnippetPromise){
-            return HtmlUtil.errorSnippet(this.getErrorMessage());
-        }
-        let previewSnippet = "";
-        previewSnippetPromise.then(function(snip:string){
-            previewSnippet = snip;
-        })
-
-        if (!previewSnippet || previewSnippet.length <= 0) {
-            return HtmlUtil.errorSnippet(this.getErrorMessage());
-        }
-        console.info("previewSnippet = " + previewSnippet);
-        return previewSnippet;
-        // return this.generatePreviewSnippet(editor);
+        return this.generatePreviewSnippet(editor);
     }
 
     // @Override

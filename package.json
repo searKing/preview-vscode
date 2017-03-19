@@ -30,8 +30,7 @@
     "onCommand:extension.previewToSide"
   ],
   "contributes": {
-    "languages": [
-      {
+    "languages": [{
         "id": "mermaid",
         "aliases": [
           "Mermaid",
@@ -55,8 +54,7 @@
         ]
       }
     ],
-    "keybindings": [
-      {
+    "keybindings": [{
         "command": "extension.preview",
         "key": "ctrl+shift+v",
         "mac": "cmd+shift+v"
@@ -77,8 +75,7 @@
         "mac": "ctrl+k v"
       }
     ],
-    "commands": [
-      {
+    "commands": [{
         "command": "extension.preview",
         "title": "Toggle Preview",
         "category": "Preview"
