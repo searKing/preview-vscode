@@ -1,11 +1,13 @@
 "use strict";
-import { workspace, window, ExtensionContext, commands,
+import {
+    workspace, window, ExtensionContext, commands,
     TextEditor, TextDocumentContentProvider, EventEmitter,
     Event, Uri, TextDocumentChangeEvent, ViewColumn,
     TextEditorSelectionChangeEvent,
-    TextDocument, Disposable } from "vscode";
-import {DocumentContentManagerInterface} from "./documentContentManagerInterface";
-import {HtmlUtil, SourceType} from "./utils/htmlUtil";
+    TextDocument, Disposable
+} from "vscode";
+import { DocumentContentManagerInterface } from "./documentContentManagerInterface";
+import { HtmlUtil, SourceType } from "./utils/htmlUtil";
 
 
 var _instance: CssDocumentContentManager = null;
