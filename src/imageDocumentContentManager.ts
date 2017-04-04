@@ -51,7 +51,7 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
         if (!editor) {
             return HtmlUtil.errorSnippet(this.getWindowErrorMessage());
         }
-        let previewSnippet: string = this.generatePreviewSnippet(editor);
+        let previewSnippet: string = await this.generatePreviewSnippet(editor);
         if (!previewSnippet || previewSnippet.length <= 0) {
             return HtmlUtil.errorSnippet(this.getErrorMessage());
         }
@@ -148,16 +148,18 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
     }
 
     // 生成预览编辑页面
-    private generatePreviewSnippet(editor: TextEditor): string {
+    private async generatePreviewSnippet(editor: TextEditor): Promise<string> {
         if (!editor) {
             return HtmlUtil.errorSnippet(this.getWindowErrorMessage());
         }
-        var imageUri = this.getFirstSelectedImageUri(editor);
+        let imageUri = this.getFirstSelectedImageUri(editor);
         if (!imageUri || imageUri.length <= 0) {
             return HtmlUtil.errorSnippet(this.getErrorMessage());
         }
-        var head = HtmlUtil.createLocalSource(SourceType.LINK, "header_fix.css");
-        var body = HtmlUtil.createRemoteSource(SourceType.DIVISION, imageUri) +
+
+
+        let head = HtmlUtil.createLocalSource(SourceType.LINK, "header_fix.css");
+        let body = HtmlUtil.createRemoteSource(SourceType.DIVISION, imageUri) +
             HtmlUtil.createRemoteSourceAtNewline(SourceType.HR) +
             HtmlUtil.createRemoteSource(SourceType.CUSTOM_NEWLINE) +
             HtmlUtil.fixImageSrcLinks(this.imageSrcSnippet(imageUri));
