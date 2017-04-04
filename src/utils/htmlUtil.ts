@@ -30,6 +30,7 @@ export enum SourceType {
 
 export class HtmlUtil {
     private static COMMAND: string = "vscode.previewHtml";
+    private static HTTP_S_REGREX_PREFFIX: RegExp = /http[s]{0,1}:\/\//;
     // @Override
     public static sendPreviewCommand(previewUri: Uri, displayColumn: ViewColumn): Thenable<void> {
         return commands.executeCommand(this.COMMAND, previewUri, displayColumn).then((success) => {
@@ -61,18 +62,21 @@ export class HtmlUtil {
     public static errorSnippet(error: string): string {
         return this.createFullHtmlSnippetFrom(undefined, this.createRemoteSource(SourceType.DIVISION, error));
     }
+
     private static isWithPayLoad(payLoad: string): boolean {
         if (!!payLoad && payLoad.length > 0) {
             return true;
         }
         return false;
     }
+
     // 生成本地文件对应URI的html标签代码片段
     public static createRemoteSourceAtNewline(type: SourceType, payLoad?: string): string {
         return HtmlUtil.createRemoteSource(
             SourceType.CUSTOM_NEWLINE,
             HtmlUtil.createRemoteSource(type, payLoad));
     }
+
     // 生成本地文件对应URI的html标签代码片段
     public static createRemoteSource(type: SourceType, payLoad?: string): string {
         switch (type) {
@@ -108,6 +112,7 @@ export class HtmlUtil {
                 return this.createRemoteSourceOfCUSTOM_STYLE_SAMPLE(payLoad);
         }
     }
+
     // 生成本地文件对应URI的html标签代码片段
     public static createLocalSource(type: SourceType, fileName: string) {
         // __dirname 是package.json中"main"字段对应的绝对目录
@@ -147,12 +152,13 @@ export class HtmlUtil {
             }
         );
     }
+
     // 将html中将file://去掉,且恢复默认绝对路径
-    public static fixImageSrcLinks(document: string): string {
-        if (!document) {
-            return document;
+    public static fixImageSrcLinks(imageSnippet: string): string {
+        if (!imageSnippet) {
+            return imageSnippet;
         }
-        return document.replace(
+        return imageSnippet.replace(
             // 子表达式的序号问题
             // 简单地说：从左向右，以分组的左括号为标志，
             // 过程是要从左向右扫描两遍的：
@@ -168,6 +174,42 @@ export class HtmlUtil {
                 ].join("");
             }
         );
+    }
+
+    public static async fixImageRedirectUrl(srcUrl: string): Promise<string> {
+        if (!srcUrl) {
+            return srcUrl;
+        }
+        let result: RegExpExecArray = null;
+        if((result =HtmlUtil.HTTP_S_REGREX_PREFFIX.exec(srcUrl))== null){
+            return srcUrl;
+        }
+        try {
+            return await HtmlUtil.getRedirectUrl(srcUrl);
+        } catch (error) {
+            return srcUrl;
+        }
+    }
+
+    private static getRedirectUrl(firstUrl: string): Promise<string> {
+
+        return new Promise(function (resolve, reject) {
+            var request = require("request");
+            var options = {
+                method: 'GET',
+                url: firstUrl,
+                // followAllRedirects: false,
+                // maxRedirects: 1,
+                headers: {
+                    'cache-control': 'no-cache'
+                }
+            };
+            var r = request(options, function (error, response, body) {
+                if (error) return reject(error);
+                resolve(this.uri.href)
+            });
+        })
+
     }
 
     private static createRemoteSourceOfBODY(payLoad: string): string {
