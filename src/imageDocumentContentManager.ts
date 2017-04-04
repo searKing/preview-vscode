@@ -157,7 +157,7 @@ class ImageDocumentContentManager implements DocumentContentManagerInterface {
             return HtmlUtil.errorSnippet(this.getErrorMessage());
         }
 
-        let targetImageUri: string = await HtmlUtil.fixImageRedirectUrl(imageUri);
+        let targetImageUri: string = imageUri;//await HtmlUtil.fixImageRedirectUrl(imageUri);
 
         let head = HtmlUtil.createLocalSource(SourceType.LINK, "header_fix.css");
         let body = HtmlUtil.createRemoteSource(SourceType.DIVISION, targetImageUri) +
