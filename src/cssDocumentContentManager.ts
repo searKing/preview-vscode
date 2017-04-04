@@ -24,7 +24,7 @@ class CssDocumentContentManager implements DocumentContentManagerInterface {
     private COMMAND: string = "vscode.previewHtml";
     // 生成当前编辑页面的可预览代码片段
     // @Override
-    public createContentSnippet(): string {
+    public async createContentSnippet(): Promise<string> {
         let editor = window.activeTextEditor;
 
         if (!editor) {

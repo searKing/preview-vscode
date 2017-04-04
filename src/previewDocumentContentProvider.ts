@@ -71,7 +71,7 @@ export class PreviewDocumentContentProvider implements TextDocumentContentProvid
     }
     // @Override 生成当前html规范化的代码文本，编辑器会自动根据该函数的返回值创建一个只读文档
     // uri是scheme
-    public provideTextDocumentContent(uri: Uri): string | Thenable<string> {
+    public provideTextDocumentContent(uri: Uri): Thenable<string> {
         let content = async () => {
             await this.refreshCurrentDocumentContentProvide();
             return this._documentContentManager.createContentSnippet();
