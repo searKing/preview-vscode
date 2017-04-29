@@ -122,3 +122,5 @@ according to [NPM problem: npm ERR! extraneous](http://lifeonubuntu.com/npm-prob
 + [vscode-imagepreview](https://github.com/buzzfrog/vscode-imagepreview.git).
 
 + [vscode-mermaid-preview](https://github.com/vstirbu/vscode-mermaid-preview.git).
+
++ [preview-vscode](https://github.com/searKing/preview-vscode).
