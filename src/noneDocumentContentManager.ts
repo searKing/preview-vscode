@@ -33,7 +33,7 @@ class NoneDocumentContentManager implements DocumentContentManagerInterface {
     }
 
     private getErrorMessage(): string {
-        return "Couldn't determine type to preivew, please choose.";
+        return "Couldn't determine type to preview, please choose.";
     }
 
 
