@@ -30,7 +30,8 @@
     "onCommand:extension.previewToSide"
   ],
   "contributes": {
-    "languages": [{
+    "languages": [
+      {
         "id": "mermaid",
         "aliases": [
           "Mermaid",
@@ -54,7 +55,8 @@
         ]
       }
     ],
-    "keybindings": [{
+    "keybindings": [
+      {
         "command": "extension.preview",
         "key": "ctrl+shift+v",
         "mac": "cmd+shift+v"
@@ -75,7 +77,8 @@
         "mac": "ctrl+k v"
       }
     ],
-    "commands": [{
+    "commands": [
+      {
         "command": "extension.preview",
         "title": "Toggle Preview",
         "category": "Preview"
@@ -100,11 +103,11 @@
   },
   "devDependencies": {
     "@types/mocha": "^2.2.32",
-    "@types/node": "^7.0.8",
+    "@types/node": "^7.0.42",
+    "jslint": "^0.10.3",
     "mocha": "^3.2.0",
+    "tslint": "^4.5.1",
     "typescript": "^2.0.3",
-    "vscode": "^1.0.0",
-    "tslint":"^4.5.1",
-    "jslint":"^0.10.3"
+    "vscode": "^1.0.0"
   }
 }

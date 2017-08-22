@@ -54,6 +54,9 @@ python and docutils are recommended to be installed to Preview ReStructured Text
 + Cannot find module 'vscode'? Please run 'npm run postinstall' under the root dir of this extension,
 according to [Cannot find module 'vscode' – where is vscode.d.ts now installed? #2810](https://github.com/Microsoft/vscode/issues/2810)
 
++ Cannot find module 'console'? Please run 'npm install @types/node' under the root dir of this extension,
+according to [Node projects with --lib es6: cannot find name 'console' #9545](https://github.com/Microsoft/TypeScript/issues/9545)
+
 + Node.js's version is too old ? following this two ways, choose one:
     - [NodeSource Node.js Binary Distributions](https://github.com/nodesource/distributions), and you will get the latest version installed automatically !
     - install n to maintain the version
