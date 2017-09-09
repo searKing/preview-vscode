@@ -51,7 +51,7 @@ export class VscodeUtil {
 
     }
 
-    public static async getPreviewType(editor: vscode.TextEditor, dontAsk: boolean = false): Promise<string> {
+    public static async getActivePreviewType(editor: vscode.TextEditor, dontAsk: boolean = false): Promise<string> {
         if (!editor) {
             editor = vscode.window.activeTextEditor;
         }
@@ -80,5 +80,24 @@ export class VscodeUtil {
         return Promise.resolve(VscodeUtil.getPreviewTypeQuickPick());
 
     };
+
+    public static getTextEditor(docUri: vscode.Uri): vscode.TextEditor | undefined {
+        if (!docUri) {
+            return;
+        }
+        let ss = vscode.window.visibleTextEditors;
+        let editor: vscode.TextEditor;
+        for (let e of vscode.window.visibleTextEditors) {
+            if (e.document.uri.toString() === docUri.toString()) {
+                editor = e;
+                break;
+            }
+        }
+        if (!editor || !editor.document) {
+            return;
+        }
+        return editor;
+
+    }
 
 }

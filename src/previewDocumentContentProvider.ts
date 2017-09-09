@@ -26,25 +26,47 @@ enum TextDocumentType {
 
 export class PreviewDocumentContentProvider implements TextDocumentContentProvider {
     static PREVIEW_SCHEME: string = "vscode-preview";
+    private _uriProviderMap: Map<string, DocumentContentManagerInterface> = new Map<string, DocumentContentManagerInterface>();
     // 观察者模式，生成一个事件发生器
     private _onDidChange = new EventEmitter<Uri>();
 
     private _documentContentManager: DocumentContentManagerInterface = null;
 
+    private static _instance: PreviewDocumentContentProvider = null;
+    private constructor() {
+        return this;
+    }
+    public static getInstance(): PreviewDocumentContentProvider {
+        if (!PreviewDocumentContentProvider._instance) {
+            PreviewDocumentContentProvider._instance = new PreviewDocumentContentProvider();
+        }
+
+        return PreviewDocumentContentProvider._instance;
+    }
     static get previewScheme(): string {
         return PreviewDocumentContentProvider.PREVIEW_SCHEME;
     }
 
+    // private PreviewDocumentContentProvider(): TextDocumentContentProvider {
+    //     return this;
+    // };
 
-    private async refreshCurrentDocumentContentProvide(): Promise<void> {
+    private async refreshCurrentDocumentContentProvider(): Promise<void> {
         let editor = window.activeTextEditor;
+        let uri = editor.document.uri;
         let thiz = this;
+
+        if (this._uriProviderMap[uri.toString()]) {
+            thiz._documentContentManager = this._uriProviderMap[uri.toString()];
+            return Promise.resolve();
+        }
+
         //防止在一次预览命令下重复弹出选择预览类型的对话框
-        let previewType = await VscodeUtil.getPreviewType(editor, !!thiz._documentContentManager);
+        let previewType = await VscodeUtil.getActivePreviewType(editor, !!thiz._documentContentManager);
         switch (previewType) {
             case "html":
             case "jade":
-                thiz._documentContentManager = htmlDocumentContentManager.getInstance();
+                thiz._documentContentManager = new htmlDocumentContentManager.HtmlDocumentContentManager(editor);
                 break;
             case "markdown":
                 thiz._documentContentManager = markdownDocumentContentManager.getInstance();
@@ -67,13 +89,13 @@ export class PreviewDocumentContentProvider implements TextDocumentContentProvid
                 }
                 break;
         }
+        this._uriProviderMap[uri.toString()] = thiz._documentContentManager;
         return Promise.resolve();
     }
     // @Override 生成当前html规范化的代码文本，编辑器会自动根据该函数的返回值创建一个只读文档
     // uri是scheme
     public provideTextDocumentContent(uri: Uri): Thenable<string> {
         let content = async () => {
-            await this.refreshCurrentDocumentContentProvide();
             return this._documentContentManager.createContentSnippet();
         }
         return content();
@@ -91,11 +113,11 @@ export class PreviewDocumentContentProvider implements TextDocumentContentProvid
         this._onDidChange.fire(previewUri);
     }
 
-    public async sendPreviewCommand(displayColumn: ViewColumn): Promise<void> {
-        await this.refreshCurrentDocumentContentProvide()
+    public async sendPreviewCommand(displayColumn: ViewColumn, srcUri: Uri): Promise<void> {
+        await this.refreshCurrentDocumentContentProvider()
         // 生成预览临时文件的URI
         let previewUri: Uri = await PreviewDocumentContentProvider.getPreviewUri()
-        await this._documentContentManager.sendPreviewCommand(previewUri, displayColumn);
+        await this._documentContentManager.sendPreviewCommand(previewUri, displayColumn, srcUri);
         //主动触发文本更新，因为当预览命令发生变化的时候
         //对于不能判断文本类型的，会弹出文本选择对话框，但是由于文本没有发生变化
         //所以监听者被通知内容更新，还会显示之前缓存下来的内容

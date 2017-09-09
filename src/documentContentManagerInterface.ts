@@ -12,5 +12,5 @@ export interface DocumentContentManagerInterface {
     // 生成当前编辑页面的HTML代码片段
     createContentSnippet(): Promise<string>;
 
-    sendPreviewCommand(previewUri: Uri, displayColumn: ViewColumn): Thenable<void>;
+    sendPreviewCommand(previewUri: Uri, displayColumn: ViewColumn, srcUri:Uri): Thenable<void>;
 }

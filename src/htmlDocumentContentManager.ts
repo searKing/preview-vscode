@@ -24,31 +24,29 @@ import {
     HtmlUtil,
     SourceType
 } from "./utils/htmlUtil";
+import {
+    VscodeUtil
+} from "./utils/vscodeUtil";
 let fileUrl = require("file-url");
 
+export class HtmlDocumentContentManager implements DocumentContentManagerInterface {
+    private _editor: TextEditor;
 
-
-var _instance: HtmlDocumentContentManager = null;
-export function getInstance() {
-    if (!_instance) {
-        _instance = new HtmlDocumentContentManager();
+    public constructor(editor: TextEditor) {
+        this._editor = editor;
+        return this;
     }
-
-    return _instance;
-}
-class HtmlDocumentContentManager implements DocumentContentManagerInterface {
-    // 生成当前编辑页面的HTML代码片段
+    // 生成当前编辑页面的HTM L代码片段
     // @Override
     public async createContentSnippet(): Promise<string> {
-        let editor = window.activeTextEditor;
-        if (!editor || !editor.document) {
+        if (!this._editor || !this._editor.document) {
             return HtmlUtil.errorSnippet(this.getWindowErrorMessage());
         }
-        if (editor.document.languageId !== "html" && editor.document.languageId !== "jade") {
+        if (this._editor.document.languageId !== "html" && this._editor.document.languageId !== "jade") {
             return HtmlUtil.errorSnippet("Active editor doesn't show a HTML or Jade document - no properties to preview.");
         }
 
-        let previewSnippet: string = this.generatePreviewSnippet(editor);
+        let previewSnippet: string = this.generatePreviewSnippet(this._editor);
         if (!previewSnippet || previewSnippet.length <= 0) {
             return HtmlUtil.errorSnippet(this.getErrorMessage());
         }
@@ -58,7 +56,7 @@ class HtmlDocumentContentManager implements DocumentContentManagerInterface {
 
 
     // @Override
-    public sendPreviewCommand(previewUri: Uri, displayColumn: ViewColumn): Thenable<void> {
+    public sendPreviewCommand(previewUri: Uri, displayColumn: ViewColumn, srcUri: Uri): Thenable<void> {
         return HtmlUtil.sendPreviewCommand(previewUri, displayColumn);
 
     }
