@@ -43,9 +43,9 @@ export function activate(context: vscode.ExtensionContext) {
     }
 
     // 调用vscode系统命令预览当前HTML页面
-    function sendPreviewCommand(displayColumn: vscode.ViewColumn, uri:vscode.Uri): void {
+    function sendPreviewCommand(displayColumn: vscode.ViewColumn, editor:vscode.TextEditor): void {
         // 给vscode发送预览该临时HTML文件的命令
-        PROVIDER.sendPreviewCommand(displayColumn, uri).catch(function (error) {
+        PROVIDER.sendPreviewCommand(displayColumn, editor).catch(function (error) {
             console.error("we got an error: " + error);
         });
         return;
@@ -103,7 +103,7 @@ export function activate(context: vscode.ExtensionContext) {
         if (!e) {
             return sendBackviewCommand();
         }
-        return sendPreviewCommand(e.viewColumn, e.document.uri);
+        return sendPreviewCommand(e.viewColumn, e);
     });
 
     // 侧边栏打开预览界面
@@ -117,7 +117,7 @@ export function activate(context: vscode.ExtensionContext) {
             return sendCloseviewCommand();
         }
         let displayColumn: vscode.ViewColumn = getSpiltColumn();
-        return sendPreviewCommand(displayColumn, e.document.uri);
+        return sendPreviewCommand(displayColumn, e);
     });
 
     context.subscriptions.push(previewDisposable, previewToSideDisposable, providerDisposable);

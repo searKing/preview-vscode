@@ -56,7 +56,7 @@ export class HtmlDocumentContentManager implements DocumentContentManagerInterfa
 
 
     // @Override
-    public sendPreviewCommand(previewUri: Uri, displayColumn: ViewColumn, srcUri: Uri): Thenable<void> {
+    public sendPreviewCommand(previewUri: Uri, displayColumn: ViewColumn, editor:TextEditor): Thenable<void> {
         return HtmlUtil.sendPreviewCommand(previewUri, displayColumn);
 
     }

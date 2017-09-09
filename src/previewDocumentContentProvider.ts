@@ -51,8 +51,10 @@ export class PreviewDocumentContentProvider implements TextDocumentContentProvid
     //     return this;
     // };
 
-    private async refreshCurrentDocumentContentProvider(): Promise<void> {
-        let editor = window.activeTextEditor;
+    private async refreshCurrentDocumentContentProvider(editor:TextEditor): Promise<void> {
+        if(!editor){
+            return Promise.reject("editor is undefined.");
+        }
         let uri = editor.document.uri;
         let thiz = this;
 
@@ -113,11 +115,11 @@ export class PreviewDocumentContentProvider implements TextDocumentContentProvid
         this._onDidChange.fire(previewUri);
     }
 
-    public async sendPreviewCommand(displayColumn: ViewColumn, srcUri: Uri): Promise<void> {
-        await this.refreshCurrentDocumentContentProvider()
+    public async sendPreviewCommand(displayColumn: ViewColumn, editor:TextEditor): Promise<void> {
+        await this.refreshCurrentDocumentContentProvider(editor)
         // 生成预览临时文件的URI
         let previewUri: Uri = await PreviewDocumentContentProvider.getPreviewUri()
-        await this._documentContentManager.sendPreviewCommand(previewUri, displayColumn, srcUri);
+        await this._documentContentManager.sendPreviewCommand(previewUri, displayColumn, editor);
         //主动触发文本更新，因为当预览命令发生变化的时候
         //对于不能判断文本类型的，会弹出文本选择对话框，但是由于文本没有发生变化
         //所以监听者被通知内容更新，还会显示之前缓存下来的内容
