@@ -52,8 +52,8 @@ export class PreviewDocumentContentProvider implements TextDocumentContentProvid
     // };
 
     private async refreshCurrentDocumentContentProvider(editor:TextEditor): Promise<void> {
-        if(!editor){
-            return Promise.reject("editor is undefined.");
+        if(!editor || !editor.document){
+            return Promise.reject("editor or editor.document is undefined.");
         }
         let uri = editor.document.uri;
         let thiz = this;
