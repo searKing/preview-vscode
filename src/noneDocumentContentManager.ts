@@ -10,16 +10,14 @@ import * as fs from "fs";
 import * as path from "path";
 import { DocumentContentManagerInterface } from "./documentContentManagerInterface";
 
-var _instance: NoneDocumentContentManager = null;
-export function getInstance() {
-    if (!_instance) {
-        _instance = new NoneDocumentContentManager();
+export class NoneDocumentContentManager implements DocumentContentManagerInterface {
+
+    private _editor: TextEditor;//useless
+
+    public constructor(editor: TextEditor) {
+        this._editor = editor;
+        return this;
     }
-
-    return _instance;
-}
-class NoneDocumentContentManager implements DocumentContentManagerInterface {
-
     // 生成当前编辑页面的可预览代码片段
     // @Override
     public async createContentSnippet(): Promise<string> {

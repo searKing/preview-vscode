@@ -29,25 +29,27 @@ import {
 import * as path from "path";
 let fileUrl = require("file-url");
 
-var _instance: ImageDocumentContentManager = null;
-export function getInstance() {
-    if (!_instance) {
-        _instance = new ImageDocumentContentManager();
-    }
-
-    return _instance;
-}
-class ImageDocumentContentManager implements DocumentContentManagerInterface {
+export class ImageDocumentContentManager implements DocumentContentManagerInterface {
 
 
     private COMMAND: string = "vscode.previewHtml";
     private IMAGE_TYPE_REGREX_PREFFIX: RegExp = /http[s]{0,1}:\/\/|file:\/\/|\s[\.]{0,2}\//;
     private IMAGE_TYPE_REGREX_SUFFIX: RegExp = /png|jpg|jpeg|gif|bmp/;
     private IMAGE_TYPE_REGREX_SPLIT: RegExp = /\s/;
+
+
+    private _editor: TextEditor;
+
+    public constructor(editor: TextEditor) {
+        this._editor = editor;
+        return this;
+    }
+
+
     // 生成当前编辑页面的可预览代码片段
     // @Override
     public async createContentSnippet(): Promise<string> {
-        let editor = window.activeTextEditor;
+        let editor = this._editor;
         if (!editor) {
             return HtmlUtil.errorSnippet(this.getWindowErrorMessage());
         }

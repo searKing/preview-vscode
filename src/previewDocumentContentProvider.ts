@@ -26,7 +26,7 @@ enum TextDocumentType {
 
 export class PreviewDocumentContentProvider implements TextDocumentContentProvider {
     static PREVIEW_SCHEME: string = "vscode-preview";
-    private _uriProviderMap: Map<string, DocumentContentManagerInterface> = new Map<string, DocumentContentManagerInterface>();
+    // private _uriProviderMap: Map<string, DocumentContentManagerInterface> = new Map<string, DocumentContentManagerInterface>();
     // 观察者模式，生成一个事件发生器
     private _onDidChange = new EventEmitter<Uri>();
 
@@ -58,40 +58,34 @@ export class PreviewDocumentContentProvider implements TextDocumentContentProvid
         let uri = editor.document.uri;
         let thiz = this;
 
-        if (this._uriProviderMap[uri.toString()]) {
-            thiz._documentContentManager = this._uriProviderMap[uri.toString()];
-            return Promise.resolve();
-        }
-
         //防止在一次预览命令下重复弹出选择预览类型的对话框
-        let previewType = await VscodeUtil.getActivePreviewType(editor, !!thiz._documentContentManager);
+        let previewType = await VscodeUtil.getActivePreviewType(editor, false);
         switch (previewType) {
             case "html":
             case "jade":
                 thiz._documentContentManager = new htmlDocumentContentManager.HtmlDocumentContentManager(editor);
                 break;
             case "markdown":
-                thiz._documentContentManager = markdownDocumentContentManager.getInstance();
+                thiz._documentContentManager = new markdownDocumentContentManager.MarkdownDocumentContentManager(editor);
                 break;
             case "css":
-                thiz._documentContentManager = cssDocumentContentManager.getInstance();
+                thiz._documentContentManager = new cssDocumentContentManager.CssDocumentContentManager(editor);
                 break;
             case "mermaid":
-                thiz._documentContentManager = mermaidDocumentContentManager.getInstance();
+                thiz._documentContentManager = new mermaidDocumentContentManager.MermaidDocumentContentManager(editor);
                 break;
             case "rst":
-                thiz._documentContentManager = reStructuredTextDocumentContentManager.getInstance();
+                thiz._documentContentManager = new reStructuredTextDocumentContentManager.ReStructuredTextDocumentContentManager(editor);
                 break;
             case "image":
-                thiz._documentContentManager = imageDocumentContentManager.getInstance();
+                thiz._documentContentManager = new imageDocumentContentManager.ImageDocumentContentManager(editor);
                 break;
             default:
                 if (!thiz._documentContentManager) {
-                    thiz._documentContentManager = noneDocumentContentManager.getInstance();
+                    thiz._documentContentManager = new noneDocumentContentManager.NoneDocumentContentManager(editor);
                 }
                 break;
         }
-        this._uriProviderMap[uri.toString()] = thiz._documentContentManager;
         return Promise.resolve();
     }
     // @Override 生成当前html规范化的代码文本，编辑器会自动根据该函数的返回值创建一个只读文档

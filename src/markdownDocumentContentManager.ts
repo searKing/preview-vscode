@@ -12,24 +12,23 @@ import { DocumentContentManagerInterface } from "./documentContentManagerInterfa
 import { HtmlUtil } from "./utils/htmlUtil";
 import { MarkDownUtil } from "./utils/markDownUtil";
 
-var _instance: MarkdownDocumentContentManager = null;
-export function getInstance() {
-    if (!_instance) {
-        _instance = new MarkdownDocumentContentManager();
-    }
+export class MarkdownDocumentContentManager implements DocumentContentManagerInterface {
+    private _editor: TextEditor;
 
-    return _instance;
-}
-class MarkdownDocumentContentManager implements DocumentContentManagerInterface {
+    public constructor(editor: TextEditor) {
+        this._editor = editor;
+        return this;
+    }
 
     // 生成当前编辑页面的可预览代码片段
     // @Override
     public async createContentSnippet(): Promise<string> {
-        let editor = window.activeTextEditor;
+        let editor = this._editor;
+
         if (!editor || !editor.document) {
             return HtmlUtil.errorSnippet(this.getWindowErrorMessage());
         }
-        if (editor.document.languageId !== "markdown") {
+        if (this._editor.document.languageId !== "markdown") {
             return HtmlUtil.errorSnippet(this.getErrorMessage());
         }
 

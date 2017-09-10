@@ -26,23 +26,21 @@ import {
     MermaidUtil
 } from "./utils/mermaidUtil";
 
+export class MermaidDocumentContentManager implements DocumentContentManagerInterface {
 
-var _instance: MermaidDocumentContentManager = null;
-export function getInstance() {
-    if (!_instance) {
-        _instance = new MermaidDocumentContentManager();
+
+    private _editor: TextEditor;
+
+    public constructor(editor: TextEditor) {
+        this._editor = editor;
+        return this;
     }
-
-    return _instance;
-}
-class MermaidDocumentContentManager implements DocumentContentManagerInterface {
-
 
     private COMMAND: string = "vscode.previewHtml";
     // 生成当前编辑页面的可预览代码片段
     // @Override
     public async createContentSnippet(): Promise<string> {
-        let editor = window.activeTextEditor;
+        let editor = this._editor;
 
         if (!editor || !editor.document) {
             return HtmlUtil.errorSnippet(this.getWindowErrorMessage());

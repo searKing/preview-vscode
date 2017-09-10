@@ -15,21 +15,21 @@ import * as path from "path";
 let rst2mdown = require("rst2mdown");
 let markdown = require("markdown").markdown;
 
-var _instance: ReStructuredTextDocumentContentManager = null;
-export function getInstance() {
-    if (!_instance) {
-        _instance = new ReStructuredTextDocumentContentManager();
+
+export class ReStructuredTextDocumentContentManager implements DocumentContentManagerInterface {
+
+    private _editor: TextEditor;
+
+    public constructor(editor: TextEditor) {
+        this._editor = editor;
+        return this;
     }
-
-    return _instance;
-}
-
-class ReStructuredTextDocumentContentManager implements DocumentContentManagerInterface {
 
     // 生成当前编辑页面的可预览代码片段
     // @Override
     public async createContentSnippet(): Promise<string> {
-        let editor = window.activeTextEditor;
+        let editor = this._editor;
+
         if (!editor) {
             return HtmlUtil.errorSnippet(this.getWindowErrorMessage());
         }

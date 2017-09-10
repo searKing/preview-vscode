@@ -39,14 +39,16 @@ export class HtmlDocumentContentManager implements DocumentContentManagerInterfa
     // 生成当前编辑页面的HTM L代码片段
     // @Override
     public async createContentSnippet(): Promise<string> {
-        if (!this._editor || !this._editor.document) {
+        let editor = this._editor;
+
+        if (!editor || !editor.document) {
             return HtmlUtil.errorSnippet(this.getWindowErrorMessage());
         }
-        if (this._editor.document.languageId !== "html" && this._editor.document.languageId !== "jade") {
+        if (editor.document.languageId !== "html" && editor.document.languageId !== "jade") {
             return HtmlUtil.errorSnippet("Active editor doesn't show a HTML or Jade document - no properties to preview.");
         }
 
-        let previewSnippet: string = this.generatePreviewSnippet(this._editor);
+        let previewSnippet: string = this.generatePreviewSnippet(editor);
         if (!previewSnippet || previewSnippet.length <= 0) {
             return HtmlUtil.errorSnippet(this.getErrorMessage());
         }
