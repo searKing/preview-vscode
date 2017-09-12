@@ -8,7 +8,8 @@ let fileUrl = require("file-url");
 export class ShellUtil {
     public static execPromisLike(cmd: string): Promise<string> {
         return new Promise<string>((resolve, reject) => {
-            exec(cmd, (error: Error, stdout: Buffer, stderr: Buffer) => {
+
+            exec(cmd, (error: Error | null, stdout: string, stderr: string) => {
                 if (error) {
                     let errorMessage = [
                         error.name,
@@ -18,8 +19,10 @@ export class ShellUtil {
                         stderr.toString()
                     ].join("\n");
                     reject(errorMessage);
+                    return;
                 }
                 resolve(stdout.toString());
+                return;
             });
         });
 
