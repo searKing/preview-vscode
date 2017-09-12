@@ -42,7 +42,7 @@ export class VscodeUtil {
         //Ask what they want to do:
         let choice = await vscode.window.showQuickPick(items, {
             matchOnDescription: true,
-            placeHolder: "Couldn't determine type to preivew, please choose."
+            placeHolder: "Couldn't determine type to preview, please choose."
         });
         if (!choice || !choice.label) {
             throw new Error("no preview type selected");
@@ -74,7 +74,7 @@ export class VscodeUtil {
 
         if (dontAsk) {
             return Promise.resolve(editor.document.languageId);
-            // throw new Error("Couldn't determine type to preivew, and the extenion don't let show choose box.");
+            // throw new Error("Couldn't determine type to preview, and the extension don't let show choose box.");
         }
 
         //Ask what they want to do:
