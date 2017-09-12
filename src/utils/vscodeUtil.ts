@@ -62,6 +62,7 @@ export class VscodeUtil {
         switch (editor.document.languageId) {
             case "html":
             case "jade":
+            case "pug":
             case "markdown":
             case "css":
             case "mermaid":

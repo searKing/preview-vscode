@@ -53,6 +53,16 @@
                     ".rest",
                     ".hrst"
                 ]
+            },
+            {
+                "id": "pug",
+                "aliases": [
+                    "PUG",
+                    "PUG Text"
+                ],
+                "extensions": [
+                    ".pug"
+                ]
             }
         ],
         "keybindings": [
@@ -100,6 +110,7 @@
         "file-url": "^2.0.2",
         "markdown": "^0.5.0",
         "mermaid": "^7.0.0",
+        "pug": "^2.0.0-rc.4",
         "rst2mdown": "^0.1.0"
     },
     "devDependencies": {

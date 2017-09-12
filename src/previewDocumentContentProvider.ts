@@ -9,6 +9,7 @@ import {
 import * as path from "path";
 import { DocumentContentManagerInterface } from "./documentContentManagerInterface";
 import * as htmlDocumentContentManager from "./htmlDocumentContentManager";
+import * as pugDocumentContentManager from "./pugDocumentContentManager";
 import * as markdownDocumentContentManager from "./markdownDocumentContentManager";
 import * as imageDocumentContentManager from "./imageDocumentContentManager";
 import * as cssDocumentContentManager from "./cssDocumentContentManager"
@@ -51,8 +52,8 @@ export class PreviewDocumentContentProvider implements TextDocumentContentProvid
     //     return this;
     // };
 
-    private async refreshCurrentDocumentContentProvider(editor:TextEditor): Promise<void> {
-        if(!editor || !editor.document){
+    private async refreshCurrentDocumentContentProvider(editor: TextEditor): Promise<void> {
+        if (!editor || !editor.document) {
             return Promise.reject("editor or editor.document is undefined.");
         }
         let uri = editor.document.uri;
@@ -64,6 +65,9 @@ export class PreviewDocumentContentProvider implements TextDocumentContentProvid
             case "html":
             case "jade":
                 thiz._documentContentManager = new htmlDocumentContentManager.HtmlDocumentContentManager(editor);
+                break;
+            case "pug":
+                thiz._documentContentManager = new pugDocumentContentManager.PugDocumentContentManager(editor);
                 break;
             case "markdown":
                 thiz._documentContentManager = new markdownDocumentContentManager.MarkdownDocumentContentManager(editor);
@@ -80,6 +84,7 @@ export class PreviewDocumentContentProvider implements TextDocumentContentProvid
             case "image":
                 thiz._documentContentManager = new imageDocumentContentManager.ImageDocumentContentManager(editor);
                 break;
+            case "pug":
             default:
                 if (!thiz._documentContentManager) {
                     thiz._documentContentManager = new noneDocumentContentManager.NoneDocumentContentManager(editor);
@@ -109,7 +114,7 @@ export class PreviewDocumentContentProvider implements TextDocumentContentProvid
         this._onDidChange.fire(previewUri);
     }
 
-    public async sendPreviewCommand(displayColumn: ViewColumn, editor:TextEditor): Promise<void> {
+    public async sendPreviewCommand(displayColumn: ViewColumn, editor: TextEditor): Promise<void> {
         await this.refreshCurrentDocumentContentProvider(editor)
         // 生成预览临时文件的URI
         let previewUri: Uri = await PreviewDocumentContentProvider.getPreviewUri()
