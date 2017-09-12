@@ -9,8 +9,8 @@ import {
 import * as fs from "fs";
 import * as path from "path";
 import { DocumentContentManagerInterface } from "./documentContentManagerInterface";
-import { HtmlUtil } from "./utils/htmlUtil";
-import { MarkDownUtil } from "./utils/markDownUtil";
+import { HtmlUtil } from "./../utils/htmlUtil";
+import { MarkDownUtil } from "./../utils/markDownUtil";
 
 export class MarkdownDocumentContentManager implements DocumentContentManagerInterface {
     private _editor: TextEditor;

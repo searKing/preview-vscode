@@ -21,11 +21,11 @@ import {
 import {
     HtmlUtil,
     SourceType
-} from "./utils/htmlUtil";
+} from "./../utils/htmlUtil";
 import {
     TextUtil,
     TextUtilReturnType
-} from "./utils/textUtil"
+} from "./../utils/textUtil"
 import * as path from "path";
 let fileUrl = require("file-url");
 

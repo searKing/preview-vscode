@@ -7,9 +7,9 @@ import {
     TextDocument, Disposable
 } from "vscode";
 import { DocumentContentManagerInterface } from "./documentContentManagerInterface";
-import { HtmlUtil, SourceType } from "./utils/htmlUtil";
-import { TextUtil, TextUtilReturnType } from "./utils/textUtil"
-import { DocutilsUtil } from "./utils/docutilsUtil"
+import { HtmlUtil, SourceType } from "./../utils/htmlUtil";
+import { TextUtil, TextUtilReturnType } from "./../utils/textUtil"
+import { DocutilsUtil } from "./../utils/docutilsUtil"
 
 import * as path from "path";
 let pug = require("pug");

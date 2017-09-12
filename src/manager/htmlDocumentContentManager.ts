@@ -23,10 +23,10 @@ import {
 import {
     HtmlUtil,
     SourceType
-} from "./utils/htmlUtil";
+} from "./../utils/htmlUtil";
 import {
     VscodeUtil
-} from "./utils/vscodeUtil";
+} from "./../utils/vscodeUtil";
 let fileUrl = require("file-url");
 
 export class HtmlDocumentContentManager implements DocumentContentManagerInterface {

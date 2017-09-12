@@ -7,15 +7,15 @@ import {
     TextDocument, Disposable
 } from "vscode";
 import * as path from "path";
-import { DocumentContentManagerInterface } from "./documentContentManagerInterface";
-import * as htmlDocumentContentManager from "./htmlDocumentContentManager";
-import * as pugDocumentContentManager from "./pugDocumentContentManager";
-import * as markdownDocumentContentManager from "./markdownDocumentContentManager";
-import * as imageDocumentContentManager from "./imageDocumentContentManager";
-import * as cssDocumentContentManager from "./cssDocumentContentManager"
-import * as mermaidDocumentContentManager from "./mermaidDocumentContentManager"
-import * as reStructuredTextDocumentContentManager from "./reStructuredTextDocumentContentManager"
-import * as noneDocumentContentManager from "./noneDocumentContentManager"
+import { DocumentContentManagerInterface } from "./manager/documentContentManagerInterface";
+import * as htmlDocumentContentManager from "./manager/htmlDocumentContentManager";
+import * as pugDocumentContentManager from "./manager/pugDocumentContentManager";
+import * as markdownDocumentContentManager from "./manager/markdownDocumentContentManager";
+import * as imageDocumentContentManager from "./manager/imageDocumentContentManager";
+import * as cssDocumentContentManager from "./manager/cssDocumentContentManager"
+import * as mermaidDocumentContentManager from "./manager/mermaidDocumentContentManager"
+import * as reStructuredTextDocumentContentManager from "./manager/reStructuredTextDocumentContentManager"
+import * as noneDocumentContentManager from "./manager/noneDocumentContentManager"
 
 
 import { MermaidUtil } from "./utils/mermaidUtil";
