@@ -83,7 +83,7 @@ export class ReStructuredTextDocumentContentManager implements DocumentContentMa
 
     // 生成预览编辑页面
     private generatePreviewSnippet(editor: TextEditor): Promise<string> {
-        if (!editor || editor.document) {
+        if (!editor || !editor.document) {
             return Promise.resolve(HtmlUtil.errorSnippet(this.getWindowErrorMessage()));
         }
         // 获取当前编辑页面对应的文档
