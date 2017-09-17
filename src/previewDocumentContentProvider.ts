@@ -110,14 +110,16 @@ export class PreviewDocumentContentProvider implements TextDocumentContentProvid
 
     // 通知监听者发生待预览HTML文本变化事件
     public update() {
-        let previewUri: Uri = PreviewDocumentContentProvider.getPreviewUri();
+        let fileName = this._documentContentManager.editor().document.fileName;
+        let previewUri: Uri = PreviewDocumentContentProvider.getPreviewUri(fileName);
         this._onDidChange.fire(previewUri);
     }
 
     public async sendPreviewCommand(displayColumn: ViewColumn, editor: TextEditor): Promise<void> {
         await this.refreshCurrentDocumentContentProvider(editor)
+        let fileName = this._documentContentManager.editor().document.fileName;
         // 生成预览临时文件的URI
-        let previewUri: Uri = await PreviewDocumentContentProvider.getPreviewUri()
+        let previewUri: Uri = await PreviewDocumentContentProvider.getPreviewUri(fileName)
         await this._documentContentManager.sendPreviewCommand(previewUri, displayColumn, editor);
         //主动触发文本更新，因为当预览命令发生变化的时候
         //对于不能判断文本类型的，会弹出文本选择对话框，但是由于文本没有发生变化
@@ -126,12 +128,12 @@ export class PreviewDocumentContentProvider implements TextDocumentContentProvid
         return this.update();
     }
 
-    static getPreviewTitle(): string {
-        return `Preview: '${path.basename(window.activeTextEditor.document.fileName)}'`;
+    static getPreviewTitle(fileName: string): string {
+        return `Preview: '${path.basename(fileName)}'`;
     }
-    static getPreviewUri(): Uri {
+    static getPreviewUri(fileName: string): Uri {
         // 预览窗口标题
-        let previewTitle = this.getPreviewTitle();
+        let previewTitle = this.getPreviewTitle(fileName);
         return Uri.parse(`${PreviewDocumentContentProvider.previewScheme}://preview/${previewTitle}`);
     }
 }

@@ -36,6 +36,12 @@ export class HtmlDocumentContentManager implements DocumentContentManagerInterfa
         this._editor = editor;
         return this;
     }
+
+    // @Override
+    public editor(): TextEditor {
+        return this._editor;
+    }
+
     // 生成当前编辑页面的HTM L代码片段
     // @Override
     public async createContentSnippet(): Promise<string> {

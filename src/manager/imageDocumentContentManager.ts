@@ -46,6 +46,12 @@ export class ImageDocumentContentManager implements DocumentContentManagerInterf
     }
 
 
+    // @Override
+    public editor(): TextEditor {
+        return this._editor;
+    }
+
+
     // 生成当前编辑页面的可预览代码片段
     // @Override
     public async createContentSnippet(): Promise<string> {
