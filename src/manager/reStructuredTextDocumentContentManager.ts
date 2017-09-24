@@ -13,7 +13,9 @@ import { DocutilsUtil } from "./../utils/docutilsUtil"
 
 import * as path from "path";
 let rst2mdown = require("rst2mdown");
-let markdown = require("markdown").markdown;
+
+import { Markdown2HtmlPro, IMarkdown2HtmlPro } from "markdown2html-pro";
+const markdown2htmlPro: IMarkdown2HtmlPro = new Markdown2HtmlPro();
 
 
 export class ReStructuredTextDocumentContentManager implements DocumentContentManagerInterface {
@@ -60,8 +62,7 @@ export class ReStructuredTextDocumentContentManager implements DocumentContentMa
     }
 
     private rstSrcSnippetWithNodeModules(rstContent: string): string {
-        return markdown.toHTML(rst2mdown(rstContent));
-
+        return markdown2htmlPro.markdown2html(rst2mdown(rstContent));
     }
     private rstSrcSnippetWithDocutils(editor: TextEditor): Promise<string> {
         if (!editor || !editor.document) {

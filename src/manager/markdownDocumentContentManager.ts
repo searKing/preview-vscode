@@ -8,19 +8,17 @@ import {
 } from "vscode";
 import * as fs from "fs";
 import * as path from "path";
-import { Markdown2HtmlPro, IMarkdown2HtmlPro } from "markdown2html-pro";
 import { DocumentContentManagerInterface } from "./documentContentManagerInterface";
 import { HtmlUtil } from "./../utils/htmlUtil";
 import { MarkDownUtil } from "./../utils/markDownUtil";
+import { Markdown2HtmlPro, IMarkdown2HtmlPro } from "markdown2html-pro";
+const markdown2htmlPro: IMarkdown2HtmlPro = new Markdown2HtmlPro();
 
 export class MarkdownDocumentContentManager implements DocumentContentManagerInterface {
     private _editor: TextEditor;
-    private _markdown2htmlPro: IMarkdown2HtmlPro;
 
     public constructor(editor: TextEditor) {
         this._editor = editor;
-
-        this._markdown2htmlPro = new Markdown2HtmlPro();
         return this;
     }
 
@@ -77,7 +75,7 @@ export class MarkdownDocumentContentManager implements DocumentContentManagerInt
     }
 
     private getHTML(md: string) {
-        return this._markdown2htmlPro.markdown2html(md);
+        return markdown2htmlPro.markdown2html(md);
 
     }
 }
