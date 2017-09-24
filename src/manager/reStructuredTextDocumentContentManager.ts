@@ -78,7 +78,8 @@ export class ReStructuredTextDocumentContentManager implements DocumentContentMa
         }
         let thiz = this;
         return this.rstSrcSnippetWithDocutils(editor).catch(function (error) {
-            console.error("we got an error: " + error);
+            console.error("try rst2html of doctutils failed, please check python and doctuils environment: " + error);
+            console.error(", we use a simple preview instead ^-)");
             window.showWarningMessage("try rst2html of doctutils failed, please check python and doctuils environment, we use a simple preview instead ^-)");
             if (!editor.document) {
                 return Promise.resolve(HtmlUtil.errorSnippet(this.getWindowErrorMessage()));
