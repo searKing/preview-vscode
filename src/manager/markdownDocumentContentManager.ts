@@ -8,15 +8,19 @@ import {
 } from "vscode";
 import * as fs from "fs";
 import * as path from "path";
+import { Markdown2HtmlPro, IMarkdown2HtmlPro } from "markdown2html-pro";
 import { DocumentContentManagerInterface } from "./documentContentManagerInterface";
 import { HtmlUtil } from "./../utils/htmlUtil";
 import { MarkDownUtil } from "./../utils/markDownUtil";
 
 export class MarkdownDocumentContentManager implements DocumentContentManagerInterface {
     private _editor: TextEditor;
+    private _markdown2htmlPro: IMarkdown2HtmlPro;
 
     public constructor(editor: TextEditor) {
         this._editor = editor;
+
+        this._markdown2htmlPro = new Markdown2HtmlPro();
         return this;
     }
 
@@ -47,7 +51,8 @@ export class MarkdownDocumentContentManager implements DocumentContentManagerInt
 
     // @Override
     public sendPreviewCommand(previewUri: Uri, displayColumn: ViewColumn): Thenable<void> {
-        return MarkDownUtil.sendPreviewCommand(previewUri, displayColumn);
+        // return MarkDownUtil.sendPreviewCommand(previewUri, displayColumn);
+        return HtmlUtil.sendPreviewCommand(previewUri, displayColumn);
 
     }
 
@@ -66,7 +71,13 @@ export class MarkdownDocumentContentManager implements DocumentContentManagerInt
         }
         // 获取当前编辑页面对应的文档
         let doc = editor.document;
-        return HtmlUtil.fixNoneNetLinks(doc.getText(), doc.fileName);
+        // let html = editormd.markdownToHTML(doc.getText());
+        let html = this.getHTML(doc.getText());
+        return HtmlUtil.fixNoneNetLinks(html, doc.fileName);
     }
 
+    private getHTML(md: string) {
+        return this._markdown2htmlPro.markdown2html(md);
+
+    }
 }

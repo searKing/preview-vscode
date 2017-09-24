@@ -107,10 +107,12 @@
         "test": "node ./node_modules/vscode/bin/test"
     },
     "dependencies": {
-        "editor.md": "^1.5.0",
+        "deasync": "^0.1.10",
         "file-url": "^2.0.2",
         "markdown": "^0.5.0",
+        "markdown2html-pro": "^0.0.2",
         "mermaid": "^7.0.17",
+        "oniguruma": "^7.0.0",
         "pug": "^2.0.0-rc.4",
         "require": "^2.4.20",
         "rst2mdown": "^0.1.0"
@@ -118,11 +120,11 @@
     "devDependencies": {
         "@types/mocha": "^2.2.43",
         "@types/node": "^8.0.28",
+        "electron-rebuild": "^1.6.0",
         "jslint": "^0.11.0",
         "mocha": "^3.5.3",
         "tslint": "^5.7.0",
         "typescript": "^2.5.2",
-        "vscode": "^1.0.0",
-        "require": "^2.4.20"
+        "vscode": "^1.1.5"
     }
 }
