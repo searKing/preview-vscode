@@ -11,8 +11,9 @@ import * as path from "path";
 import { DocumentContentManagerInterface } from "./documentContentManagerInterface";
 import { HtmlUtil } from "./../utils/htmlUtil";
 import { MarkDownUtil } from "./../utils/markDownUtil";
-import { Markdown2HtmlPro, IMarkdown2HtmlPro } from "markdown2html-pro";
-const markdown2htmlPro: IMarkdown2HtmlPro = new Markdown2HtmlPro();
+
+let Markdown2HtmlPro = require("markdown-2-html-pro").Markdown2HtmlPro;
+const markdown2htmlPro = new Markdown2HtmlPro();
 
 export class MarkdownDocumentContentManager implements DocumentContentManagerInterface {
     private _editor: TextEditor;

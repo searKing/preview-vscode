@@ -14,8 +14,8 @@ import { DocutilsUtil } from "./../utils/docutilsUtil"
 import * as path from "path";
 let rst2mdown = require("rst2mdown");
 
-import { Markdown2HtmlPro, IMarkdown2HtmlPro } from "markdown2html-pro";
-const markdown2htmlPro: IMarkdown2HtmlPro = new Markdown2HtmlPro();
+let Markdown2HtmlPro = require("markdown-2-html-pro").Markdown2HtmlPro;
+const markdown2htmlPro = new Markdown2HtmlPro();
 
 
 export class ReStructuredTextDocumentContentManager implements DocumentContentManagerInterface {
