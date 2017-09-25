@@ -14,7 +14,7 @@ import { DocutilsUtil } from "./../utils/docutilsUtil"
 import * as path from "path";
 let rst2mdown = require("rst2mdown");
 
-let Markdown2HtmlPro = require("markdown-2-html-pro").Markdown2HtmlPro;
+let Markdown2HtmlPro = require("markdown2html-pro").Markdown2HtmlPro;
 const markdown2htmlPro = new Markdown2HtmlPro();
 
 

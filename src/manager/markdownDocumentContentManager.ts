@@ -12,7 +12,7 @@ import { DocumentContentManagerInterface } from "./documentContentManagerInterfa
 import { HtmlUtil } from "./../utils/htmlUtil";
 import { MarkDownUtil } from "./../utils/markDownUtil";
 
-let Markdown2HtmlPro = require("markdown-2-html-pro").Markdown2HtmlPro;
+let Markdown2HtmlPro = require("markdown2html-pro").Markdown2HtmlPro;
 const markdown2htmlPro = new Markdown2HtmlPro();
 
 export class MarkdownDocumentContentManager implements DocumentContentManagerInterface {

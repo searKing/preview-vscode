@@ -108,7 +108,7 @@
     },
     "dependencies": {
         "file-url": "^2.0.2",
-        "markdown-2-html-pro": "0.0.3",
+        "markdown2html-pro": "0.0.5",
         "mermaid": "^7.0.17",
         "pug": "^2.0.0-rc.4",
         "rst2mdown": "^0.1.0"
