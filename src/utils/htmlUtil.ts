@@ -181,7 +181,7 @@ export class HtmlUtil {
             return srcUrl;
         }
         let result: RegExpExecArray = null;
-        if((result =HtmlUtil.HTTP_S_REGREX_PREFFIX.exec(srcUrl))== null){
+        if ((result = HtmlUtil.HTTP_S_REGREX_PREFFIX.exec(srcUrl)) == null) {
             return srcUrl;
         }
         try {
@@ -306,10 +306,9 @@ export class HtmlUtil {
             return ``;
         }
 
-        var head = `<link href="${this.getExtensionPath()}/node_modules/mermaid/dist/mermaid.forest.css" rel="stylesheet">
-                    <script src="${this.getExtensionPath()}/node_modules/mermaid/dist/mermaid.min.js">
+        var head = `<script src="${this.getExtensionPath()}/node_modules/mermaid/dist/mermaid.min.js">
                     <script type="text/javascript">
-                        mermaid.initialize({startOnLoad:true});
+                        mermaid.initialize({startOnLoad: true, theme: 'forest'});
                     </script>`;
         var body = `
                     <hr>
