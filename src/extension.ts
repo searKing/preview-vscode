@@ -31,19 +31,19 @@ export function activate(context: vscode.ExtensionContext) {
         }
     })
 
-// register content provider for scheme `references`
-	// register document link provider for scheme `references`
-	const providerDisposable = vscode.Disposable.from(
-		registerPreviewDocumentContentProvider()
-	);
-    function registerPreviewDocumentContentProvider() : vscode.Disposable{
+    // register content provider for scheme `references`
+    // register document link provider for scheme `references`
+    const providerDisposable = vscode.Disposable.from(
+        registerPreviewDocumentContentProvider()
+    );
+    function registerPreviewDocumentContentProvider(): vscode.Disposable {
         // 向vscode为文本内容数据库注册一个URI的协议scheme，以后均可通过该协议与文本内容数据库进行交互
         // html-preview 通过这个scheme访问的内容，都是通过该provider获得的
         return vscode.workspace.registerTextDocumentContentProvider(PreviewDocumentContentProvider.previewScheme, PROVIDER);
     }
 
     // 调用vscode系统命令预览当前HTML页面
-    function sendPreviewCommand(displayColumn: vscode.ViewColumn, editor:vscode.TextEditor): void {
+    function sendPreviewCommand(displayColumn: vscode.ViewColumn, editor: vscode.TextEditor): void {
         // 给vscode发送预览该临时HTML文件的命令
         PROVIDER.sendPreviewCommand(displayColumn, editor).catch(function (error) {
             console.error("we got an error: " + error);
@@ -99,7 +99,7 @@ export function activate(context: vscode.ExtensionContext) {
 
         // Display a message box to the user
         // vscode.window.showInformationMessage('Hello preview!');
-        let e : vscode.TextEditor | undefined = vscode.window.activeTextEditor;
+        let e: vscode.TextEditor | undefined = vscode.window.activeTextEditor;
         if (!e) {
             return sendBackviewCommand();
         }
@@ -112,7 +112,7 @@ export function activate(context: vscode.ExtensionContext) {
 
         // Display a message box to the user
         // vscode.window.showInformationMessage('Hello previewToSide!');
-        let e : vscode.TextEditor | undefined = vscode.window.activeTextEditor;
+        let e: vscode.TextEditor | undefined = vscode.window.activeTextEditor;
         if (!e) {
             return sendCloseviewCommand();
         }
