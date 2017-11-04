@@ -108,7 +108,7 @@
     },
     "dependencies": {
         "file-url": "^2.0.2",
-        "markdown2html-pro": "^1.0.5",
+        "markdown2html-less": "^0.0.1",
         "pug": "^2.0.0-rc.4",
         "rst2mdown": "^0.1.0"
     },

@@ -12,8 +12,8 @@ import { DocumentContentManagerInterface } from "./documentContentManagerInterfa
 import { HtmlUtil } from "./../utils/htmlUtil";
 import { MarkDownUtil } from "./../utils/markDownUtil";
 
-let Markdown2HtmlPro = require("markdown2html-pro").Markdown2HtmlPro;
-const markdown2htmlPro = new Markdown2HtmlPro();
+let Markdown2HtmlLess = require("markdown2html-less").Markdown2HtmlLess;
+const markdown2htmlLess = new Markdown2HtmlLess();
 
 export class MarkdownDocumentContentManager implements DocumentContentManagerInterface {
     private _editor: TextEditor;
@@ -79,8 +79,11 @@ export class MarkdownDocumentContentManager implements DocumentContentManagerInt
     }
 
     private getHTML(md: string): Promise<string> {
-
-        return markdown2htmlPro.markdown2html(md);
+        const html = markdown2htmlLess.markdown2html(md);
+        html.head = html.head || '';
+        html.body = html.body || '';
+        return Promise.resolve(`${html.head}
+${html.body}`);
 
     }
 }
