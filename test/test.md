@@ -9,14 +9,14 @@
     - [ ] GFM task list 4-1
     - [ ] GFM task list 4-2
 
-```sequence
+```mermaid
 graph LR;  
 　　A-->B;    
 　　A-->C;  
 　　B-->D;  
 　　C-->D;  
 ```
-```sequence
+```mermaid
 sequenceDiagram
     Alice->>+John: imma activate you
     John->>Alice: stahp
@@ -25,7 +25,7 @@ sequenceDiagram
 
 
 
-```sequence
+```mermaid
 sequenceDiagram
 　　　participant Alice
 　　　participant Bob
@@ -38,7 +38,7 @@ sequenceDiagram
 　　　John->Bob: How about you?
 　　　Bob-->John: Jolly good!
 ```
-```sequence
+```mermaid
 gantt
 　　　dateFormat　YYYY-MM-DD
 　　　title Adding GANTT diagram functionality to mermaid

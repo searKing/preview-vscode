@@ -40,7 +40,7 @@ export class MarkdownDocumentContentManager implements DocumentContentManagerInt
             return HtmlUtil.errorSnippet(this.getErrorMessage());
         }
 
-        let previewSnippet: string = this.generatePreviewSnippet(editor);
+        let previewSnippet: string = await this.generatePreviewSnippet(editor);
         if (!previewSnippet || previewSnippet.length <= 0) {
             return HtmlUtil.errorSnippet(this.getErrorMessage());
         }
@@ -64,18 +64,22 @@ export class MarkdownDocumentContentManager implements DocumentContentManagerInt
     }
 
     // 生成预览编辑页面
-    private generatePreviewSnippet(editor: TextEditor): string {
-        if (!editor || !editor.document) {
-            return HtmlUtil.errorSnippet(this.getWindowErrorMessage());
-        }
-        // 获取当前编辑页面对应的文档
-        let doc = editor.document;
-        // let html = editormd.markdownToHTML(doc.getText());
-        let html = this.getHTML(doc.getText());
-        return HtmlUtil.fixNoneNetLinks(html, doc.fileName);
+    private generatePreviewSnippet(editor: TextEditor): Promise<string> {
+        return (async (): Promise<string> => {
+
+            if (!editor || !editor.document) {
+                return HtmlUtil.errorSnippet(this.getWindowErrorMessage());
+            }
+            // 获取当前编辑页面对应的文档
+            let doc = editor.document;
+            // let html = editormd.markdownToHTML(doc.getText());
+            let html = await this.getHTML(doc.getText());
+            return HtmlUtil.fixNoneNetLinks(html, doc.fileName);
+        })();
     }
 
-    private getHTML(md: string) {
+    private getHTML(md: string): Promise<string> {
+
         return markdown2htmlPro.markdown2html(md);
 
     }
