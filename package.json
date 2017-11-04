@@ -2,7 +2,7 @@
     "name": "preview-vscode",
     "displayName": "Preview",
     "description": "A Markdown, ReStructured Text, HTML, Jade, Pug, Image, CSS, Mermaid previewer",
-    "version": "1.3.4",
+    "version": "1.4.0",
     "publisher": "searKing",
     "author": "Haixin Chen",
     "license": "MIT",
