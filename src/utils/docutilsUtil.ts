@@ -13,7 +13,7 @@ export class DocutilsUtil {
     private static docutils(command: string, fileName: string): Promise<string> {
         return ShellUtil.execPromisLike([
             command,
-            fileName
+            "\""+fileName+"\"" 
         ].join(" "));
     }
     private static docutilsFromSouceCode(command: string, fileName: string): Promise<string> {
@@ -33,8 +33,8 @@ export class DocutilsUtil {
             );
         return ShellUtil.execPromisLike([
             "python",
-            source_path,
-            fileName
+            "\""+source_path+"\"" ,
+            "\""+fileName+"\"" 
         ].join(" "));
     }
 
