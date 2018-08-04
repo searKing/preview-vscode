@@ -2,7 +2,7 @@
     "name": "preview-vscode",
     "displayName": "Preview",
     "description": "A Markdown, ReStructured Text, HTML, Jade, Pug, Image, CSS, Mermaid previewer",
-    "version": "1.4.3",
+    "version": "1.4.4",
     "publisher": "searKing",
     "author": "Haixin Chen",
     "license": "MIT",
@@ -69,22 +69,14 @@
             {
                 "command": "extension.preview",
                 "key": "ctrl+shift+v",
-                "mac": "cmd+shift+v"
-            },
-            {
-                "command": "extension.preview",
-                "key": "ctrl+shift+v",
-                "mac": "ctrl+shift+v"
+                "mac": "cmd+shift+v",
+                "when": "!terminalFocus"
             },
             {
                 "command": "extension.previewToSide",
                 "key": "ctrl+k v",
-                "mac": "cmd+k v"
-            },
-            {
-                "command": "extension.previewToSide",
-                "key": "ctrl+k v",
-                "mac": "ctrl+k v"
+                "mac": "cmd+k v",
+                "when": "!terminalFocus"
             }
         ],
         "commands": [
