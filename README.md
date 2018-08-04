@@ -33,7 +33,7 @@ Just press the same key when you want to go back to the original view.
         * others as Markdown, ReStructured Text, HTML, Jade or Mermaid
             * for ReStructured Text, docutils is the first choice, and rst2mdown is plan B.
                 * [python](https://www.python.org/)
-                * [doctuils](http://docutils.sourceforge.net/)
+                * [doctutils](http://docutils.sourceforge.net/)
     - Just do as the operation as mentioned and a showQuickPick will pop up to show choices.
     - ![Demonstration](images/demonstration.gif)
 
