@@ -1,38 +1,12 @@
 "use strict";
-import {
-    workspace,
-    window,
-    ExtensionContext,
-    commands,
-    TextEditor,
-    TextDocumentContentProvider,
-    EventEmitter,
-    Event,
-    Uri,
-    TextDocumentChangeEvent,
-    ViewColumn,
-    TextEditorSelectionChangeEvent,
-    TextDocument,
-    Disposable
-} from "vscode";
-import {
-    DocumentContentManagerInterface
-} from "./documentContentManagerInterface";
-import {
-    HtmlUtil,
-    SourceType
-} from "./../utils/htmlUtil";
-import {
-    TextUtil,
-    TextUtilReturnType
-} from "./../utils/textUtil"
-import * as path from "path";
-let fileUrl = require("file-url");
+import { TextEditor, Uri, ViewColumn } from "vscode";
+import { DocumentContentManagerInterface } from "./documentContentManagerInterface";
+import { HtmlUtil, SourceType } from "./../utils/htmlUtil";
+import { TextUtil, TextUtilReturnType } from "./../utils/textUtil"
 
 export class ImageDocumentContentManager implements DocumentContentManagerInterface {
 
 
-    private COMMAND: string = "vscode.previewHtml";
     private IMAGE_TYPE_REGREX_PREFFIX: RegExp = /http[s]{0,1}:\/\/|file:\/\/|\s[\.]{0,2}\//;
     private IMAGE_TYPE_REGREX_SUFFIX: RegExp = /png|jpg|jpeg|gif|bmp|\s/;
     private IMAGE_TYPE_REGREX_SPLIT: RegExp = /\s/;
@@ -86,10 +60,6 @@ export class ImageDocumentContentManager implements DocumentContentManagerInterf
     private indexOfSplit(editor: TextEditor, startPos: number): TextUtilReturnType {
         return TextUtil.regexIndexOf(editor, startPos, this.IMAGE_TYPE_REGREX_SPLIT);
     }
-    // 获取指定位置开始后的第一个后缀的位置
-    private indexOfSuffix(editor: TextEditor, startPos: number): TextUtilReturnType {
-        return TextUtil.regexIndexOf(editor, startPos, this.IMAGE_TYPE_REGREX_SUFFIX);
-    }
     // 获取指定位置开始前的第一个资源前缀的位置
     private lastIndexOfPrefix(editor: TextEditor, startPos: number): TextUtilReturnType {
         return TextUtil.regexLastIndexOf(editor, startPos, this.IMAGE_TYPE_REGREX_PREFFIX);
@@ -139,7 +109,6 @@ export class ImageDocumentContentManager implements DocumentContentManagerInterf
 
         let startIndexOfImageUrl = this.lastIndexOfPrefix(editor, startPosOfSelectionText);
         let startPosOfImageUrl = startIndexOfImageUrl.pos;
-        let selectPrefix = startIndexOfImageUrl.mark;
         if (startPosOfImageUrl < 0) {
             return undefined;
         }

@@ -1,33 +1,7 @@
 "use strict";
-import {
-    workspace,
-    window,
-    ExtensionContext,
-    commands,
-    TextEditor,
-    TextDocumentContentProvider,
-    EventEmitter,
-    Event,
-    Uri,
-    TextDocumentChangeEvent,
-    ViewColumn,
-    TextEditorSelectionChangeEvent,
-    TextDocument,
-    Disposable
-} from "vscode";
-import * as fs from "fs";
-import * as path from "path";
-import {
-    DocumentContentManagerInterface
-} from "./documentContentManagerInterface";
-import {
-    HtmlUtil,
-    SourceType
-} from "./../utils/htmlUtil";
-import {
-    VscodeUtil
-} from "./../utils/vscodeUtil";
-let fileUrl = require("file-url");
+import { TextEditor, Uri, ViewColumn } from "vscode";
+import { DocumentContentManagerInterface } from "./documentContentManagerInterface";
+import { HtmlUtil, SourceType } from "./../utils/htmlUtil";
 
 export class HtmlDocumentContentManager implements DocumentContentManagerInterface {
     private _editor: TextEditor;
@@ -64,7 +38,7 @@ export class HtmlDocumentContentManager implements DocumentContentManagerInterfa
 
 
     // @Override
-    public sendPreviewCommand(previewUri: Uri, displayColumn: ViewColumn, editor:TextEditor): Thenable<void> {
+    public sendPreviewCommand(previewUri: Uri, displayColumn: ViewColumn, editor: TextEditor): Thenable<void> {
         return HtmlUtil.sendPreviewCommand(previewUri, displayColumn);
 
     }

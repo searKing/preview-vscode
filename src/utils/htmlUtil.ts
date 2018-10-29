@@ -1,14 +1,7 @@
 "use strict";
-import {
-    workspace, window, ExtensionContext, commands,
-    TextEditor, TextDocumentContentProvider, EventEmitter,
-    Event, Uri, TextDocumentChangeEvent, ViewColumn,
-    TextEditorSelectionChangeEvent,
-    TextDocument, Disposable
-} from "vscode";
+import { window, commands, Uri, ViewColumn } from "vscode";
 import * as path from "path";
 let fileUrl = require("file-url");
-
 
 export enum SourceType {
     BODY,           // 定义文档的主体
@@ -33,7 +26,7 @@ export class HtmlUtil {
     private static HTTP_S_REGREX_PREFFIX: RegExp = /http[s]{0,1}:\/\//;
     // @Override
     public static sendPreviewCommand(previewUri: Uri, displayColumn: ViewColumn): Thenable<void> {
-        return commands.executeCommand(this.COMMAND, previewUri, displayColumn).then((success) => {
+        return commands.executeCommand(this.COMMAND, previewUri, displayColumn).then(() => {
         }, (reason) => {
             console.warn(reason);
             window.showErrorMessage(reason);
@@ -204,10 +197,6 @@ export class HtmlUtil {
                     'cache-control': 'no-cache'
                 }
             };
-            var r = request(options, function (error, response, body) {
-                if (error) return reject(error);
-                resolve(this.uri.href)
-            });
         })
 
     }

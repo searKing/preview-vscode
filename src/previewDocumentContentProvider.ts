@@ -1,10 +1,6 @@
 "use strict";
 import {
-    workspace, window, ExtensionContext, commands,
-    TextEditor, TextDocumentContentProvider, EventEmitter,
-    Event, Uri, TextDocumentChangeEvent, ViewColumn,
-    TextEditorSelectionChangeEvent,
-    TextDocument, Disposable
+    TextEditor, TextDocumentContentProvider, EventEmitter, Event, Uri, ViewColumn
 } from "vscode";
 import * as path from "path";
 import { DocumentContentManagerInterface } from "./manager/documentContentManagerInterface";
@@ -17,13 +13,7 @@ import * as mermaidDocumentContentManager from "./manager/mermaidDocumentContent
 import * as reStructuredTextDocumentContentManager from "./manager/reStructuredTextDocumentContentManager"
 import * as noneDocumentContentManager from "./manager/noneDocumentContentManager"
 
-
-import { MermaidUtil } from "./utils/mermaidUtil";
 import { VscodeUtil } from "./utils/vscodeUtil"
-enum TextDocumentType {
-    HTML,
-    MARKDOWN
-}
 
 export class PreviewDocumentContentProvider implements TextDocumentContentProvider {
     static PREVIEW_SCHEME: string = "vscode-preview";
@@ -56,7 +46,6 @@ export class PreviewDocumentContentProvider implements TextDocumentContentProvid
         if (!editor || !editor.document) {
             return Promise.reject("editor or editor.document is undefined.");
         }
-        let uri = editor.document.uri;
         let thiz = this;
 
         //防止在一次预览命令下重复弹出选择预览类型的对话框

@@ -1,22 +1,5 @@
 "use strict";
-import {
-    workspace,
-    window,
-    ExtensionContext,
-    commands,
-    TextEditor,
-    TextDocumentContentProvider,
-    EventEmitter,
-    Event,
-    Uri,
-    TextDocumentChangeEvent,
-    ViewColumn,
-    TextEditorSelectionChangeEvent,
-    TextDocument,
-    Disposable
-} from "vscode";
-import * as path from "path";
-let fileUrl = require("file-url");
+import { TextEditor } from "vscode";
 
 export class TextUtilReturnType {
     public pos: number;

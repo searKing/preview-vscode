@@ -1,17 +1,8 @@
 "use strict";
-import {
-    workspace, window, ExtensionContext, commands,
-    TextEditor, TextDocumentContentProvider, EventEmitter,
-    Event, Uri, TextDocumentChangeEvent, ViewColumn,
-    TextEditorSelectionChangeEvent,
-    TextDocument, Disposable
-} from "vscode";
+import { TextEditor, Uri, ViewColumn } from "vscode";
 import { DocumentContentManagerInterface } from "./documentContentManagerInterface";
-import { HtmlUtil, SourceType } from "./../utils/htmlUtil";
-import { TextUtil, TextUtilReturnType } from "./../utils/textUtil"
-import { DocutilsUtil } from "./../utils/docutilsUtil"
+import { HtmlUtil } from "./../utils/htmlUtil";
 
-import * as path from "path";
 let pug = require("pug");
 
 

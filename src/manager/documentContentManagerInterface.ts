@@ -1,11 +1,5 @@
 "use strict";
-import {
-    workspace, window, ExtensionContext, commands,
-    TextEditor, TextDocumentContentProvider, EventEmitter,
-    Event, Uri, TextDocumentChangeEvent, ViewColumn,
-    TextEditorSelectionChangeEvent,
-    TextDocument, Disposable
-} from "vscode";
+import { TextEditor, Uri, ViewColumn } from "vscode";
 
 export interface DocumentContentManagerInterface {
 
@@ -14,5 +8,5 @@ export interface DocumentContentManagerInterface {
 
     sendPreviewCommand(previewUri: Uri, displayColumn: ViewColumn, editor: TextEditor): Thenable<void>;
 
-    editor() : TextEditor;
+    editor(): TextEditor;
 }

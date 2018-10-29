@@ -1,32 +1,6 @@
 "use strict";
-import {
-    workspace,
-    window,
-    ExtensionContext,
-    commands,
-    TextEditor,
-    TextDocumentContentProvider,
-    EventEmitter,
-    Event,
-    Uri,
-    TextDocumentChangeEvent,
-    ViewColumn,
-    TextEditorSelectionChangeEvent,
-    TextDocument,
-    Disposable,
-    version
-} from "vscode";
-import {
-    TextUtil
-} from "./textUtil"
-import * as path from "path";
-let fileUrl = require("file-url");
-
-
-enum PreviewWindowType {
-    OVERRIDE,
-    SIDE_BY_SIDE
-}
+import { window, commands, ViewColumn, version } from "vscode";
+import { TextUtil } from "./textUtil"
 
 export class MarkDownUtil {
     public static COMMAND_TOGGLE_PREVIEW: string = "workbench.action.markdown.togglePreview";
@@ -36,10 +10,10 @@ export class MarkDownUtil {
     public static COMMAND_BUTT: string = "";
 
     // @Override
-    public static sendPreviewCommand(previewUri: Uri, displayColumn: ViewColumn): Thenable < void > {
+    public static sendPreviewCommand(displayColumn: ViewColumn): Thenable<void> {
         let command: string = MarkDownUtil.getPreviewCommandTag(displayColumn);
         if (command != this.COMMAND_BUTT) {
-            return commands.executeCommand(command).then((success) => {}, (reason) => {
+            return commands.executeCommand(command).then(() => { }, (reason) => {
                 console.warn(reason);
                 window.showErrorMessage(reason);
             });

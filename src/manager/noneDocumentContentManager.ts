@@ -1,13 +1,5 @@
 "use strict";
-import {
-    workspace, window, ExtensionContext, commands,
-    TextEditor, TextDocumentContentProvider, EventEmitter,
-    Event, Uri, TextDocumentChangeEvent, ViewColumn,
-    TextEditorSelectionChangeEvent,
-    TextDocument, Disposable
-} from "vscode";
-import * as fs from "fs";
-import * as path from "path";
+import { window, TextEditor, Uri, ViewColumn } from "vscode";
 import { DocumentContentManagerInterface } from "./documentContentManagerInterface";
 
 export class NoneDocumentContentManager implements DocumentContentManagerInterface {

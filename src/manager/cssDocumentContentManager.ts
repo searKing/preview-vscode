@@ -1,11 +1,5 @@
 "use strict";
-import {
-    workspace, window, ExtensionContext, commands,
-    TextEditor, TextDocumentContentProvider, EventEmitter,
-    Event, Uri, TextDocumentChangeEvent, ViewColumn,
-    TextEditorSelectionChangeEvent,
-    TextDocument, Disposable
-} from "vscode";
+import { TextEditor, Uri, ViewColumn } from "vscode";
 import { DocumentContentManagerInterface } from "./documentContentManagerInterface";
 import { HtmlUtil, SourceType } from "./../utils/htmlUtil";
 
@@ -19,13 +13,12 @@ export class CssDocumentContentManager implements DocumentContentManagerInterfac
         return this;
     }
 
-    private COMMAND: string = "vscode.previewHtml";
 
     // @Override
     public editor(): TextEditor {
         return this._editor;
     }
-    
+
     // 生成当前编辑页面的可预览代码片段
     // @Override
     public async createContentSnippet(): Promise<string> {

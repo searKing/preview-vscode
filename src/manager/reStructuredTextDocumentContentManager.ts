@@ -1,17 +1,9 @@
 "use strict";
-import {
-    workspace, window, ExtensionContext, commands,
-    TextEditor, TextDocumentContentProvider, EventEmitter,
-    Event, Uri, TextDocumentChangeEvent, ViewColumn,
-    TextEditorSelectionChangeEvent,
-    TextDocument, Disposable
-} from "vscode";
+import { window, TextEditor, Uri, ViewColumn } from "vscode";
 import { DocumentContentManagerInterface } from "./documentContentManagerInterface";
-import { HtmlUtil, SourceType } from "./../utils/htmlUtil";
-import { TextUtil, TextUtilReturnType } from "./../utils/textUtil"
+import { HtmlUtil } from "./../utils/htmlUtil";
 import { DocutilsUtil } from "./../utils/docutilsUtil"
 
-import * as path from "path";
 let rst2mdown = require("rst2mdown");
 
 let Markdown2HtmlLess = require("markdown2html-less").Markdown2HtmlLess;

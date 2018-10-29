@@ -1,30 +1,7 @@
 "use strict";
-import {
-    workspace,
-    window,
-    ExtensionContext,
-    commands,
-    TextEditor,
-    TextDocumentContentProvider,
-    EventEmitter,
-    Event,
-    Uri,
-    TextDocumentChangeEvent,
-    ViewColumn,
-    TextEditorSelectionChangeEvent,
-    TextDocument,
-    Disposable
-} from "vscode";
-import {
-    DocumentContentManagerInterface
-} from "./documentContentManagerInterface";
-import {
-    HtmlUtil,
-    SourceType
-} from "./../utils/htmlUtil";
-import {
-    MermaidUtil
-} from "./../utils/mermaidUtil";
+import { TextEditor, Uri, ViewColumn } from "vscode";
+import { DocumentContentManagerInterface } from "./documentContentManagerInterface";
+import { HtmlUtil, SourceType } from "./../utils/htmlUtil";
 
 export class MermaidDocumentContentManager implements DocumentContentManagerInterface {
 
@@ -42,7 +19,6 @@ export class MermaidDocumentContentManager implements DocumentContentManagerInte
     }
 
 
-    private COMMAND: string = "vscode.previewHtml";
     // 生成当前编辑页面的可预览代码片段
     // @Override
     public async createContentSnippet(): Promise<string> {

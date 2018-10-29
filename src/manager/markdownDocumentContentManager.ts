@@ -1,16 +1,7 @@
 "use strict";
-import {
-    workspace, window, ExtensionContext, commands,
-    TextEditor, TextDocumentContentProvider, EventEmitter,
-    Event, Uri, TextDocumentChangeEvent, ViewColumn,
-    TextEditorSelectionChangeEvent,
-    TextDocument, Disposable
-} from "vscode";
-import * as fs from "fs";
-import * as path from "path";
+import { TextEditor, Uri, ViewColumn } from "vscode";
 import { DocumentContentManagerInterface } from "./documentContentManagerInterface";
 import { HtmlUtil } from "./../utils/htmlUtil";
-import { MarkDownUtil } from "./../utils/markDownUtil";
 
 let Markdown2HtmlLess = require("markdown2html-less").Markdown2HtmlLess;
 const markdown2htmlLess = new Markdown2HtmlLess();
