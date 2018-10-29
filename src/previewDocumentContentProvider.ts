@@ -52,9 +52,9 @@ export class PreviewDocumentContentProvider implements TextDocumentContentProvid
         let previewType = await VscodeUtil.getActivePreviewType(editor, false);
         switch (previewType) {
             case "html":
-            case "jade":
                 thiz._documentContentManager = new htmlDocumentContentManager.HtmlDocumentContentManager(editor);
                 break;
+            case "jade":
             case "pug":
                 thiz._documentContentManager = new pugDocumentContentManager.PugDocumentContentManager(editor);
                 break;

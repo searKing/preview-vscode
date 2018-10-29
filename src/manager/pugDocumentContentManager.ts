@@ -4,6 +4,7 @@ import { DocumentContentManagerInterface } from "./documentContentManagerInterfa
 import { HtmlUtil } from "./../utils/htmlUtil";
 
 let pug = require("pug");
+let jade = require("jade");
 
 
 export class PugDocumentContentManager implements DocumentContentManagerInterface {
@@ -29,7 +30,7 @@ export class PugDocumentContentManager implements DocumentContentManagerInterfac
         if (!editor) {
             return HtmlUtil.errorSnippet(this.getWindowErrorMessage());
         }
-        if (editor.document.languageId !== "pug") {
+        if (editor.document.languageId !== "jade" && editor.document.languageId !== "pug") {
             return HtmlUtil.errorSnippet(this.getErrorMessage());
         }
         return this.generatePreviewSnippet(editor);
@@ -49,24 +50,32 @@ export class PugDocumentContentManager implements DocumentContentManagerInterfac
         return `No Active editor - no properties to preview.`;
     }
 
+    private jadeSrcSnippetWithNodeModules(jadeContent: string): string {
+        // compile
+        var options = {
+            pretty: true
+        }
+        var fn = jade.compile(jadeContent, options);
+        var html = fn();
+
+        return html;
+    }
     private pugSrcSnippetWithNodeModules(pugContent: string): string {
         // compile
         var options = {
             pretty: true
         }
         var fn = pug.compile(pugContent, options);
-        var locals = {
-        };
-        var html = fn(locals);
+        var html = fn();
 
         return html;
-
-
-
     }
     private pugSrcSnippet(editor: TextEditor): Promise<string> {
         if (!editor) {
             return Promise.resolve(HtmlUtil.errorSnippet(this.getWindowErrorMessage()));
+        }
+        if (!!editor.document.fileName && editor.document.fileName.endsWith(".jade")) {
+            return Promise.resolve(this.jadeSrcSnippetWithNodeModules(editor.document.getText()));
         }
         return Promise.resolve(this.pugSrcSnippetWithNodeModules(editor.document.getText()));
 
