@@ -73,11 +73,12 @@ ${html.body}`;
         if (!editor) {
             return Promise.resolve(HtmlUtil.errorSnippet(this.getWindowErrorMessage()));
         }
+        
         let thiz = this;
         return this.rstSrcSnippetWithDocutils(editor).catch(function (error) {
             console.error("try rst2html of docutils failed, please check python and docutils environment: " + error);
             console.error(", we use a simple preview instead ^-)");
-            window.showWarningMessage("try rst2html of docutils failed, please check python and docutils environment, we use a simple preview instead ^-)");
+            // window.showInformationMessage("try rst2html of docutils failed, please check python and docutils environment, we use a simple preview instead ^-)");
             if (!editor.document) {
                 return Promise.resolve(HtmlUtil.errorSnippet(this.getWindowErrorMessage()));
             }

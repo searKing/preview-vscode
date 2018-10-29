@@ -100,6 +100,7 @@
     },
     "dependencies": {
         "file-url": "^2.0.2",
+        "markdown-it-anchor": "^5.0.2",
         "markdown2html-less": "0.0.1",
         "pug": "^2.0.3",
         "rst2mdown": "^0.1.0"
