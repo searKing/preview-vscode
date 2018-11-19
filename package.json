@@ -101,10 +101,11 @@
         "test": "node ./node_modules/vscode/bin/test"
     },
     "dependencies": {
+        "acorn": "^6.0.4",
         "file-url": "^2.0.2",
         "jade": "^1.11.0",
         "markdown-it-anchor": "^5.0.2",
-        "markdown2html-less": "0.0.4",
+        "markdown2html-less": "1.0.0",
         "pug": "^2.0.3",
         "rst2mdown": "^0.1.0"
     },

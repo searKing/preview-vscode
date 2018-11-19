@@ -4,7 +4,6 @@ import * as path from "path";
 import { TextUtil } from "./textUtil"
 import { PreviewDocumentContentProvider } from "../previewDocumentContentProvider";
 let fileUrl = require("file-url");
-
 export enum SourceType {
     BODY,           // 定义文档的主体
     BR,             // 在文档中插入换行符
@@ -38,9 +37,12 @@ export class HtmlUtil {
         });
     }
     public static sendPreviewCommand_1_23_0(previewUri: Uri, displayColumn: ViewColumn): Thenable<void> {
+        if (!window['createWebviewPanel']) {
+            return Promise.resolve();
+        }
         return workspace.openTextDocument(previewUri).then((doc: TextDocument) => {
             // Create and show a new webview
-            const panel = window.createWebviewPanel(
+            const panel = window['createWebviewPanel'](
                 previewUri.toString(), // Identifies the type of the webview. Used internally
                 PreviewDocumentContentProvider.getPreviewTitle(doc.fileName), // Title of the panel displayed to the user
                 displayColumn, // Editor column to show the new webview panel in.
