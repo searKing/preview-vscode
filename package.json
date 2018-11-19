@@ -109,15 +109,15 @@
         "rst2mdown": "^0.1.0"
     },
     "devDependencies": {
-        "@types/lodash": "^4.14.117",
+        "@types/lodash": "^4.14.118",
         "@types/mocha": "^5.2.5",
-        "@types/node": "^10.12.0",
+        "@types/node": "^10.12.9",
         "electron-rebuild": "^1.8.2",
         "jslint": "^0.12.0",
         "mermaid": "^7.1.2",
         "mocha": "^5.2.0",
         "tslint": "^5.11.0",
-        "typescript": "^3.1.3",
+        "typescript": "^3.1.6",
         "vscode": "^1.1.21"
     }
 }

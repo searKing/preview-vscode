@@ -1,6 +1,8 @@
 "use strict";
-import { window, commands, Uri, ViewColumn } from "vscode";
+import { window, commands, Uri, ViewColumn, version, workspace, TextDocument } from "vscode";
 import * as path from "path";
+import { TextUtil } from "./textUtil"
+import { PreviewDocumentContentProvider } from "../previewDocumentContentProvider";
 let fileUrl = require("file-url");
 
 export enum SourceType {
@@ -22,17 +24,38 @@ export enum SourceType {
 }
 
 export class HtmlUtil {
-    private static COMMAND: string = "vscode.previewHtml";
+    private static COMMAND_TOGGLE_PREVIEW: string = "vscode.previewHtml";
     private static HTTP_S_REGREX_PREFFIX: RegExp = /http[s]{0,1}:\/\//;
     // @Override
     public static sendPreviewCommand(previewUri: Uri, displayColumn: ViewColumn): Thenable<void> {
-        return commands.executeCommand(this.COMMAND, previewUri, displayColumn).then(() => {
+        if (TextUtil.versionCompare(version, "1.23.0") >= 0) {
+            return HtmlUtil.sendPreviewCommand_1_23_0(previewUri, displayColumn);
+        }
+        return commands.executeCommand(this.COMMAND_TOGGLE_PREVIEW, previewUri, displayColumn).then(() => {
         }, (reason) => {
             console.warn(reason);
             window.showErrorMessage(reason);
         });
     }
-
+    public static sendPreviewCommand_1_23_0(previewUri: Uri, displayColumn: ViewColumn): Thenable<void> {
+        return workspace.openTextDocument(previewUri).then((doc: TextDocument) => {
+            // Create and show a new webview
+            const panel = window.createWebviewPanel(
+                previewUri.toString(), // Identifies the type of the webview. Used internally
+                PreviewDocumentContentProvider.getPreviewTitle(doc.fileName), // Title of the panel displayed to the user
+                displayColumn, // Editor column to show the new webview panel in.
+                {
+                    // Enable scripts in the webview
+                    enableScripts: true
+                } // Webview options. More on these later.
+            );
+            // And set its HTML content
+            panel.webview.html = doc.getText()
+        }, (reason) => {
+            console.warn(reason);
+            window.showErrorMessage(reason);
+        });
+    }
     public static createFullHtmlSnippetFrom(headPayLoad?: string, bodyPayLoad?: string): string {
 
         return this.createRemoteSource(
