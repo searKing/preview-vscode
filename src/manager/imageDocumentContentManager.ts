@@ -84,6 +84,9 @@ export class ImageDocumentContentManager implements DocumentContentManagerInterf
             if (startPosOfSuffix < startPosOfImageUrl) {
                 return -1;
             }
+            if (selectedSuffix.match(/\s*/)) {
+                return startPosOfSuffix
+            }
             return startPosOfSuffix + selectedSuffix.length;
         }
     }
@@ -136,7 +139,7 @@ export class ImageDocumentContentManager implements DocumentContentManagerInterf
 
         let targetImageUri: string = imageUri;//await HtmlUtil.fixImageRedirectUrl(imageUri);
 
-        let head = HtmlUtil.createLocalSource(SourceType.LINK, "header_fix.css");
+        let head = HtmlUtil.fixImageSrcLinks(HtmlUtil.createLocalSource(SourceType.LINK, "header_fix.css"));
         let body = HtmlUtil.createRemoteSource(SourceType.DIVISION, targetImageUri) +
             HtmlUtil.createRemoteSourceAtNewline(SourceType.HR) +
             HtmlUtil.createRemoteSource(SourceType.CUSTOM_NEWLINE) +

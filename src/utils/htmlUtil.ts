@@ -186,15 +186,24 @@ export class HtmlUtil {
             // 第一遍只给未命名组分配，
             // 第二遍只给命名组分配－－因此所有命名组的组号都大于未命名的组号。
             // 可以使用(?:exp)这样的语法来剥夺一个分组对组号分配的参与权．
+            // .*? 其中？表示非贪婪模式
             new RegExp("((?:src|href)=[\'\"])(?:file://)(.*?)([\'\"])", "gmi"), (subString: string, p1: string, p2: string, p3: string): string => {
-
                 return [
                     p1.trim(),
-                    path.resolve("/" + p2).trim(),
+                    HtmlUtil.getExtensionPath(path.normalize("/" + p2.trim())),
                     p3.trim()
                 ].join("");
             }
-        );
+        ).replace(new RegExp("((?:src|href)=[\'\"])(.*?)([\'\"])", "gmi"), (subString: string, p1: string, p2: string, p3: string): string => {
+            if (p2.indexOf(":") != -1) {
+                return subString;
+            }
+            return [
+                p1.trim(),
+                HtmlUtil.getExtensionPath(path.normalize(p2.trim())),
+                p3.trim()
+            ].join("");
+        });
     }
 
     public static async fixImageRedirectUrl(srcUrl: string): Promise<string> {
@@ -339,14 +348,21 @@ export class HtmlUtil {
         }
         return HtmlUtil.getExtensionPath_1_23_0(...paths);
     }
+    // 相对路径，则补全为相对插件的路径
     private static getExtensionPath_1_23_0_BELOW(...paths: string[]): string {
-        return path.join(
+        if (!!paths && paths.length > 0 && paths[0].startsWith("/")) {
+
+            return path.normalize(path.join(
+                ...paths
+            ));
+        }
+        return path.normalize(path.join(
             __dirname,
             "..",
             "..",
             "..",
             ...paths
-        );
+        ));
     }
     private static getExtensionPath_1_23_0(...paths: string[]): string {
 
