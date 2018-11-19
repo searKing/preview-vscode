@@ -333,26 +333,27 @@ export class HtmlUtil {
         return HtmlUtil.createFullHtmlSnippetFrom(head, body);
     }
 
-    private static getExtensionPath(): string {
+    private static getExtensionPath(...paths: string[]): string {
         if (TextUtil.versionCompare(version, "1.23.0") < 0) {
-            return HtmlUtil.getExtensionPath_1_23_0_BELOW();
+            return HtmlUtil.getExtensionPath_1_23_0_BELOW(...paths);
         }
-        return HtmlUtil.getExtensionPath_1_23_0();
+        return HtmlUtil.getExtensionPath_1_23_0(...paths);
     }
-    private static getExtensionPath_1_23_0_BELOW(): string {
+    private static getExtensionPath_1_23_0_BELOW(...paths: string[]): string {
         return path.join(
             __dirname,
             "..",
             "..",
-            ".."
+            "..",
+            ...paths
         );
     }
-    private static getExtensionPath_1_23_0(): string {
+    private static getExtensionPath_1_23_0(...paths: string[]): string {
 
-        const onDiskPath = Uri.file(HtmlUtil.getExtensionPath_1_23_0_BELOW());
+        const onDiskPath = Uri.file(HtmlUtil.getExtensionPath_1_23_0_BELOW(...paths));
         // And get the special URI to use with the webview
         if (!onDiskPath['with']) {
-            return HtmlUtil.getExtensionPath_1_23_0_BELOW();
+            return HtmlUtil.getExtensionPath_1_23_0_BELOW(...paths);
         }
         return onDiskPath['with']({ scheme: 'vscode-resource' });
     }
