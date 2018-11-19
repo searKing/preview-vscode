@@ -27,9 +27,12 @@ export class HtmlUtil {
     private static HTTP_S_REGREX_PREFFIX: RegExp = /http[s]{0,1}:\/\//;
     // @Override
     public static sendPreviewCommand(previewUri: Uri, displayColumn: ViewColumn): Thenable<void> {
-        if (TextUtil.versionCompare(version, "1.23.0") >= 0) {
-            return HtmlUtil.sendPreviewCommand_1_23_0(previewUri, displayColumn);
+        if (TextUtil.versionCompare(version, "1.23.0") < 0) {
+            return HtmlUtil.sendPreviewCommand_1_23_0_BELOW(previewUri, displayColumn);
         }
+        return HtmlUtil.sendPreviewCommand_1_23_0(previewUri, displayColumn);
+    }
+    public static sendPreviewCommand_1_23_0_BELOW(previewUri: Uri, displayColumn: ViewColumn): Thenable<void> {
         return commands.executeCommand(this.COMMAND_TOGGLE_PREVIEW, previewUri, displayColumn).then(() => {
         }, (reason) => {
             console.warn(reason);
@@ -319,9 +322,7 @@ export class HtmlUtil {
         if (!this.isWithPayLoad(payLoad)) {
             return ``;
         }
-
-        var head = `<script src="${this.getExtensionPath()}/node_modules/mermaid/dist/mermaid.min.js">
-                    <script type="text/javascript">
+        var head = `<script src="${this.getExtensionPath()}/node_modules/mermaid/dist/mermaid.min.js" type="text/javascript">
                         mermaid.initialize({startOnLoad: true, theme: 'forest'});
                     </script>`;
         var body = `
@@ -331,13 +332,29 @@ export class HtmlUtil {
                     </div>`;
         return HtmlUtil.createFullHtmlSnippetFrom(head, body);
     }
+
     private static getExtensionPath(): string {
+        if (TextUtil.versionCompare(version, "1.23.0") < 0) {
+            return HtmlUtil.getExtensionPath_1_23_0_BELOW();
+        }
+        return HtmlUtil.getExtensionPath_1_23_0();
+    }
+    private static getExtensionPath_1_23_0_BELOW(): string {
         return path.join(
             __dirname,
             "..",
             "..",
             ".."
         );
+    }
+    private static getExtensionPath_1_23_0(): string {
+
+        const onDiskPath = Uri.file(HtmlUtil.getExtensionPath_1_23_0_BELOW());
+        // And get the special URI to use with the webview
+        if (!onDiskPath['with']) {
+            return HtmlUtil.getExtensionPath_1_23_0_BELOW();
+        }
+        return onDiskPath['with']({ scheme: 'vscode-resource' });
     }
     private static createRemoteSourceOfCUSTOM_STYLE_SAMPLE(payLoad: string): string {
         if (!this.isWithPayLoad(payLoad)) {
