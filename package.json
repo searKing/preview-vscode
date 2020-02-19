@@ -101,23 +101,22 @@
         "test": "node ./node_modules/vscode/bin/test"
     },
     "dependencies": {
-        "acorn": "^6.0.4",
-        "file-url": "^2.0.2",
-        "jade": "^1.11.0",
-        "markdown-it-anchor": "^5.0.2",
-        "markdown2html-less": "1.0.0",
-        "pug": "^2.0.3",
+        "acorn": "^7.1.0",
+        "file-url": "^3.0.0",
+        "markdown-it-anchor": "^5.2.5",
+        "markdown2html-less": "^1.0.3",
+        "pug": "^2.0.4",
         "rst2mdown": "^0.1.0"
     },
     "devDependencies": {
-        "@types/mocha": "^5.2.5",
-        "@types/lodash": "^4.14.118",
-        "@types/node": "^10.12.9",
-        "electron-rebuild": "^1.8.2",
-        "jslint": "^0.12.0",
-        "mermaid": "^7.1.2",
-        "tslint": "^5.11.0",
-        "typescript": "^3.1.6",
-        "vscode": "^1.1.21"
+        "@types/lodash": "^4.14.149",
+        "@types/mocha": "^7.0.1",
+        "@types/node": "^13.7.2",
+        "electron-rebuild": "^1.10.0",
+        "jslint": "^0.12.1",
+        "mermaid": "^8.4.7",
+        "tslint": "^6.0.0",
+        "typescript": "^3.7.5",
+        "vscode": "^1.1.36"
     }
 }
