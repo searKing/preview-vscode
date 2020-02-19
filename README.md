@@ -107,6 +107,8 @@ according to [Node projects with --lib es6: cannot find name 'console' #9545](ht
 + Meet NPM problem: npm ERR! extraneous when you run npm list? Please run 'npm prune -x' to clean unneeded packages,
 according to [NPM problem: npm ERR! extraneous](http://lifeonubuntu.com/npm-problem-npm-err-extraneous/)
 
++ How to publish this extension? Please run 'npm install -g vsce' to install vsce, according to [publishing-extension](https://code.visualstudio.com/api/working-with-extensions/publishing-extension)
+
 + 'vsce publish' failed?
     ```info
     Executing prepublish script 'node ./node_modules/vscode/bin/compile'...
