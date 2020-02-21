@@ -18,9 +18,12 @@ export class MarkDownUtil {
                 window.showErrorMessage(reason);
             });
         }
-
+        return Promise.resolve();
     }
     private static getPreviewCommandTag(displayColumn: ViewColumn): string {
+        if(!window.activeTextEditor){
+            return ""
+        }
         if (displayColumn == window.activeTextEditor.viewColumn) {
             return MarkDownUtil.getCommandTogglePreview();
         }

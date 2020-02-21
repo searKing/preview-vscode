@@ -105,7 +105,7 @@ export class ImageDocumentContentManager implements DocumentContentManagerInterf
 
     private getFirstSelectedImageUri(editor: TextEditor): string {
         if (!editor) {
-            return undefined;
+            return "";
         }
         // 获取当前鼠标选中段落的起始位置        
         let startPosOfSelectionText = editor.document.offsetAt(editor.selection.anchor);
@@ -113,7 +113,7 @@ export class ImageDocumentContentManager implements DocumentContentManagerInterf
         let startIndexOfImageUrl = this.lastIndexOfPrefix(editor, startPosOfSelectionText);
         let startPosOfImageUrl = startIndexOfImageUrl.pos;
         if (startPosOfImageUrl < 0) {
-            return undefined;
+            return "";
         }
 
         let startPosOfSplit = this.getSplitOfImageUrl(editor, startIndexOfImageUrl);
@@ -121,7 +121,7 @@ export class ImageDocumentContentManager implements DocumentContentManagerInterf
         let endNextPosOfImageUrl: number = this.getEndOfImageUrl(editor, startPosOfImageUrl, startPosOfSplit);
 
         if (endNextPosOfImageUrl < 0) {
-            return undefined;
+            return "";
         }
         let imgSrcUri: string = editor.document.getText().slice(startPosOfImageUrl, endNextPosOfImageUrl);
         return imgSrcUri;

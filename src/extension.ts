@@ -72,6 +72,9 @@ export function activate(context: vscode.ExtensionContext) {
     }
 
     function getSpiltColumn(): vscode.ViewColumn {
+        if (!vscode.window.activeTextEditor) {
+            return vscode.ViewColumn.Beside;
+        }
         let displayColumn: vscode.ViewColumn;
         // 在拆分窗口右侧显示预览界面，若当前待预览HTML文件在最右侧，则覆盖显示
         switch (vscode.window.activeTextEditor.viewColumn) {
@@ -82,6 +85,10 @@ export function activate(context: vscode.ExtensionContext) {
             case vscode.ViewColumn.Three:
                 displayColumn = vscode.ViewColumn.Three;
                 break;
+            case undefined:
+                displayColumn = vscode.ViewColumn.Beside;
+                break;
+
             default:
                 displayColumn = vscode.window.activeTextEditor.viewColumn;
                 break;
@@ -101,9 +108,9 @@ export function activate(context: vscode.ExtensionContext) {
         // vscode.window.showInformationMessage('Hello preview!');
         let e: vscode.TextEditor | undefined = vscode.window.activeTextEditor;
         if (!e) {
-            return sendBackviewCommand();
+            return sendCloseviewCommand();
         }
-        return sendPreviewCommand(e.viewColumn, e);
+        return sendPreviewCommand(vscode.ViewColumn.Active, e);
     });
 
     // 侧边栏打开预览界面

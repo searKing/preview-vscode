@@ -25,7 +25,7 @@ export class NoneDocumentContentManager implements DocumentContentManagerInterfa
     // @Override
     public sendPreviewCommand(previewUri: Uri, displayColumn: ViewColumn): Thenable<void> {
         window.showWarningMessage(this.getErrorMessage());
-        return;
+        return Promise.resolve();
     }
 
     private getErrorMessage(): string {

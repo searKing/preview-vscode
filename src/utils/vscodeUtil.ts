@@ -52,7 +52,7 @@ export class VscodeUtil {
     }
 
     public static async getActivePreviewType(editor: vscode.TextEditor, dontAsk: boolean = false): Promise<string> {
-        if (!editor) {
+        if (!editor && !!vscode.window.activeTextEditor) {
             editor = vscode.window.activeTextEditor;
         }
 
@@ -87,7 +87,7 @@ export class VscodeUtil {
             return;
         }
         let ss = vscode.window.visibleTextEditors;
-        let editor: vscode.TextEditor;
+        let editor: vscode.TextEditor | null = null;
         for (let e of vscode.window.visibleTextEditors) {
             if (e.document.uri.toString() === docUri.toString()) {
                 editor = e;
