@@ -64,7 +64,8 @@ according to [Node projects with --lib es6: cannot find name 'console' #9545](ht
     * install module n
 
         ```bash
-        sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}
+        sudo mkdir -p $(npm config get prefix)/n
+        sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share,n}
         sudo npm install -g n
         ```
 
