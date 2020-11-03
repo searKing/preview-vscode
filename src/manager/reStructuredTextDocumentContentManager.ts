@@ -33,9 +33,6 @@ export class ReStructuredTextDocumentContentManager implements DocumentContentMa
         if (!editor) {
             return HtmlUtil.errorSnippet(this.getWindowErrorMessage());
         }
-        if (editor.document.languageId !== "rst") {
-            return HtmlUtil.errorSnippet(this.getErrorMessage());
-        }
         return this.generatePreviewSnippet(editor);
     }
 
