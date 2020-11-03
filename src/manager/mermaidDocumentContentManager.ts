@@ -27,9 +27,6 @@ export class MermaidDocumentContentManager implements DocumentContentManagerInte
         if (!editor || !editor.document) {
             return HtmlUtil.errorSnippet(this.getWindowErrorMessage());
         }
-        if (editor.document.languageId !== "mermaid") {
-            return HtmlUtil.errorSnippet(this.getErrorMessage());
-        }
 
         let previewSnippet: string = this.generatePreviewSnippet(editor);
         if (!previewSnippet || previewSnippet.length <= 0) {

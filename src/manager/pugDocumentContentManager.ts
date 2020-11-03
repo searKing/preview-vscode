@@ -28,9 +28,6 @@ export class PugDocumentContentManager implements DocumentContentManagerInterfac
         if (!editor) {
             return HtmlUtil.errorSnippet(this.getWindowErrorMessage());
         }
-        if (editor.document.languageId !== "jade" && editor.document.languageId !== "pug") {
-            return HtmlUtil.errorSnippet(this.getErrorMessage());
-        }
         return this.generatePreviewSnippet(editor);
     }
 

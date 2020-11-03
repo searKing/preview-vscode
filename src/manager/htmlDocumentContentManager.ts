@@ -24,9 +24,6 @@ export class HtmlDocumentContentManager implements DocumentContentManagerInterfa
         if (!editor || !editor.document) {
             return HtmlUtil.errorSnippet(this.getWindowErrorMessage());
         }
-        if (editor.document.languageId !== "html" && editor.document.languageId !== "jade") {
-            return HtmlUtil.errorSnippet("Active editor doesn't show a HTML or Jade document - no properties to preview.");
-        }
 
         let previewSnippet: string = this.generatePreviewSnippet(editor);
         if (!previewSnippet || previewSnippet.length <= 0) {
