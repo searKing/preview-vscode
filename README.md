@@ -65,6 +65,26 @@ according to [Cannot find module 'vscode' – where is vscode.d.ts now installed
 
       * another way, run 'npm_config_proxy="http://username:password@proxy_server:proxy_port" npm_config_https_proxy="http://username:password@proxy_server:proxy_port" npm run postinstall' instead(npm_config_https_proxy can be ignored if npm_config_https_proxy is the same as npm_config_proxy).
 
+      * execute `sudo` command with proxy, accroding to [Pro Terminal Commands: How and Why To Edit Sudoers on macOS](https://www.applegazette.com/mac/pro-terminal-commands-how-and-why-to-edit-sudoers-on-macos/)
+
+        ```bash
+        # edit /etc/sudoers
+        sudo visudo
+        # add codes below
+        Defaults env_keep += "http_proxy"
+        Defaults env_keep += "https_proxy"
+        Defaults env_keep += "no_proxy"
+        Defaults env_keep += "ftp_proxy"
+        Defaults env_keep += "npm_config_proxy"
+        Defaults env_keep += "npm_config_https_proxy"
+        Defaults env_keep += "HTTP_PROXY"
+        Defaults env_keep += "HTTPS_PROXY"
+        Defaults env_keep += "NO_PROXY"
+        Defaults env_keep += "FTP_PROXY"
+        Defaults env_keep += "NPM_CONFIG_PROXY"
+        Defaults env_keep += "NPM_CONFIG_HTTPS_PROXY"
+        ```
+
 * Cannot find module 'console'? Please run 'npm install @types/node' under the root dir of this extension,
 according to [Node projects with --lib es6: cannot find name 'console' #9545](https://github.com/Microsoft/TypeScript/issues/9545#issuecomment-239732016)
 
