@@ -54,6 +54,16 @@ python and docutils are recommended to be installed to Preview ReStructured Text
 
 * Cannot find module 'vscode'? Please run 'npm run postinstall' under the root dir of this extension,
 according to [Cannot find module 'vscode' – where is vscode.d.ts now installed? #2810](https://github.com/Microsoft/vscode/issues/2810#issuecomment-182209917)
+  * Error installing vscode.d.ts: Error: connect ETIMEDOUT 51.144.164.215:443
+    * npm use npm proxy instead of HTTP_PROXY, so proxy takes no effect if npm_proxy is not set
+      * set proxy for npm
+
+        ```bash
+        npm config set proxy http://username:password@proxy_server:proxy_port
+        npm config set https-proxy http://username:password@proxy_server:proxy_port
+        ```
+
+      * another way, run 'npm_config_proxy="http://username:password@proxy_server:proxy_port" npm run postinstall' instead.
 
 * Cannot find module 'console'? Please run 'npm install @types/node' under the root dir of this extension,
 according to [Node projects with --lib es6: cannot find name 'console' #9545](https://github.com/Microsoft/TypeScript/issues/9545#issuecomment-239732016)
