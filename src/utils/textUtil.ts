@@ -10,7 +10,7 @@ export class TextUtilReturnType {
     }
 }
 export class TextUtil {
-    public static NoneTextUtilReturnTypeValue: TextUtilReturnType = new TextUtilReturnType(-1, undefined);
+    public static NoneTextUtilReturnTypeValue: TextUtilReturnType = new TextUtilReturnType(-1, "");
     // 获取指定位置开始后的第一个任意mark的位置
     public static indexOf(editor: TextEditor, startPos: number, marks: string[]): TextUtilReturnType {
         if (!editor || !editor.document) {
@@ -21,7 +21,7 @@ export class TextUtil {
 
         var closestPosOfMarks = -1;
         var isAnyMarkFound = false;
-        var closestMarkOfMarks = undefined;
+        var closestMarkOfMarks = "";
         marks.forEach(mark => {
             // 获取当前扩展名的起始位置
             let startPosOfMark = text.indexOf(mark, startPos);
@@ -48,7 +48,7 @@ export class TextUtil {
         let text = editor.document.getText();
 
         var closestPosOfMarks = -1;
-        var closestMarkOfMarks = undefined;
+        var closestMarkOfMarks = "";
         var isAnyMarkFound = false;
         marks.forEach(mark => {
             // 获取当前扩展名的起始位置
@@ -84,8 +84,8 @@ export class TextUtil {
         // [start, end)
         var stringToWorkWith = text.substring(startPos);
         var closestPosOfMarks = -1;
-        var closestMarkOfMarks = undefined;
-        var result: RegExpExecArray = null;
+        var closestMarkOfMarks = "";
+        var result: RegExpExecArray | null = null;
         if ((result = regex.exec(stringToWorkWith)) != null) {
             closestMarkOfMarks = result[0];
             closestPosOfMarks = result.index + startPos;
@@ -110,8 +110,8 @@ export class TextUtil {
         var stringToWorkWith = text.substring(0, startPos + 1);
         var closestPosOfMarks = -1;
         var nextStop = 0;
-        var result: RegExpExecArray = null;
-        var closestMarkOfMarks = undefined;
+        var result: RegExpExecArray | null = null;
+        var closestMarkOfMarks = "";
         while ((result = regex.exec(stringToWorkWith)) != null) {
             closestPosOfMarks = result.index;
             closestMarkOfMarks = result[0];

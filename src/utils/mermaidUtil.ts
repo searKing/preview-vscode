@@ -13,7 +13,7 @@ export class MermaidUtil {
                 window.showErrorMessage(reason);
             });
         }
-
+        return Promise.resolve();
     }
     public static isMermaidFile(editor: TextEditor): boolean {
         if (!editor || !editor.document || !editor.document.fileName) {

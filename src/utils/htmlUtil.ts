@@ -84,7 +84,7 @@ export class HtmlUtil {
         return this.createFullHtmlSnippetFrom(undefined, this.createRemoteSource(SourceType.DIVISION, error));
     }
 
-    private static isWithPayLoad(payLoad: string): boolean {
+    private static isWithPayLoad(payLoad?: string): boolean {
         if (!!payLoad && payLoad.length > 0) {
             return true;
         }
@@ -100,6 +100,9 @@ export class HtmlUtil {
 
     // 生成本地文件对应URI的html标签代码片段
     public static createRemoteSource(type: SourceType, payLoad?: string): string {
+        if(!payLoad){
+            return ""
+        }
         switch (type) {
             case SourceType.BODY:
                 return this.createRemoteSourceOfBODY(payLoad);
@@ -208,11 +211,11 @@ export class HtmlUtil {
 
     public static async fixImageRedirectUrl(srcUrl: string): Promise<string> {
         if (!srcUrl) {
-            return srcUrl;
+            return "";
         }
-        let result: RegExpExecArray = null;
-        if ((result = HtmlUtil.HTTP_S_REGREX_PREFFIX.exec(srcUrl)) == null) {
-            return srcUrl;
+        let result: RegExpExecArray | null = HtmlUtil.HTTP_S_REGREX_PREFFIX.exec(srcUrl);
+        if (result == null) {
+            return "";
         }
         try {
             return await HtmlUtil.getRedirectUrl(srcUrl);
@@ -371,7 +374,7 @@ export class HtmlUtil {
         if (!onDiskPath['with']) {
             return HtmlUtil.getExtensionPath_1_23_0_BELOW(...paths);
         }
-        return onDiskPath['with']({ scheme: 'vscode-resource' });
+        return onDiskPath['with']({ scheme: 'vscode-resource' }).toString();
     }
     private static createRemoteSourceOfCUSTOM_STYLE_SAMPLE(payLoad: string): string {
         if (!this.isWithPayLoad(payLoad)) {

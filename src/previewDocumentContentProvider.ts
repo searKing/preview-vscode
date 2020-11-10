@@ -21,9 +21,9 @@ export class PreviewDocumentContentProvider implements TextDocumentContentProvid
     // 观察者模式，生成一个事件发生器
     private _onDidChange = new EventEmitter<Uri>();
 
-    private _documentContentManager: DocumentContentManagerInterface = null;
+    private _documentContentManager: DocumentContentManagerInterface | null = null;
 
-    private static _instance: PreviewDocumentContentProvider = null;
+    private static _instance: PreviewDocumentContentProvider;
     private constructor() {
         return this;
     }
@@ -73,7 +73,6 @@ export class PreviewDocumentContentProvider implements TextDocumentContentProvid
             case "image":
                 thiz._documentContentManager = new imageDocumentContentManager.ImageDocumentContentManager(editor);
                 break;
-            case "pug":
             default:
                 if (!thiz._documentContentManager) {
                     thiz._documentContentManager = new noneDocumentContentManager.NoneDocumentContentManager(editor);
@@ -86,6 +85,9 @@ export class PreviewDocumentContentProvider implements TextDocumentContentProvid
     // uri是scheme
     public provideTextDocumentContent(uri: Uri): Thenable<string> {
         let content = async () => {
+            if (!this._documentContentManager){
+                return "";
+            }
             return this._documentContentManager.createContentSnippet();
         }
         return content();
@@ -99,6 +101,9 @@ export class PreviewDocumentContentProvider implements TextDocumentContentProvid
 
     // 通知监听者发生待预览HTML文本变化事件
     public update() {
+        if (!this._documentContentManager){
+            return;
+        }
         let fileName = this._documentContentManager.editor().document.fileName;
         let previewUri: Uri = PreviewDocumentContentProvider.getPreviewUri(fileName);
         this._onDidChange.fire(previewUri);
@@ -106,6 +111,9 @@ export class PreviewDocumentContentProvider implements TextDocumentContentProvid
 
     public async sendPreviewCommand(displayColumn: ViewColumn, editor: TextEditor): Promise<void> {
         await this.refreshCurrentDocumentContentProvider(editor)
+        if (!this._documentContentManager){
+            return;
+        }
         let fileName = this._documentContentManager.editor().document.fileName;
         // 生成预览临时文件的URI
         let previewUri: Uri = await PreviewDocumentContentProvider.getPreviewUri(fileName)
