@@ -136,6 +136,8 @@ according to [NPM problem: npm ERR! extraneous](http://lifeonubuntu.com/npm-prob
 
   * fix the error and retry 'vsce publish'
 
+* Write Your First Extension?[your-first-extension](https://code.visualstudio.com/api/get-started/your-first-extension)
+
 ## Thanks to
 
 * [html-preview-vscode](https://github.com/tht13/html-preview-vscode.git).
