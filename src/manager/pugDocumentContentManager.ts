@@ -1,7 +1,6 @@
-"use strict";
 import { TextEditor, Uri, ViewColumn } from "vscode";
 import { DocumentContentManagerInterface } from "./documentContentManagerInterface";
-import { HtmlUtil } from "./../utils/htmlUtil";
+import { HtmlPreview } from "../util/htmlPreview";
 
 let pug = require("pug");
 
@@ -26,20 +25,20 @@ export class PugDocumentContentManager implements DocumentContentManagerInterfac
         let editor = this._editor;
 
         if (!editor) {
-            return HtmlUtil.errorSnippet(this.getWindowErrorMessage());
+            return HtmlPreview.errorSnippet(this.getWindowErrorMessage());
         }
         return this.generatePreviewSnippet(editor);
     }
 
     // @Override
     public sendPreviewCommand(previewUri: Uri, displayColumn: ViewColumn): Thenable<void> {
-        return HtmlUtil.sendPreviewCommand(previewUri, displayColumn);
+        return HtmlPreview.sendPreviewCommand(previewUri, displayColumn);
 
     }
 
-    private getErrorMessage(): string {
-        return `Active editor doesn't show a Pug Text document (.pug)- no properties to preview.`;
-    }
+    // private getErrorMessage(): string {
+    //     return `Active editor doesn't show a Pug Text document (.pug)- no properties to preview.`;
+    // }
 
     private getWindowErrorMessage(): string {
         return `No Active editor - no properties to preview.`;
@@ -57,7 +56,7 @@ export class PugDocumentContentManager implements DocumentContentManagerInterfac
     }
     private pugSrcSnippet(editor: TextEditor): Promise<string> {
         if (!editor) {
-            return Promise.resolve(HtmlUtil.errorSnippet(this.getWindowErrorMessage()));
+            return Promise.resolve(HtmlPreview.errorSnippet(this.getWindowErrorMessage()));
         }
         return Promise.resolve(this.pugSrcSnippetWithNodeModules(editor.document.getText()));
 
@@ -66,12 +65,12 @@ export class PugDocumentContentManager implements DocumentContentManagerInterfac
     // 生成预览编辑页面
     private generatePreviewSnippet(editor: TextEditor): Promise<string> {
         if (!editor || !editor.document) {
-            return Promise.resolve(HtmlUtil.errorSnippet(this.getWindowErrorMessage()));
+            return Promise.resolve(HtmlPreview.errorSnippet(this.getWindowErrorMessage()));
         }
         // 获取当前编辑页面对应的文档
         let doc = editor.document;
         return this.pugSrcSnippet(editor).then(function (pugSrc: string) {
-            return HtmlUtil.fixNoneNetLinks(pugSrc, doc.fileName);
+            return HtmlPreview.fixNoneNetLinks(pugSrc, doc.fileName);
         });
     }
 

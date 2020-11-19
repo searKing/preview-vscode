@@ -1,7 +1,6 @@
-"use strict";
 import { exec } from "child_process";
 
-export class ShellUtil {
+export class Shell {
     public static execPromisLike(cmd: string): Promise<string> {
         return new Promise<string>((resolve, reject) => {
 

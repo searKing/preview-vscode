@@ -1,7 +1,6 @@
-"use strict";
 import { TextEditor } from "vscode";
 
-export class TextUtilReturnType {
+export class TextEditorHelperReturnType {
     public pos: number;
     public mark: string;
     public constructor(_pos: number, _mark: string) {
@@ -9,12 +8,12 @@ export class TextUtilReturnType {
         this.mark = _mark;
     }
 }
-export class TextUtil {
-    public static NoneTextUtilReturnTypeValue: TextUtilReturnType = new TextUtilReturnType(-1, "");
+export class TextEditorHelper {
+    public static NoneTextUtilReturnTypeValue: TextEditorHelperReturnType = new TextEditorHelperReturnType(-1, "");
     // 获取指定位置开始后的第一个任意mark的位置
-    public static indexOf(editor: TextEditor, startPos: number, marks: string[]): TextUtilReturnType {
+    public static indexOf(editor: TextEditor, startPos: number, marks: string[]): TextEditorHelperReturnType {
         if (!editor || !editor.document) {
-            return TextUtil.NoneTextUtilReturnTypeValue;
+            return TextEditorHelper.NoneTextUtilReturnTypeValue;
         }
         // 获取当前页面文本
         let text = editor.document.getText();
@@ -36,13 +35,13 @@ export class TextUtil {
             }
         });
 
-        return new TextUtilReturnType(closestPosOfMarks, closestMarkOfMarks);
+        return new TextEditorHelperReturnType(closestPosOfMarks, closestMarkOfMarks);
     }
 
     // 获取指定位置开始后的第一个任意mark的位置
-    public static lastIndexOf(editor: TextEditor, startPos: number, marks: string[]): TextUtilReturnType {
+    public static lastIndexOf(editor: TextEditor, startPos: number, marks: string[]): TextEditorHelperReturnType {
         if (!editor || !editor.document) {
-            return TextUtil.NoneTextUtilReturnTypeValue;
+            return TextEditorHelper.NoneTextUtilReturnTypeValue;
         }
         // 获取当前页面文本
         let text = editor.document.getText();
@@ -64,13 +63,13 @@ export class TextUtil {
             }
         });
 
-        return new TextUtilReturnType(closestPosOfMarks, closestMarkOfMarks);
+        return new TextEditorHelperReturnType(closestPosOfMarks, closestMarkOfMarks);
 
     }
 
-    public static regexIndexOf(editor: TextEditor, startPos: number, regex: RegExp): TextUtilReturnType {
+    public static regexIndexOf(editor: TextEditor, startPos: number, regex: RegExp): TextEditorHelperReturnType {
         if (!editor || !editor.document) {
-            return TextUtil.NoneTextUtilReturnTypeValue;
+            return TextEditorHelper.NoneTextUtilReturnTypeValue;
         }
 
         // 获取当前页面文本
@@ -90,12 +89,12 @@ export class TextUtil {
             closestMarkOfMarks = result[0];
             closestPosOfMarks = result.index + startPos;
         }
-        return new TextUtilReturnType(closestPosOfMarks, closestMarkOfMarks);
+        return new TextEditorHelperReturnType(closestPosOfMarks, closestMarkOfMarks);
 
     }
-    public static regexLastIndexOf(editor: TextEditor, startPos: number, regex: RegExp): TextUtilReturnType {
+    public static regexLastIndexOf(editor: TextEditor, startPos: number, regex: RegExp): TextEditorHelperReturnType {
         if (!editor || !editor.document) {
-            return TextUtil.NoneTextUtilReturnTypeValue;
+            return TextEditorHelper.NoneTextUtilReturnTypeValue;
         }
         // 获取当前页面文本
         let text = editor.document.getText();
@@ -117,14 +116,14 @@ export class TextUtil {
             closestMarkOfMarks = result[0];
             regex.lastIndex = ++nextStop;
         }
-        return new TextUtilReturnType(closestPosOfMarks, closestMarkOfMarks);
+        return new TextEditorHelperReturnType(closestPosOfMarks, closestMarkOfMarks);
     }
     // 将字符串中的%1~$n 替换为输入参数列表，变长参数，因为%0是str，所以无需替换
     // 类似C/Java的format
     public static format(str: string): string {
         var args = arguments;
         var pattern = new RegExp("%([1-" + arguments.length + "])", "g");
-        return String(str).replace(pattern, function (match, index) {
+        return String(str).replace(pattern, function (_match, index) {
             return args[index];
         });
     };

@@ -1,4 +1,3 @@
-"use strict";
 import { window, TextEditor, Uri, ViewColumn } from "vscode";
 import { DocumentContentManagerInterface } from "./documentContentManagerInterface";
 
@@ -23,7 +22,7 @@ export class NoneDocumentContentManager implements DocumentContentManagerInterfa
     }
 
     // @Override
-    public sendPreviewCommand(previewUri: Uri, displayColumn: ViewColumn): Thenable<void> {
+    public sendPreviewCommand(_previewUri: Uri, _displayColumn: ViewColumn): Thenable<void> {
         window.showWarningMessage(this.getErrorMessage());
         return Promise.resolve();
     }

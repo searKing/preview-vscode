@@ -1,19 +1,30 @@
-'use strict';
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
 import * as vscode from 'vscode';
-import { PreviewDocumentContentProvider } from "./previewDocumentContentProvider";
+import { Logger } from './logger';
+import { getMarkdownExtensionContributions } from './markdownExtensions';
+import { loadDefaultTelemetryReporter } from './telemetryReporter';
+import { PreviewDocumentContentProvider } from './previewDocumentContentProvider';
 
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
+
 export function activate(context: vscode.ExtensionContext) {
-
     // Use the console to output diagnostic information (console.log) and errors (console.error)
     // This line of code will only be executed once when your extension is activated
-    console.log('Congratulations, Preview Extension Startup');
+	console.log('Congratulations, Preview Extension Startup');
+	
+	const telemetryReporter = loadDefaultTelemetryReporter();
+	context.subscriptions.push(telemetryReporter);
 
+	const contributions = getMarkdownExtensionContributions(context);
+	context.subscriptions.push(contributions);
 
-    // 文本内容提供者
+	const logger = new Logger();
+	logger.log('Congratulations, Preview Extension Startup');
+
+	// 文本内容提供者
     const PROVIDER: PreviewDocumentContentProvider = PreviewDocumentContentProvider.getInstance();
 
     // 向vscode注册当前文件发生变化时的回调函数
@@ -52,19 +63,11 @@ export function activate(context: vscode.ExtensionContext) {
     }
 
     // 调用vscode系统命令返回当前之前的页面
-    function sendBackviewCommand(): PromiseLike<void> {
-        // 给vscode发送返回预览之前页面的位置
-        return vscode.commands.executeCommand("workbench.action.navigateBack").then((success) => {
-        }, (reason) => {
-            console.warn(reason);
-            vscode.window.showErrorMessage(reason);
-        });
-    }
 
     // 调用vscode系统命令关闭当前预览的页面
     function sendCloseviewCommand(): PromiseLike<void> {
         // 给vscode发送返回预览之前页面的位置
-        return vscode.commands.executeCommand("workbench.action.closeActiveEditor").then((success) => {
+        return vscode.commands.executeCommand("workbench.action.closeActiveEditor").then(() => {
         }, (reason) => {
             console.warn(reason);
             vscode.window.showErrorMessage(reason);
@@ -101,7 +104,7 @@ export function activate(context: vscode.ExtensionContext) {
     // The commandId parameter must match the command field in package.json
     // 命令回调函数，该命令在package.json中与快捷方式、菜单选项等关联
     // 覆盖显示预览界面
-    let previewDisposable = vscode.commands.registerCommand('extension.preview', () => {
+    let previewDisposable = vscode.commands.registerCommand('preview.showPreview', () => {
         // The code you place here will be executed every time your command is executed
 
         // Display a message box to the user
@@ -114,7 +117,7 @@ export function activate(context: vscode.ExtensionContext) {
     });
 
     // 侧边栏打开预览界面
-    let previewToSideDisposable = vscode.commands.registerCommand('extension.previewToSide', () => {
+    let previewToSideDisposable = vscode.commands.registerCommand('preview.showPreviewToSide', () => {
         // The code you place here will be executed every time your command is executed
 
         // Display a message box to the user
@@ -127,10 +130,10 @@ export function activate(context: vscode.ExtensionContext) {
         return sendPreviewCommand(displayColumn, e);
     });
 
-    context.subscriptions.push(previewDisposable, previewToSideDisposable, providerDisposable);
+	context.subscriptions.push(previewDisposable, previewToSideDisposable, providerDisposable);
 }
-
 // this method is called when your extension is deactivated
 export function deactivate() {
-    console.log("Preview Extension Shutdown");
+	console.log("Preview Extension Shutdown");
 }
+

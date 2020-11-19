@@ -1,10 +1,9 @@
-"use strict";
-import { ShellUtil } from "./shellUtil";
+import { Shell } from "./shell";
 
-export class DocutilsUtil {
+export class Docutils {
 
     private static docutils(command: string, fileName: string): Promise<string> {
-        return ShellUtil.execPromisLike([
+        return Shell.execPromisLike([
             command,
             "\"" + fileName + "\""
         ].join(" "));

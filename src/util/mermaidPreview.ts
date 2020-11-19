@@ -1,7 +1,6 @@
-"use strict";
 import { window, commands, TextEditor } from "vscode";
 
-export class MermaidUtil {
+export class MermaidPreview {
     public static COMMAND_BUTT: string = "";
 
     // @Override

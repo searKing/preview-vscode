@@ -1,7 +1,6 @@
-"use strict";
 import { TextEditor, Uri, ViewColumn } from "vscode";
 import { DocumentContentManagerInterface } from "./documentContentManagerInterface";
-import { HtmlUtil } from "./../utils/htmlUtil";
+import { HtmlPreview } from "../util/htmlPreview";
 
 let Markdown2HtmlLess = require("markdown2html-less").Markdown2HtmlLess;
 const markdown2htmlLess = new Markdown2HtmlLess();
@@ -25,15 +24,15 @@ export class MarkdownDocumentContentManager implements DocumentContentManagerInt
         let editor = this._editor;
 
         if (!editor || !editor.document) {
-            return HtmlUtil.errorSnippet(this.getWindowErrorMessage());
+            return HtmlPreview.errorSnippet(this.getWindowErrorMessage());
         }
         if (this._editor.document.languageId !== "markdown") {
-            return HtmlUtil.errorSnippet(this.getErrorMessage());
+            return HtmlPreview.errorSnippet(this.getErrorMessage());
         }
 
         let previewSnippet: string = await this.generatePreviewSnippet(editor);
         if (!previewSnippet || previewSnippet.length <= 0) {
-            return HtmlUtil.errorSnippet(this.getErrorMessage());
+            return HtmlPreview.errorSnippet(this.getErrorMessage());
         }
         console.info("previewSnippet = " + previewSnippet);
         return previewSnippet;
@@ -42,7 +41,7 @@ export class MarkdownDocumentContentManager implements DocumentContentManagerInt
     // @Override
     public sendPreviewCommand(previewUri: Uri, displayColumn: ViewColumn): Thenable<void> {
         // return MarkDownUtil.sendPreviewCommand(previewUri, displayColumn);
-        return HtmlUtil.sendPreviewCommand(previewUri, displayColumn);
+        return HtmlPreview.sendPreviewCommand(previewUri, displayColumn);
 
     }
 
@@ -59,13 +58,13 @@ export class MarkdownDocumentContentManager implements DocumentContentManagerInt
         return (async (): Promise<string> => {
 
             if (!editor || !editor.document) {
-                return HtmlUtil.errorSnippet(this.getWindowErrorMessage());
+                return HtmlPreview.errorSnippet(this.getWindowErrorMessage());
             }
             // 获取当前编辑页面对应的文档
             let doc = editor.document;
             // let html = editormd.markdownToHTML(doc.getText());
             let html = await this.getHTML(doc.getText());
-            return HtmlUtil.fixNoneNetLinks(html, doc.fileName);
+            return HtmlPreview.fixNoneNetLinks(html, doc.fileName);
         })();
     }
 

@@ -1,4 +1,3 @@
-"use strict";
 import { TextEditor, Uri, ViewColumn } from "vscode";
 
 export interface DocumentContentManagerInterface {

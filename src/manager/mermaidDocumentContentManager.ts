@@ -1,7 +1,6 @@
-"use strict";
 import { TextEditor, Uri, ViewColumn } from "vscode";
 import { DocumentContentManagerInterface } from "./documentContentManagerInterface";
-import { HtmlUtil, SourceType } from "./../utils/htmlUtil";
+import { HtmlPreview, SourceType } from "../util/htmlPreview";
 
 export class MermaidDocumentContentManager implements DocumentContentManagerInterface {
 
@@ -25,12 +24,12 @@ export class MermaidDocumentContentManager implements DocumentContentManagerInte
         let editor = this._editor;
 
         if (!editor || !editor.document) {
-            return HtmlUtil.errorSnippet(this.getWindowErrorMessage());
+            return HtmlPreview.errorSnippet(this.getWindowErrorMessage());
         }
 
         let previewSnippet: string = this.generatePreviewSnippet(editor);
         if (!previewSnippet || previewSnippet.length <= 0) {
-            return HtmlUtil.errorSnippet(this.getErrorMessage());
+            return HtmlPreview.errorSnippet(this.getErrorMessage());
         }
         console.info("previewSnippet = " + previewSnippet);
         return previewSnippet;
@@ -38,7 +37,7 @@ export class MermaidDocumentContentManager implements DocumentContentManagerInte
 
     // @Override
     public sendPreviewCommand(previewUri: Uri, displayColumn: ViewColumn): Thenable<void> {
-        return HtmlUtil.sendPreviewCommand(previewUri, displayColumn);
+        return HtmlPreview.sendPreviewCommand(previewUri, displayColumn);
     }
 
     private getErrorMessage(): string {
@@ -50,12 +49,12 @@ export class MermaidDocumentContentManager implements DocumentContentManagerInte
     }
 
     private MermaidSampleFullSnippet(properties: string): string {
-        return HtmlUtil.createRemoteSource(SourceType.CUSTOM_MERMAID_SAMPLE, properties);
+        return HtmlPreview.createRemoteSource(SourceType.CUSTOM_MERMAID_SAMPLE, properties);
     }
 
     private getSelectedCSSProperity(editor: TextEditor): string {
         if (!editor || !editor.document) {
-            return HtmlUtil.errorSnippet(this.getWindowErrorMessage());
+            return HtmlPreview.errorSnippet(this.getWindowErrorMessage());
         }
         return editor.document.getText();
     }
@@ -63,11 +62,11 @@ export class MermaidDocumentContentManager implements DocumentContentManagerInte
     // 生成预览编辑页面
     private generatePreviewSnippet(editor: TextEditor): string {
         if (!editor) {
-            return HtmlUtil.errorSnippet(this.getWindowErrorMessage());
+            return HtmlPreview.errorSnippet(this.getWindowErrorMessage());
         }
         var cssProperty = this.getSelectedCSSProperity(editor);
         if (!cssProperty || cssProperty.length <= 0) {
-            return HtmlUtil.errorSnippet(this.getErrorMessage());
+            return HtmlPreview.errorSnippet(this.getErrorMessage());
         }
 
         return this.MermaidSampleFullSnippet(cssProperty);

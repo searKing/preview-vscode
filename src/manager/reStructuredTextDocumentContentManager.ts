@@ -1,8 +1,7 @@
-"use strict";
-import { window, TextEditor, Uri, ViewColumn } from "vscode";
+import { TextEditor, Uri, ViewColumn } from "vscode";
 import { DocumentContentManagerInterface } from "./documentContentManagerInterface";
-import { HtmlUtil } from "./../utils/htmlUtil";
-import { DocutilsUtil } from "./../utils/docutilsUtil"
+import { HtmlPreview } from "../util/htmlPreview";
+import { Docutils } from "../util/docutils"
 
 let rst2mdown = require("rst2mdown");
 
@@ -31,20 +30,20 @@ export class ReStructuredTextDocumentContentManager implements DocumentContentMa
         let editor = this._editor;
 
         if (!editor) {
-            return HtmlUtil.errorSnippet(this.getWindowErrorMessage());
+            return HtmlPreview.errorSnippet(this.getWindowErrorMessage());
         }
         return this.generatePreviewSnippet(editor);
     }
 
     // @Override
     public sendPreviewCommand(previewUri: Uri, displayColumn: ViewColumn): Thenable<void> {
-        return HtmlUtil.sendPreviewCommand(previewUri, displayColumn);
+        return HtmlPreview.sendPreviewCommand(previewUri, displayColumn);
 
     }
 
-    private getErrorMessage(): string {
-        return `Active editor doesn't show a ReStructured Text document (.rst|.rest|.hrst)- no properties to preview.`;
-    }
+    // private getErrorMessage(): string {
+    //     return `Active editor doesn't show a ReStructured Text document (.rst|.rest|.hrst)- no properties to preview.`;
+    // }
 
     private getWindowErrorMessage(): string {
         return `No Active editor - no properties to preview.`;
@@ -60,24 +59,24 @@ ${html.body}`;
     }
     private rstSrcSnippetWithDocutils(editor: TextEditor): Promise<string> {
         if (!editor || !editor.document) {
-            return Promise.resolve(HtmlUtil.errorSnippet(this.getWindowErrorMessage()));
+            return Promise.resolve(HtmlPreview.errorSnippet(this.getWindowErrorMessage()));
         }
         // 获取当前编辑页面对应的文档
         let doc = editor.document;
-        return DocutilsUtil.rst2html(doc.fileName);
+        return Docutils.rst2html(doc.fileName);
     }
     private rstSrcSnippet(editor: TextEditor): Promise<string> {
         if (!editor) {
-            return Promise.resolve(HtmlUtil.errorSnippet(this.getWindowErrorMessage()));
+            return Promise.resolve(HtmlPreview.errorSnippet(this.getWindowErrorMessage()));
         }
-        
+
         let thiz = this;
         return this.rstSrcSnippetWithDocutils(editor).catch(function (error) {
             console.info("try rst2html of docutils failed, please check python and docutils environment: " + error);
             console.info(", we use a simple preview instead ^-)");
             // window.showInformationMessage("try rst2html of docutils failed, please check python and docutils environment, we use a simple preview instead ^-)");
             if (!editor.document) {
-                return Promise.resolve(HtmlUtil.errorSnippet(thiz.getWindowErrorMessage()));
+                return Promise.resolve(HtmlPreview.errorSnippet(thiz.getWindowErrorMessage()));
             }
             return thiz.rstSrcSnippetWithNodeModules(editor.document.getText());
         });
@@ -87,12 +86,12 @@ ${html.body}`;
     // 生成预览编辑页面
     private generatePreviewSnippet(editor: TextEditor): Promise<string> {
         if (!editor || !editor.document) {
-            return Promise.resolve(HtmlUtil.errorSnippet(this.getWindowErrorMessage()));
+            return Promise.resolve(HtmlPreview.errorSnippet(this.getWindowErrorMessage()));
         }
         // 获取当前编辑页面对应的文档
         let doc = editor.document;
         return this.rstSrcSnippet(editor).then(function (rstSrc: string) {
-            return HtmlUtil.fixNoneNetLinks(rstSrc, doc.fileName);
+            return HtmlPreview.fixNoneNetLinks(rstSrc, doc.fileName);
         });
     }
 

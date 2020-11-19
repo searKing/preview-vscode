@@ -1,7 +1,6 @@
-"use strict";
 import { TextEditor, Uri, ViewColumn } from "vscode";
 import { DocumentContentManagerInterface } from "./documentContentManagerInterface";
-import { HtmlUtil, SourceType } from "./../utils/htmlUtil";
+import { HtmlPreview, SourceType } from "../util/htmlPreview";
 
 export class HtmlDocumentContentManager implements DocumentContentManagerInterface {
     private _editor: TextEditor;
@@ -22,12 +21,12 @@ export class HtmlDocumentContentManager implements DocumentContentManagerInterfa
         let editor = this._editor;
 
         if (!editor || !editor.document) {
-            return HtmlUtil.errorSnippet(this.getWindowErrorMessage());
+            return HtmlPreview.errorSnippet(this.getWindowErrorMessage());
         }
 
         let previewSnippet: string = this.generatePreviewSnippet(editor);
         if (!previewSnippet || previewSnippet.length <= 0) {
-            return HtmlUtil.errorSnippet(this.getErrorMessage());
+            return HtmlPreview.errorSnippet(this.getErrorMessage());
         }
         console.info("previewSnippet = " + previewSnippet);
         return previewSnippet;
@@ -35,8 +34,8 @@ export class HtmlDocumentContentManager implements DocumentContentManagerInterfa
 
 
     // @Override
-    public sendPreviewCommand(previewUri: Uri, displayColumn: ViewColumn, editor: TextEditor): Thenable<void> {
-        return HtmlUtil.sendPreviewCommand(previewUri, displayColumn);
+    public sendPreviewCommand(previewUri: Uri, displayColumn: ViewColumn, _editor: TextEditor): Thenable<void> {
+        return HtmlPreview.sendPreviewCommand(previewUri, displayColumn);
 
     }
 
@@ -52,13 +51,13 @@ export class HtmlDocumentContentManager implements DocumentContentManagerInterfa
     // @Override
     private generatePreviewSnippet(editor: TextEditor): string {
         if (!editor || !editor.document) {
-            return HtmlUtil.errorSnippet("No Active editor - no properties to preview.");
+            return HtmlPreview.errorSnippet("No Active editor - no properties to preview.");
         }
         // 获取当前编辑页面对应的文档
         let doc = editor.document;
-        return HtmlUtil.createLocalSource(SourceType.STYLE, "header_fix.css") +
-            HtmlUtil.createRemoteSource(SourceType.BR) +
-            HtmlUtil.fixNoneNetLinks(doc.getText(), doc.fileName);
+        return HtmlPreview.createLocalSource(SourceType.STYLE, "header_fix.css") +
+            HtmlPreview.createRemoteSource(SourceType.BR) +
+            HtmlPreview.fixNoneNetLinks(doc.getText(), doc.fileName);
     }
 
 }

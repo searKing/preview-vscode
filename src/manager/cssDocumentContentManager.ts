@@ -1,7 +1,6 @@
-"use strict";
 import { TextEditor, Uri, ViewColumn } from "vscode";
 import { DocumentContentManagerInterface } from "./documentContentManagerInterface";
-import { HtmlUtil, SourceType } from "./../utils/htmlUtil";
+import { HtmlPreview, SourceType } from "../util/htmlPreview";
 
 
 export class CssDocumentContentManager implements DocumentContentManagerInterface {
@@ -25,12 +24,12 @@ export class CssDocumentContentManager implements DocumentContentManagerInterfac
         let editor = this._editor;
 
         if (!editor) {
-            return HtmlUtil.errorSnippet(this.getWindowErrorMessage());
+            return HtmlPreview.errorSnippet(this.getWindowErrorMessage());
         }
 
         let previewSnippet: string = this.generatePreviewSnippet(editor);
         if (!previewSnippet || previewSnippet.length <= 0) {
-            return HtmlUtil.errorSnippet(this.getErrorMessage());
+            return HtmlPreview.errorSnippet(this.getErrorMessage());
         }
         console.info("previewSnippet = " + previewSnippet);
         return previewSnippet;
@@ -38,7 +37,7 @@ export class CssDocumentContentManager implements DocumentContentManagerInterfac
 
     // @Override
     public sendPreviewCommand(previewUri: Uri, displayColumn: ViewColumn): Thenable<void> {
-        return HtmlUtil.sendPreviewCommand(previewUri, displayColumn);
+        return HtmlPreview.sendPreviewCommand(previewUri, displayColumn);
     }
 
     private getErrorMessage(): string {
@@ -50,13 +49,13 @@ export class CssDocumentContentManager implements DocumentContentManagerInterfac
     }
 
     private CSSSampleFullSnippet(properties: string): string {
-        return HtmlUtil.createRemoteSource(SourceType.CUSTOM_STYLE_SAMPLE, properties);
+        return HtmlPreview.createRemoteSource(SourceType.CUSTOM_STYLE_SAMPLE, properties);
 
     }
 
     private getSelectedCSSProperity(editor: TextEditor): string {
         if (!editor || !editor.document) {
-            return HtmlUtil.errorSnippet(this.getWindowErrorMessage());
+            return HtmlPreview.errorSnippet(this.getWindowErrorMessage());
         }
         // 获取当前页面文本
         let text = editor.document.getText();
@@ -66,7 +65,7 @@ export class CssDocumentContentManager implements DocumentContentManagerInterfac
         let endPosOfCSSProperty = text.indexOf('}', startPosOfCSSProperty);
 
         if (startPosOfCSSProperty === -1 || endPosOfCSSProperty === -1) {
-            return HtmlUtil.errorSnippet("Cannot determine the rule's properties.");
+            return HtmlPreview.errorSnippet("Cannot determine the rule's properties.");
         }
 
         var properties = text.slice(startPosOfCSSProperty + 1, endPosOfCSSProperty);
@@ -76,11 +75,11 @@ export class CssDocumentContentManager implements DocumentContentManagerInterfac
     // 生成预览编辑页面
     private generatePreviewSnippet(editor: TextEditor): string {
         if (!editor) {
-            return HtmlUtil.errorSnippet(this.getWindowErrorMessage());
+            return HtmlPreview.errorSnippet(this.getWindowErrorMessage());
         }
         var cssProperty = this.getSelectedCSSProperity(editor);
         if (!cssProperty || cssProperty.length <= 0) {
-            return HtmlUtil.errorSnippet(this.getErrorMessage());
+            return HtmlPreview.errorSnippet(this.getErrorMessage());
         }
 
         return this.CSSSampleFullSnippet(cssProperty);

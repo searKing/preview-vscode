@@ -1,4 +1,3 @@
-"use strict";
 import {
     TextEditor, TextDocumentContentProvider, EventEmitter, Event, Uri, ViewColumn
 } from "vscode";
@@ -13,7 +12,7 @@ import * as mermaidDocumentContentManager from "./manager/mermaidDocumentContent
 import * as reStructuredTextDocumentContentManager from "./manager/reStructuredTextDocumentContentManager"
 import * as noneDocumentContentManager from "./manager/noneDocumentContentManager"
 
-import { VscodeUtil } from "./utils/vscodeUtil"
+import { VscodeHelper } from "./util/vscodeHelper"
 
 export class PreviewDocumentContentProvider implements TextDocumentContentProvider {
     static PREVIEW_SCHEME: string = "vscode-preview";
@@ -49,7 +48,7 @@ export class PreviewDocumentContentProvider implements TextDocumentContentProvid
         let thiz = this;
 
         //防止在一次预览命令下重复弹出选择预览类型的对话框
-        let previewType = await VscodeUtil.getActivePreviewType(editor, false);
+        let previewType = await VscodeHelper.getActivePreviewType(editor, false);
         switch (previewType) {
             case "html":
                 thiz._documentContentManager = new htmlDocumentContentManager.HtmlDocumentContentManager(editor);
@@ -83,7 +82,7 @@ export class PreviewDocumentContentProvider implements TextDocumentContentProvid
     }
     // @Override 生成当前html规范化的代码文本，编辑器会自动根据该函数的返回值创建一个只读文档
     // uri是scheme
-    public provideTextDocumentContent(uri: Uri): Thenable<string> {
+    public provideTextDocumentContent(_uri: Uri): Thenable<string> {
         let content = async () => {
             if (!this._documentContentManager){
                 return "";

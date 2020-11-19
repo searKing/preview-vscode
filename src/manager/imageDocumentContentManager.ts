@@ -1,8 +1,7 @@
-"use strict";
 import { TextEditor, Uri, ViewColumn } from "vscode";
 import { DocumentContentManagerInterface } from "./documentContentManagerInterface";
-import { HtmlUtil, SourceType } from "./../utils/htmlUtil";
-import { TextUtil, TextUtilReturnType } from "./../utils/textUtil"
+import { HtmlPreview, SourceType } from "../util/htmlPreview";
+import { TextEditorHelper, TextEditorHelperReturnType } from "../util/textEditorHelper"
 
 export class ImageDocumentContentManager implements DocumentContentManagerInterface {
 
@@ -31,11 +30,11 @@ export class ImageDocumentContentManager implements DocumentContentManagerInterf
     public async createContentSnippet(): Promise<string> {
         let editor = this._editor;
         if (!editor) {
-            return HtmlUtil.errorSnippet(this.getWindowErrorMessage());
+            return HtmlPreview.errorSnippet(this.getWindowErrorMessage());
         }
         let previewSnippet: string = await this.generatePreviewSnippet(editor);
         if (!previewSnippet || previewSnippet.length <= 0) {
-            return HtmlUtil.errorSnippet(this.getErrorMessage());
+            return HtmlPreview.errorSnippet(this.getErrorMessage());
         }
         console.info("previewSnippet = " + previewSnippet);
         return previewSnippet;
@@ -43,7 +42,7 @@ export class ImageDocumentContentManager implements DocumentContentManagerInterf
 
     // @Override
     public sendPreviewCommand(previewUri: Uri, displayColumn: ViewColumn): Thenable<void> {
-        return HtmlUtil.sendPreviewCommand(previewUri, displayColumn);
+        return HtmlPreview.sendPreviewCommand(previewUri, displayColumn);
     }
 
     private getErrorMessage(): string {
@@ -53,21 +52,21 @@ export class ImageDocumentContentManager implements DocumentContentManagerInterf
         return `No Active editor - no properties to preview.`;
     }
     private imageSrcSnippet(imageUri: string): string {
-        return HtmlUtil.createRemoteSource(SourceType.IMAGE, imageUri);
+        return HtmlPreview.createRemoteSource(SourceType.IMAGE, imageUri);
     }
 
     // 获取指定位置开始后的第一个分隔符的位置
-    private indexOfSplit(editor: TextEditor, startPos: number): TextUtilReturnType {
-        return TextUtil.regexIndexOf(editor, startPos, this.IMAGE_TYPE_REGREX_SPLIT);
+    private indexOfSplit(editor: TextEditor, startPos: number): TextEditorHelperReturnType {
+        return TextEditorHelper.regexIndexOf(editor, startPos, this.IMAGE_TYPE_REGREX_SPLIT);
     }
     // 获取指定位置开始前的第一个资源前缀的位置
-    private lastIndexOfPrefix(editor: TextEditor, startPos: number): TextUtilReturnType {
-        return TextUtil.regexLastIndexOf(editor, startPos, this.IMAGE_TYPE_REGREX_PREFFIX);
+    private lastIndexOfPrefix(editor: TextEditor, startPos: number): TextEditorHelperReturnType {
+        return TextEditorHelper.regexLastIndexOf(editor, startPos, this.IMAGE_TYPE_REGREX_PREFFIX);
 
     }
     // 获取指定位置开始前的第一个资源前缀的位置
-    private lastIndexOfSuffix(editor: TextEditor, startPos: number): TextUtilReturnType {
-        return TextUtil.regexLastIndexOf(editor, startPos, this.IMAGE_TYPE_REGREX_SUFFIX);
+    private lastIndexOfSuffix(editor: TextEditor, startPos: number): TextEditorHelperReturnType {
+        return TextEditorHelper.regexLastIndexOf(editor, startPos, this.IMAGE_TYPE_REGREX_SUFFIX);
 
     }
     // 获取指定位置开始后的第一个分隔符前的最后一个后缀的位置
@@ -75,7 +74,7 @@ export class ImageDocumentContentManager implements DocumentContentManagerInterf
         if (!editor) {
             return -1;
         }
-        let startIndexOfSuffix: TextUtilReturnType = this.lastIndexOfSuffix(editor, startPosOfSplit);
+        let startIndexOfSuffix: TextEditorHelperReturnType = this.lastIndexOfSuffix(editor, startPosOfSplit);
         let startPosOfSuffix = startIndexOfSuffix.pos;
         let selectedSuffix = startIndexOfSuffix.mark;
         if (startPosOfSuffix < 0) {
@@ -90,7 +89,7 @@ export class ImageDocumentContentManager implements DocumentContentManagerInterf
             return startPosOfSuffix + selectedSuffix.length;
         }
     }
-    private getSplitOfImageUrl(editor: TextEditor, startIndexOfImageUrl: TextUtilReturnType): number {
+    private getSplitOfImageUrl(editor: TextEditor, startIndexOfImageUrl: TextEditorHelperReturnType): number {
         if (!editor) {
             return -1;
         }
@@ -130,21 +129,21 @@ export class ImageDocumentContentManager implements DocumentContentManagerInterf
     // 生成预览编辑页面
     private async generatePreviewSnippet(editor: TextEditor): Promise<string> {
         if (!editor) {
-            return HtmlUtil.errorSnippet(this.getWindowErrorMessage());
+            return HtmlPreview.errorSnippet(this.getWindowErrorMessage());
         }
         let imageUri = this.getFirstSelectedImageUri(editor);
         if (!imageUri || imageUri.length <= 0) {
-            return HtmlUtil.errorSnippet(this.getErrorMessage());
+            return HtmlPreview.errorSnippet(this.getErrorMessage());
         }
 
         let targetImageUri: string = imageUri;//await HtmlUtil.fixImageRedirectUrl(imageUri);
 
-        let head = HtmlUtil.fixImageSrcLinks(HtmlUtil.createLocalSource(SourceType.LINK, "header_fix.css"));
-        let body = HtmlUtil.createRemoteSource(SourceType.DIVISION, targetImageUri) +
-            HtmlUtil.createRemoteSourceAtNewline(SourceType.HR) +
-            HtmlUtil.createRemoteSource(SourceType.CUSTOM_NEWLINE) +
-            HtmlUtil.fixImageSrcLinks(this.imageSrcSnippet(targetImageUri));
-        return HtmlUtil.createFullHtmlSnippetFrom(head, body);
+        let head = HtmlPreview.fixImageSrcLinks(HtmlPreview.createLocalSource(SourceType.LINK, "header_fix.css"));
+        let body = HtmlPreview.createRemoteSource(SourceType.DIVISION, targetImageUri) +
+            HtmlPreview.createRemoteSourceAtNewline(SourceType.HR) +
+            HtmlPreview.createRemoteSource(SourceType.CUSTOM_NEWLINE) +
+            HtmlPreview.fixImageSrcLinks(this.imageSrcSnippet(targetImageUri));
+        return HtmlPreview.createFullHtmlSnippetFrom(head, body);
     }
 
 }

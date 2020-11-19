@@ -1,7 +1,5 @@
-"use strict";
-
 import * as vscode from "vscode";
-export class VscodeUtil {
+export class VscodeHelper {
 
     // token or gist input
     public static getInputBox(boxTag: string) {
@@ -78,7 +76,7 @@ export class VscodeUtil {
         }
 
         //Ask what they want to do:
-        return Promise.resolve(VscodeUtil.getPreviewTypeQuickPick());
+        return Promise.resolve(VscodeHelper.getPreviewTypeQuickPick());
 
     };
 
@@ -86,7 +84,6 @@ export class VscodeUtil {
         if (!docUri) {
             return;
         }
-        let ss = vscode.window.visibleTextEditors;
         let editor: vscode.TextEditor | null = null;
         for (let e of vscode.window.visibleTextEditors) {
             if (e.document.uri.toString() === docUri.toString()) {

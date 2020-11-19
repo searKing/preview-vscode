@@ -1,8 +1,7 @@
-"use strict";
 import { window, commands, ViewColumn, version } from "vscode";
-import { TextUtil } from "./textUtil"
+import { TextEditorHelper } from "./textEditorHelper"
 
-export class MarkDownUtil {
+export class MarkdownPreview {
     public static COMMAND_TOGGLE_PREVIEW: string = "workbench.action.markdown.togglePreview";
     public static COMMAND_OPEN_PREVIEW_SIDE_BY_SIDE: string = "workbench.action.markdown.openPreviewSideBySide";
     public static COMMAND_TOGGLE_PREVIEW_1_3_0: string = "markdown.showPreview";
@@ -11,7 +10,7 @@ export class MarkDownUtil {
 
     // @Override
     public static sendPreviewCommand(displayColumn: ViewColumn): Thenable<void> {
-        let command: string = MarkDownUtil.getPreviewCommandTag(displayColumn);
+        let command: string = MarkdownPreview.getPreviewCommandTag(displayColumn);
         if (command != this.COMMAND_BUTT) {
             return commands.executeCommand(command).then(() => { }, (reason) => {
                 console.warn(reason);
@@ -25,21 +24,21 @@ export class MarkDownUtil {
             return ""
         }
         if (displayColumn == window.activeTextEditor.viewColumn) {
-            return MarkDownUtil.getCommandTogglePreview();
+            return MarkdownPreview.getCommandTogglePreview();
         }
-        return MarkDownUtil.getCommandOpenPreviewSideBySide();
+        return MarkdownPreview.getCommandOpenPreviewSideBySide();
     }
 
     private static getCommandTogglePreview(): string {
-        if (TextUtil.versionCompare(version, "1.3.0") < 0) {
-            return MarkDownUtil.COMMAND_TOGGLE_PREVIEW
+        if (TextEditorHelper.versionCompare(version, "1.3.0") < 0) {
+            return MarkdownPreview.COMMAND_TOGGLE_PREVIEW
         }
-        return MarkDownUtil.COMMAND_TOGGLE_PREVIEW_1_3_0;
+        return MarkdownPreview.COMMAND_TOGGLE_PREVIEW_1_3_0;
     }
     private static getCommandOpenPreviewSideBySide(): string {
-        if (TextUtil.versionCompare(version, "1.3.0") < 0) {
-            return MarkDownUtil.COMMAND_OPEN_PREVIEW_SIDE_BY_SIDE
+        if (TextEditorHelper.versionCompare(version, "1.3.0") < 0) {
+            return MarkdownPreview.COMMAND_OPEN_PREVIEW_SIDE_BY_SIDE
         }
-        return MarkDownUtil.COMMAND_OPEN_PREVIEW_SIDE_BY_SIDE_1_3_0;
+        return MarkdownPreview.COMMAND_OPEN_PREVIEW_SIDE_BY_SIDE_1_3_0;
     }
 }
