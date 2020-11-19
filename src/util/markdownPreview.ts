@@ -1,4 +1,5 @@
-import { window, commands, ViewColumn, version } from "vscode";
+"use strict";
+import { window, commands, ViewColumn, version, Uri } from "vscode";
 import { TextEditorHelper } from "./textEditorHelper"
 
 export class MarkdownPreview {
@@ -9,7 +10,7 @@ export class MarkdownPreview {
     public static COMMAND_BUTT: string = "";
 
     // @Override
-    public static sendPreviewCommand(displayColumn: ViewColumn): Thenable<void> {
+    public static sendPreviewCommand(_previewUri: Uri, displayColumn: ViewColumn): Thenable<void> {
         let command: string = MarkdownPreview.getPreviewCommandTag(displayColumn);
         if (command != this.COMMAND_BUTT) {
             return commands.executeCommand(command).then(() => { }, (reason) => {

@@ -375,7 +375,6 @@ export class HtmlPreview {
             __dirname,
             "..",
             "..",
-            "..",
             ...paths
         ));
     }

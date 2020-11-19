@@ -1,6 +1,7 @@
 import { TextEditor, Uri, ViewColumn } from "vscode";
 import { DocumentContentManagerInterface } from "./documentContentManagerInterface";
 import { HtmlPreview } from "../util/htmlPreview";
+// import { MarkdownPreview } from "../util/markdownPreview";
 
 let Markdown2HtmlLess = require("markdown2html-less").Markdown2HtmlLess;
 const markdown2htmlLess = new Markdown2HtmlLess();
@@ -40,7 +41,7 @@ export class MarkdownDocumentContentManager implements DocumentContentManagerInt
 
     // @Override
     public sendPreviewCommand(previewUri: Uri, displayColumn: ViewColumn): Thenable<void> {
-        // return MarkDownUtil.sendPreviewCommand(previewUri, displayColumn);
+        // return MarkdownPreview.sendPreviewCommand(previewUri, displayColumn);
         return HtmlPreview.sendPreviewCommand(previewUri, displayColumn);
 
     }
