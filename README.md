@@ -151,7 +151,7 @@ according to [NPM problem: npm ERR! extraneous](http://lifeonubuntu.com/npm-prob
 
 * How to publish this extension? Please run 'npm install -g vsce' to install vsce, according to [publishing-extension](https://code.visualstudio.com/api/working-with-extensions/publishing-extension)
 
-* 'vsce publish' failed?
+* 'vsce package && vsce publish' failed?
 
   ```info
   Executing prepublish script 'node ./node_modules/vscode/bin/compile'...
