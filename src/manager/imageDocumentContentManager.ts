@@ -83,7 +83,7 @@ export class ImageDocumentContentManager implements DocumentContentManagerInterf
             if (startPosOfSuffix < startPosOfImageUrl) {
                 return -1;
             }
-            if (selectedSuffix.match(/\s*/)) {
+            if (selectedSuffix.match(/\s+/)) {
                 return startPosOfSuffix
             }
             return startPosOfSuffix + selectedSuffix.length;
@@ -123,7 +123,7 @@ export class ImageDocumentContentManager implements DocumentContentManagerInterf
             return "";
         }
         let imgSrcUri: string = editor.document.getText().slice(startPosOfImageUrl, endNextPosOfImageUrl);
-        return imgSrcUri;
+        return imgSrcUri.trim();
     }
 
     // 生成预览编辑页面
