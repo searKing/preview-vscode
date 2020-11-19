@@ -100,7 +100,7 @@ export class HtmlPreview {
 
     // 生成本地文件对应URI的html标签代码片段
     public static createRemoteSource(type: SourceType, payLoad?: string): string {
-        if(!payLoad){
+        if (!payLoad) {
             return ""
         }
         switch (type) {
@@ -155,8 +155,8 @@ export class HtmlPreview {
         return this.createRemoteSource(type, source_path);
     }
 
-    // 将html中将非http或\/开头的URI增加本地待预览html所在目录的前缀
-    public static fixNoneNetLinks(document: string, documentPath: string): string {
+    // 将html中将相对路径或file://或绝对路径开头的URI格式化问webview路径
+    public static fixNoneNetLinks(document: string, _documentPath: string): string {
         return document.replace(
             // 子表达式的序号问题
             // 简单地说：从左向右，以分组的左括号为标志，
@@ -165,15 +165,11 @@ export class HtmlPreview {
             // 第二遍只给命名组分配－－因此所有命名组的组号都大于未命名的组号。
             // 可以使用(?:exp)这样的语法来剥夺一个分组对组号分配的参与权．
             // http://www.cnblogs.com/dwlsxj/p/3532458.html
-            new RegExp("((?:src|href)=[\'\"])((?!http|\\/).*?)([\'\"])", "gmi"), (_subString: string, p1: string, p2: string, p3: string): string => {
-                let fileUrl = require('file-url');
-
+            new RegExp("((?:src|href)=[\'\"])(.*?)([\'\"])", "gmi"), (_subString: string, p1: string, p2: string, p3: string): string => {
+                p2 = HtmlPreview.getExtensionPath(p2);
                 return [
                     p1.trim(),
-                    fileUrl(path.join(
-                        path.dirname(documentPath),
-                        p2
-                    )).trim(),
+                    p2.trim(),
                     p3.trim()
                 ].join("");
             }
@@ -243,11 +239,11 @@ export class HtmlPreview {
             };
             let request = require("request");
             request.get(options, (err: any, resp: any, _body: any) => {
-                    if (!!err) {
-                        return;
-                    }
-                    firstUrl = resp.request.uri.href;
-                });
+                if (!!err) {
+                    return;
+                }
+                firstUrl = resp.request.uri.href;
+            });
             return firstUrl;
         })
 
@@ -365,11 +361,11 @@ export class HtmlPreview {
     }
     // 相对路径，则补全为相对插件的路径
     private static getExtensionPath_1_23_0_BELOW(...paths: string[]): string {
-        if (!!paths && paths.length > 0 && paths[0].startsWith("/")) {
-
-            return path.normalize(path.join(
-                ...paths
-            ));
+        if (!!paths && paths.length > 0) {
+            const p = Uri.parse(paths[0])
+            if (p.scheme != "" || p.path.startsWith("/")) {
+                return paths.join("/");
+            }
         }
         return path.normalize(path.join(
             __dirname,
@@ -379,13 +375,17 @@ export class HtmlPreview {
         ));
     }
     private static getExtensionPath_1_23_0(...paths: string[]): string {
+        const onDiskPath_1_23_0_BELOW = HtmlPreview.getExtensionPath_1_23_0_BELOW(...paths);
 
-        const onDiskPath = Uri.file(HtmlPreview.getExtensionPath_1_23_0_BELOW(...paths));
+        const onDiskPath = Uri.parse(onDiskPath_1_23_0_BELOW);
         // And get the special URI to use with the webview
         if (!onDiskPath['with']) {
-            return HtmlPreview.getExtensionPath_1_23_0_BELOW(...paths);
+            return onDiskPath_1_23_0_BELOW;
         }
-        return onDiskPath['with']({ scheme: 'vscode-resource' }).toString();
+        if (onDiskPath.scheme !== "file") {
+            return onDiskPath_1_23_0_BELOW;
+        }
+        return onDiskPath.with({ scheme: 'vscode-resource' }).toString();
     }
     private static createRemoteSourceOfCUSTOM_STYLE_SAMPLE(payLoad: string): string {
         if (!this.isWithPayLoad(payLoad)) {

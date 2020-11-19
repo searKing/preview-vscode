@@ -73,8 +73,7 @@ export class MarkdownDocumentContentManager implements DocumentContentManagerInt
         const html = markdown2htmlLess.markdown2html(md);
         html.head = html.head || '';
         html.body = html.body || '';
-        return Promise.resolve(`${html.head}
-${html.body}`);
+        return Promise.resolve(HtmlPreview.createFullHtmlSnippetFrom(`${html.head}`, `${html.body}`));
 
     }
 }
