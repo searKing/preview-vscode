@@ -1,14 +1,14 @@
 import { TextEditor, Uri, ViewColumn } from "vscode";
 import { DocumentContentManagerInterface } from "./documentContentManagerInterface";
 import { HtmlPreview, SourceType } from "../util/htmlPreview";
-import { TextEditorHelper, TextEditorHelperReturnType } from "../util/textEditorHelper"
+import { TextEditorHelper, TextEditorHelperReturnType } from "../util/textEditorHelper";
 
 export class ImageDocumentContentManager implements DocumentContentManagerInterface {
 
 
-    private IMAGE_TYPE_REGREX_PREFFIX: RegExp = /http[s]{0,1}:\/\/|file:\/\/|\s[\.]{0,2}\//;
-    private IMAGE_TYPE_REGREX_SUFFIX: RegExp = /png|jpg|jpeg|gif|bmp|\s/;
-    private IMAGE_TYPE_REGREX_SPLIT: RegExp = /\s/;
+    private IMAGE_TYPE_REGREX_PREFFIX = /http[s]{0,1}:\/\/|file:\/\/|\s[.]{0,2}\//;
+    private IMAGE_TYPE_REGREX_SUFFIX = /png|jpg|jpeg|gif|bmp|\s/;
+    private IMAGE_TYPE_REGREX_SPLIT = /\s/;
 
 
     private _editor: TextEditor;
@@ -28,11 +28,11 @@ export class ImageDocumentContentManager implements DocumentContentManagerInterf
     // 生成当前编辑页面的可预览代码片段
     // @Override
     public async createContentSnippet(): Promise<string> {
-        let editor = this._editor;
+        const editor = this._editor;
         if (!editor) {
             return HtmlPreview.errorSnippet(this.getWindowErrorMessage());
         }
-        let previewSnippet: string = await this.generatePreviewSnippet(editor);
+        const previewSnippet: string = await this.generatePreviewSnippet(editor);
         if (!previewSnippet || previewSnippet.length <= 0) {
             return HtmlPreview.errorSnippet(this.getErrorMessage());
         }
@@ -74,9 +74,9 @@ export class ImageDocumentContentManager implements DocumentContentManagerInterf
         if (!editor) {
             return -1;
         }
-        let startIndexOfSuffix: TextEditorHelperReturnType = this.lastIndexOfSuffix(editor, startPosOfSplit);
-        let startPosOfSuffix = startIndexOfSuffix.pos;
-        let selectedSuffix = startIndexOfSuffix.mark;
+        const startIndexOfSuffix: TextEditorHelperReturnType = this.lastIndexOfSuffix(editor, startPosOfSplit);
+        const startPosOfSuffix = startIndexOfSuffix.pos;
+        const selectedSuffix = startIndexOfSuffix.mark;
         if (startPosOfSuffix < 0) {
             return startPosOfSplit;
         } else {
@@ -84,7 +84,7 @@ export class ImageDocumentContentManager implements DocumentContentManagerInterf
                 return -1;
             }
             if (selectedSuffix.match(/\s+/)) {
-                return startPosOfSuffix
+                return startPosOfSuffix;
             }
             return startPosOfSuffix + selectedSuffix.length;
         }
@@ -107,22 +107,22 @@ export class ImageDocumentContentManager implements DocumentContentManagerInterf
             return "";
         }
         // 获取当前鼠标选中段落的起始位置        
-        let startPosOfSelectionText = editor.document.offsetAt(editor.selection.anchor);
+        const startPosOfSelectionText = editor.document.offsetAt(editor.selection.anchor);
 
-        let startIndexOfImageUrl = this.lastIndexOfPrefix(editor, startPosOfSelectionText);
-        let startPosOfImageUrl = startIndexOfImageUrl.pos;
+        const startIndexOfImageUrl = this.lastIndexOfPrefix(editor, startPosOfSelectionText);
+        const startPosOfImageUrl = startIndexOfImageUrl.pos;
         if (startPosOfImageUrl < 0) {
             return "";
         }
 
-        let startPosOfSplit = this.getSplitOfImageUrl(editor, startIndexOfImageUrl);
+        const startPosOfSplit = this.getSplitOfImageUrl(editor, startIndexOfImageUrl);
 
-        let endNextPosOfImageUrl: number = this.getEndOfImageUrl(editor, startPosOfImageUrl, startPosOfSplit);
+        const endNextPosOfImageUrl: number = this.getEndOfImageUrl(editor, startPosOfImageUrl, startPosOfSplit);
 
         if (endNextPosOfImageUrl < 0) {
             return "";
         }
-        let imgSrcUri: string = editor.document.getText().slice(startPosOfImageUrl, endNextPosOfImageUrl);
+        const imgSrcUri: string = editor.document.getText().slice(startPosOfImageUrl, endNextPosOfImageUrl);
         return imgSrcUri.trim();
     }
 
@@ -131,15 +131,15 @@ export class ImageDocumentContentManager implements DocumentContentManagerInterf
         if (!editor) {
             return HtmlPreview.errorSnippet(this.getWindowErrorMessage());
         }
-        let imageUri = this.getFirstSelectedImageUri(editor);
+        const imageUri = this.getFirstSelectedImageUri(editor);
         if (!imageUri || imageUri.length <= 0) {
             return HtmlPreview.errorSnippet(this.getErrorMessage());
         }
 
-        let targetImageUri: string = imageUri;//await HtmlUtil.fixImageRedirectUrl(imageUri);
+        const targetImageUri: string = imageUri;//await HtmlUtil.fixImageRedirectUrl(imageUri);
 
-        let head = HtmlPreview.fixImageSrcLinks(HtmlPreview.createLocalSource(SourceType.LINK, "header_fix.css"));
-        let body = HtmlPreview.createRemoteSource(SourceType.DIVISION, targetImageUri) +
+        const head = HtmlPreview.fixImageSrcLinks(HtmlPreview.createLocalSource(SourceType.LINK, "header_fix.css"));
+        const body = HtmlPreview.createRemoteSource(SourceType.DIVISION, targetImageUri) +
             HtmlPreview.createRemoteSourceAtNewline(SourceType.HR) +
             HtmlPreview.createRemoteSource(SourceType.CUSTOM_NEWLINE) +
             HtmlPreview.fixImageSrcLinks(this.imageSrcSnippet(targetImageUri));

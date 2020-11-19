@@ -1,6 +1,6 @@
 import { window, commands, Uri, ViewColumn, version, workspace, TextDocument } from "vscode";
 import * as path from "path";
-import { TextEditorHelper } from "./textEditorHelper"
+import { TextEditorHelper } from "./textEditorHelper";
 import { PreviewDocumentContentProvider } from "../previewDocumentContentProvider";
 
 
@@ -23,8 +23,8 @@ export enum SourceType {
 }
 
 export class HtmlPreview {
-    private static COMMAND_TOGGLE_PREVIEW: string = "vscode.previewHtml";
-    private static HTTP_S_REGREX_PREFFIX: RegExp = /http[s]{0,1}:\/\//;
+    private static COMMAND_TOGGLE_PREVIEW = "vscode.previewHtml";
+    private static HTTP_S_REGREX_PREFFIX = /http[s]{0,1}:\/\//;
     // @Override
     public static sendPreviewCommand(previewUri: Uri, displayColumn: ViewColumn): Thenable<void> {
         if (TextEditorHelper.versionCompare(version, "1.23.0") < 0) {
@@ -33,8 +33,7 @@ export class HtmlPreview {
         return HtmlPreview.sendPreviewCommand_1_23_0(previewUri, displayColumn);
     }
     public static sendPreviewCommand_1_23_0_BELOW(previewUri: Uri, displayColumn: ViewColumn): Thenable<void> {
-        return commands.executeCommand(this.COMMAND_TOGGLE_PREVIEW, previewUri, displayColumn).then(() => {
-        }, (reason) => {
+        return commands.executeCommand(this.COMMAND_TOGGLE_PREVIEW, previewUri, displayColumn).then(() => { return; }, (reason) => {
             console.warn(reason);
             window.showErrorMessage(reason);
         });
@@ -55,7 +54,7 @@ export class HtmlPreview {
                 } // Webview options. More on these later.
             );
             // And set its HTML content
-            panel.webview.html = doc.getText()
+            panel.webview.html = doc.getText();
         }, (reason) => {
             console.warn(reason);
             window.showErrorMessage(reason);
@@ -101,7 +100,7 @@ export class HtmlPreview {
     // 生成本地文件对应URI的html标签代码片段
     public static createRemoteSource(type: SourceType, payLoad?: string): string {
         if (!payLoad) {
-            return ""
+            return "";
         }
         switch (type) {
             case SourceType.BODY:
@@ -141,8 +140,9 @@ export class HtmlPreview {
     public static createLocalSource(type: SourceType, fileName: string) {
         // __dirname 是package.json中"main"字段对应的绝对目录
         // 生成本地文件绝对路径URI
-        let fileUrl = require('file-url');
-        let source_path = fileUrl(
+        // eslint-disable-next-line @typescript-eslint/no-var-requires
+        const fileUrl = require('file-url');
+        const source_path = fileUrl(
             path.join(
                 __dirname,
                 "..",
@@ -165,7 +165,7 @@ export class HtmlPreview {
             // 第二遍只给命名组分配－－因此所有命名组的组号都大于未命名的组号。
             // 可以使用(?:exp)这样的语法来剥夺一个分组对组号分配的参与权．
             // http://www.cnblogs.com/dwlsxj/p/3532458.html
-            new RegExp("((?:src|href)=[\'\"])(.*?)([\'\"])", "gmi"), (_subString: string, p1: string, p2: string, p3: string): string => {
+            new RegExp("((?:src|href)=['\"])(.*?)(['\"])", "gmi"), (_subString: string, p1: string, p2: string, p3: string): string => {
                 p2 = HtmlPreview.getExtensionPath(p2);
                 return [
                     p1.trim(),
@@ -189,7 +189,7 @@ export class HtmlPreview {
             // 第二遍只给命名组分配－－因此所有命名组的组号都大于未命名的组号。
             // 可以使用(?:exp)这样的语法来剥夺一个分组对组号分配的参与权．
             // http://www.cnblogs.com/dwlsxj/p/3532458.html
-            new RegExp("((?:src|href)=[\'\"])(.*?)([\'\"])", "gmi"), (_subString: string, p1: string, p2: string, p3: string): string => {
+            new RegExp("((?:src|href)=['\"])(.*?)(['\"])", "gmi"), (_subString: string, p1: string, p2: string, p3: string): string => {
                 p2 = HtmlPreview.getExtensionPath(p2);
                 return [
                     p1.trim(),
@@ -204,7 +204,7 @@ export class HtmlPreview {
         if (!srcUrl) {
             return "";
         }
-        let result: RegExpExecArray | null = HtmlPreview.HTTP_S_REGREX_PREFFIX.exec(srcUrl);
+        const result: RegExpExecArray | null = HtmlPreview.HTTP_S_REGREX_PREFFIX.exec(srcUrl);
         if (result == null) {
             return "";
         }
@@ -220,7 +220,7 @@ export class HtmlPreview {
         return new Promise(function (_resolve, _reject) {
             // Pass final redirect url to callback
             // https://github.com/request/request/pull/220#issuecomment-5012579
-            var options = {
+            const options = {
                 method: 'GET',
                 url: firstUrl,
                 // followAllRedirects: false,
@@ -229,15 +229,16 @@ export class HtmlPreview {
                     'cache-control': 'no-cache'
                 }
             };
-            let request = require("request");
+            // eslint-disable-next-line @typescript-eslint/no-var-requires
+            const request = require("request");
             request.get(options, (err: any, resp: any, _body: any) => {
-                if (!!err) {
+                if (err) {
                     return;
                 }
                 firstUrl = resp.request.uri.href;
             });
             return firstUrl;
-        })
+        });
 
     }
 
@@ -320,7 +321,7 @@ export class HtmlPreview {
         if (!this.isWithPayLoad(payLoad)) {
             return ``;
         }
-        return `<style type=\"text/css\">
+        return `<style type="text/css">
                     ${payLoad}
                 </style>`;
     }
@@ -334,10 +335,10 @@ export class HtmlPreview {
         if (!this.isWithPayLoad(payLoad)) {
             return ``;
         }
-        var head = `<script src="${this.getExtensionPath()}/node_modules/mermaid/dist/mermaid.min.js" type="text/javascript">
+        const head = `<script src="${this.getExtensionPath()}/node_modules/mermaid/dist/mermaid.min.js" type="text/javascript">
                         mermaid.initialize({startOnLoad: true, theme: 'forest'});
                     </script>`;
-        var body = `
+        const body = `
                     <hr>
                     <div class="mermaid">
                         ${payLoad}
@@ -354,7 +355,7 @@ export class HtmlPreview {
     // 相对路径，则补全为相对插件的路径
     private static getExtensionPath_1_23_0_BELOW(...paths: string[]): string {
         if (!!paths && paths.length > 0) {
-            const p = Uri.parse(paths[0])
+            const p = Uri.parse(paths[0]);
             if (p.scheme != "" || p.path.startsWith("/")) {
                 return paths.join("/");
             }
@@ -384,17 +385,17 @@ export class HtmlPreview {
             return ``;
         }
 
-        var head = HtmlPreview.createRemoteSource(SourceType.STYLE,
+        const head = HtmlPreview.createRemoteSource(SourceType.STYLE,
             `#css_property {
                 ${payLoad}
             }`);
-        var body = `<div>Preview of the CSS properties
+        const body = `<div>Preview of the CSS properties
                         {
                             ${payLoad}
                         }
                     </div>
                     <hr>
-                    <div id=\"css_property\">Hello World</div>`;
+                    <div id="css_property">Hello World</div>`;
         return HtmlPreview.createFullHtmlSnippetFrom(head, body);
     }
 }
