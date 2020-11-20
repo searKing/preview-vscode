@@ -13,18 +13,18 @@ import { PreviewDocumentContentProvider } from './previewDocumentContentProvider
 export function activate(context: vscode.ExtensionContext) {
     // Use the console to output diagnostic information (console.log) and errors (console.error)
     // This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, Preview Extension Startup');
-	
-	const telemetryReporter = loadDefaultTelemetryReporter();
-	context.subscriptions.push(telemetryReporter);
+    console.log('Congratulations, Preview Extension Startup');
 
-	const contributions = getMarkdownExtensionContributions(context);
-	context.subscriptions.push(contributions);
+    const telemetryReporter = loadDefaultTelemetryReporter();
+    context.subscriptions.push(telemetryReporter);
 
-	const logger = new Logger();
-	logger.log('Congratulations, Preview Extension Startup');
+    const contributions = getMarkdownExtensionContributions(context);
+    context.subscriptions.push(contributions);
 
-	// 文本内容提供者
+    const logger = new Logger();
+    logger.log('Congratulations, Preview Extension Startup');
+
+    // 文本内容提供者
     const PROVIDER: PreviewDocumentContentProvider = PreviewDocumentContentProvider.getInstance();
 
     // 向vscode注册当前文件发生变化时的回调函数
@@ -130,10 +130,11 @@ export function activate(context: vscode.ExtensionContext) {
         return sendPreviewCommand(displayColumn, e);
     });
 
-	context.subscriptions.push(previewDisposable, previewToSideDisposable, providerDisposable);
+    context.subscriptions.push(previewDisposable, previewToSideDisposable, providerDisposable);
 }
 // this method is called when your extension is deactivated
 export function deactivate() {
-	console.log("Preview Extension Shutdown");
+    console.log("Preview Extension Shutdown");
+    
 }
 

@@ -36,7 +36,7 @@ export class CssDocumentContentManager implements DocumentContentManagerInterfac
     }
 
     // @Override
-    public sendPreviewCommand(previewUri: Uri, displayColumn: ViewColumn): Thenable<void> {
+    public sendPreviewCommand(previewUri: Uri, displayColumn: ViewColumn, _editor: TextEditor): Thenable<void> {
         return HtmlPreview.sendPreviewCommand(previewUri, displayColumn);
     }
 
