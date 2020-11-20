@@ -288,6 +288,7 @@
 		]
 	},
 	"scripts": {
+		"tidy": "npm-check && npm install && npm run postinstall && npm audit fix",
 		"postinstall": "node ./node_modules/vscode/bin/install",
 		"compile": "gulp compile && npm run build-preview",
 		"watch": "npm run build-preview && tsc -p ./",
