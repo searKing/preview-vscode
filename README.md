@@ -152,6 +152,13 @@ according to [NPM problem: npm ERR! extraneous](http://lifeonubuntu.com/npm-prob
 * How to publish this extension? Please run 'npm install -g vsce' to install vsce, according to [publishing-extension](https://code.visualstudio.com/api/working-with-extensions/publishing-extension)
 
 * Meet This extension consists of 12756 files, out of which 7903 are JavaScript files. For performance reasons, you should bundle your extension: https://aka.ms/vscode-bundle-extension . You should also exclude unnecessary files by adding them to your .vscodeignore: https://aka.ms/vscode-vscodeignore
+  * vim webpack.config.js, and enable http server for `webpack-bundle-analyzer`
+
+    ```js
+    - analyzerMode: 'disabled'
+    + analyzerMode: 'server'
+    ```
+
 
 * 'vsce package && vsce publish' failed?
 
