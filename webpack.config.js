@@ -8,6 +8,7 @@
 'use strict';
 
 const path = require('path');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 /**@type {import('webpack').Configuration}*/
 const config = {
@@ -42,6 +43,24 @@ const config = {
             }]
         }]
     },
+    plugins: [
+        new BundleAnalyzerPlugin({
+            analyzerMode: 'disabled', // 不启动展示打包报告的http服务器
+            // generateStatsFile: true, // 是否生成stats.json文件
+            // 默认配置的具体配置项
+            //   analyzerMode: 'server',
+            //   analyzerHost: '127.0.0.1',
+            //   analyzerPort: '8888',
+            //   reportFilename: 'report.html',
+            //   defaultSizes: 'parsed',
+            //   openAnalyzer: true,
+            //   generateStatsFile: false,
+            //   statsFilename: 'stats.json',
+            //   statsOptions: null,
+            //   excludeAssets: null,
+            //   logLevel: info
+        }),
+    ]
 }
 
 module.exports = config;

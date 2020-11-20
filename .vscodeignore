@@ -10,7 +10,7 @@ yarn.lock
 preview-src/**
 webpack.config.js
 
-
+node_modules/vscode/*
 .vscode/**
 .vscode-test/**
 **/*.map
