@@ -2,7 +2,7 @@
 	"name": "preview-vscode",
 	"displayName": "%displayName%",
 	"description": "%description%",
-	"version": "2.2.2",
+	"version": "2.2.3",
 	"icon": "images/icon.png",
 	"publisher": "searKing",
 	"author": "Haixin Chen",
@@ -309,7 +309,8 @@
 		"run-sequence": "^2.2.1",
 		"vsce": "^1.81.1",
 		"vscode-extension-telemetry": "^0.1.6",
-		"vscode-nls-dev": "^3.3.2"
+		"vscode-nls-dev": "^3.3.2",
+		"webpack-bundle-analyzer": "^4.1.0"
 	},
 	"devDependencies": {
 		"@types/file-url": "^3.0.2",
@@ -320,6 +321,7 @@
 		"@types/request": "^2.48.5",
 		"@typescript-eslint/eslint-plugin": "^4.8.1",
 		"@typescript-eslint/parser": "^4.8.1",
+		"@types/pug": "^2.0.4",
 		"copy-webpack-plugin": "^6.3.1",
 		"del": "^6.0.0",
 		"eslint": "^7.13.0",

@@ -1,8 +1,10 @@
 import { TextEditor, Uri, ViewColumn } from "vscode";
+import * as pug from "pug";
+
 import { DocumentContentManagerInterface } from "./documentContentManagerInterface";
 import { HtmlPreview } from "../util/htmlPreview";
 
-let pug = require("pug");
+
 
 export class PugDocumentContentManager implements DocumentContentManagerInterface {
 
