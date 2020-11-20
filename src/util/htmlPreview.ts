@@ -156,7 +156,10 @@ export class HtmlPreview {
     }
 
     // 将html中将相对路径或file://或绝对路径开头的URI格式化问webview路径
-    public static fixNoneNetLinks(document: string, _documentPath: string): string {
+    public static fixNoneNetLinks(document: string, _documentPath?: string): string {
+        if (!document) {
+            return document;
+        }
         return document.replace(
             // 子表达式的序号问题
             // 简单地说：从左向右，以分组的左括号为标志，
@@ -178,26 +181,7 @@ export class HtmlPreview {
 
     // 将html中将file://去掉,且恢复默认绝对路径
     public static fixImageSrcLinks(imageSnippet: string): string {
-        if (!imageSnippet) {
-            return imageSnippet;
-        }
-        return imageSnippet.replace(
-            // 子表达式的序号问题
-            // 简单地说：从左向右，以分组的左括号为标志，
-            // 过程是要从左向右扫描两遍的：
-            // 第一遍只给未命名组分配，
-            // 第二遍只给命名组分配－－因此所有命名组的组号都大于未命名的组号。
-            // 可以使用(?:exp)这样的语法来剥夺一个分组对组号分配的参与权．
-            // http://www.cnblogs.com/dwlsxj/p/3532458.html
-            new RegExp("((?:src|href)=['\"])(.*?)(['\"])", "gmi"), (_subString: string, p1: string, p2: string, p3: string): string => {
-                p2 = HtmlPreview.getExtensionPath(p2);
-                return [
-                    p1.trim(),
-                    p2.trim(),
-                    p3.trim()
-                ].join("");
-            }
-        );
+        return HtmlPreview.fixNoneNetLinks(imageSnippet, "");
     }
 
     public static async fixImageRedirectUrl(srcUrl: string): Promise<string> {
@@ -356,7 +340,22 @@ export class HtmlPreview {
     private static getExtensionPath_1_23_0_BELOW(...paths: string[]): string {
         if (!!paths && paths.length > 0) {
             const p = Uri.parse(paths[0]);
-            if (p.scheme != "" || p.path.startsWith("/")) {
+            if (p.scheme != "file" || paths[0].startsWith("/")) {
+                return paths.join("/");
+            }
+            const fs = paths[0].replace(/^file:\/\//, "");
+            if (fs.startsWith("/")) {
+                return paths.join("/");
+            }
+            // file://./a/b/c
+            // file://a/b/c
+            if (paths[0].startsWith("file://")) {
+                paths[0] = "file://" + path.normalize(path.join(
+                    __dirname,
+                    "..",
+                    "..",
+                    fs
+                ))
                 return paths.join("/");
             }
         }
