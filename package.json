@@ -303,7 +303,7 @@
 		"acorn": "^8.0.4",
 		"eslint": "^7.13.0",
 		"file-url": "^3.0.0",
-		"markdown-it": "^11.0.1",
+		"markdown-it": "^12.3.2",
 		"markdown-it-anchor": "^6.0.1",
 		"markdown2html-less": "^1.0.3",
 		"mermaid": "^8.4.7",
