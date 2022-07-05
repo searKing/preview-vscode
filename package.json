@@ -306,7 +306,7 @@
 		"markdown-it": "^11.0.1",
 		"markdown-it-anchor": "^6.0.1",
 		"markdown2html-less": "^1.0.3",
-		"mermaid": "^8.4.7",
+		"mermaid": "^9.1.2",
 		"pug": "^3.0.0",
 		"request": "^2.88.2",
 		"rst2mdown": "^0.1.0"
