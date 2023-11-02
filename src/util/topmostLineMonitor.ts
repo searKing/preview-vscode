@@ -4,8 +4,8 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as vscode from 'vscode';
-import { Disposable } from '../util/dispose';
-import { isMarkdownFile } from './file';
+import {Disposable} from '../util/dispose';
+import {isMarkdownFile} from './file';
 
 export class TopmostLineMonitor extends Disposable {
 
@@ -24,7 +24,10 @@ export class TopmostLineMonitor extends Disposable {
 		}));
 	}
 
-	private readonly _onChanged = this._register(new vscode.EventEmitter<{ readonly resource: vscode.Uri, readonly line: number }>());
+	private readonly _onChanged = this._register(new vscode.EventEmitter<{
+		readonly resource: vscode.Uri,
+		readonly line: number
+	}>());
 	public readonly onDidChanged = this._onChanged.event;
 
 	private updateLine(
@@ -58,7 +61,7 @@ export class TopmostLineMonitor extends Disposable {
 export function getVisibleLine(
 	editor: vscode.TextEditor
 ): number | undefined {
-	if (!editor.visibleRanges.length) {
+	if (!editor.visibleRanges.length || !editor.visibleRanges[0]) {
 		return undefined;
 	}
 

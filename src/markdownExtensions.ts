@@ -5,7 +5,7 @@
 
 import * as vscode from 'vscode';
 import * as arrays from './util/arrays';
-import { Disposable } from './util/dispose';
+import {Disposable} from './util/dispose';
 
 const resolveExtensionResource = (extension: vscode.Extension<any>, resourcePath: string): vscode.Uri => {
 	return vscode.Uri.joinPath(extension.extensionUri, resourcePath);
@@ -49,7 +49,10 @@ export namespace MarkdownContributions {
 		};
 	}
 
-	function uriEqual(a: vscode.Uri, b: vscode.Uri): boolean {
+	function uriEqual(a: vscode.Uri | undefined, b: vscode.Uri | undefined): boolean {
+		if (!a || !b) {
+			return a == b
+		}
 		return a.toString() === b.toString();
 	}
 
@@ -139,7 +142,9 @@ class VSCodeExtensionMarkdownContributionProvider extends Disposable implements 
 		}, undefined, this._disposables);
 	}
 
-	public get extensionUri() { return this._extensionContext.extensionUri; }
+	public get extensionUri() {
+		return this._extensionContext.extensionUri;
+	}
 
 	private readonly _onContributionsChanged = this._register(new vscode.EventEmitter<this>());
 	public readonly onContributionsChanged = this._onContributionsChanged.event;
