@@ -99,11 +99,15 @@ export class PreviewDocumentContentProvider implements TextDocumentContentProvid
     }
 
     // 通知监听者发生待预览HTML文本变化事件
-    public update() {
+    public update(editor: TextEditor) {
         if (!this._documentContentManager) {
             return;
         }
-        let fileName = this._documentContentManager.editor().document.fileName;
+        const previewEditor = this._documentContentManager.editor();
+        if (editor != previewEditor) { // ignore active editor which is not previewed
+            return;
+        }
+        let fileName = previewEditor.document.fileName;
         let previewUri: Uri = PreviewDocumentContentProvider.getPreviewUri(fileName);
         this._onDidChange.fire(previewUri);
     }
@@ -113,15 +117,16 @@ export class PreviewDocumentContentProvider implements TextDocumentContentProvid
         if (!this._documentContentManager) {
             return;
         }
-        let fileName = this._documentContentManager.editor().document.fileName;
+        const previewEditor = this._documentContentManager.editor();
+        let fileName = previewEditor.document.fileName;
         // 生成预览临时文件的URI
         let previewUri: Uri = PreviewDocumentContentProvider.getPreviewUri(fileName)
-        await this._documentContentManager.sendPreviewCommand(previewUri, displayColumn, editor);
+        await this._documentContentManager.sendPreviewCommand(previewUri, displayColumn, previewEditor);
         //主动触发文本更新，因为当预览命令发生变化的时候
         //对于不能判断文本类型的，会弹出文本选择对话框，但是由于文本没有发生变化
         //所以监听者被通知内容更新，还会显示之前缓存下来的内容
         //故而，主动触发通知监听者强制刷新缓存
-        return this.update();
+        return this.update(editor);
     }
 
     static getPreviewTitle(fileName: string): string {

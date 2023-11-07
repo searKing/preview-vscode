@@ -1,5 +1,6 @@
 import { commands, TextDocument, Uri, version, ViewColumn, window, workspace } from "vscode";
 import * as path from "path";
+
 import { TextEditorHelper } from "./textEditorHelper";
 
 export enum SourceType {
@@ -144,9 +145,7 @@ export class HtmlPreview {
 	public static createLocalSource(type: SourceType, fileName: string) {
 		// __dirname 是package.json中"main"字段对应的绝对目录
 		// 生成本地文件绝对路径URI
-		// eslint-disable-next-line @typescript-eslint/no-var-requires
-		const fileUrl = require('file-url');
-		const source_path = fileUrl(
+		const source_path = path.resolve(
 			path.join(
 				__dirname,
 				"..",
@@ -373,6 +372,7 @@ export class HtmlPreview {
 					__dirname,
 					"..",
 					"..",
+					"..",
 					fs
 				))
 				return paths.join("/");
@@ -380,6 +380,7 @@ export class HtmlPreview {
 		}
 		return path.normalize(path.join(
 			__dirname,
+			"..",
 			"..",
 			"..",
 			...paths

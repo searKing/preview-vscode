@@ -297,13 +297,10 @@
 		"compile": "tsc -p 'src/browser/tsconfig.json' && tsc -p 'src/node/tsconfig.json'",
 		"lint": "eslint \"src/**/*.ts\"",
 		"watch": "tsc -watch -p ./",
-		"vscode:prepublish": "npm run tidy && npm run prepack && npm run compile && npm prune --production"
+		"vscode:prepublish": "npm run tidy && npm run compile && npm run prepack && npm prune --production"
 	},
 	"dependencies": {
-		"file-url": "^4.0.0",
-		"markdown-it": "^13.0.2",
-		"markdown2html-less": "^1.0.4",
-		"mermaid": "^10.6.0",
+		"markdown2html-less": "^1.0.5",
 		"pug": "^3.0.0",
 		"request": "^2.88.2",
 		"rst2mdown": "^0.1.0"
@@ -313,9 +310,8 @@
 		"@types/node": "^20.8.10",
 		"@types/pug": "^2.0.8",
 		"@types/vscode": "^1.84.0",
-		"@typescript-eslint/eslint-plugin": "^6.9.1",
-		"@typescript-eslint/parser": "^6.9.1",
-		"@vscode/test-electron": "^2.3.6",
+		"@typescript-eslint/eslint-plugin": "^6.10.0",
+		"@typescript-eslint/parser": "^6.10.0",
 		"eslint": "^8.53.0",
 		"mocha": "^10.2.0",
 		"typescript": "^5.2.2"

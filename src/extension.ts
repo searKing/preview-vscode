@@ -6,10 +6,10 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
-import {Logger} from './logger';
-import {getMarkdownExtensionContributions} from './markdownExtensions';
-import {loadDefaultTelemetryReporter} from './telemetryReporter';
-import {PreviewDocumentContentProvider} from './previewDocumentContentProvider';
+import { Logger } from './logger';
+import { getMarkdownExtensionContributions } from './markdownExtensions';
+import { loadDefaultTelemetryReporter } from './telemetryReporter';
+import { PreviewDocumentContentProvider } from './previewDocumentContentProvider';
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -36,13 +36,13 @@ export function activate(context: vscode.ExtensionContext) {
 		if (!!e && !!vscode.window.activeTextEditor && e.document === vscode.window.activeTextEditor.document) {
 			// 由于文档变动必然在插件启动之后，而插件启动时就已经创建了provider
 			// 因此不存在该变量未定义的问题
-			PROVIDER.update();
+			PROVIDER.update(vscode.window.activeTextEditor);
 		}
 	});
 
 	vscode.window.onDidChangeTextEditorSelection((e: vscode.TextEditorSelectionChangeEvent) => {
 		if (!!e && !!e.textEditor && (e.textEditor === vscode.window.activeTextEditor)) {
-			PROVIDER.update();
+			PROVIDER.update(vscode.window.activeTextEditor);
 		}
 	})
 
