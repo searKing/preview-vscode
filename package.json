@@ -297,7 +297,7 @@
 		"compile": "tsc -p 'src/browser/tsconfig.json' && tsc -p 'src/node/tsconfig.json'",
 		"lint": "eslint \"src/**/*.ts\"",
 		"watch": "tsc -watch -p ./",
-		"vscode:prepublish": "npm run tidy && npm run compile && npm run prepack && npm prune --production"
+		"vscode:prepublish": "npm run compile && npm run prepack && npm prune --production"
 	},
 	"dependencies": {
 		"markdown2html-less": "^1.0.5",
@@ -314,7 +314,6 @@
 		"@typescript-eslint/parser": "^6.10.0",
 		"eslint": "^8.53.0",
 		"mocha": "^10.2.0",
-		"typescript": "^5.2.2",
-		"vscode": "^1.1.37"
+		"typescript": "^5.2.2"
 	}
 }
