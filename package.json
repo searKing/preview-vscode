@@ -314,6 +314,7 @@
 		"@typescript-eslint/parser": "^6.10.0",
 		"eslint": "^8.53.0",
 		"mocha": "^10.2.0",
-		"typescript": "^5.2.2"
+		"typescript": "^5.2.2",
+		"vscode": "^1.1.37"
 	}
 }
