@@ -21,7 +21,7 @@
 	"bugs": "https://github.com/searKing/preview-vscode/issues",
 	"homepage": "https://github.com/searKing/preview-vscode/blob/master/README.md",
 	"engines": {
-		"vscode": "^1.83.0"
+		"vscode": "^1.84.0"
 	},
 	"main": "./dist/node/extension",
 	"browser": "./dist/browser/extension",
