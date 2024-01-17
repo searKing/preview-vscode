@@ -66,7 +66,7 @@ export class PreviewDocumentContentProvider implements TextDocumentContentProvid
             case "mermaid":
                 thiz._documentContentManager = new mermaidDocumentContentManager.MermaidDocumentContentManager(editor);
                 break;
-            case "rst":
+            case "restructuredtext":
                 thiz._documentContentManager = new reStructuredTextDocumentContentManager.ReStructuredTextDocumentContentManager(editor);
                 break;
             case "image":

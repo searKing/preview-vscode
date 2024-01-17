@@ -30,7 +30,7 @@ export class VscodeHelper {
                 label: "markdown",
                 description: "Preview Markdown"
             }, {
-                label: "rst",
+                label: "restructuredtext",
                 description: "Preview ReStructuredText"
             }, {
                 label: "html",
@@ -64,7 +64,7 @@ export class VscodeHelper {
             case "markdown":
             case "css":
             case "mermaid":
-            case "rst":
+            case "restructuredtext":
                 return Promise.resolve(editor.document.languageId);
             default:
                 break;

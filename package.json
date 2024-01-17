@@ -44,8 +44,10 @@
 				]
 			},
 			{
-				"id": "rst",
+				"id": "restructuredtext",
 				"aliases": [
+          "reStructuredText",
+          "rst",
 					"RST",
 					"ReStructured Text"
 				],
