@@ -44,20 +44,6 @@
 				]
 			},
 			{
-				"id": "restructuredtext",
-				"aliases": [
-          "reStructuredText",
-          "rst",
-					"RST",
-					"ReStructured Text"
-				],
-				"extensions": [
-					".rst",
-					".rest",
-					".hrst"
-				]
-			},
-			{
 				"id": "jade",
 				"aliases": [
 					"Pug",
