@@ -1,5 +1,25 @@
 {
 	"displayName": "Preview",
 	"description": "A Markdown, ReStructured Text, HTML, Jade, Pug, Image, CSS, Mermaid previewer.",
-	"config.markdown.tasklists.enabled": "Enable/disable rendering GitHub-style task lists in the built-in Markdown preview."
+	"config.markdown.abbr.enabled": "Enable/disable rendering Abbreviation (<abbr>) tag in the built-in Markdown preview.",
+	"config.markdown.math.macros": "A collection of custom macros. Each macro is a key-value pair where the key is a new command name and the value is the expansion of the macro.",
+	"config.markdown.anchor.enabled": "Enable/disable rendering id attribute to headings in the built-in Markdown preview.",
+	"config.markdown.attrs.enabled": "Enable/disable rendering GitHub-style task lists in the built-in Markdown preview.",
+	"config.markdown.cjk-breaks.enabled": "Enable/disable rendering GitHub-style task lists in the built-in Markdown preview.",
+	"config.markdown.deflist.enabled": "Enable/disable rendering GitHub-style task lists in the built-in Markdown preview.",
+	"config.markdown.emoji.enabled": "Enable/disable rendering GitHub-style task lists in the built-in Markdown preview.",
+	"config.markdown.expand-tabs.enabled": "Enable/disable rendering GitHub-style task lists in the built-in Markdown preview.",
+	"config.markdown.footnote.enabled": "Enable/disable rendering GitHub-style task lists in the built-in Markdown preview.",
+	"config.markdown.highlightjs.enabled": "Enable/disable rendering GitHub-style task lists in the built-in Markdown preview.",
+	"config.markdown.html.enabled": "Enable/disable rendering GitHub-style task lists in the built-in Markdown preview.",
+	"config.markdown.ins.enabled": "Enable/disable rendering GitHub-style task lists in the built-in Markdown preview.",
+	"config.markdown.lazy-headers.enabled": "Enable/disable rendering GitHub-style task lists in the built-in Markdown preview.",
+	"config.markdown.mark.enabled": "Enable/disable rendering GitHub-style task lists in the built-in Markdown preview.",
+	"config.markdown.markdown.enabled": "Enable/disable rendering GitHub-style task lists in the built-in Markdown preview.",
+	"config.markdown.mermaid.enabled": "Enable/disable rendering GitHub-style task lists in the built-in Markdown preview.",
+	"config.markdown.pug.enabled": "Enable/disable rendering GitHub-style task lists in the built-in Markdown preview.",
+	"config.markdown.rst.enabled": "Enable/disable rendering GitHub-style task lists in the built-in Markdown preview.",
+	"config.markdown.sub.enabled": "Enable/disable rendering GitHub-style task lists in the built-in Markdown preview.",
+	"config.markdown.sup.enabled": "Enable/disable rendering GitHub-style task lists in the built-in Markdown preview.",
+	"config.markdown.task-lists.enabled": "Enable/disable rendering GitHub-style task lists in the built-in Markdown preview."
 }

@@ -1,7 +1,7 @@
 {
   "name": "preview-vscode",
-  "displayName": "preview-vscode",
-  "description": "",
+  "displayName": "%displayName%",
+  "description": "%description%",
   "version": "2.3.0",
   "icon": "images/icon.png",
   "publisher": "searKing",
@@ -53,7 +53,7 @@
     "notebookRenderer": [
       {
         "id": "preview-vscode.markdown-it-extension",
-        "displayName": "Markdown it renderer",
+        "displayName": "Preview",
         "entrypoint": {
           "extends": "vscode.markdown-it-renderer",
           "path": "./dist/notebook/index.js"
@@ -67,12 +67,12 @@
     ],
     "configuration": [
       {
-        "title": "Markdown GitHub-style task lists",
+        "title": "Preview",
         "properties": {
           "markdown.tasklists.enabled": {
             "type": "boolean",
             "default": true,
-            "description": "%config.markdown.tasklists.enabled%"
+            "description": "%config.markdown.task-lists.enabled%"
           }
         }
       }
@@ -107,6 +107,7 @@
     "markdown-it-abbr": "^2.0.0",
     "markdown-it-anchor": "^8.6.7",
     "markdown-it-attrs": "^4.1.6",
+    "markdown-it-cjk-breaks": "^2.0.0",
     "markdown-it-container": "^4.0.0",
     "markdown-it-deflist": "^3.0.0",
     "markdown-it-emoji": "^3.0.0",

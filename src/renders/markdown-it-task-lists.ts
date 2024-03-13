@@ -10,7 +10,7 @@ export namespace MarkdownItTaskLists {
 	export function extendMarkdownIt(context: vscode.ExtensionContext | undefined, md: MarkdownIt): MarkdownIt {
 		function isEnabled(): boolean {
 			const config = vscode.workspace.getConfiguration('markdown');
-			return config.get<boolean>('tasklists.enabled', true);
+			return config.get<boolean>('task-lists.enabled', true);
 		}
 
 		if (!!context) {

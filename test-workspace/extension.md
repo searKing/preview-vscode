@@ -70,7 +70,7 @@ _This is italic text_
 
 Unordered
 
-* Create a list by starting a line with `+`,               `-`, or `*`
+* Create a list by starting a line with `+`,                  `-`, or `*`
 * Sub-lists are made by indenting 2 spaces:
   + Marker character change forces new list start:
     - Ac tristique libero volutpat at
@@ -162,6 +162,52 @@ With a reference later in the document defining the URL location:
 The killer feature of `markdown-it` is very effective support of
 [syntax plugins](https://www.npmjs.org/browse/keyword/markdown-it-plugin).
 
+### [cjk-breaks](https://github.com/markdown-it/markdown-it-cjk-breaks)
+
+#### Remove linebreaks near ZWSP
+
+foo​
+bar
+​baz
+
+#### Remove linebreaks between hiragana (wide) characters
+
+あおえ
+いう
+
+#### Remove linebreaks between halfwidth katakana
+
+ｱｵｴ
+ｲｳ
+
+#### Remove linebreaks between fullwidth characters
+
+！＂＃
+＄％
+
+#### Keep linebreaks between hangul characters
+
+ㅏㅗㅔ
+ㅣㅜ
+ￂￌￇ
+ￜￓ
+
+#### Keep linebreaks between hiragana (wide) and english
+
+あおえ
+aoe
+あおえ
+
+#### Emphasis tokens should be skipped
+
+*あおえ*
+*いう*
+
+#### Should recognize astral characters correctly
+
+foo🈀
+🈀foo
+
 ### [Emojies](https://github.com/markdown-it/markdown-it-emoji)
 
 > Classic markup: :wink: :cry: :laughing: :yum:
@@ -236,12 +282,6 @@ It converts "HTML", but keep intact partial entries like "xxxHTMLyyy" and so on.
 ::: warning
 *here be dragons*
 :::
-
-## emoji
-
-* :cat:
-* :smiling_face_with_three_hearts:
-* :100:
 
 ## GFM task list
 

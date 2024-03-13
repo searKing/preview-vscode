@@ -28,6 +28,7 @@ import { WebviewResourceProvider } from './util/resources';
 import { isOfScheme, Schemes } from './util/schemes';
 import { MarkdownItMarkdown } from './markdown-it-markdown';
 import { MarkdownItHTML } from './markdown-it-html';
+import { MarkdownItCjkBreaks } from './markdown-it-cjk-breaks';
 
 export function extendMarkdownIt(context: vscode.ExtensionContext | undefined, md: MarkdownIt): MarkdownIt {
     return join(
@@ -38,6 +39,7 @@ export function extendMarkdownIt(context: vscode.ExtensionContext | undefined, m
         MarkdownItAbbr.extendMarkdownIt,
         MarkdownItAnchor.extendMarkdownIt,
         MarkdownItAttrs.extendMarkdownIt,
+        MarkdownItCjkBreaks.extendMarkdownIt,
         MarkdownItDeflist.extendMarkdownIt,
         MarkdownItFootnote.extendMarkdownIt,
         MarkdownItHighlightjs.extendMarkdownIt,
