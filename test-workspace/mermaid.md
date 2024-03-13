@@ -1,8 +1,0 @@
-```mermaid
-sequenceDiagram 
-A->>B:Query 
-B->>C:Forward query 
-Note right of C : Thinking... 
-C->>B:Responce 
-B->>A:Forward responce
-```
