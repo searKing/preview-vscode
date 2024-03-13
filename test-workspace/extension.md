@@ -70,7 +70,7 @@ _This is italic text_
 
 Unordered
 
-* Create a list by starting a line with `+`,                  `-`, or `*`
+* Create a list by starting a line with `+`,                    `-`, or `*`
 * Sub-lists are made by indenting 2 spaces:
   + Marker character change forces new list start:
     - Ac tristique libero volutpat at
@@ -161,6 +161,14 @@ With a reference later in the document defining the URL location:
 
 The killer feature of `markdown-it` is very effective support of
 [syntax plugins](https://www.npmjs.org/browse/keyword/markdown-it-plugin).
+
+### [Abbreviations](https://github.com/markdown-it/markdown-it-abbr)
+
+This is HTML abbreviation example.
+
+It converts "HTML", but keep intact partial entries like "xxxHTMLyyy" and so on.
+
+*[HTML]: Hyper Text Markup Language
 
 ### [cjk-breaks](https://github.com/markdown-it/markdown-it-cjk-breaks)
 
@@ -268,14 +276,6 @@ Term 1
 Term 2
   ~ Definition 2a
   ~ Definition 2b
-
-### [Abbreviations](https://github.com/markdown-it/markdown-it-abbr)
-
-This is HTML abbreviation example.
-
-It converts "HTML", but keep intact partial entries like "xxxHTMLyyy" and so on.
-
-*[HTML]: Hyper Text Markup Language
 
 ### [Custom containers](https://github.com/markdown-it/markdown-it-container)
 

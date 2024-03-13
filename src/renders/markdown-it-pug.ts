@@ -58,7 +58,7 @@ export namespace MarkdownItPug {
                         .trim()
                         .replace(/<br\s*\/?>/gi, '<br/>');
 
-                    if (!!pug) {
+                    if (!!pug && !!pug.compile) {
                         const html = pug.compile(dedent_code);
                         return `<div>${html}</div>`;
                     }
