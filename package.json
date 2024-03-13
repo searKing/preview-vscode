@@ -62,7 +62,6 @@
     ],
     "markdown.markdownItPlugins": true,
     "markdown.previewStyles": [
-      "./dist/notebook/index.min.css",
       "./preview-styles/index.css"
     ],
     "configuration": [

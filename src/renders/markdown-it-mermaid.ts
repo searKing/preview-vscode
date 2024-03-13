@@ -10,11 +10,13 @@ export namespace MarkdownItMermaid {
     const markdownMermaidSetting = 'markdown.mermaid';
 
     const get_mermaid_package = (): string => {
-        var mermaid_package = path.resolve(path.dirname(require.resolve("mermaid/package.json")));
+        // var mermaid_package = path.resolve(path.dirname(require.resolve("mermaid/package.json")));
+        const REPO_ROOT = path.normalize(path.join(__dirname, '../../'));
+        let mermaid_package = path.join(REPO_ROOT, require.resolve("mermaid/package.json"), "../dist/mermaid.esm.min.mjs");
         if (fs.existsSync(mermaid_package)) {
-            return mermaid_package;
+            return `${mermaid_package}`;
         }
-        return 'https://cdn.jsdelivr.net/npm/mermaid@10';
+        return 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
     };
 
     const mermaid_package = get_mermaid_package();
@@ -55,7 +57,7 @@ export namespace MarkdownItMermaid {
                 // Every Mermaid chart/graph/diagram definition should have separate <pre> tags.
                 // https://mermaid.js.org/intro/getting-started.html#examples
                 return `<script type="module">
-import mermaid from '${mermaid_package}/dist/mermaid.esm.min.mjs';
+import mermaid from '${mermaid_package}';
 mermaid.initialize({ startOnLoad: true });
 </script>
 <pre class="mermaid">${dedent_code}</pre>`;

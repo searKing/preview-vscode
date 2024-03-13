@@ -9,8 +9,6 @@ interface MarkdownItRenderer {
 	extendMarkdownIt(fn: (md: MarkdownIt) => void): void;
 }
 const styleHref = import.meta.url.replace(/index.js$/, 'index.min.css');
-const mermaidSrc = import.meta.url.replace(/index.js$/, '../../../node_modules/mermaid/dist/mermaid.min.js').
-	replace(/index.ts$/, '../../node_modules/mermaid/dist/mermaid.min.js');
 
 const regex_mermaid = new RegExp(/^mermaid(\s+(.*)|)$/);
 

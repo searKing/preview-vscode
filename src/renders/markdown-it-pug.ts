@@ -3,19 +3,21 @@
 import * as vscode from 'vscode';
 import type MarkdownIt = require('markdown-it');
 import { dedent } from 'ts-dedent';
-import path from 'path';
-import fs from 'fs';
 
 export namespace MarkdownItPug {
     const markdownPugSetting = 'markdown.pug';
 
     const get_pug_package = (): string => {
-        var pug_package = path.resolve(path.dirname(require.resolve("pug/package.json")));
-        if (fs.existsSync(pug_package)) {
-            return pug_package;
-        }
-        // https://pugjs.org/js/pug.js
-        return 'https://cdn.jsdelivr.net/npm/pug@3';
+        // // var pug_package = path.resolve(path.dirname(require.resolve("pug/package.json")));
+
+        // TODO: pug doesn't render if use npm/pug@3/lib/index.min.js
+        // const REPO_ROOT = path.normalize(path.join(__dirname, '../../'));
+        // let pug_package = path.join(REPO_ROOT, require.resolve("pug/package.json"), "../lib/index.js");
+        // if (fs.existsSync(pug_package)) {
+        //     return `${pug_package}`;
+        // }
+        // return 'https://cdn.jsdelivr.net/npm/pug@3/lib/index.min.js';
+        return 'https://pugjs.org/js/pug.js';
     };
 
     const pug_package = get_pug_package();
@@ -58,11 +60,14 @@ export namespace MarkdownItPug {
                         .trim()
                         .replace(/<br\s*\/?>/gi, '<br/>');
 
+                    // TODO: require('pug') returns {}, so use <script> instead for trick.
+                    // WARNING in ./node_modules/pug-filters/lib/run-filter.js 33:25-40
+                    // Critical dependency: the request of a dependency is an expression
                     if (!!pug && !!pug.compile) {
                         const html = pug.compile(dedent_code);
                         return `<div>${html}</div>`;
                     }
-                    return `<script src="https://pugjs.org/js/pug.js"></script>
+                    return `<script src="${pug_package}"></script>
     <script>
         document.addEventListener('DOMContentLoaded', init, false);
         function init() {

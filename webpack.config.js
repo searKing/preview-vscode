@@ -39,8 +39,7 @@ const makeConfig = (argv, { entry, out, target, library = 'commonjs' }) => ({
     assert: 'assert',
     domain: 'domain',
     os: 'os',
-    process: 'process',
-    "https://pugjs.org/js/pug.js": "https://pugjs.org/js/pug.js"
+    process: 'process'
   },
   resolve: {
     // support reading TypeScript and JavaScript files, 📖 -> https://github.com/TypeStrong/ts-loader
@@ -109,6 +108,7 @@ const makeConfig = (argv, { entry, out, target, library = 'commonjs' }) => ({
     new NodePolyfillPlugin({
       excludeAliases: ['console', 'Buffer']
     }),
+    // https://github.com/gregnb/filemanager-webpack-plugin
   ],
   infrastructureLogging: {
     level: "log", // enables logging required for problem matchers
