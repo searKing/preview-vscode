@@ -69,6 +69,11 @@
       {
         "title": "Preview",
         "properties": {
+          "markdown.abbr.enabled": {
+            "type": "boolean",
+            "default": true,
+            "description": "%config.markdown.abbr.enabled%"
+          },
           "markdown.tasklists.enabled": {
             "type": "boolean",
             "default": true,
@@ -92,7 +97,8 @@
   "devDependencies": {
     "@types/markdown-it": "^13.0.7",
     "@types/mocha": "^10.0.6",
-    "@types/node": "^20.11.26",
+    "@types/node": "^20.11.27",
+    "@types/pug": "^2.0.10",
     "@types/vscode": "^1.87.0",
     "@types/vscode-notebook-renderer": "^1.57.8",
     "@types/webpack-env": "^1.18.4",
@@ -125,7 +131,6 @@
     "node-polyfill-webpack-plugin": "^3.0.0",
     "path": "^0.12.7",
     "pug": "^3.0.2",
-    "rst2html": "^1.0.4",
     "rst2mdown": "^0.1.0",
     "ts-loader": "^9.5.1",
     "typescript": "^5.4.2",
