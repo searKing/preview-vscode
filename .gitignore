@@ -3,3 +3,11 @@ dist
 node_modules
 .vscode-test/
 *.vsix
+/.idea/codeStyles/codeStyleConfig.xml
+/.idea/codeStyles/Project.xml
+/.idea/inspectionProfiles/Project_Default.xml
+/.idea/.gitignore
+/.idea/git_toolbox_prj.xml
+/.idea/modules.xml
+/.idea/preview-vscode.iml
+/.idea/vcs.xml

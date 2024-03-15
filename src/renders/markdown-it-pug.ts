@@ -8,15 +8,20 @@ export namespace MarkdownItPug {
     const markdownPugSetting = 'markdown.pug';
 
     const get_pug_package = (): string => {
-        // // var pug_package = path.resolve(path.dirname(require.resolve("pug/package.json")));
+        /*
+        // var pug_package = path.resolve(path.dirname(require.resolve("pug/package.json")));
 
         // TODO: pug doesn't render if use npm/pug@3/lib/index.min.js
-        // const REPO_ROOT = path.normalize(path.join(__dirname, '../../'));
-        // let pug_package = path.join(REPO_ROOT, require.resolve("pug/package.json"), "../lib/index.js");
-        // if (fs.existsSync(pug_package)) {
-        //     return `${pug_package}`;
-        // }
-        // return 'https://cdn.jsdelivr.net/npm/pug@3/lib/index.min.js';
+        // Uncaught ReferenceError: require is not defined
+        // https://github.com/PythonLinks/pug/blob/master/README.md#installation-on-the-client
+        // https://github.com/pugjs/pug/issues/3094s
+        const REPO_ROOT = path.normalize(path.join(__dirname, '../../'));
+        let pug_package = path.join(REPO_ROOT, require.resolve("pug/package.json"), "../lib/index.js");
+        if (fs.existsSync(pug_package)) {
+            return `${pug_package}`;
+        }
+        return 'https://cdn.jsdelivr.net/npm/pug@3/lib/index.min.js';
+        */
         return 'https://pugjs.org/js/pug.js';
     };
 
@@ -43,6 +48,10 @@ export namespace MarkdownItPug {
         try {
             var pug = require('pug');
         } catch (error) {
+            // import pug failed: TypeError: Unable to determine current node version
+            // pug -> resolve -> is-core-module
+            // support Node only, not support Browser.
+            console.log(`import pug ignored: ${error}, support Node only`);
         }
         return md.use(pug_render(pug), {});
     }
