@@ -141,6 +141,6 @@ const makeConfig = (argv, { entry, out, target, library = 'commonjs' }) => ({
 });
 module.exports = (env, argv) => [
   makeConfig(argv, { entry: './src/notebook/index.ts', out: './dist/notebook/index.js', target: 'web', library: 'module' }),
-  makeConfig(argv, { entry: './src/extension/extension.ts', out: './dist/extension/extension.js', target: 'node' }),
-  makeConfig(argv, { entry: './src/extension/extension.ts', out: './dist/extension/extension.web.js', target: 'webworker' }),
+  makeConfig(argv, { entry: './src/extension/extension.ts', out: './dist/extension/node/extension.js', target: 'node' }),
+  makeConfig(argv, { entry: './src/extension/extension.ts', out: './dist/extension/browser/extension.js', target: 'webworker' }),
 ];

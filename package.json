@@ -30,7 +30,8 @@
       "supported": true
     }
   },
-  "main": "./dist/extension/extension.js",
+  "main": "./dist/extension/node/extension.js",
+  "browser": "./dist/extension/browser/extension.js",
   "activationEvents": [],
   "contributes": {
     "languages": [
@@ -83,8 +84,8 @@
     ]
   },
   "scripts": {
-    "dist:stable": "npm run vscode:prepublish && vsce package",
-    "dist": "npm run compile && vsce package --pre-release",
+    "dist:stable": "vsce package",
+    "dist": "vsce package --pre-release",
     "vscode:prepublish": "npm run package",
     "compile": "webpack --mode development",
     "watch": "webpack --mode development --watch",
@@ -98,7 +99,7 @@
   "devDependencies": {
     "@types/markdown-it": "^13.0.7",
     "@types/mocha": "^10.0.6",
-    "@types/node": "^20.11.27",
+    "@types/node": "^20.11.28",
     "@types/pug": "^2.0.10",
     "@types/vscode": "^1.87.0",
     "@types/vscode-notebook-renderer": "^1.57.8",
