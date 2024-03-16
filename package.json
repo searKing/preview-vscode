@@ -84,7 +84,7 @@
   },
   "scripts": {
     "dist:stable": "npm run vscode:prepublish && vsce package",
-    "dist": "npm run vscode:prepublish && vsce package --pre-release",
+    "dist": "npm run compile && vsce package --pre-release",
     "vscode:prepublish": "npm run package",
     "compile": "webpack --mode development",
     "watch": "webpack --mode development --watch",
