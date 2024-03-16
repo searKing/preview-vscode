@@ -84,6 +84,19 @@
             "default": 1,
             "description": "%config.markdown.anchor.level%"
           },
+          "markdown.attr.enabled": {
+            "type": "boolean",
+            "default": true,
+            "description": "%config.markdown.attr.enabled%"
+          },
+          "markdown.attr.allowedAttributes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "default": [],
+            "description": "%config.markdown.anchor.allowedAttributes%"
+          },
           "markdown.tasklists.enabled": {
             "type": "boolean",
             "default": true,

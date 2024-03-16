@@ -5,11 +5,12 @@ This is a markdown file.
 ## [Markdown](https://markdown-it.github.io/)
 
 ---
-__Advertisement :)__
 
-* __[pica](https://nodeca.github.io/pica/demo/)__ - high quality and fast image
+**Advertisement :)**
+
+- **[pica](https://nodeca.github.io/pica/demo/)** - high quality and fast image
   resize in browser.
-* __[babelfish](https://github.com/nodeca/babelfish/)__ - developer friendly
+- **[babelfish](https://github.com/nodeca/babelfish/)** - developer friendly
   i18n with plurals support and easy syntax.
 
 You will like those projects!
@@ -30,11 +31,11 @@ You will like those projects!
 
 ## Horizontal Rules
 
-___
+---
 
 ---
 
-***
+---
 
 ## Typographic replacements
 
@@ -52,9 +53,9 @@ test.. test... test..... test?..... test!....
 
 **This is bold text**
 
-__This is bold text__
+**This is bold text**
 
-*This is italic text*
+_This is italic text_
 
 _This is italic text_
 
@@ -63,34 +64,36 @@ _This is italic text_
 ## Blockquotes
 
 > Blockquotes can also be nested...
->> ...by using additional greater-than signs right next to each other...
+>
+> > ...by using additional greater-than signs right next to each other...
+> >
 > > > ...or with spaces between arrows.
 
 ## Lists
 
 Unordered
 
-* Create a list by starting a line with `+`,                    `-`, or `*`
-* Sub-lists are made by indenting 2 spaces:
-  + Marker character change forces new list start:
+- Create a list by starting a line with `+`, `-`, or `*`
+- Sub-lists are made by indenting 2 spaces:
+  - Marker character change forces new list start:
     - Ac tristique libero volutpat at
     - Facilisis in pretium nisl aliquet
     - Nulla volutpat aliquam velit
-* Very easy!
+- Very easy!
 
 Ordered
 
-01. Lorem ipsum dolor sit amet
-02. Consectetur adipiscing elit
-03. Integer molestie lorem at massa
+1.  Lorem ipsum dolor sit amet
+2.  Consectetur adipiscing elit
+3.  Integer molestie lorem at massa
 
-01. You can use sequential numbers...
-01. ...or keep all the numbers as `1.`
+4.  You can use sequential numbers...
+5.  ...or keep all the numbers as `1.`
 
 Start numbering with offset:
 
 57. foo
-01. bar
+1.  bar
 
 ## Code
 
@@ -112,8 +115,8 @@ Sample text here...
 Syntax highlighting
 
 ```js
-var foo = function(bar) {
-    return bar++;
+var foo = function (bar) {
+  return bar++;
 };
 
 console.log(foo(5));
@@ -121,19 +124,19 @@ console.log(foo(5));
 
 ## Tables
 
-| Option | Description |
-| ------ | ----------- |
+| Option | Description                                                               |
+| ------ | ------------------------------------------------------------------------- |
 | data   | path to data files to supply the data that will be passed into templates. |
-| engine | engine to be used for processing templates. Handlebars is the default. |
-| ext    | extension to be used for dest files. |
+| engine | engine to be used for processing templates. Handlebars is the default.    |
+| ext    | extension to be used for dest files.                                      |
 
 Right aligned columns
 
-| Option | Description |
-| ------:| -----------:|
-| data   | path to data files to supply the data that will be passed into templates. |
-| engine | engine to be used for processing templates. Handlebars is the default. |
-| ext    | extension to be used for dest files. |
+| Option |                                                               Description |
+| -----: | ------------------------------------------------------------------------: |
+|   data | path to data files to supply the data that will be passed into templates. |
+| engine |    engine to be used for processing templates. Handlebars is the default. |
+|    ext |                                      extension to be used for dest files. |
 
 ## Links
 
@@ -155,7 +158,7 @@ Like links, Images also have a footnote style syntax
 
 With a reference later in the document defining the URL location:
 
-[id]: https://octodex.github.com/images/dojocat.jpg  "The Dojocat"
+[id]: https://octodex.github.com/images/dojocat.jpg "The Dojocat"
 
 ## Plugins
 
@@ -168,7 +171,17 @@ This is HTML abbreviation example.
 
 It converts "HTML", but keep intact partial entries like "xxxHTMLyyy" and so on.
 
-*[HTML]: Hyper Text Markup Language
+\*[HTML]: Hyper Text Markup Language
+
+### [Attributes](https://github.com/markdown-it/markdown-it-attr)
+
+paragraph {.style-me data-toggle=modal}
+Use the css-module green on this paragraph. {..green}
+paragraph with [a style me span]{.red}
+
+```python {data=asdf}
+nums = [x for x in range(10)]
+```
 
 ### [cjk-breaks](https://github.com/markdown-it/markdown-it-cjk-breaks)
 
@@ -208,13 +221,13 @@ aoe
 
 #### Emphasis tokens should be skipped
 
-*あおえ*
-*いう*
+_あおえ_
+_いう_
 
 #### Should recognize astral characters correctly
 
-foo🈀
-🈀foo
+foo 🈀
+🈀 foo
 
 ### [Emojies](https://github.com/markdown-it/markdown-it-emoji)
 
@@ -226,8 +239,8 @@ see [how to change output](https://github.com/markdown-it/markdown-it-emoji#chan
 
 ### [Subscript](https://github.com/markdown-it/markdown-it-sub) / [Superscript](https://github.com/markdown-it/markdown-it-sup)
 
-* 19^th^
-* H~2~O
+- 19^th^
+- H~2~O
 
 ### [\<ins>](https://github.com/markdown-it/markdown-it-ins)
 
@@ -257,12 +270,12 @@ Duplicated footnote reference[^second].
 
 Term 1
 
-:   Definition 1
+: Definition 1
 with lazy continuation.
 
-Term 2 with *inline markup*
+Term 2 with _inline markup_
 
-:   Definition 2
+: Definition 2
 
         { some code, part of Definition 2 }
 
@@ -271,29 +284,29 @@ Term 2 with *inline markup*
 _Compact style:_
 
 Term 1
-  ~ Definition 1
+~ Definition 1
 
 Term 2
-  ~ Definition 2a
-  ~ Definition 2b
+~ Definition 2a
+~ Definition 2b
 
 ### [Custom containers](https://github.com/markdown-it/markdown-it-container)
 
 ::: warning
-*here be dragons*
+_here be dragons_
 :::
 
 ## GFM task list
 
-* [x] GFM task list 1
-* [x] GFM task list 2
-* [ ] GFM task list 3
-    - [ ] GFM task list 3-1
-    - [ ] GFM task list 3-2
-    - [ ] GFM task list 3-3
-* [ ] GFM task list 4
-    - [ ] GFM task list 4-1
-    - [ ] GFM task list 4-2
+- [x] GFM task list 1
+- [x] GFM task list 2
+- [ ] GFM task list 3
+  - [ ] GFM task list 3-1
+  - [ ] GFM task list 3-2
+  - [ ] GFM task list 3-3
+- [ ] GFM task list 4
+  - [ ] GFM task list 4-1
+  - [ ] GFM task list 4-2
 
 ## Lazy Headers
 
@@ -306,8 +319,8 @@ Term 2
 
 ## abbr
 
-*[HTML]: Hyper Text Markup Language
-*[W3C]:  World Wide Web Consortium
+_[HTML]: Hyper Text Markup Language
+_[W3C]: World Wide Web Consortium
 The HTML specification
 is maintained by the W3C.
 
@@ -316,18 +329,14 @@ is maintained by the W3C.
 ```html
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <title>Page Title</title>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <h1>This is a Heading</h1>
     <p>This is a paragraph.</p>
-
-</body>
-
+  </body>
 </html>
 ```
 
@@ -377,7 +386,7 @@ classDiagram
     class Zebra{
       +bool is_wild
       +run()
-    } 
+    }
 ```
 
 ### State
