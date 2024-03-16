@@ -176,12 +176,18 @@ It converts "HTML", but keep intact partial entries like "xxxHTMLyyy" and so on.
 ### [Attributes](https://github.com/markdown-it/markdown-it-attr)
 
 paragraph {.style-me data-toggle=modal}
+
 Use the css-module green on this paragraph. {..green}
+
 paragraph with [a style me span]{.red}
 
 ```python {data=asdf}
 nums = [x for x in range(10)]
 ```
+
+### [bracketed_spans](https://github.com/markdown-it/markdown-it-bracketed-spans)
+
+foo [bar *bar*]{#id .class attr=value} baz
 
 ### [cjk-breaks](https://github.com/markdown-it/markdown-it-cjk-breaks)
 

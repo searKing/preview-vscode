@@ -97,6 +97,11 @@
             "default": [],
             "description": "%config.markdown.anchor.allowedAttributes%"
           },
+          "markdown.bracketed-spans.enabled": {
+            "type": "boolean",
+            "default": true,
+            "description": "%config.markdown.bracketed-spans.enabled%"
+          },
           "markdown.tasklists.enabled": {
             "type": "boolean",
             "default": true,
@@ -139,6 +144,7 @@
     "markdown-it-abbr": "^2.0.0",
     "markdown-it-anchor": "^8.6.7",
     "markdown-it-attrs": "^4.1.6",
+    "markdown-it-bracketed-spans": "^1.0.1",
     "markdown-it-cjk-breaks": "^2.0.0",
     "markdown-it-container": "^4.0.0",
     "markdown-it-deflist": "^3.0.0",

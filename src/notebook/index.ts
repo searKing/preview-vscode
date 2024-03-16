@@ -108,6 +108,7 @@ export async function activate(ctx: RendererContext<void>) {
 			}).use(require("markdown-it-expand-tabs"), { tabWidth: 4 }).
 			use(require("markdown-it-abbr"), {}).
 			use(require("markdown-it-anchor").default, {}).
+			use(require("markdown-it-bracketed-spans"), {}).
 			use(require("markdown-it-attrs"), {}).
 			use(require("markdown-it-cjk-breaks"), {}).
 			use(require("markdown-it-deflist"), {}).

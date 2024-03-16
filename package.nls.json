@@ -6,6 +6,7 @@
 	"config.markdown.anchor.level": "Minimum level to apply anchors.",
 	"config.markdown.attrs.enabled": "Enable/disable adding classes (.class), identifiers (#id) and attributes (name=\"value\") in the built-in Markdown preview.",
 	"config.markdown.attrs.allowedAttributes": "allowed attributes, empty array as all attributes are allowed, Now only id, class and attributes beginning with regex are allowed, such as /^regex.*$/.",
+	"config.markdown.bracketed-spans.enabled": "Enable/disable rendering Span (<span>) tag  in the built-in Markdown preview.",
 	"config.markdown.cjk-breaks.enabled": "Enable/disable rendering GitHub-style task lists in the built-in Markdown preview.",
 	"config.markdown.deflist.enabled": "Enable/disable rendering GitHub-style task lists in the built-in Markdown preview.",
 	"config.markdown.emoji.enabled": "Enable/disable rendering GitHub-style task lists in the built-in Markdown preview.",

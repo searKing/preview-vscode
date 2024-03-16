@@ -29,17 +29,19 @@ import { isOfScheme, Schemes } from './util/schemes';
 import { MarkdownItMarkdown } from './markdown-it-markdown';
 import { MarkdownItHTML } from './markdown-it-html';
 import { MarkdownItCjkBreaks } from './markdown-it-cjk-breaks';
+import { MarkdownItBracketedSpans } from './markdown-it-bracketed-spans';
 
 export function extendMarkdownIt(context: vscode.ExtensionContext | undefined, md: MarkdownIt): MarkdownIt {
     return join(
+        MarkdownItAbbr.extendMarkdownIt,
+        MarkdownItAnchor.extendMarkdownIt,
+        MarkdownItBracketedSpans.extendMarkdownIt,
+        MarkdownItAttrs.extendMarkdownIt,
+        MarkdownItCjkBreaks.extendMarkdownIt,
         MarkdownItLazyHeaders.extendMarkdownIt,
         MarkdownItEmoji.extendMarkdownIt,
         MarkdownItTaskLists.extendMarkdownIt,
         MarkdownItExpandTabs.extendMarkdownIt,
-        MarkdownItAbbr.extendMarkdownIt,
-        MarkdownItAnchor.extendMarkdownIt,
-        MarkdownItAttrs.extendMarkdownIt,
-        MarkdownItCjkBreaks.extendMarkdownIt,
         MarkdownItDeflist.extendMarkdownIt,
         MarkdownItFootnote.extendMarkdownIt,
         MarkdownItHighlightjs.extendMarkdownIt,
