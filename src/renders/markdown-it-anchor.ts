@@ -13,6 +13,11 @@ export namespace MarkdownItAnchor {
             return config.get<boolean>('anchor.enabled', true);
         }
 
+        function getLevel(): number {
+            const config = vscode.workspace.getConfiguration('markdown');
+            return config.get<number>('anchor.level', 1);
+        }
+
         if (!!context) {
             vscode.workspace.onDidChangeConfiguration(e => {
                 if (e.affectsConfiguration(markdownAnchorSetting)) {
@@ -23,6 +28,8 @@ export namespace MarkdownItAnchor {
         if (!isEnabled()) {
             return md;
         }
-        return md.use(require('markdown-it-anchor').default, {});
+        return md.use(require('markdown-it-anchor').default, {
+            level: getLevel(),
+        });
     }
 }

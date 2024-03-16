@@ -74,6 +74,16 @@
             "default": true,
             "description": "%config.markdown.abbr.enabled%"
           },
+          "markdown.anchor.enabled": {
+            "type": "boolean",
+            "default": true,
+            "description": "%config.markdown.anchor.enabled%"
+          },
+          "markdown.anchor.level": {
+            "type": "integer",
+            "default": 1,
+            "description": "%config.markdown.anchor.level%"
+          },
           "markdown.tasklists.enabled": {
             "type": "boolean",
             "default": true,
