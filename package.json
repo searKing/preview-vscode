@@ -3,7 +3,7 @@
   "displayName": "%displayName%",
   "description": "%description%",
   "version": "2.3.0",
-  "icon": "images/icon.png",
+  "icon": "media/icon.png",
   "publisher": "searKing",
   "author": "Haixin Chen",
   "readme": "README.md",
@@ -83,6 +83,8 @@
     ]
   },
   "scripts": {
+    "dist:stable": "npm run vscode:prepublish && vsce package",
+    "dist": "npm run vscode:prepublish && vsce package --pre-release",
     "vscode:prepublish": "npm run package",
     "compile": "webpack --mode development",
     "watch": "webpack --mode development --watch",
@@ -109,6 +111,7 @@
     "eslint": "^8.56.0",
     "fork-ts-checker-webpack-plugin": "^9.0.2",
     "highlight.js": "^11.9.0",
+    "html-webpack-plugin": "^5.6.0",
     "markdown-it-abbr": "^2.0.0",
     "markdown-it-anchor": "^8.6.7",
     "markdown-it-attrs": "^4.1.6",

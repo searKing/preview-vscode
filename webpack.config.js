@@ -3,6 +3,7 @@
 'use strict';
 
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 const { DefinePlugin } = require('webpack');
 const path = require('path');
@@ -20,12 +21,18 @@ const makeConfig = (argv, { entry, out, target, library = 'commonjs' }) => ({
     __dirname: false,
   },
   mode: argv.mode,//'none', // this leaves the source code as close as possible to the original (when packaging we set this to 'production')
-
-  entry,//: './src/extension.ts', // the entry point of this extension, 📖 -> https://webpack.js.org/configuration/entry-context/
+  entry: {
+    extension: {
+      import: entry,
+    }
+  },//: './src/extension.ts', // the entry point of this extension, 📖 -> https://webpack.js.org/configuration/entry-context/
   output: {
     // the bundle is stored in the 'dist' folder (check package.json), 📖 -> https://webpack.js.org/configuration/output/
     path: path.join(__dirname, path.dirname(out)),
-    filename: path.basename(out),
+    // filename: '[name].[contenthash].js',
+    // filename: path.basename(out),
+    filename: '[name].js',
+    chunkFilename: '[id].[chunkhash].js',
     publicPath: '',
     libraryTarget: library,
     chunkFormat: library,
@@ -48,6 +55,19 @@ const makeConfig = (argv, { entry, out, target, library = 'commonjs' }) => ({
   experiments: {
     outputModule: true,
   },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+        },
+      },
+    },
+  },
+  // performance: { hints: false },
   module: {
     rules: [
       // Allow importing ts(x) files:
@@ -107,6 +127,10 @@ const makeConfig = (argv, { entry, out, target, library = 'commonjs' }) => ({
     // https://feixie1980.medium.com/fixing-node-js-modules-pollyfill-in-webpack-5-9e7979125aac
     new NodePolyfillPlugin({
       excludeAliases: ['console', 'Buffer']
+    }),
+    // https://webpack.js.org/guides/code-splitting/
+    new HtmlWebpackPlugin({
+      title: 'Caching',
     }),
     // https://github.com/gregnb/filemanager-webpack-plugin
   ],

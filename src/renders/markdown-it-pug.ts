@@ -45,8 +45,9 @@ export namespace MarkdownItPug {
         if (!isEnabled()) {
             return md;
         }
+        let pug = undefined;
         try {
-            var pug = require('pug');
+            pug = require('pug');
         } catch (error) {
             // import pug failed: TypeError: Unable to determine current node version
             // pug -> resolve -> is-core-module
