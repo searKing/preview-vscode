@@ -56,6 +56,7 @@ const makeConfig = (argv, { entry, out, target, library = 'commonjs' }) => ({
     outputModule: true,
   },
   optimization: {
+    minimize: argv.mode !== 'development',
     splitChunks: {
       chunks: 'all',
       cacheGroups: {
