@@ -330,7 +330,7 @@ console.log(42);
 
 `console.log(42)`{:.js}
 
-## html
+## HTML
 
 ```html
 <!DOCTYPE html>
@@ -368,13 +368,13 @@ console.log(42);
 - 19^th^
 - H~2~O
 
+## GFM task list
+
 ### [Custom containers](https://github.com/markdown-it/markdown-it-container)
 
 ::: warning
 _here be dragons_
 :::
-
-## GFM task list
 
 - [x] GFM task list 1
 - [x] GFM task list 2
@@ -609,7 +609,7 @@ html(lang="en")
         strong focus on performance and powerful features.
 ```
 
-### [rst](https://www.tutorialspoint.com/online_restructure_editor.php)
+## [rst](https://www.tutorialspoint.com/online_restructure_editor.php)
 
 ```rst
 =====

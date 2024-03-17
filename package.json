@@ -177,6 +177,31 @@
             "default": true,
             "description": "%config.markdown.markdown.enabled%"
           },
+          "markdown.mermaid.enabled": {
+            "type": "boolean",
+            "default": true,
+            "description": "%config.markdown.mermaid.enabled%"
+          },
+          "markdown.pug.enabled": {
+            "type": "boolean",
+            "default": true,
+            "description": "%config.markdown.pug.enabled%"
+          },
+          "markdown.rst.enabled": {
+            "type": "boolean",
+            "default": true,
+            "description": "%config.markdown.rst.enabled%"
+          },
+          "markdown.sub.enabled": {
+            "type": "boolean",
+            "default": true,
+            "description": "%config.markdown.sub.enabled%"
+          },
+          "markdown.sup.enabled": {
+            "type": "boolean",
+            "default": true,
+            "description": "%config.markdown.sup.enabled%"
+          },
           "markdown.tasklists.enabled": {
             "type": "boolean",
             "default": true,
