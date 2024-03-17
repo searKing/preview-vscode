@@ -24,9 +24,12 @@
 	"config.markdown.mark.enabled": "Enable/disable rendering Mark (<mark>) tag in the built-in Markdown preview.",
 	"config.markdown.markdown.enabled": "Enable/disable rendering ”Markdown“ inside fenced code blocks in the built-in Markdown preview.",
 	"config.markdown.mermaid.enabled": "Enable/disable rendering ”Mermaid“ inside fenced code blocks in the built-in Markdown preview.",
-	"config.markdown.pug.enabled": "Enable/disable rendering ”Pug“ inside fenced code blocks in the built-in Markdown preview.",
+	"config.markdown.pug.enabled": "Enable/disable rendering ”Pug/Jade“ inside fenced code blocks in the built-in Markdown preview.",
 	"config.markdown.rst.enabled": "Enable/disable rendering ”reStructuredText“ inside fenced code blocks in the built-in Markdown preview.",
 	"config.markdown.sub.enabled": "Enable/disable rendering Abbreviation (<sub>) tag in the built-in Markdown preview.",
 	"config.markdown.sup.enabled": "Enable/disable rendering Superscript (<sup>) tag in the built-in Markdown preview.",
-	"config.markdown.task-lists.enabled": "Enable/disable rendering GitHub-style task lists in the built-in Markdown preview."
+	"config.markdown.task-lists.enabled": "Enable/disable rendering GitHub-style task lists in the built-in Markdown preview.",
+	"config.markdown.task-lists.renderCheckboxes": "Render checkboxe.",
+	"config.markdown.task-lists.label": "Wrap the rendered list items in a <label> element for UX purposes.",
+	"config.markdown.task-lists.labelAfter": "Add the <label> after the checkbox."
 }

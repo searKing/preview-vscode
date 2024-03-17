@@ -8,11 +8,6 @@ export namespace MarkdownItTaskLists {
 	// This method is called when your extension is activated
 	// Your extension is activated the very first time the command is executed
 	export function extendMarkdownIt(context: vscode.ExtensionContext | undefined, md: MarkdownIt): MarkdownIt {
-		function isEnabled(): boolean {
-			const config = vscode.workspace.getConfiguration('markdown');
-			return config.get<boolean>('task-lists.enabled', true);
-		}
-
 		if (!!context) {
 			vscode.workspace.onDidChangeConfiguration(e => {
 				if (e.affectsConfiguration(markdownTaskListsSetting)) {
@@ -20,13 +15,15 @@ export namespace MarkdownItTaskLists {
 				}
 			}, undefined, context.subscriptions);
 		}
-		if (!isEnabled()) {
+
+		const config = vscode.workspace.getConfiguration('markdown');
+		if (!config.get<boolean>('task-lists.enabled', true)) {
 			return md;
 		}
 		return md.use(require('markdown-it-task-lists'), {
-			enabled: true, // render checkboxes
-			label: true, // wrap the rendered list items in a <label> element for UX purposes
-			labelAfter: false // add the <label> after the checkbox
+			enabled: config.get<boolean>('task-lists.renderCheckboxes', true),
+			label: config.get<boolean>('task-lists.label', true),
+			labelAfter: config.get<boolean>('task-lists.labelAfter', true)
 		});
 	}
 }

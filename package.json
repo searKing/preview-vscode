@@ -206,6 +206,21 @@
             "type": "boolean",
             "default": true,
             "description": "%config.markdown.task-lists.enabled%"
+          },
+          "markdown.tasklists.renderCheckboxes": {
+            "type": "boolean",
+            "default": true,
+            "description": "%config.markdown.task-lists.renderCheckboxes%"
+          },
+          "markdown.tasklists.label": {
+            "type": "boolean",
+            "default": true,
+            "description": "%config.markdown.task-lists.label%"
+          },
+          "markdown.tasklists.labelAfter": {
+            "type": "boolean",
+            "default": true,
+            "description": "%config.markdown.task-lists.labelAfter%"
           }
         }
       }

@@ -24,9 +24,12 @@
 	"config.markdown.mark.enabled": "在内置Markdown预览中启用/禁用标记文本元素（<mark>）生成。",
 	"config.markdown.markdown.enabled": "在内置Markdown预览中启用/禁用围栏代码块”Markdown“渲染。",
 	"config.markdown.mermaid.enabled": "在内置Markdown预览中启用/禁用围栏代码块”Mermaid“绘图渲染。",
-	"config.markdown.pug.enabled": "在内置Markdown预览中启用/禁用围栏代码块”Mermaid“绘图渲染。",
+	"config.markdown.pug.enabled": "在内置Markdown预览中启用/禁用围栏代码块”Pug/Jade“绘图渲染。",
 	"config.markdown.rst.enabled": "在内置Markdown预览中启用/禁用围栏代码块”reStructuredText“绘图渲染。",
 	"config.markdown.sub.enabled": "在内置Markdown预览中启用/禁用下标元素（<sub>）生成。",
 	"config.markdown.sup.enabled": "在内置Markdown预览中启用/禁用上标元素（<sup>）生成。",
-	"config.markdown.task-lists.enabled": "在内置Markdown预览中启用/禁用GitHub风格的任务列表渲染。"
+	"config.markdown.task-lists.enabled": "在内置Markdown预览中启用/禁用GitHub风格的任务列表渲染。",
+	"config.markdown.task-lists.renderCheckboxes": "渲染单选对话框。",
+	"config.markdown.task-lists.label": "将列表元素嵌套在<label>元素内部。",
+	"config.markdown.task-lists.labelAfter": "在对话框之后增加<label>标签。"
 }

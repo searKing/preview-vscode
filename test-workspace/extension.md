@@ -370,12 +370,6 @@ console.log(42);
 
 ## GFM task list
 
-### [Custom containers](https://github.com/markdown-it/markdown-it-container)
-
-::: warning
-_here be dragons_
-:::
-
 - [x] GFM task list 1
 - [x] GFM task list 2
 - [ ] GFM task list 3
@@ -385,6 +379,12 @@ _here be dragons_
 - [ ] GFM task list 4
   - [ ] GFM task list 4-1
   - [ ] GFM task list 4-2
+
+### [Custom containers](https://github.com/markdown-it/markdown-it-container)
+
+::: warning
+_here be dragons_
+:::
 
 ## [mermaid](https://mermaid.live/)
 
