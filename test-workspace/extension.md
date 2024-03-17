@@ -280,20 +280,9 @@ function foo() {
 }
 ```
 
-### [Subscript](https://github.com/markdown-it/markdown-it-sub) / [Superscript](https://github.com/markdown-it/markdown-it-sup)
-
-- 19^th^
-- H~2~O
-
-### [\<ins>](https://github.com/markdown-it/markdown-it-ins)
-
-++Inserted text++
-
-### [\<mark>](https://github.com/markdown-it/markdown-it-mark)
-
-==Marked text==
-
 ### [Footnotes](https://github.com/markdown-it/markdown-it-footnote)
+
+#### Normal footnote:
 
 Footnote 1 link[^first].
 
@@ -308,6 +297,25 @@ Duplicated footnote reference[^second].
     and multiple paragraphs.
 
 [^second]: Footnote text.
+
+#### Inline Footnotes:
+
+Here is an inline note.^[Inlines notes are easier to write, since
+you don't have to pick an identifier and move down to type the
+note.]
+
+### [Subscript](https://github.com/markdown-it/markdown-it-sub) / [Superscript](https://github.com/markdown-it/markdown-it-sup)
+
+- 19^th^
+- H~2~O
+
+### [\<ins>](https://github.com/markdown-it/markdown-it-ins)
+
+++Inserted text++
+
+### [\<mark>](https://github.com/markdown-it/markdown-it-mark)
+
+==Marked text==
 
 ### [Custom containers](https://github.com/markdown-it/markdown-it-container)
 

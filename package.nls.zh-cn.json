@@ -12,7 +12,7 @@
 	"config.markdown.emoji.enabled": "在内置Markdown预览中启用/禁用绘文字、颜文字（表情符号）及表情符号缩写渲染。",
 	"config.markdown.expand-tabs.enabled": "在内置Markdown预览中启用/禁用代码块中前置制表符转换为空格。",
 	"config.markdown.expand-tabs.tabWidth": "指定替换每个前置制表符的空格个数。",
-	"config.markdown.footnote.enabled": "Enable/disable rendering GitHub-style task lists in the built-in Markdown preview.",
+	"config.markdown.footnote.enabled": "在内置Markdown预览中启用/禁用脚注渲染。",
 	"config.markdown.highlightjs.enabled": "Enable/disable rendering GitHub-style task lists in the built-in Markdown preview.",
 	"config.markdown.html.enabled": "Enable/disable rendering GitHub-style task lists in the built-in Markdown preview.",
 	"config.markdown.ins.enabled": "Enable/disable rendering GitHub-style task lists in the built-in Markdown preview.",
