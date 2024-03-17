@@ -330,14 +330,14 @@ console.log(42);
 
 `console.log(42)`{:.js}
 
+### [\<ins>](https://github.com/markdown-it/markdown-it-ins)
+
+++Inserted text++
+
 ### [Subscript](https://github.com/markdown-it/markdown-it-sub) / [Superscript](https://github.com/markdown-it/markdown-it-sup)
 
 - 19^th^
 - H~2~O
-
-### [\<ins>](https://github.com/markdown-it/markdown-it-ins)
-
-++Inserted text++
 
 ### [\<mark>](https://github.com/markdown-it/markdown-it-mark)
 
