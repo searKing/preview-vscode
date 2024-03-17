@@ -8,16 +8,6 @@ export namespace MarkdownItAnchor {
     // This method is called when your extension is activated
     // Your extension is activated the very first time the command is executed
     export function extendMarkdownIt(context: vscode.ExtensionContext | undefined, md: MarkdownIt): MarkdownIt {
-        function isEnabled(): boolean {
-            const config = vscode.workspace.getConfiguration('markdown');
-            return config.get<boolean>('anchor.enabled', true);
-        }
-
-        function getLevel(): number {
-            const config = vscode.workspace.getConfiguration('markdown');
-            return config.get<number>('anchor.level', 1);
-        }
-
         if (!!context) {
             vscode.workspace.onDidChangeConfiguration(e => {
                 if (e.affectsConfiguration(markdownAnchorSetting)) {
@@ -25,11 +15,13 @@ export namespace MarkdownItAnchor {
                 }
             }, undefined, context.subscriptions);
         }
-        if (!isEnabled()) {
+
+        const config = vscode.workspace.getConfiguration('markdown');
+        if (!config.get<boolean>('anchor.enabled', true)) {
             return md;
         }
         return md.use(require('markdown-it-anchor').default, {
-            level: getLevel(),
+            level: config.get<number>('anchor.level', 1),
         });
     }
 }

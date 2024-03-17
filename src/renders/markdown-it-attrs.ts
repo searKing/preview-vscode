@@ -20,6 +20,6 @@ export namespace MarkdownItAttrs {
         if (!config.get<boolean>('attrs.enabled', true)) {
             return md;
         }
-        return md.use(require('markdown-it-attrs'), { allowedAttributes: config.get<string[]>('attrs.allowedAttributes') });
+        return md.use(require('markdown-it-attrs'), { allowedAttributes: config.get<string[]>('attrs.allowedAttributes', []) });
     }
 }
