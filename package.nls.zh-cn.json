@@ -9,7 +9,7 @@
 	"config.markdown.bracketed-spans.enabled": "在内置Markdown预览中span标签（<span>）生成。",
 	"config.markdown.cjk-breaks.enabled": "在内置Markdown预览中抑制东亚字符之间的换行（东亚字符无需空格分割单词）。",
 	"config.markdown.deflist.enabled": "在内置Markdown预览中启用/禁用描述列表元素（<dl>）生成。",
-	"config.markdown.emoji.enabled": "Enable/disable rendering GitHub-style task lists in the built-in Markdown preview.",
+	"config.markdown.emoji.enabled": "在内置Markdown预览中启用/禁用绘文字、颜文字（表情符号）及表情符号缩写渲染。",
 	"config.markdown.expand-tabs.enabled": "Enable/disable rendering GitHub-style task lists in the built-in Markdown preview.",
 	"config.markdown.footnote.enabled": "Enable/disable rendering GitHub-style task lists in the built-in Markdown preview.",
 	"config.markdown.highlightjs.enabled": "Enable/disable rendering GitHub-style task lists in the built-in Markdown preview.",
