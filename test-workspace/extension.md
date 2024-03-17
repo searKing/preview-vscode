@@ -267,6 +267,19 @@ Term 2
 
 see [how to change output](https://github.com/markdown-it/markdown-it-emoji#change-output) with twemoji.
 
+### [Expand Tabs](https://github.com/markdown-it/markdown-it-expand-tabs)
+
+```
+function foo() {
+	indentedOne();
+	if (bar) {
+		// line	with	internal	tabs
+		lineWithTrailingTabs();
+		indentedTwo();
+	}
+}
+```
+
 ### [Subscript](https://github.com/markdown-it/markdown-it-sub) / [Superscript](https://github.com/markdown-it/markdown-it-sup)
 
 - 19^th^

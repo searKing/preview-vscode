@@ -95,7 +95,7 @@
               "type": "string"
             },
             "default": [],
-            "description": "%config.markdown.attr.allowedAttributes%"
+            "description": "%config.markdown.attrs.allowedAttributes%"
           },
           "markdown.bracketed-spans.enabled": {
             "type": "boolean",
@@ -111,6 +111,16 @@
             "type": "boolean",
             "default": true,
             "description": "%config.markdown.emoji.enabled%"
+          },
+          "markdown.expand-tabs.enabled": {
+            "type": "boolean",
+            "default": true,
+            "description": "%config.markdown.expand-tabs.enabled%"
+          },
+          "markdown.expand-tabs.tabWidth": {
+            "type": "integer",
+            "default": 2,
+            "description": "%config.markdown.expand-tabs.tabWidth%"
           },
           "markdown.tasklists.enabled": {
             "type": "boolean",
