@@ -100,10 +100,25 @@ export async function activate(ctx: RendererContext<void>) {
     document.head.appendChild(styleTemplate);
 
     markdownItRenderer.extendMarkdownIt((md: MarkdownIt) => {
-        return md.use(require("markdown-it-abbr"), {}).use(require("markdown-it-anchor").default, {}).use(require("markdown-it-bracketed-spans"), {}).use(require("markdown-it-attrs"), {}).use(require("markdown-it-cjk-breaks"), {}).use(require("markdown-it-deflist"), {}).use(require('markdown-it-emoji').full, { shortcuts: {} }).use(require("markdown-it-expand-tabs"), { tabWidth: 2 }).use(require("markdown-it-footnote"), {}).use(require("markdown-it-highlightjs"), {}).use(require("markdown-it-ins"), {}).use(require("markdown-it-lazy-headers"), {}).use(require("markdown-it-mark"), {}).use(require("markdown-it-sub"), {}).use(require("markdown-it-sup"), {}).use(require('markdown-it-task-lists'), {
-            enabled: true, // render checkboxes
-            label: true, // wrap the rendered list items in a <label> element for UX purposes
-            labelAfter: false // add the <label> after the checkbox
-        });
+        return md.use(require("markdown-it-abbr"), {}).
+            use(require("markdown-it-anchor").default, {}).
+            use(require("markdown-it-bracketed-spans"), {}).
+            use(require("markdown-it-highlightjs"), {}).
+            use(require("markdown-it-attrs"), {}).
+            use(require("markdown-it-cjk-breaks"), {}).
+            use(require("markdown-it-deflist"), {}).
+            use(require('markdown-it-emoji').full, { shortcuts: {} }).
+            use(require("markdown-it-expand-tabs"), { tabWidth: 2 }).
+            use(require("markdown-it-footnote"), {}).
+            use(require("markdown-it-ins"), {}).
+            use(require("markdown-it-lazy-headers"), {}).
+            use(require("markdown-it-mark"), {}).
+            use(require("markdown-it-sub"), {}).
+            use(require("markdown-it-sup"), {}).
+            use(require('markdown-it-task-lists'), {
+                enabled: true, // render checkboxes
+                label: true, // wrap the rendered list items in a <label> element for UX purposes
+                labelAfter: false // add the <label> after the checkbox
+            });
     });
 }

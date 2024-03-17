@@ -304,6 +304,32 @@ Here is an inline note.^[Inlines notes are easier to write, since
 you don't have to pick an identifier and move down to type the
 note.]
 
+### [Highlightjs](https://github.com/valeriangalliat/markdown-it-highlightjs)
+
+#### raw indented code block
+
+    console.log(42);
+
+#### fenched code block
+
+```js
+console.log(42);
+```
+
+#### auto
+
+```
+<?php echo 42;
+```
+
+#### inline with Pandoc format
+
+`console.log(42)`{.js}
+
+#### inline with kramdown format
+
+`console.log(42)`{:.js}
+
 ### [Subscript](https://github.com/markdown-it/markdown-it-sub) / [Superscript](https://github.com/markdown-it/markdown-it-sup)
 
 - 19^th^

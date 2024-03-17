@@ -8,11 +8,6 @@ export namespace MarkdownItHighlightjs {
     // This method is called when your extension is activated
     // Your extension is activated the very first time the command is executed
     export function extendMarkdownIt(context: vscode.ExtensionContext | undefined, md: MarkdownIt): MarkdownIt {
-        function isEnabled(): boolean {
-            const config = vscode.workspace.getConfiguration('markdown');
-            return config.get<boolean>('highlightjs.enabled', true);
-        }
-
         if (!!context) {
             vscode.workspace.onDidChangeConfiguration(e => {
                 if (e.affectsConfiguration(markdownHighlightjsSetting)) {
@@ -20,9 +15,16 @@ export namespace MarkdownItHighlightjs {
                 }
             }, undefined, context.subscriptions);
         }
-        if (!isEnabled()) {
+        const config = vscode.workspace.getConfiguration('markdown');
+
+        if (!config.get<boolean>('highlightjs.enabled', true)) {
             return md;
         }
-        return md.use(require('markdown-it-highlightjs'), {});
+        return md.use(require('markdown-it-highlightjs'), {
+            "auto": config.get<boolean>('highlightjs.auto', true),
+            "code": config.get<boolean>('highlightjs.code', true),
+            "inline": config.get<boolean>('highlightjs.inline', true),
+            "ignoreIllegals": config.get<boolean>('highlightjs.ignoreIllegals', true),
+        });
     }
 }

@@ -127,6 +127,31 @@
             "default": true,
             "description": "%config.markdown.footnote.enabled%"
           },
+          "markdown.highlightjs.enabled": {
+            "type": "boolean",
+            "default": true,
+            "description": "%config.markdown.highlightjs.enabled%"
+          },
+          "markdown.highlightjs.auto": {
+            "type": "boolean",
+            "default": true,
+            "description": "%config.markdown.highlightjs.auto%"
+          },
+          "markdown.highlightjs.code": {
+            "type": "boolean",
+            "default": true,
+            "description": "%config.markdown.highlightjs.code%"
+          },
+          "markdown.highlightjs.inline": {
+            "type": "boolean",
+            "default": true,
+            "description": "%config.markdown.highlightjs.inline%"
+          },
+          "markdown.highlightjs.ignoreIllegals": {
+            "type": "boolean",
+            "default": true,
+            "description": "%config.markdown.highlightjs.ignoreIllegals%"
+          },
           "markdown.tasklists.enabled": {
             "type": "boolean",
             "default": true,
