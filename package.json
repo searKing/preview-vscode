@@ -162,6 +162,11 @@
             "default": true,
             "description": "%config.markdown.ins.enabled%"
           },
+          "markdown.lazy-headers.enabled": {
+            "type": "boolean",
+            "default": true,
+            "description": "%config.markdown.lazy-headers.enabled%"
+          },
           "markdown.tasklists.enabled": {
             "type": "boolean",
             "default": true,

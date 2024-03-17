@@ -20,7 +20,7 @@
 	"config.markdown.highlightjs.ignoreIllegals": "强制语法高亮，忽略异常语法",
 	"config.markdown.html.enabled": "在内置Markdown预览中启用/禁用”围栏代码块”html渲染",
 	"config.markdown.ins.enabled": "在内置Markdown预览中启用/禁用缩写元素（<ins>）生成",
-	"config.markdown.lazy-headers.enabled": "Enable/disable rendering GitHub-style task lists in the built-in Markdown preview.",
+	"config.markdown.lazy-headers.enabled": "在内置Markdown预览中启用/禁用解除HEAD“#”后必须紧跟空格的语法限制。",
 	"config.markdown.mark.enabled": "Enable/disable rendering GitHub-style task lists in the built-in Markdown preview.",
 	"config.markdown.markdown.enabled": "Enable/disable rendering GitHub-style task lists in the built-in Markdown preview.",
 	"config.markdown.mermaid.enabled": "Enable/disable rendering GitHub-style task lists in the built-in Markdown preview.",
