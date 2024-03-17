@@ -8,11 +8,6 @@ export namespace MarkdownItMark {
     // This method is called when your extension is activated
     // Your extension is activated the very first time the command is executed
     export function extendMarkdownIt(context: vscode.ExtensionContext | undefined, md: MarkdownIt): MarkdownIt {
-        function isEnabled(): boolean {
-            const config = vscode.workspace.getConfiguration('markdown');
-            return config.get<boolean>('mark.enabled', true);
-        }
-
         if (!!context) {
             vscode.workspace.onDidChangeConfiguration(e => {
                 if (e.affectsConfiguration(markdownMarkSetting)) {
@@ -20,7 +15,9 @@ export namespace MarkdownItMark {
                 }
             }, undefined, context.subscriptions);
         }
-        if (!isEnabled()) {
+
+        const config = vscode.workspace.getConfiguration('markdown');
+        if (!config.get<boolean>('mark.enabled', true)) {
             return md;
         }
         return md.use(require('markdown-it-mark'), {});

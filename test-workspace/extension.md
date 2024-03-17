@@ -330,18 +330,43 @@ console.log(42);
 
 `console.log(42)`{:.js}
 
+## html
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Page Title</title>
+  </head>
+
+  <body>
+    <h1>This is a Heading</h1>
+    <p>This is a paragraph.</p>
+  </body>
+</html>
+```
+
 ### [\<ins>](https://github.com/markdown-it/markdown-it-ins)
 
 ++Inserted text++
+
+## Lazy Headers
+
+#foo
+##foo
+###foo
+####foo
+#####foo
+######foo
+
+### [\<mark>](https://github.com/markdown-it/markdown-it-mark)
+
+==Marked text==
 
 ### [Subscript](https://github.com/markdown-it/markdown-it-sub) / [Superscript](https://github.com/markdown-it/markdown-it-sup)
 
 - 19^th^
 - H~2~O
-
-### [\<mark>](https://github.com/markdown-it/markdown-it-mark)
-
-==Marked text==
 
 ### [Custom containers](https://github.com/markdown-it/markdown-it-container)
 
@@ -360,38 +385,6 @@ _here be dragons_
 - [ ] GFM task list 4
   - [ ] GFM task list 4-1
   - [ ] GFM task list 4-2
-
-## Lazy Headers
-
-#foo
-##foo
-###foo
-####foo
-#####foo
-######foo
-
-## abbr
-
-_[HTML]: Hyper Text Markup Language
-_[W3C]: World Wide Web Consortium
-The HTML specification
-is maintained by the W3C.
-
-## html
-
-```html
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Page Title</title>
-  </head>
-
-  <body>
-    <h1>This is a Heading</h1>
-    <p>This is a paragraph.</p>
-  </body>
-</html>
-```
 
 ## [mermaid](https://mermaid.live/)
 
