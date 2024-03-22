@@ -4,6 +4,10 @@ import * as vscode from 'vscode';
 import type MarkdownIt = require('markdown-it');
 
 import { extendMarkdownIt } from '../renders/markdown-it-engine';
+import { registerMarkdownCommands } from '../commands';
+import { CommandManager } from '../commands/commandManager';
+
+import { loadDefaultTelemetryReporter } from '../reporter/telemetryReporter';
 
 
 // This method is called when your extension is activated
@@ -17,24 +21,11 @@ export function activate(context: vscode.ExtensionContext) {
 	// Now provide the implementation of the command with registerCommand
 	// The commandId parameter must match the command field in package.json
 
-	// 命令回调函数，该命令在package.json中与快捷方式、菜单选项等关联
-	// 覆盖显示预览界面
-	let previewDisposable = vscode.commands.registerCommand('preview-vscode.showPreview', () => {
-		// The code you place here will be executed every time your command is executed
+	const telemetryReporter = loadDefaultTelemetryReporter();
+	context.subscriptions.push(telemetryReporter);
 
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from preview-vscode!');
-	});
-
-	// 侧边栏打开预览界面
-	let previewToSideDisposable = vscode.commands.registerCommand('preview-vscode.showPreviewToSide', () => {
-		// The code you place here will be executed every time your command is executed
-
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from preview-vscode!');
-	});
-
-	context.subscriptions.push(previewDisposable, previewToSideDisposable);
+	const commandManager = new CommandManager();
+	context.subscriptions.push(registerMarkdownCommands(commandManager, telemetryReporter));
 	return {
 		extendMarkdownIt(md: MarkdownIt) {
 			return extendMarkdownIt(context, md);

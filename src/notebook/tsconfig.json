@@ -4,8 +4,6 @@
 		"rootDir": "../",
 		"outDir": "../../dist/notebook",
 	},
-	"include": [
-		"../renders/**/*"
-	],
+	"include": [],
 	"references": []
 }

@@ -3,8 +3,6 @@
 import * as vscode from 'vscode';
 import MarkdownIt = require('markdown-it');
 import { dedent } from 'ts-dedent';
-import path from 'path';
-import fs from 'fs';
 import { githubEngine } from './markdown-it-engine';
 
 export namespace MarkdownItMarkdown {

@@ -1,6 +1,9 @@
 {
 	"displayName": "Preview",
 	"description": "预览多种文件格式，包括Markdown, ReStructured Text, HTML, Jade, Pug, Image, CSS, Mermaid.",
+	"preview-vscode.preview.title": "打开预览",
+	"preview-vscode.previewSide.title": "打开侧边预览",
+	"preview-vscode.showLockedPreviewToSide.title": "在侧边打开锁定的预览",
 	"config.markdown.abbr.enabled": "在内置Markdown预览中启用/禁用缩写元素（<abbr>）生成。",
 	"config.markdown.anchor.enabled": "在内置Markdown预览中启用/禁用标题锚点（#id）生成。",
 	"config.markdown.anchor.level": "最少包含的渲染层级。",

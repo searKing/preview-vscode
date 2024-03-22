@@ -24,6 +24,10 @@
     "Other",
     "Programming Languages"
   ],
+  "enabledApiProposals": [
+    "documentPaste",
+    "dropMetadata"
+  ],
   "capabilities": {
     "virtualWorkspaces": true,
     "untrustedWorkspaces": {
@@ -32,13 +36,17 @@
   },
   "main": "./dist/extension/node/extension.js",
   "browser": "./dist/extension/browser/extension.js",
-  "activationEvents": [],
+  "activationEvents": [
+    "onLanguage:markdown",
+    "onLanguage:mermaid",
+    "onLanguage:restructuredtext",
+    "onLanguage:jade",
+    "onCommand:markdown.api.render",
+    "onCommand:markdown.api.reloadPlugins",
+    "onWebviewPanel:markdown.preview"
+  ],
   "contributes": {
     "languages": [
-      {
-        "id": "markdown-tasklists",
-        "aliases": []
-      },
       {
         "id": "mermaid",
         "aliases": [
@@ -49,21 +57,154 @@
           ".mmd",
           ".mermaid"
         ]
+      },
+      {
+        "id": "restructuredtext",
+        "aliases": [
+          "reStructuredText"
+        ],
+        "extensions": [
+          ".rst"
+        ]
+      },
+      {
+        "id": "jade",
+        "extensions": [
+          ".pug",
+          ".jade"
+        ],
+        "aliases": [
+          "Pug",
+          "Jade",
+          "jade"
+        ]
+      },
+      {
+        "id": "html",
+        "extensions": [
+          ".html",
+          ".htm",
+          ".shtml",
+          ".xhtml",
+          ".xht",
+          ".mdoc",
+          ".jsp",
+          ".asp",
+          ".aspx",
+          ".jshtm",
+          ".volt",
+          ".ejs",
+          ".rhtml"
+        ],
+        "aliases": [
+          "HTML",
+          "htm",
+          "html",
+          "xhtml"
+        ],
+        "mimetypes": [
+          "text/html",
+          "text/x-jshtm",
+          "text/template",
+          "text/ng-template",
+          "application/xhtml+xml"
+        ]
       }
     ],
     "notebookRenderer": [
       {
-        "id": "preview-vscode.markdown-it-extension",
+        "id": "preview-vscode.markdown-it-renderer",
         "displayName": "Preview",
         "entrypoint": {
           "extends": "vscode.markdown-it-renderer",
           "path": "./dist/notebook/index.js"
-        }
+        },
+        "mimeTypes": [
+          "text/markdown"
+        ]
       }
     ],
+    "commands": [
+      {
+        "command": "preview-vscode.showPreview",
+        "title": "%preview-vscode.preview.title%",
+        "category": "Preview",
+        "icon": {
+          "light": "./media/preview-light.svg",
+          "dark": "./media/preview-dark.svg"
+        }
+      },
+      {
+        "command": "preview-vscode.showPreviewToSide",
+        "title": "%preview-vscode.previewSide.title%",
+        "category": "Preview",
+        "icon": "$(open-preview)"
+      },
+      {
+        "command": "preview-vscode.showLockedPreviewToSide",
+        "title": "%preview-vscode.showLockedPreviewToSide.title%",
+        "category": "Preview",
+        "icon": "$(open-preview)"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "preview-vscode.showPreviewToSide",
+          "when": "(editorLangId == 'mermaid' || editorLangId == 'restructuredtext' || editorLangId == 'jade' || editorLangId == 'html') && !notebookEditorFocused && !hasCustomMarkdownPreview",
+          "alt": "preview-vscode.showPreview",
+          "group": "navigation"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "preview-vscode.showPreview",
+          "when": "(resourceLangId == 'mermaid' || resourceLangId == 'restructuredtext' || resourceLangId == 'jade' || resourceLangId == 'html') && !hasCustomMarkdownPreview",
+          "group": "navigation"
+        }
+      ],
+      "editor/title/context": [
+        {
+          "command": "preview-vscode.showPreview",
+          "when": "(resourceLangId == 'mermaid' || resourceLangId == 'restructuredtext' || resourceLangId == 'jade' || resourceLangId == 'html') && !hasCustomMarkdownPreview",
+          "group": "1_open"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "preview-vscode.showPreview",
+          "when": "(editorLangId == 'mermaid' || editorLangId == 'restructuredtext' || editorLangId == 'jade' || editorLangId == 'html') && !notebookEditorFocused",
+          "group": "navigation"
+        },
+        {
+          "command": "preview-vscode.showPreviewToSide",
+          "when": "(editorLangId == 'mermaid' || editorLangId == 'restructuredtext' || editorLangId == 'jade' || editorLangId == 'html') && !notebookEditorFocused",
+          "group": "navigation"
+        },
+        {
+          "command": "preview-vscode.showLockedPreviewToSide",
+          "when": "(editorLangId == 'mermaid' || editorLangId == 'restructuredtext' || editorLangId == 'jade' || editorLangId == 'html') && !notebookEditorFocused",
+          "group": "navigation"
+        }
+      ]
+    },
     "markdown.markdownItPlugins": true,
     "markdown.previewStyles": [
       "./preview-styles/index.css"
+    ],
+    "keybindings": [
+      {
+        "command": "preview-vscode.showPreview",
+        "key": "shift+ctrl+v",
+        "mac": "shift+cmd+v",
+        "when": "(editorLangId == 'mermaid' || editorLangId == 'restructuredtext' || editorLangId == 'jade' || editorLangId == 'html') && !notebookEditorFocused"
+      },
+      {
+        "command": "preview-vscode.showPreviewToSide",
+        "key": "ctrl+k v",
+        "mac": "cmd+k v",
+        "when": "(editorLangId == 'mermaid' || editorLangId == 'restructuredtext' || editorLangId == 'jade' || editorLangId == 'html') && !notebookEditorFocused"
+      }
     ],
     "configuration": [
       {
@@ -230,8 +371,8 @@
     "dist:stable": "vsce package",
     "dist": "vsce package --pre-release",
     "vscode:prepublish": "npm run package",
-    "compile": "webpack --mode development",
-    "watch": "webpack --mode development --watch",
+    "compile": "webpack --mode development --stats-error-details",
+    "watch": "webpack --mode development --stats-error-details --watch",
     "package": "webpack --mode production --devtool hidden-source-map",
     "compile-tests": "tsc -p . --outDir dist",
     "watch-tests": "tsc -p . -w --outDir dist",
@@ -242,13 +383,13 @@
   "devDependencies": {
     "@types/markdown-it": "^13.0.7",
     "@types/mocha": "^10.0.6",
-    "@types/node": "^20.11.28",
+    "@types/node": "^20.11.30",
     "@types/pug": "^2.0.10",
     "@types/vscode": "^1.87.0",
     "@types/vscode-notebook-renderer": "^1.57.8",
     "@types/webpack-env": "^1.18.4",
-    "@typescript-eslint/eslint-plugin": "^7.2.0",
-    "@typescript-eslint/parser": "^7.2.0",
+    "@typescript-eslint/eslint-plugin": "^7.3.1",
+    "@typescript-eslint/parser": "^7.3.1",
     "@vscode/test-cli": "^0.0.8",
     "@vscode/test-electron": "^2.3.9",
     "entity-decode": "^2.0.2",
@@ -280,9 +421,9 @@
     "pug": "^3.0.2",
     "rst2mdown": "^0.1.0",
     "ts-loader": "^9.5.1",
-    "typescript": "^5.4.2",
+    "typescript": "^5.4.3",
     "vscode-notebook-error-overlay": "^1.0.1",
-    "webpack": "^5.90.3",
+    "webpack": "^5.91.0",
     "webpack-cli": "^5.1.4"
   }
 }
