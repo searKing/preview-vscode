@@ -1,6 +1,6 @@
 {
 	"displayName": "Preview",
-	"description": "A Markdown, ReStructured Text, HTML, Jade, Pug, Image, CSS, Mermaid previewer.",
+	"description": "A Markdown, ReStructured Text, HTML, Jade, Pug, Mermaid, Image previewer.",
 	"preview-vscode.preview.title": "Open Preview",
 	"preview-vscode.previewSide.title": "Open Preview to the Side",
 	"preview-vscode.showLockedPreviewToSide.title": "Open Locked Preview to the Side",

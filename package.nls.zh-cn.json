@@ -1,6 +1,6 @@
 {
 	"displayName": "Preview",
-	"description": "预览多种文件格式，包括Markdown, ReStructured Text, HTML, Jade, Pug, Image, CSS, Mermaid.",
+	"description": "预览多种文件格式，包括Markdown，ReStructured Text，HTML，Jade，Pug，Mermaid，Image。",
 	"preview-vscode.preview.title": "打开预览",
 	"preview-vscode.previewSide.title": "打开侧边预览",
 	"preview-vscode.showLockedPreviewToSide.title": "在侧边打开锁定的预览",

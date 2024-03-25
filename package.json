@@ -153,7 +153,7 @@
       "editor/title": [
         {
           "command": "preview-vscode.showPreviewToSide",
-          "when": "(editorLangId == 'mermaid' || editorLangId == 'restructuredtext' || editorLangId == 'jade' || editorLangId == 'html') && !notebookEditorFocused && !hasCustomMarkdownPreview",
+          "when": "!notebookEditorFocused && !hasCustomMarkdownPreview",
           "alt": "preview-vscode.showPreview",
           "group": "navigation"
         }
@@ -161,31 +161,31 @@
       "explorer/context": [
         {
           "command": "preview-vscode.showPreview",
-          "when": "(resourceLangId == 'mermaid' || resourceLangId == 'restructuredtext' || resourceLangId == 'jade' || resourceLangId == 'html') && !hasCustomMarkdownPreview",
+          "when": "!hasCustomMarkdownPreview",
           "group": "navigation"
         }
       ],
       "editor/title/context": [
         {
           "command": "preview-vscode.showPreview",
-          "when": "(resourceLangId == 'mermaid' || resourceLangId == 'restructuredtext' || resourceLangId == 'jade' || resourceLangId == 'html') && !hasCustomMarkdownPreview",
+          "when": "!hasCustomMarkdownPreview",
           "group": "1_open"
         }
       ],
       "commandPalette": [
         {
           "command": "preview-vscode.showPreview",
-          "when": "(editorLangId == 'mermaid' || editorLangId == 'restructuredtext' || editorLangId == 'jade' || editorLangId == 'html') && !notebookEditorFocused",
+          "when": "!notebookEditorFocused",
           "group": "navigation"
         },
         {
           "command": "preview-vscode.showPreviewToSide",
-          "when": "(editorLangId == 'mermaid' || editorLangId == 'restructuredtext' || editorLangId == 'jade' || editorLangId == 'html') && !notebookEditorFocused",
+          "when": "!notebookEditorFocused",
           "group": "navigation"
         },
         {
           "command": "preview-vscode.showLockedPreviewToSide",
-          "when": "(editorLangId == 'mermaid' || editorLangId == 'restructuredtext' || editorLangId == 'jade' || editorLangId == 'html') && !notebookEditorFocused",
+          "when": "!notebookEditorFocused",
           "group": "navigation"
         }
       ]
@@ -199,13 +199,13 @@
         "command": "preview-vscode.showPreview",
         "key": "shift+ctrl+v",
         "mac": "shift+cmd+v",
-        "when": "(editorLangId == 'mermaid' || editorLangId == 'restructuredtext' || editorLangId == 'jade' || editorLangId == 'html') && !notebookEditorFocused"
+        "when": "!notebookEditorFocused"
       },
       {
         "command": "preview-vscode.showPreviewToSide",
         "key": "ctrl+k v",
         "mac": "cmd+k v",
-        "when": "(editorLangId == 'mermaid' || editorLangId == 'restructuredtext' || editorLangId == 'jade' || editorLangId == 'html') && !notebookEditorFocused"
+        "when": "!notebookEditorFocused"
       }
     ],
     "configuration": [

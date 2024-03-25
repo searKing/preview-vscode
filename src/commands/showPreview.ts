@@ -36,11 +36,30 @@ async function showPreview(
         where: previewSettings.sideBySide ? 'sideBySide' : 'inPlace',
         how: (uri instanceof vscode.Uri) ? 'action' : 'pallete'
     });
+    // await vscode.commands.executeCommand('editor.action.commentLine');
+    // await vscode.commands.executeCommand('editor.action.commentLine');
+    let editor = vscode.window.activeTextEditor;
+    if (!editor) {
+        // this is most likely toggling the preview
+        return vscode.commands.executeCommand('markdown.showSource');
+    }
+    lastActiveEditor = editor;
+    const supportIds = ["markdown", "html", "css", "mermaid", "restructuredtext", "jade", "pug"];
+    if (!supportIds.includes(editor.document.languageId)) {
+        // defer set text editor dirty.
+        await editor.edit((editBuilder) => {
+            editBuilder.insert(new vscode.Position(0, 0), " ");
+        }, { undoStopBefore: false, undoStopAfter: false });
+
+        await editor.edit((editBuilder) => {
+            editBuilder.delete(new vscode.Range(new vscode.Position(0, 0), new vscode.Position(0, 1)));
+        }, { undoStopBefore: false, undoStopAfter: false });
+    }
+
     if (previewSettings.sideBySide) {
         // this is most likely show preview to side.
         return vscode.commands.executeCommand('markdown.showPreviewToSide');
     }
-
     // this is most likely show preview inplace.
     return vscode.commands.executeCommand('markdown.showPreview');
 }
