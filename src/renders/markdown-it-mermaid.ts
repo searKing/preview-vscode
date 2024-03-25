@@ -25,7 +25,7 @@ export namespace MarkdownItMermaid {
     // Your extension is activated the very first time the command is executed
     export function extendMarkdownIt(context: vscode.ExtensionContext | undefined, md: MarkdownIt): MarkdownIt {
         if (!!context) {
-            vscode.window.onDidChangeActiveColorTheme(e => {
+            vscode.window.onDidChangeActiveColorTheme(_e => {
                 vscode.commands.executeCommand('markdown.api.reloadPlugins');
             }, undefined, context.subscriptions);
             vscode.workspace.onDidChangeConfiguration(e => {
