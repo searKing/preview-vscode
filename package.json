@@ -153,7 +153,7 @@
       "editor/title": [
         {
           "command": "preview-vscode.showPreviewToSide",
-          "when": "!notebookEditorFocused && !hasCustomMarkdownPreview",
+          "when": "(editorLangId != 'markdown') && !notebookEditorFocused && !hasCustomMarkdownPreview",
           "alt": "preview-vscode.showPreview",
           "group": "navigation"
         }
@@ -161,31 +161,31 @@
       "explorer/context": [
         {
           "command": "preview-vscode.showPreview",
-          "when": "!hasCustomMarkdownPreview",
+          "when": "(resourceLangId != 'markdown') && !hasCustomMarkdownPreview",
           "group": "navigation"
         }
       ],
       "editor/title/context": [
         {
           "command": "preview-vscode.showPreview",
-          "when": "!hasCustomMarkdownPreview",
+          "when": "(resourceLangId != 'markdown') && !hasCustomMarkdownPreview",
           "group": "1_open"
         }
       ],
       "commandPalette": [
         {
           "command": "preview-vscode.showPreview",
-          "when": "!notebookEditorFocused",
+          "when": "(editorLangId != 'markdown') && !notebookEditorFocused",
           "group": "navigation"
         },
         {
           "command": "preview-vscode.showPreviewToSide",
-          "when": "!notebookEditorFocused",
+          "when": "(editorLangId != 'markdown') && !notebookEditorFocused",
           "group": "navigation"
         },
         {
           "command": "preview-vscode.showLockedPreviewToSide",
-          "when": "!notebookEditorFocused",
+          "when": "(editorLangId != 'markdown') && !notebookEditorFocused",
           "group": "navigation"
         }
       ]
