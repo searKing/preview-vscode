@@ -119,7 +119,7 @@
         "displayName": "Preview",
         "entrypoint": {
           "extends": "vscode.markdown-it-renderer",
-          "path": "./dist/notebook/index.js"
+          "path": "./dist/notebook/notebook.js"
         },
         "mimeTypes": [
           "text/markdown"

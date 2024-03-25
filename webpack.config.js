@@ -25,14 +25,14 @@ const makeConfig = (argv, { entry, out, target, library = 'commonjs' }) => ({
     extension: {
       import: entry,
     }
-  },//: './src/extension.ts', // the entry point of this extension, 📖 -> https://webpack.js.org/configuration/entry-context/
+  },// the entry point of this extension, 📖 -> https://webpack.js.org/configuration/entry-context/
   output: {
     // the bundle is stored in the 'dist' folder (check package.json), 📖 -> https://webpack.js.org/configuration/output/
     path: path.join(__dirname, path.dirname(out)),
     // filename: '[name].[contenthash].js',
-    // filename: path.basename(out),
-    filename: '[name].js',
-    chunkFilename: '[id].[chunkhash].js',
+    // filename: '[name].js',
+    filename: `${path.basename(out)}`,
+    // chunkFilename: '[id].[chunkhash].js',
     publicPath: '',
     libraryTarget: library,
     chunkFormat: library,
@@ -57,16 +57,6 @@ const makeConfig = (argv, { entry, out, target, library = 'commonjs' }) => ({
   },
   optimization: {
     minimize: argv.mode !== 'development',
-    splitChunks: {
-      chunks: 'all',
-      cacheGroups: {
-        vendor: {
-          test: /[\\/]node_modules[\\/]/,
-          name: 'vendors',
-          chunks: 'all',
-        },
-      },
-    },
   },
   // performance: { hints: false },
   module: {
@@ -140,7 +130,7 @@ const makeConfig = (argv, { entry, out, target, library = 'commonjs' }) => ({
   },
 });
 module.exports = (env, argv) => [
-  makeConfig(argv, { entry: './src/notebook/index.ts', out: './dist/notebook/index.js', target: 'web', library: 'module' }),
+  makeConfig(argv, { entry: './src/notebook/notebook.ts', out: './dist/notebook/notebook.js', target: 'web', library: 'module' }),
   makeConfig(argv, { entry: './src/extension/extension.ts', out: './dist/extension/node/extension.js', target: 'node' }),
   makeConfig(argv, { entry: './src/extension/extension.ts', out: './dist/extension/browser/extension.js', target: 'webworker' }),
 ];
