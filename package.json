@@ -213,22 +213,26 @@
           "markdown.abbr.enabled": {
             "type": "boolean",
             "default": true,
-            "description": "%config.markdown.abbr.enabled%"
+            "description": "%config.markdown.abbr.enabled%",
+            "scope": "resource"
           },
           "markdown.anchor.enabled": {
             "type": "boolean",
             "default": true,
-            "description": "%config.markdown.anchor.enabled%"
+            "description": "%config.markdown.anchor.enabled%",
+            "scope": "resource"
           },
           "markdown.anchor.level": {
             "type": "integer",
             "default": 1,
-            "description": "%config.markdown.anchor.level%"
+            "description": "%config.markdown.anchor.level%",
+            "scope": "resource"
           },
           "markdown.attrs.enabled": {
             "type": "boolean",
             "default": true,
-            "description": "%config.markdown.attrs.enabled%"
+            "description": "%config.markdown.attrs.enabled%",
+            "scope": "resource"
           },
           "markdown.attrs.allowedAttributes": {
             "type": "array",
@@ -236,132 +240,180 @@
               "type": "string"
             },
             "default": [],
-            "description": "%config.markdown.attrs.allowedAttributes%"
+            "description": "%config.markdown.attrs.allowedAttributes%",
+            "scope": "resource"
           },
           "markdown.bracketed-spans.enabled": {
             "type": "boolean",
             "default": true,
-            "description": "%config.markdown.bracketed-spans.enabled%"
+            "description": "%config.markdown.bracketed-spans.enabled%",
+            "scope": "resource"
           },
           "markdown.deflist.enabled": {
             "type": "boolean",
             "default": true,
-            "description": "%config.markdown.deflist.enabled%"
+            "description": "%config.markdown.deflist.enabled%",
+            "scope": "resource"
           },
           "markdown.emoji.enabled": {
             "type": "boolean",
             "default": true,
-            "description": "%config.markdown.emoji.enabled%"
+            "description": "%config.markdown.emoji.enabled%",
+            "scope": "resource"
           },
           "markdown.expand-tabs.enabled": {
             "type": "boolean",
             "default": true,
-            "description": "%config.markdown.expand-tabs.enabled%"
+            "description": "%config.markdown.expand-tabs.enabled%",
+            "scope": "resource"
           },
           "markdown.expand-tabs.tabWidth": {
             "type": "integer",
             "default": 2,
-            "description": "%config.markdown.expand-tabs.tabWidth%"
+            "description": "%config.markdown.expand-tabs.tabWidth%",
+            "scope": "resource"
           },
           "markdown.footnote.enabled": {
             "type": "boolean",
             "default": true,
-            "description": "%config.markdown.footnote.enabled%"
+            "description": "%config.markdown.footnote.enabled%",
+            "scope": "resource"
           },
           "markdown.highlightjs.enabled": {
             "type": "boolean",
             "default": true,
-            "description": "%config.markdown.highlightjs.enabled%"
+            "description": "%config.markdown.highlightjs.enabled%",
+            "scope": "resource"
           },
           "markdown.highlightjs.auto": {
             "type": "boolean",
             "default": true,
-            "description": "%config.markdown.highlightjs.auto%"
+            "description": "%config.markdown.highlightjs.auto%",
+            "scope": "resource"
           },
           "markdown.highlightjs.code": {
             "type": "boolean",
             "default": true,
-            "description": "%config.markdown.highlightjs.code%"
+            "description": "%config.markdown.highlightjs.code%",
+            "scope": "resource"
           },
           "markdown.highlightjs.inline": {
             "type": "boolean",
             "default": true,
-            "description": "%config.markdown.highlightjs.inline%"
+            "description": "%config.markdown.highlightjs.inline%",
+            "scope": "resource"
           },
           "markdown.highlightjs.ignoreIllegals": {
             "type": "boolean",
             "default": true,
-            "description": "%config.markdown.highlightjs.ignoreIllegals%"
+            "description": "%config.markdown.highlightjs.ignoreIllegals%",
+            "scope": "resource"
           },
           "markdown.html.enabled": {
             "type": "boolean",
             "default": true,
-            "description": "%config.markdown.html.enabled%"
+            "description": "%config.markdown.html.enabled%",
+            "scope": "resource"
           },
           "markdown.ins.enabled": {
             "type": "boolean",
             "default": true,
-            "description": "%config.markdown.ins.enabled%"
+            "description": "%config.markdown.ins.enabled%",
+            "scope": "resource"
           },
           "markdown.lazy-headers.enabled": {
             "type": "boolean",
             "default": true,
-            "description": "%config.markdown.lazy-headers.enabled%"
+            "description": "%config.markdown.lazy-headers.enabled%",
+            "scope": "resource"
           },
           "markdown.mark.enabled": {
             "type": "boolean",
             "default": true,
-            "description": "%config.markdown.mark.enabled%"
+            "description": "%config.markdown.mark.enabled%",
+            "scope": "resource"
           },
           "markdown.markdown.enabled": {
             "type": "boolean",
             "default": true,
-            "description": "%config.markdown.markdown.enabled%"
+            "description": "%config.markdown.markdown.enabled%",
+            "scope": "resource"
           },
           "markdown.mermaid.enabled": {
             "type": "boolean",
             "default": true,
-            "description": "%config.markdown.mermaid.enabled%"
+            "description": "%config.markdown.mermaid.enabled%",
+            "scope": "resource"
+          },
+          "markdown.mermaid.theme": {
+            "type": "string",
+            "default": "auto",
+            "description": "%config.markdown.mermaid.theme%",
+            "scope": "resource",
+            "enum": [
+              "auto",
+              "default",
+              "forest",
+              "dark",
+              "neutral",
+              "null"
+            ],
+            "enumDescriptions": [
+              "%config.markdown.mermaid.theme.auto%",
+              "%config.markdown.mermaid.theme.default%",
+              "%config.markdown.mermaid.theme.forest%",
+              "%config.markdown.mermaid.theme.dark%",
+              "%config.markdown.mermaid.theme.neutral%",
+              "%config.markdown.mermaid.theme.null%"
+            ]
           },
           "markdown.pug.enabled": {
             "type": "boolean",
             "default": true,
-            "description": "%config.markdown.pug.enabled%"
+            "description": "%config.markdown.pug.enabled%",
+            "scope": "resource"
           },
           "markdown.rst.enabled": {
             "type": "boolean",
             "default": true,
-            "description": "%config.markdown.rst.enabled%"
+            "description": "%config.markdown.rst.enabled%",
+            "scope": "resource"
           },
           "markdown.sub.enabled": {
             "type": "boolean",
             "default": true,
-            "description": "%config.markdown.sub.enabled%"
+            "description": "%config.markdown.sub.enabled%",
+            "scope": "resource"
           },
           "markdown.sup.enabled": {
             "type": "boolean",
             "default": true,
-            "description": "%config.markdown.sup.enabled%"
+            "description": "%config.markdown.sup.enabled%",
+            "scope": "resource"
           },
           "markdown.tasklists.enabled": {
             "type": "boolean",
             "default": true,
-            "description": "%config.markdown.task-lists.enabled%"
+            "description": "%config.markdown.task-lists.enabled%",
+            "scope": "resource"
           },
           "markdown.tasklists.renderCheckboxes": {
             "type": "boolean",
             "default": true,
-            "description": "%config.markdown.task-lists.renderCheckboxes%"
+            "description": "%config.markdown.task-lists.renderCheckboxes%",
+            "scope": "resource"
           },
           "markdown.tasklists.label": {
             "type": "boolean",
             "default": true,
-            "description": "%config.markdown.task-lists.label%"
+            "description": "%config.markdown.task-lists.label%",
+            "scope": "resource"
           },
           "markdown.tasklists.labelAfter": {
             "type": "boolean",
             "default": true,
-            "description": "%config.markdown.task-lists.labelAfter%"
+            "description": "%config.markdown.task-lists.labelAfter%",
+            "scope": "resource"
           }
         }
       }

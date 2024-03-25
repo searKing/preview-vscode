@@ -25,6 +25,9 @@ export namespace MarkdownItMermaid {
     // Your extension is activated the very first time the command is executed
     export function extendMarkdownIt(context: vscode.ExtensionContext | undefined, md: MarkdownIt): MarkdownIt {
         if (!!context) {
+            vscode.window.onDidChangeActiveColorTheme(e => {
+                vscode.commands.executeCommand('markdown.api.reloadPlugins');
+            }, undefined, context.subscriptions);
             vscode.workspace.onDidChangeConfiguration(e => {
                 if (e.affectsConfiguration(markdownMermaidSetting)) {
                     vscode.commands.executeCommand('markdown.api.reloadPlugins');
@@ -36,10 +39,36 @@ export namespace MarkdownItMermaid {
         if (!config.get<boolean>('mermaid.enabled', true)) {
             return md;
         }
-        return md.use(mermaid_render, {});
+
+        var theme = config.get<string>('mermaid.theme', "auto");
+        if (theme === "auto") {
+            // https://mermaid.js.org/config/schema-docs/config.html#theme
+            // "default" | "forest" | "dark" | "neutral" | "null"
+            switch (vscode.window.activeColorTheme.kind) {
+                case vscode.ColorThemeKind.Light:
+                    theme = "default";
+                    break;
+                case vscode.ColorThemeKind.Dark:
+                    theme = "dark";
+                    break;
+                case vscode.ColorThemeKind.HighContrastLight:
+                    theme = "forest";
+                    break;
+                case vscode.ColorThemeKind.HighContrast:
+                    theme = "neutral";
+                    break;
+                default:
+                    theme = "default";
+                    break;
+            }
+        }
+        return md.use(mermaid_render, {
+            startOnLoad: true,
+            theme: theme
+        });
     }
 
-    const mermaid_render = (md: MarkdownIt): void => {
+    const mermaid_render = (md: MarkdownIt, o: any): void => {
         const temp = md.renderer.rules.fence?.bind(md.renderer.rules);
         md.renderer.rules.fence = (tokens, idx, options, env, slf) => {
             const token = tokens[idx];
@@ -55,7 +84,7 @@ export namespace MarkdownItMermaid {
                 // https://mermaid.js.org/intro/getting-started.html#examples
                 return `<script type="module">
 import mermaid from '${mermaid_package}';
-mermaid.initialize({ startOnLoad: true });
+mermaid.initialize(${JSON.stringify(o)});
 </script>
 <pre class="mermaid">${dedent_code}</pre>`;
             }
