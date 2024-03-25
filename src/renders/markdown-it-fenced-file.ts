@@ -33,7 +33,7 @@ export namespace MarkdownItFencedFile {
             let languageId: string = VscodeHelper.activeLanguageId();
             switch (languageId) {
                 case "markdown":
-                    state.src = '```markdown\n' + `${state.src}` + '\n```';
+                    // nop, use builtin Markdown.
                     return;
                 case "html": case "css":
                     state.src = '```html\n' + `${state.src}` + '\n```';
