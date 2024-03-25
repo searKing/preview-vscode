@@ -38,6 +38,8 @@
   "browser": "./dist/extension/browser/extension.js",
   "activationEvents": [
     "onLanguage:markdown",
+    "onLanguage:html",
+    "onLanguage:css",
     "onLanguage:mermaid",
     "onLanguage:restructuredtext",
     "onLanguage:jade",
