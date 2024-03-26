@@ -29,7 +29,7 @@ export class MarkdownPreviewManager extends Disposable {
         }
 
         // fallback to uri, activeTextEditor      
-        let ext = this.uri()?.path.split('.').pop() || vscode.window.activeTextEditor?.document?.uri.path.split('.').pop()
+        let ext = this.uri()?.path.split('.').pop() || vscode.window.activeTextEditor?.document?.uri.path.split('.').pop();
         if (!ext) {
             // fallback to activeTab
             let tab = vscode.window.tabGroups.activeTabGroup.activeTab;
