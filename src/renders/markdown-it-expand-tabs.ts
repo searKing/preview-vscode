@@ -16,7 +16,7 @@ export namespace MarkdownItExpandTabs {
             }, undefined, context.subscriptions);
         }
 
-        const config = vscode.workspace.getConfiguration('markdown');
+        const config = vscode.workspace.getConfiguration('markdown',null);
         if (!config.get<boolean>('expand-tabs.enabled', true)) {
             return md;
         }

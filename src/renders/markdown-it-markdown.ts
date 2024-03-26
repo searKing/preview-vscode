@@ -19,7 +19,7 @@ export namespace MarkdownItMarkdown {
             }, undefined, context.subscriptions);
         }
 
-        const config = vscode.workspace.getConfiguration('markdown');
+        const config = vscode.workspace.getConfiguration('markdown',null);
         if (!config.get<boolean>('markdown.enabled', true)) {
             return md;
         }

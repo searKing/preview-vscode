@@ -15,7 +15,7 @@ export namespace MarkdownItCjkBreaks {
                 }
             }, undefined, context.subscriptions);
         }
-        const config = vscode.workspace.getConfiguration('markdown');
+        const config = vscode.workspace.getConfiguration('markdown',null);
         if (!config.get<boolean>('cjk-breaks.enabled', true)) {
             return md;
         }

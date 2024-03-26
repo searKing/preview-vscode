@@ -38,7 +38,7 @@ export namespace MarkdownItPug {
             }, undefined, context.subscriptions);
         }
 
-        const config = vscode.workspace.getConfiguration('markdown');
+        const config = vscode.workspace.getConfiguration('markdown',null);
         if (!config.get<boolean>('pug.enabled', true)) {
             return md;
         }

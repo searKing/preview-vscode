@@ -16,7 +16,7 @@ export namespace MarkdownItBracketedSpans {
             }, undefined, context.subscriptions);
         }
 
-        const config = vscode.workspace.getConfiguration('markdown');
+        const config = vscode.workspace.getConfiguration('markdown',null);
         if (!config.get<boolean>('bracketed-spans.enabled', true)) {
             return md;
         }

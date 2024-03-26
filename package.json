@@ -160,14 +160,12 @@
           "markdown.abbr.enabled": {
             "type": "boolean",
             "default": true,
-            "description": "%config.markdown.abbr.enabled%",
-            "scope": "resource"
+            "description": "%config.markdown.abbr.enabled%"
           },
           "markdown.anchor.enabled": {
             "type": "boolean",
             "default": true,
-            "description": "%config.markdown.anchor.enabled%",
-            "scope": "resource"
+            "description": "%config.markdown.anchor.enabled%"
           },
           "markdown.anchor.level": {
             "type": "integer",
@@ -178,8 +176,7 @@
           "markdown.attrs.enabled": {
             "type": "boolean",
             "default": true,
-            "description": "%config.markdown.attrs.enabled%",
-            "scope": "resource"
+            "description": "%config.markdown.attrs.enabled%"
           },
           "markdown.attrs.allowedAttributes": {
             "type": "array",
@@ -193,26 +190,22 @@
           "markdown.bracketed-spans.enabled": {
             "type": "boolean",
             "default": true,
-            "description": "%config.markdown.bracketed-spans.enabled%",
-            "scope": "resource"
+            "description": "%config.markdown.bracketed-spans.enabled%"
           },
           "markdown.deflist.enabled": {
             "type": "boolean",
             "default": true,
-            "description": "%config.markdown.deflist.enabled%",
-            "scope": "resource"
+            "description": "%config.markdown.deflist.enabled%"
           },
           "markdown.emoji.enabled": {
             "type": "boolean",
             "default": true,
-            "description": "%config.markdown.emoji.enabled%",
-            "scope": "resource"
+            "description": "%config.markdown.emoji.enabled%"
           },
           "markdown.expand-tabs.enabled": {
             "type": "boolean",
             "default": true,
-            "description": "%config.markdown.expand-tabs.enabled%",
-            "scope": "resource"
+            "description": "%config.markdown.expand-tabs.enabled%"
           },
           "markdown.expand-tabs.tabWidth": {
             "type": "integer",
@@ -223,14 +216,12 @@
           "markdown.footnote.enabled": {
             "type": "boolean",
             "default": true,
-            "description": "%config.markdown.footnote.enabled%",
-            "scope": "resource"
+            "description": "%config.markdown.footnote.enabled%"
           },
           "markdown.highlightjs.enabled": {
             "type": "boolean",
             "default": true,
-            "description": "%config.markdown.highlightjs.enabled%",
-            "scope": "resource"
+            "description": "%config.markdown.highlightjs.enabled%"
           },
           "markdown.highlightjs.auto": {
             "type": "boolean",
@@ -259,14 +250,12 @@
           "markdown.html.enabled": {
             "type": "boolean",
             "default": true,
-            "description": "%config.markdown.html.enabled%",
-            "scope": "resource"
+            "description": "%config.markdown.html.enabled%"
           },
           "markdown.ins.enabled": {
             "type": "boolean",
             "default": true,
-            "description": "%config.markdown.ins.enabled%",
-            "scope": "resource"
+            "description": "%config.markdown.ins.enabled%"
           },
           "markdown.lazy-headers.enabled": {
             "type": "boolean",
@@ -277,20 +266,17 @@
           "markdown.mark.enabled": {
             "type": "boolean",
             "default": true,
-            "description": "%config.markdown.mark.enabled%",
-            "scope": "resource"
+            "description": "%config.markdown.mark.enabled%"
           },
           "markdown.markdown.enabled": {
             "type": "boolean",
             "default": true,
-            "description": "%config.markdown.markdown.enabled%",
-            "scope": "resource"
+            "description": "%config.markdown.markdown.enabled%"
           },
           "markdown.mermaid.enabled": {
             "type": "boolean",
             "default": true,
-            "description": "%config.markdown.mermaid.enabled%",
-            "scope": "resource"
+            "description": "%config.markdown.mermaid.enabled%"
           },
           "markdown.mermaid.theme": {
             "type": "string",
@@ -317,32 +303,27 @@
           "markdown.pug.enabled": {
             "type": "boolean",
             "default": true,
-            "description": "%config.markdown.pug.enabled%",
-            "scope": "resource"
+            "description": "%config.markdown.pug.enabled%"
           },
           "markdown.rst.enabled": {
             "type": "boolean",
             "default": true,
-            "description": "%config.markdown.rst.enabled%",
-            "scope": "resource"
+            "description": "%config.markdown.rst.enabled%"
           },
           "markdown.sub.enabled": {
             "type": "boolean",
             "default": true,
-            "description": "%config.markdown.sub.enabled%",
-            "scope": "resource"
+            "description": "%config.markdown.sub.enabled%"
           },
           "markdown.sup.enabled": {
             "type": "boolean",
             "default": true,
-            "description": "%config.markdown.sup.enabled%",
-            "scope": "resource"
+            "description": "%config.markdown.sup.enabled%"
           },
           "markdown.tasklists.enabled": {
             "type": "boolean",
             "default": true,
-            "description": "%config.markdown.task-lists.enabled%",
-            "scope": "resource"
+            "description": "%config.markdown.task-lists.enabled%"
           },
           "markdown.tasklists.renderCheckboxes": {
             "type": "boolean",

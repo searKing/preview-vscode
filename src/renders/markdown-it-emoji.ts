@@ -16,7 +16,7 @@ export namespace MarkdownItEmoji {
             }, undefined, context.subscriptions);
         }
 
-        const config = vscode.workspace.getConfiguration('markdown');
+        const config = vscode.workspace.getConfiguration('markdown',null);
         if (!config.get<boolean>('emoji.enabled', true)) {
             return md;
         }

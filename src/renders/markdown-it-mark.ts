@@ -16,7 +16,7 @@ export namespace MarkdownItMark {
             }, undefined, context.subscriptions);
         }
 
-        const config = vscode.workspace.getConfiguration('markdown');
+        const config = vscode.workspace.getConfiguration('markdown',null);
         if (!config.get<boolean>('mark.enabled', true)) {
             return md;
         }

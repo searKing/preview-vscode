@@ -15,7 +15,7 @@ export namespace MarkdownItHighlightjs {
                 }
             }, undefined, context.subscriptions);
         }
-        const config = vscode.workspace.getConfiguration('markdown');
+        const config = vscode.workspace.getConfiguration('markdown',null);
 
         if (!config.get<boolean>('highlightjs.enabled', true)) {
             return md;

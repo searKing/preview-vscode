@@ -18,7 +18,7 @@ export namespace MarkdownItFencedFile {
             }, undefined, context.subscriptions);
         }
 
-        const config = vscode.workspace.getConfiguration('markdown');
+        const config = vscode.workspace.getConfiguration('markdown',null);
         if (!config.get<boolean>('fenced-file.enabled', true)) {
             return md;
         }

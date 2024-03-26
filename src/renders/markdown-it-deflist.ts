@@ -16,7 +16,7 @@ export namespace MarkdownItDeflist {
             }, undefined, context.subscriptions);
         }
 
-        const config = vscode.workspace.getConfiguration('markdown');
+        const config = vscode.workspace.getConfiguration('markdown',null);
         if (!config.get<boolean>('deflist.enabled', true)) {
             return md;
         }
