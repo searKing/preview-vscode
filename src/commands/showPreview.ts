@@ -56,19 +56,20 @@ async function showPreview(
         editor = vscode.window.activeTextEditor;
         _markdownPreviewManager.refresh();
         editor?.hide();
-    }else{
+    } else {
         _markdownPreviewManager.refresh();
     }
     const supportIds = ["markdown", "html", "css", "mermaid", "restructuredtext", "jade", "pug"];
     if (editor && !supportIds.includes(editor.document.languageId)) {
         // defer set text editor dirty.
-        await editor.edit((editBuilder) => {
-            editBuilder.insert(new vscode.Position(0, 0), " ");
-        }, { undoStopBefore: false, undoStopAfter: false });
+        // await editor.edit((editBuilder) => {
+        //     editBuilder.insert(new vscode.Position(0, 0), " ");
+        // }, { undoStopBefore: false, undoStopAfter: false });
 
-        await editor.edit((editBuilder) => {
-            editBuilder.delete(new vscode.Range(new vscode.Position(0, 0), new vscode.Position(0, 1)));
-        }, { undoStopBefore: false, undoStopAfter: false });
+        // await editor.edit((editBuilder) => {
+        //     editBuilder.delete(new vscode.Range(new vscode.Position(0, 0), new vscode.Position(0, 1)));
+        // }, { undoStopBefore: false, undoStopAfter: false });
+        await vscode.commands.executeCommand('markdown.preview.refresh');
     }
 
     if (previewSettings.sideBySide) {

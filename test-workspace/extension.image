@@ -7,6 +7,8 @@ http://dwz.cn/5GQl9M
  ./media/icon.png
  ./media/demonstration.gif
 
+ ../media/demonstration.gif
+
  h1 {
     color: red
 }

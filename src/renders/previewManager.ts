@@ -8,12 +8,17 @@ export class MarkdownPreviewManager extends Disposable {
         super();
         this.refresh();
         vscode.workspace.onDidOpenTextDocument((doc: vscode.TextDocument) => {
+            this.lastActiveEditor = undefined;
             this.lastActiveTextDocument = doc;
         });
     }
     public refresh(doc?: vscode.TextDocument) {
-        this.lastActiveEditor = vscode.window.activeTextEditor;
-        this.lastActiveTextDocument = doc || vscode.window.activeTextEditor?.document;
+        this.lastActiveEditor = vscode.window.activeTextEditor || this.lastActiveEditor;
+        this.lastActiveTextDocument = doc || vscode.window.activeTextEditor?.document || this.lastActiveTextDocument;
+    }
+    public clear() {
+        this.lastActiveEditor = undefined;
+        this.lastActiveTextDocument = undefined;
     }
     public editor(): vscode.TextEditor | undefined {
         return this.lastActiveEditor;
@@ -29,43 +34,7 @@ export class MarkdownPreviewManager extends Disposable {
         }
 
         // fallback to uri, activeTextEditor      
-        let ext = this.uri()?.path.split('.').pop() || vscode.window.activeTextEditor?.document?.uri.path.split('.').pop();
-        if (!ext) {
-            // fallback to activeTab
-            let tab = vscode.window.tabGroups.activeTabGroup.activeTab;
-            if (!tab) {
-                return "";
-            }
-            if (tab.input instanceof vscode.TabInputText) {
-                ext = tab.input.uri.path.split('.').pop();
-            } else if (tab.input instanceof vscode.TabInputTextDiff) {
-                ext = tab.input.original.path.split('.').pop() || tab.input.modified.path.split('.').pop();
-            } else if (tab.input instanceof vscode.TabInputCustom) {
-                ext = tab.input.uri.path.split('.').pop();
-            } else if (tab.input instanceof vscode.TabInputNotebook) {
-                ext = tab.input.uri.path.split('.').pop();
-            } else if (tab.input instanceof vscode.TabInputNotebookDiff) {
-                ext = tab.input.original.path.split('.').pop() || tab.input.modified.path.split('.').pop();
-            }
-            ext = ext || tab.label.split('.').pop();
-        }
-        let tab = vscode.window.tabGroups.activeTabGroup.activeTab;
-        if (!tab) {
-            return "";
-        }
-        if (tab.input instanceof vscode.TabInputText) {
-            ext = tab.input.uri.path.split('.').pop();
-        } else if (tab.input instanceof vscode.TabInputTextDiff) {
-            ext = tab.input.original.path.split('.').pop() || tab.input.modified.path.split('.').pop();
-        } else if (tab.input instanceof vscode.TabInputCustom) {
-            ext = tab.input.uri.path.split('.').pop();
-        } else if (tab.input instanceof vscode.TabInputNotebook) {
-            ext = tab.input.uri.path.split('.').pop();
-        } else if (tab.input instanceof vscode.TabInputNotebookDiff) {
-            ext = tab.input.original.path.split('.').pop() || tab.input.modified.path.split('.').pop();
-        }
-        ext = ext || tab.label.split('.').pop();
-
+        let ext = this.uri()?.path.split('.').pop();
         if (!ext) {
             return "";
         }
