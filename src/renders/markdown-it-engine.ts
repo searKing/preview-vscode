@@ -32,7 +32,7 @@ import { MarkdownItCjkBreaks } from './markdown-it-cjk-breaks';
 import { MarkdownItBracketedSpans } from './markdown-it-bracketed-spans';
 import { MarkdownItFencedFile } from './markdown-it-fenced-file';
 
-export function extendMarkdownIt(context: vscode.ExtensionContext | undefined, md: MarkdownIt): MarkdownIt {
+export function extendMarkdownIt<T = any>(context: vscode.ExtensionContext | undefined, md: MarkdownIt, options?: T): MarkdownIt {
     return join(
         MarkdownItFencedFile.extendMarkdownIt,
         MarkdownItAbbr.extendMarkdownIt,
@@ -56,7 +56,7 @@ export function extendMarkdownIt(context: vscode.ExtensionContext | undefined, m
         MarkdownItRst.extendMarkdownIt,
         MarkdownItMarkdown.extendMarkdownIt,
         MarkdownItHTML.extendMarkdownIt,
-    )(context, md);
+    )(context, md, options);
 }
 
 /**

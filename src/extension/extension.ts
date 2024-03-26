@@ -4,6 +4,7 @@ import * as vscode from 'vscode';
 import type MarkdownIt = require('markdown-it');
 
 import { extendMarkdownIt } from '../renders/markdown-it-engine';
+import { MarkdownPreviewManager } from '../renders/previewManager';
 import { registerMarkdownCommands } from '../commands';
 import { CommandManager } from '../commands/commandManager';
 
@@ -24,11 +25,13 @@ export function activate(context: vscode.ExtensionContext) {
 	const telemetryReporter = loadDefaultTelemetryReporter();
 	context.subscriptions.push(telemetryReporter);
 
+	const markdownPreviewManager = new MarkdownPreviewManager();
+
 	const commandManager = new CommandManager();
-	context.subscriptions.push(registerMarkdownCommands(commandManager, telemetryReporter));
+	context.subscriptions.push(registerMarkdownCommands(commandManager, markdownPreviewManager, telemetryReporter));
 	return {
 		extendMarkdownIt(md: MarkdownIt) {
-			return extendMarkdownIt(context, md);
+			return extendMarkdownIt(context, md, { markdownPreviewManager: markdownPreviewManager });
 		}
 	};
 }

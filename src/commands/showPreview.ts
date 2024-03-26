@@ -1,6 +1,7 @@
 import * as vscode from 'vscode';
 import { Command } from './commandManager';
 import { TelemetryReporter } from '../reporter/telemetryReporter';
+import { MarkdownPreviewManager } from '../renders/previewManager';
 
 interface ShowPreviewSettings {
     readonly sideBySide?: boolean;
@@ -8,6 +9,7 @@ interface ShowPreviewSettings {
 }
 
 async function showPreview(
+    _markdownPreviewManager: MarkdownPreviewManager,
     telemetryReporter: TelemetryReporter | undefined,
     uri: vscode.Uri | undefined,
     previewSettings: ShowPreviewSettings,
@@ -39,13 +41,26 @@ async function showPreview(
     // await vscode.commands.executeCommand('editor.action.commentLine');
     // await vscode.commands.executeCommand('editor.action.commentLine');
     let editor = vscode.window.activeTextEditor;
-    if (!editor) {
-        // this is most likely toggling the preview
-        return vscode.commands.executeCommand('markdown.showSource');
+    // if (!editor) {
+    //     // this is most likely toggling the preview
+    //     return vscode.commands.executeCommand('markdown.showSource');
+    // }
+    if (!editor || editor.document.uri.toString() !== resource.toString()) {
+        // this is a different file
+        // so no need to show it again
+        // return;
+        await vscode.commands.executeCommand('vscode.open', uri, <vscode.TextDocumentShowOptions>{
+            preserveFocus: true,
+            preview: true,
+        });
+        editor = vscode.window.activeTextEditor;
+        _markdownPreviewManager.refresh();
+        editor?.hide();
+    }else{
+        _markdownPreviewManager.refresh();
     }
-    lastActiveEditor = editor;
     const supportIds = ["markdown", "html", "css", "mermaid", "restructuredtext", "jade", "pug"];
-    if (!supportIds.includes(editor.document.languageId)) {
+    if (editor && !supportIds.includes(editor.document.languageId)) {
         // defer set text editor dirty.
         await editor.edit((editBuilder) => {
             editBuilder.insert(new vscode.Position(0, 0), " ");
@@ -68,12 +83,13 @@ export class ShowPreviewCommand implements Command {
     public readonly id = 'preview-vscode.showPreview';
 
     public constructor(
+        private readonly _markdownPreviewManager: MarkdownPreviewManager,
         private readonly _telemetryReporter?: TelemetryReporter
     ) { }
 
     public execute(mainUri?: vscode.Uri, allUris?: vscode.Uri[], previewSettings?: ShowPreviewSettings) {
         for (const uri of Array.isArray(allUris) ? allUris : [mainUri]) {
-            showPreview(this._telemetryReporter, uri, {
+            showPreview(this._markdownPreviewManager, this._telemetryReporter, uri, {
                 sideBySide: false,
                 locked: previewSettings && previewSettings.locked
             });
@@ -85,11 +101,12 @@ export class ShowPreviewToSideCommand implements Command {
     public readonly id = 'preview-vscode.showPreviewToSide';
 
     public constructor(
+        private readonly _markdownPreviewManager: MarkdownPreviewManager,
         private readonly _telemetryReporter?: TelemetryReporter
     ) { }
 
     public execute(uri?: vscode.Uri, previewSettings?: ShowPreviewSettings) {
-        showPreview(this._telemetryReporter, uri, {
+        showPreview(this._markdownPreviewManager, this._telemetryReporter, uri, {
             sideBySide: true,
             locked: previewSettings && previewSettings.locked
         });
@@ -101,11 +118,12 @@ export class ShowLockedPreviewToSideCommand implements Command {
     public readonly id = 'preview-vscode.showLockedPreviewToSide';
 
     public constructor(
+        private readonly _markdownPreviewManager: MarkdownPreviewManager,
         private readonly _telemetryReporter?: TelemetryReporter
     ) { }
 
     public execute(uri?: vscode.Uri) {
-        showPreview(this._telemetryReporter, uri, {
+        showPreview(this._markdownPreviewManager, this._telemetryReporter, uri, {
             sideBySide: true,
             locked: true
         });

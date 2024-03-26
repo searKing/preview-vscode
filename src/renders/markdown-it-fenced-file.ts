@@ -2,17 +2,14 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import MarkdownIt = require('markdown-it');
-import { VscodeHelper } from './util/vscodeHelper';
 import { TextEditorHelper, TextEditorHelperReturnType } from './util/textEditorHelper';
-declare global {
-    var lastActiveEditor: vscode.TextEditor | undefined;
-}
+import { MarkdownPreviewManager } from './previewManager';
 export namespace MarkdownItFencedFile {
     const markdownFencedFileSetting = 'markdown.fenced-file';
 
     // This method is called when your extension is activated
     // Your extension is activated the very first time the command is executed
-    export function extendMarkdownIt(context: vscode.ExtensionContext | undefined, md: MarkdownIt): MarkdownIt {
+    export function extendMarkdownIt<T = any>(context: vscode.ExtensionContext | undefined, md: MarkdownIt, options?: T): MarkdownIt {
         if (!!context) {
             vscode.workspace.onDidChangeConfiguration(e => {
                 if (e.affectsConfiguration(markdownFencedFileSetting)) {
@@ -25,14 +22,21 @@ export namespace MarkdownItFencedFile {
         if (!config.get<boolean>('fenced-file.enabled', true)) {
             return md;
         }
-        return md.use(fenced_file_render, {});
+        return md.use(fenced_file_render, options);
     }
 
-    const fenced_file_render = (md: MarkdownIt): void => {
+    const fenced_file_render = <T = any>(md: MarkdownIt, options?: T): void => {
         md.core.ruler.before('normalize', 'fenced-file', (state): void => {
-            let languageId: string = VscodeHelper.activeLanguageId();
+            let _options = options;
+            let languageId: string = "";
+            let markdownPreviewManager: MarkdownPreviewManager | undefined;
+            if (!!_options) {
+                markdownPreviewManager = (_options as any)['markdownPreviewManager'];
+                languageId = markdownPreviewManager?.languageId() || "markdown";
+            }
+            // let languageId: string = VscodeHelper.activeTabLanguageId(editor) || "markdown";
             switch (languageId) {
-                case "markdown":
+                case "markdown": case "":
                     // nop, use builtin Markdown.
                     return;
                 case "html": case "css":
@@ -50,11 +54,7 @@ export namespace MarkdownItFencedFile {
                 default:
                     break;
             }
-            let editor = vscode.window.activeTextEditor;
-            if (!editor) {
-                editor = lastActiveEditor;
-                lastActiveEditor = undefined;
-            }
+            let editor = markdownPreviewManager?.editor();
             if (!editor) {
                 return;
             }

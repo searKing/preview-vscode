@@ -4,8 +4,7 @@ import * as vscode from 'vscode';
 import MarkdownIt = require('markdown-it');
 import { githubEngine } from './markdown-it-engine';
 
-export type ExtendMarkdownIt = (context: vscode.ExtensionContext | undefined, md: MarkdownIt) => MarkdownIt;
-
+export type ExtendMarkdownIt<T = any> = (context: vscode.ExtensionContext | undefined, md: MarkdownIt, options?: T) => MarkdownIt;
 export function join(fn: ExtendMarkdownIt, ...fns: ExtendMarkdownIt[]): ExtendMarkdownIt {
     if (fns.length === 0) {
         return fn;
@@ -17,8 +16,8 @@ export function join(fn: ExtendMarkdownIt, ...fns: ExtendMarkdownIt[]): ExtendMa
         if (!fns[0]) {
             return fn;
         }
-        return function (context: vscode.ExtensionContext | undefined, md: MarkdownIt): MarkdownIt {
-            return fns[0](context, fn(context, md));
+        return function <T = any>(context: vscode.ExtensionContext | undefined, md: MarkdownIt, options?: T): MarkdownIt {
+            return fns[0](context, fn(context, md, options), options);
         };
     }
     return join(join(fn, fns[0]), ...fns.slice(1));

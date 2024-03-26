@@ -48,12 +48,40 @@ export class VscodeHelper {
 
     }
 
-    public static activeLanguageId(): string {
-        let id = vscode.window.activeTextEditor?.document.languageId;
+    public static activeLanguageId(editor?: vscode.TextEditor): string {
+        let id = editor?.document.languageId;
         if (!!id) {
             return id;
         }
-        let ext = vscode.window.tabGroups.activeTabGroup.activeTab?.label.split('.').pop();
+        id = vscode.window.activeTextEditor?.document.languageId;
+        if (!!id) {
+            return id;
+        }
+        return VscodeHelper.activeTabLanguageId(editor);
+    }
+    public static activeTabLanguageId(editor?: vscode.TextEditor): string {
+        let id = editor?.document.languageId;
+        if (!!id) {
+            return id;
+        }
+        let tab = vscode.window.tabGroups.activeTabGroup.activeTab;
+        if (!tab) {
+            return "";
+        }
+        let ext: string | undefined;
+        if (tab.input instanceof vscode.TabInputText) {
+            ext = tab.input.uri.path.split('.').pop();
+        } else if (tab.input instanceof vscode.TabInputTextDiff) {
+            ext = tab.input.original.path.split('.').pop() || tab.input.modified.path.split('.').pop();
+        } else if (tab.input instanceof vscode.TabInputCustom) {
+            ext = tab.input.uri.path.split('.').pop();
+        } else if (tab.input instanceof vscode.TabInputNotebook) {
+            ext = tab.input.uri.path.split('.').pop();
+        } else if (tab.input instanceof vscode.TabInputNotebookDiff) {
+            ext = tab.input.original.path.split('.').pop() || tab.input.modified.path.split('.').pop();
+        }
+        ext = ext || tab.label.split('.').pop();
+
         if (!ext) {
             return "";
         }
@@ -77,7 +105,6 @@ export class VscodeHelper {
         }
         return "";
     }
-
     public static async getActivePreviewType(editor: vscode.TextEditor, dontAsk: boolean = false): Promise<string> {
         if (!editor && !!vscode.window.activeTextEditor) {
             editor = vscode.window.activeTextEditor;
