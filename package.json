@@ -24,10 +24,7 @@
     "Other",
     "Programming Languages"
   ],
-  "enabledApiProposals": [
-    "documentPaste",
-    "dropMetadata"
-  ],
+  "enabledApiProposals": [],
   "capabilities": {
     "virtualWorkspaces": true,
     "untrustedWorkspaces": {
