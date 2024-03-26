@@ -1,21 +1,13 @@
-# Dependency directory
-# https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git-
+out
+dist
 node_modules
-
-# Debug log from npm
-npm-debug.log
-
-**/.DS_Store
-
-# sourcemaps
-src/**/*.js.map
-
-# dist
-dist/**/*
-!dist/**/*.d.ts
-
-# Packaged node modules
-*.tgz
-
-# Extracted npm modules
-package
+.vscode-test/
+*.vsix
+/.idea/codeStyles/codeStyleConfig.xml
+/.idea/codeStyles/Project.xml
+/.idea/inspectionProfiles/Project_Default.xml
+/.idea/.gitignore
+/.idea/git_toolbox_prj.xml
+/.idea/modules.xml
+/.idea/preview-vscode.iml
+/.idea/vcs.xml

@@ -1,0 +1,24 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "../",
+    "outDir": "../../dist/extension",
+    // "jsx": "react",
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "types": [
+      "node"
+    ]
+    // "lib": [
+    // 	"es2018",
+    // 	"DOM",
+    // 	"DOM.Iterable"
+    // ]
+  },
+  "include": [
+    "../commands/**/*",
+    "../renders/**/*",
+    "../reporter/**/*"
+  ],
+  "references": []
+}

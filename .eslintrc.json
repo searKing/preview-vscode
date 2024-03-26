@@ -1,39 +1,30 @@
 {
-    "env": {
-      "node": true,
-      "commonjs": true,
-      "es6": true,
-      "jest": true,
-      "browser": true
-    },
-    "extends": [
-      "eslint:recommended",
-      "plugin:@typescript-eslint/recommended"
-    ],
-    "globals": {
-      "Atomics": "readonly",
-      "SharedArrayBuffer": "readonly"
-    },
+    "root": true,
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
-      "ecmaVersion": 2018
+        "ecmaVersion": 6,
+        "sourceType": "module"
     },
     "plugins": [
-      "@typescript-eslint/eslint-plugin"
+        "@typescript-eslint"
     ],
     "rules": {
-      "quotes": ["error", "double"],
-      "semi": ["error", "always"],
-      "no-console": "off",
-      "no-var": 1,
-      "no-case-declarations": 0,
-      "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
-      "@typescript-eslint/no-explicit-any": 0,
-      "@typescript-eslint/camelcase": 0,
-      "@typescript-eslint/no-non-null-assertion": 0,
-      "object-curly-spacing": [
-        2,
-        "always"
-      ]
-    }
+        "@typescript-eslint/naming-convention": [
+            "warn",
+            {
+                "selector": "import",
+                "format": [ "camelCase", "PascalCase" ]
+            }
+        ],
+        "@typescript-eslint/semi": "warn",
+        "curly": "warn",
+        "eqeqeq": "warn",
+        "no-throw-literal": "warn",
+        "semi": "off"
+    },
+    "ignorePatterns": [
+        "out",
+        "dist",
+        "**/*.d.ts"
+    ]
 }
