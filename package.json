@@ -109,7 +109,7 @@
       "explorer/context": [
         {
           "command": "preview-vscode.showPreview",
-          "when": "(resourceLangId != 'markdown') && !hasCustomMarkdownPreview",
+          "when": "(resourceLangId == 'html' || resourceLangId == 'mermaid' || resourceLangId == 'restructuredtext' || resourceLangId == 'pug' || resourceLangId == 'jade') && !hasCustomMarkdownPreview",
           "group": "navigation"
         }
       ],
