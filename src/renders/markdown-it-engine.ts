@@ -3,7 +3,6 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import type MarkdownIt = require('markdown-it');
-import type Token = require('markdown-it/lib/token');
 
 import { join } from './markdown-it';
 import { MarkdownItLazyHeaders } from './markdown-it-lazy-headers';
@@ -198,7 +197,7 @@ class MarkdownItEngine {
 
     private _addImageRenderer(md: MarkdownIt): void {
         const original = md.renderer.rules.image;
-        md.renderer.rules.image = (tokens: Token[], idx: number, options, env: RenderEnv, self) => {
+        md.renderer.rules.image = (tokens: MarkdownIt.Token[], idx: number, options, env: RenderEnv, self) => {
             const token = tokens[idx];
             const src = token.attrGet('src');
             if (src) {
@@ -220,7 +219,7 @@ class MarkdownItEngine {
 
     private _addFencedRenderer(md: MarkdownIt): void {
         const original = md.renderer.rules['fenced'];
-        md.renderer.rules['fenced'] = (tokens: Token[], idx: number, options, env, self) => {
+        md.renderer.rules['fenced'] = (tokens: MarkdownIt.Token[], idx: number, options, env, self) => {
             const token = tokens[idx];
             if (token.map?.length) {
                 token.attrJoin('class', 'hljs');
@@ -262,7 +261,7 @@ class MarkdownItEngine {
 
     private _addNamedHeaders(md: MarkdownIt): void {
         const original = md.renderer.rules.heading_open;
-        md.renderer.rules.heading_open = (tokens: Token[], idx: number, options, env, self) => {
+        md.renderer.rules.heading_open = (tokens: MarkdownIt.Token[], idx: number, options, env, self) => {
             const title = tokens[idx + 1].children!.reduce<string>((acc, t) => acc + t.content, '');
             let slug = this.slugifier.fromHeading(title);
 
@@ -287,7 +286,7 @@ class MarkdownItEngine {
     private _addLinkRenderer(md: MarkdownIt): void {
         const original = md.renderer.rules.link_open;
 
-        md.renderer.rules.link_open = (tokens: Token[], idx: number, options, env, self) => {
+        md.renderer.rules.link_open = (tokens: MarkdownIt.Token[], idx: number, options, env, self) => {
             const token = tokens[idx];
             const href = token.attrGet('href');
             // A string, including empty string, may be `href`.
