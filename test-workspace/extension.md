@@ -95,6 +95,23 @@ Start numbering with offset:
 57. foo
 1.  bar
 
+# Math Rulez!
+
+$\sqrt{3x-1}+(1+x)^2$
+
+$$
+\begin{array}{c}
+
+\nabla \times \vec{\mathbf{B}} -\, \frac1c\, \frac{\partial\vec{\mathbf{E}}}{\partial t} &
+= \frac{4\pi}{c}\vec{\mathbf{j}}    \nabla \cdot \vec{\mathbf{E}} & = 4 \pi \rho \\
+
+\nabla \times \vec{\mathbf{E}}\, +\, \frac1c\, \frac{\partial\vec{\mathbf{B}}}{\partial t} & = \vec{\mathbf{0}} \\
+
+\nabla \cdot \vec{\mathbf{B}} & = 0
+
+\end{array}
+$$
+
 ## Code
 
 Inline `code`
@@ -116,7 +133,7 @@ Syntax highlighting
 
 ```js
 var foo = function (bar) {
-  return bar++;
+	return bar++;
 };
 
 console.log(foo(5));
@@ -335,14 +352,14 @@ console.log(42);
 ```html
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Page Title</title>
-  </head>
+	<head>
+		<title>Page Title</title>
+	</head>
 
-  <body>
-    <h1>This is a Heading</h1>
-    <p>This is a paragraph.</p>
-  </body>
+	<body>
+		<h1>This is a Heading</h1>
+		<p>This is a paragraph.</p>
+	</body>
 </html>
 ```
 
