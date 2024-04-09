@@ -15,78 +15,82 @@ export namespace MarkdownItCodeCopy {
 
     const get_clipboardjs_header = (): string => `<script type="module" src="${get_clipboardjs_package()}"></script>
 <style>
+    .ClipboardButton {
+        position: relative;
+    }
+
     clipboard-copy {
-    -webkit-appearance: button;
-    -moz-appearance: button;
-    appearance: button;
-    /* padding: 0.4em 0.6em; */
-    font: 0.9rem system-ui, sans-serif;
-    display: inline-block;
-    cursor: default;
-    color: rgb(36, 41, 47);
-    background: rgb(246, 248, 250);
-    border-radius: 6px;
-    border: 1px solid rgba(31, 35, 40, 0.15);
-    box-shadow: rgba(31, 35, 40, 0.04) 0 1px 0 0, rgba(255, 255, 255, 0.25) 0 1 0 0 inset;
+        /* padding: 0.4em 0.6em; */
+        font: 0.9rem system-ui, sans-serif;
+        display: inline-block;
+        cursor: default;
+        color: var(--vscode-button-foreground);
+        background-color: var(--vscode-button-border);
+        border-color: var(--vscode-textCodeBlock-background);
+        border-radius: 6px;
+        border: 1px solid var(--vscode-widget-border);
+        box-shadow: inset 0 -1px 0 var(--vscode-widget-shadow);
+        transition: 80ms cubic-bezier(0.33, 1, 0.68, 1);
+        transition-property: color,background-color,box-shadow,border-color;
     }
-            
+
     clipboard-copy:hover {
-    background: rgb(243, 244, 246);
+        background-color: var(--vscode-statusBarItem-hoverBackground);
     }
-            
+
     clipboard-copy:active {
-    background: #ebecf0;
+        outline: 1px solid var(--vscode-contrastActiveBorder) !important;
+        outline-offset: -1px;
     }
-            
+
     clipboard-copy:focus-visible {
-    outline: 2px solid #0969da;
+        outline: 1px solid var(--vscode-focusBorder);
     }
-            
-    .btn .octicon {
-    margin-right: 4px;
-    color: var(--fgColor-muted, var(--color-fg-muted));
-    vertical-align: text-bottom;
-    }
-            
+
     .d-none {
-    display: none !important;
+        display: none !important;
     }
-            
+
     .position-relative {
-    position: relative !important;
+        position: relative !important;
     }
-            
+
     .position-absolute {
-    position: absolute !important;
+        position: absolute !important;
     }
-            
+
     .right-0 {
-    right: 0 !important;
+        right: 0 !important;
     }
-            
+
     .top-0 {
-    top: 0 !important;
+        top: 0 !important;
     }
-            
+
     .m-2 {
-    margin: var(--base-size-8, 8px) !important;
+        margin: var(--base-size-8, 8px) !important;
     }
-            
-    .color-fg-success,
-    .fgColor-success {
-    color: #3fb950 !important;
+
+    .color-fg-success {
+        color: #3fb950 !important;
+        stroke: #3fb950 !important;
+        border-color: #3fb950 !important;
     }
 </style>
 <script>
     document.addEventListener('clipboard-copy', function (event) {
-    const notice_copy = event.target.querySelector('.clipboard-copy-icon');
-    const notice_check = event.target.querySelector('.clipboard-check-icon');
-    notice_copy.classList.add("d-none");
-    notice_check.classList.remove("d-none");
-    setTimeout(function () {
-        notice_copy.classList.remove("d-none");
-        notice_check.classList.add("d-none");
-    }, 1000)
+        const notice_clipboard_copy = event.target;
+        console.log(\`notice_clipboard_copy = \$\{notice_clipboard_copy\}\`)
+        const notice_copy = event.target.querySelector('.clipboard-copy-icon');
+        const notice_check = event.target.querySelector('.clipboard-check-icon');
+        notice_clipboard_copy.classList.add("color-fg-success");
+        notice_copy.classList.add("d-none");
+        notice_check.classList.remove("d-none");
+        setTimeout(function () {
+            notice_clipboard_copy.classList.remove("color-fg-success");
+            notice_copy.classList.remove("d-none");
+            notice_check.classList.add("d-none");
+        }, 1000)
     })
 </script>`;
 
@@ -139,7 +143,7 @@ export namespace MarkdownItCodeCopy {
             return `${header}<div class="snippet-clipboard-content notranslate position-relative overflow-auto">
               ${rule(tokens, idx, options, env, self)}
               <div class="zeroclipboard-container position-absolute right-0 top-0">
-                <clipboard-copy aria-label="Copy" class="ClipboardButton btn clipboard-copy m-2 p-0 tooltipped-no-delay"
+                <clipboard-copy aria-label="Copy" class="ClipboardButton clipboard-copy m-2 p-0 tooltipped-no-delay"
                   value="${quote_escaped_code}" tabindex="0" role="button">
                   <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
                     class="octicon octicon-copy clipboard-copy-icon m-2">
