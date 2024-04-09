@@ -120,7 +120,7 @@ export namespace MarkdownItCodeCopy {
         md.renderer.rules.code_block = copy_render(md.renderer.rules?.code_block, dedent_header);
         md.renderer.rules.fence = copy_render(md.renderer.rules?.fence, dedent_header);
         // md.renderer.rules.image = copy_render(md.renderer.rules?.image);
-        md.renderer.rules.html_block = copy_render(md.renderer.rules?.html_block, dedent_header);
+        // md.renderer.rules.html_block = copy_render(md.renderer.rules?.html_block, dedent_header);
     };
     const copy_render = (rule: MarkdownIt.Renderer.RenderRule | undefined, dedent_header: string): MarkdownIt.Renderer.RenderRule => {
         return (tokens, idx, options, env, self) => {
