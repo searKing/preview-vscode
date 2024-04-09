@@ -2,6 +2,8 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import type MarkdownIt = require('markdown-it');
+import { dedent } from 'ts-dedent';
+
 
 export namespace MarkdownItCodeCopy {
     const markdownCodeCopySetting = 'markdown-it-code-copy';
@@ -10,7 +12,83 @@ export namespace MarkdownItCodeCopy {
         // https://github.com/zenorocha/clipboard.js/wiki/CDN-Providers
         return 'https://unpkg.com/@github/clipboard-copy-element@latest';
     };
-    const clipboardjs_package = get_clipboardjs_package();
+
+    const get_clipboardjs_header = (): string => `<script type="module" src="${get_clipboardjs_package()}"></script>
+<style>
+    clipboard-copy {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    /* padding: 0.4em 0.6em; */
+    font: 0.9rem system-ui, sans-serif;
+    display: inline-block;
+    cursor: default;
+    color: rgb(36, 41, 47);
+    background: rgb(246, 248, 250);
+    border-radius: 6px;
+    border: 1px solid rgba(31, 35, 40, 0.15);
+    box-shadow: rgba(31, 35, 40, 0.04) 0 1px 0 0, rgba(255, 255, 255, 0.25) 0 1 0 0 inset;
+    }
+            
+    clipboard-copy:hover {
+    background: rgb(243, 244, 246);
+    }
+            
+    clipboard-copy:active {
+    background: #ebecf0;
+    }
+            
+    clipboard-copy:focus-visible {
+    outline: 2px solid #0969da;
+    }
+            
+    .btn .octicon {
+    margin-right: 4px;
+    color: var(--fgColor-muted, var(--color-fg-muted));
+    vertical-align: text-bottom;
+    }
+            
+    .d-none {
+    display: none !important;
+    }
+            
+    .position-relative {
+    position: relative !important;
+    }
+            
+    .position-absolute {
+    position: absolute !important;
+    }
+            
+    .right-0 {
+    right: 0 !important;
+    }
+            
+    .top-0 {
+    top: 0 !important;
+    }
+            
+    .m-2 {
+    margin: var(--base-size-8, 8px) !important;
+    }
+            
+    .color-fg-success,
+    .fgColor-success {
+    color: #3fb950 !important;
+    }
+</style>
+<script>
+    document.addEventListener('clipboard-copy', function (event) {
+    const notice_copy = event.target.querySelector('.clipboard-copy-icon');
+    const notice_check = event.target.querySelector('.clipboard-check-icon');
+    notice_copy.classList.add("d-none");
+    notice_check.classList.remove("d-none");
+    setTimeout(function () {
+        notice_copy.classList.remove("d-none");
+        notice_check.classList.add("d-none");
+    }, 1000)
+    })
+</script>`;
 
     // This method is called when your extension is activated
     // Your extension is activated the very first time the command is executed
@@ -28,11 +106,23 @@ export namespace MarkdownItCodeCopy {
         }
         // return md.use(require('markdown-it-code-copy'), {});
         return md.use(codecopy_render, {});
-    }
+    };
     const escapeHtml = (unsafe: string) => {
         return unsafe.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#039;');
     };
-    const copy_render = (rule: MarkdownIt.Renderer.RenderRule | undefined): MarkdownIt.Renderer.RenderRule => {
+
+    const codecopy_render = (md: MarkdownIt, _o: any): void => {
+        // https://github.com/mermaid-js/mermaid/blob/579f1f9dc156dd72326efdb3880a351a3dee96a1/packages/mermaid/src/mermaid.ts#L162
+        // transforms the html to pure text
+        let dedent_header = dedent(require('entity-decode')(get_clipboardjs_header())) // removes indentation, required for Markdown parsing
+            .trim()
+            .replace(/<br\s*\/?>/gi, '<br/>');
+        md.renderer.rules.code_block = copy_render(md.renderer.rules?.code_block, dedent_header);
+        md.renderer.rules.fence = copy_render(md.renderer.rules?.fence, dedent_header);
+        // md.renderer.rules.image = copy_render(md.renderer.rules?.image);
+        md.renderer.rules.html_block = copy_render(md.renderer.rules?.html_block, dedent_header);
+    };
+    const copy_render = (rule: MarkdownIt.Renderer.RenderRule | undefined, dedent_header: string): MarkdownIt.Renderer.RenderRule => {
         return (tokens, idx, options, env, self) => {
             const token = tokens[idx];
             if (!rule) {
@@ -43,84 +133,10 @@ export namespace MarkdownItCodeCopy {
                 code = token.attrGet('src') || token.attrGet('data-src') || token.content;
             }
             let quote_escaped_code = escapeHtml(code); // escape html, required for HTML parsing
-            return `
-            <script type="module" src="${clipboardjs_package}"></script>
-            <style>
-              clipboard-copy {
-                -webkit-appearance: button;
-                -moz-appearance: button;
-                appearance: button;
-                /* padding: 0.4em 0.6em; */
-                font: 0.9rem system-ui, sans-serif;
-                display: inline-block;
-                cursor: default;
-                color: rgb(36, 41, 47);
-                background: rgb(246, 248, 250);
-                border-radius: 6px;
-                border: 1px solid rgba(31, 35, 40, 0.15);
-                box-shadow: rgba(31, 35, 40, 0.04) 0 1px 0 0, rgba(255, 255, 255, 0.25) 0 1 0 0 inset;
-              }
-          
-              clipboard-copy:hover {
-                background: rgb(243, 244, 246);
-              }
-          
-              clipboard-copy:active {
-                background: #ebecf0;
-              }
-          
-              clipboard-copy:focus-visible {
-                outline: 2px solid #0969da;
-              }
-          
-              .btn .octicon {
-                margin-right: 4px;
-                color: var(--fgColor-muted, var(--color-fg-muted));
-                vertical-align: text-bottom;
-              }
-          
-              .d-none {
-                display: none !important;
-              }
-          
-              .position-relative {
-                position: relative !important;
-              }
-          
-              .position-absolute {
-                position: absolute !important;
-              }
-          
-              .right-0 {
-                right: 0 !important;
-              }
-          
-              .top-0 {
-                top: 0 !important;
-              }
-          
-              .m-2 {
-                margin: var(--base-size-8, 8px) !important;
-              }
-          
-              .color-fg-success,
-              .fgColor-success {
-                color: #3fb950 !important;
-              }
-            </style>
-            <script>
-              document.addEventListener('clipboard-copy', function (event) {
-                const notice_copy = event.target.querySelector('.clipboard-copy-icon');
-                const notice_check = event.target.querySelector('.clipboard-check-icon');
-                notice_copy.classList.add("d-none");
-                notice_check.classList.remove("d-none");
-                setTimeout(function () {
-                  notice_copy.classList.remove("d-none");
-                  notice_check.classList.add("d-none");
-                }, 1000)
-              })
-            </script>
-            <div class="snippet-clipboard-content notranslate position-relative overflow-auto">
+
+            const header = !env.clipboardjs_header_added ? dedent_header : "";
+            env.clipboardjs_header_added = true;
+            return `${header}<div class="snippet-clipboard-content notranslate position-relative overflow-auto">
               ${rule(tokens, idx, options, env, self)}
               <div class="zeroclipboard-container position-absolute right-0 top-0">
                 <clipboard-copy aria-label="Copy" class="ClipboardButton btn clipboard-copy m-2 p-0 tooltipped-no-delay"
@@ -144,12 +160,5 @@ export namespace MarkdownItCodeCopy {
               </div>
             </div>`;
         };
-    };
-
-    const codecopy_render = (md: MarkdownIt, _o: any): void => {
-        md.renderer.rules.code_block = copy_render(md.renderer.rules?.code_block);
-        md.renderer.rules.fence = copy_render(md.renderer.rules?.fence);
-        // md.renderer.rules.image = copy_render(md.renderer.rules?.image);
-        md.renderer.rules.html_block = copy_render(md.renderer.rules?.html_block);
     };
 }

@@ -33,7 +33,7 @@ export namespace MarkdownItHTML {
             if (token.info === 'html') {
                 // https://github.com/mermaid-js/mermaid/blob/579f1f9dc156dd72326efdb3880a351a3dee96a1/packages/mermaid/src/mermaid.ts#L162
                 // transforms the html to pure text
-                let dedent_code = dedent(require('entity-decode')(code)) // removes indentation, required for YAML parsing
+                let dedent_code = dedent(require('entity-decode')(code)) // removes indentation, required for Markdown parsing
                     .trim()
                     .replace(/<br\s*\/?>/gi, '<br/>');
 

@@ -19,7 +19,10 @@ export namespace MarkdownItMermaid {
         return 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
     };
 
-    const mermaid_package = get_mermaid_package();
+    const get_mermaid_header = (o: any): string => `<script type="module">
+    import mermaid from '${get_mermaid_package()}';
+    mermaid.initialize(${JSON.stringify(o)});
+</script>`;
 
     // This method is called when your extension is activated
     // Your extension is activated the very first time the command is executed
@@ -35,7 +38,7 @@ export namespace MarkdownItMermaid {
             }, undefined, context.subscriptions);
         }
 
-        const config = vscode.workspace.getConfiguration('markdown',null);
+        const config = vscode.workspace.getConfiguration('markdown', null);
         if (!config.get<boolean>('mermaid.enabled', true)) {
             return md;
         }
@@ -69,6 +72,11 @@ export namespace MarkdownItMermaid {
     }
 
     const mermaid_render = (md: MarkdownIt, o: any): void => {
+        // https://github.com/mermaid-js/mermaid/blob/579f1f9dc156dd72326efdb3880a351a3dee96a1/packages/mermaid/src/mermaid.ts#L162
+        // transforms the html to pure text
+        let dedent_header = dedent(require('entity-decode')(get_mermaid_header(o))) // removes indentation, required for Markdown parsing
+            .trim()
+            .replace(/<br\s*\/?>/gi, '<br/>');
         const temp = md.renderer.rules.fence?.bind(md.renderer.rules);
         md.renderer.rules.fence = (tokens, idx, options, env, slf) => {
             const token = tokens[idx];
@@ -76,20 +84,18 @@ export namespace MarkdownItMermaid {
             if (token.info === 'mermaid') {
                 // https://github.com/mermaid-js/mermaid/blob/579f1f9dc156dd72326efdb3880a351a3dee96a1/packages/mermaid/src/mermaid.ts#L162
                 // transforms the html to pure text
-                let dedent_code = dedent(require('entity-decode')(code)) // removes indentation, required for YAML parsing
+                let dedent_code = dedent(require('entity-decode')(code)) // removes indentation, required for Markdown parsing
                     .trim()
                     .replace(/<br\s*\/?>/gi, '<br/>');
 
+                const header = !env.mermaid_header_added ? dedent_header : "";
+                env.mermaid_header_added = true;
                 // Every Mermaid chart/graph/diagram definition should have separate <pre> tags.
                 // https://mermaid.js.org/intro/getting-started.html#examples
-                return `<script type="module">
-import mermaid from '${mermaid_package}';
-mermaid.initialize(${JSON.stringify(o)});
-</script>
-<pre class="mermaid">${dedent_code}</pre>`;
+                return `${header}<pre class="mermaid">${dedent_code}</pre>`;
             }
             if (!!temp) {
-                return temp(tokens, idx, options, env, slf);
+                return `${temp(tokens, idx, options, env, slf)}`;
             }
             return `<pre>${code}</pre>`;// never be here
         };

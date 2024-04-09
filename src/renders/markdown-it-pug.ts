@@ -25,56 +25,7 @@ export namespace MarkdownItPug {
         return 'https://pugjs.org/js/pug.js';
     };
 
-    const pug_package = get_pug_package();
-
-    // This method is called when your extension is activated
-    // Your extension is activated the very first time the command is executed
-    export function extendMarkdownIt(context: vscode.ExtensionContext | undefined, md: MarkdownIt): MarkdownIt {
-        if (!!context) {
-            vscode.workspace.onDidChangeConfiguration(e => {
-                if (e.affectsConfiguration(markdownPugSetting)) {
-                    vscode.commands.executeCommand('markdown.api.reloadPlugins');
-                }
-            }, undefined, context.subscriptions);
-        }
-
-        const config = vscode.workspace.getConfiguration('markdown',null);
-        if (!config.get<boolean>('pug.enabled', true)) {
-            return md;
-        }
-        let pug = undefined;
-        try {
-            pug = require('pug');
-        } catch (error) {
-            // import pug failed: TypeError: Unable to determine current node version
-            // pug -> resolve -> is-core-module
-            // support Node only, not support Browser.
-            console.log(`import pug ignored: ${error}, support Node only`);
-        }
-        return md.use(pug_render(pug), {});
-    }
-
-    const pug_render = (pug: any): MarkdownIt.PluginSimple => {
-        return (md: MarkdownIt): void => {
-            const temp = md.renderer.rules.fence?.bind(md.renderer.rules);
-            md.renderer.rules.fence = (tokens, idx, options, env, slf) => {
-                const token = tokens[idx];
-                const code = token.content.trim();
-                if (token.info === 'pug' || token.info === 'jade') {
-                    // https://github.com/mermaid-js/mermaid/blob/579f1f9dc156dd72326efdb3880a351a3dee96a1/packages/mermaid/src/mermaid.ts#L162
-                    // transforms the html to pure text
-                    let dedent_code = dedent(require('entity-decode')(code)) // removes indentation, required for YAML parsing
-                        .trim()
-                        .replace(/<br\s*\/?>/gi, '<br/>');
-
-                    // TODO: require('pug') returns {}, so use <script> instead for trick.
-                    // WARNING in ./node_modules/pug-filters/lib/run-filter.js 33:25-40
-                    // Critical dependency: the request of a dependency is an expression
-                    if (!!pug && !!pug.compile) {
-                        const html = pug.compile(dedent_code);
-                        return `<div>${html}</div>`;
-                    }
-                    return `<script src="${pug_package}"></script>
+    const get_pug_header = (): string => `<script src="${get_pug_package()}"></script>
     <script>
         document.addEventListener('DOMContentLoaded', init, false);
         function init() {
@@ -110,8 +61,63 @@ export namespace MarkdownItPug {
                 throw errors[0];
             }
         }
-    </script>
-    <pre class="pug">${dedent_code}</pre>`;
+    </script>`;
+
+    // This method is called when your extension is activated
+    // Your extension is activated the very first time the command is executed
+    export function extendMarkdownIt(context: vscode.ExtensionContext | undefined, md: MarkdownIt): MarkdownIt {
+        if (!!context) {
+            vscode.workspace.onDidChangeConfiguration(e => {
+                if (e.affectsConfiguration(markdownPugSetting)) {
+                    vscode.commands.executeCommand('markdown.api.reloadPlugins');
+                }
+            }, undefined, context.subscriptions);
+        }
+
+        const config = vscode.workspace.getConfiguration('markdown', null);
+        if (!config.get<boolean>('pug.enabled', true)) {
+            return md;
+        }
+        let pug = undefined;
+        try {
+            pug = require('pug');
+        } catch (error) {
+            // import pug failed: TypeError: Unable to determine current node version
+            // pug -> resolve -> is-core-module
+            // support Node only, not support Browser.
+            console.log(`import pug ignored: ${error}, support Node only`);
+        }
+        return md.use(pug_render(pug), {});
+    }
+
+    const pug_render = (pug: any): MarkdownIt.PluginSimple => {
+        return (md: MarkdownIt): void => {
+            // https://github.com/mermaid-js/mermaid/blob/579f1f9dc156dd72326efdb3880a351a3dee96a1/packages/mermaid/src/mermaid.ts#L162
+            // transforms the html to pure text
+            let dedent_header = dedent(require('entity-decode')(get_pug_header())) // removes indentation, required for Markdown parsing
+                .trim()
+                .replace(/<br\s*\/?>/gi, '<br/>');
+            const temp = md.renderer.rules.fence?.bind(md.renderer.rules);
+            md.renderer.rules.fence = (tokens, idx, options, env, slf) => {
+                const token = tokens[idx];
+                const code = token.content.trim();
+                if (token.info === 'pug' || token.info === 'jade') {
+                    // https://github.com/mermaid-js/mermaid/blob/579f1f9dc156dd72326efdb3880a351a3dee96a1/packages/mermaid/src/mermaid.ts#L162
+                    // transforms the html to pure text
+                    let dedent_code = dedent(require('entity-decode')(code)) // removes indentation, required for Markdown parsing
+                        .trim()
+                        .replace(/<br\s*\/?>/gi, '<br/>');
+
+                    // TODO: require('pug') returns {}, so use <script> instead for trick.
+                    // WARNING in ./node_modules/pug-filters/lib/run-filter.js 33:25-40
+                    // Critical dependency: the request of a dependency is an expression
+                    if (!!pug && !!pug.compile) {
+                        const html = pug.compile(dedent_code);
+                        return `<div>${html}</div>`;
+                    }
+                    const header = !env.pug_header_added ? dedent_header : "";
+                    env.pug_header_added = true;
+                    return `${header}<pre class="pug">${dedent_code}</pre>`;
                 }
                 if (!!temp) {
                     return temp(tokens, idx, options, env, slf);
