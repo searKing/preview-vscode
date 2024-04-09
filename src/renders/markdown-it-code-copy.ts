@@ -132,7 +132,7 @@ export namespace MarkdownItCodeCopy {
             if (token.type === 'image') {
                 code = token.attrGet('src') || token.attrGet('data-src') || token.content;
             }
-            let quote_escaped_code = escapeHtml(code); // escape html, required for HTML parsing
+            let quote_escaped_code = escapeHtml(code.trim()); // escape html, required for HTML parsing
 
             const header = !env.clipboardjs_header_added ? dedent_header : "";
             env.clipboardjs_header_added = true;
