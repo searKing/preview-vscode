@@ -2,7 +2,7 @@
   "name": "preview-vscode",
   "displayName": "%displayName%",
   "description": "%description%",
-  "version": "2.3.3",
+  "version": "2.3.4",
   "icon": "media/icon.png",
   "publisher": "searKing",
   "author": "Haixin Chen",
@@ -191,6 +191,16 @@
             "type": "boolean",
             "default": true,
             "description": "%config.markdown.bracketed-spans.enabled%"
+          },
+          "markdown.cjk-breaks.enabled": {
+            "type": "boolean",
+            "default": true,
+            "description": "%config.markdown.cjk-breaks.enabled%"
+          },
+          "markdown.code-copy.enabled": {
+            "type": "boolean",
+            "default": true,
+            "description": "%config.markdown.code-block.enabled%"
           },
           "markdown.deflist.enabled": {
             "type": "boolean",
