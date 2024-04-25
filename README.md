@@ -1,6 +1,6 @@
 # preview-vscode
 
-A previewer of Markdown, ReStructured Text, HTML, Jade, Pug, Mermaid files, Image's URI for Visual Studio Code
+A Previewer of Markdown, ReStructured Text, HTML, Jade, Pug, Mermaid files, Image's URI for Visual Studio Code
 
 ## README
 
@@ -166,7 +166,7 @@ according to [NPM problem: npm ERR! extraneous](http://lifeonubuntu.com/npm-prob
 
   * fix the error and retry 'vsce publish'
 
-* Write Your First Extension?[your-first-extension](https://code.visualstudio.com/api/get-started/your-first-extension)
+* [Write Your First Extension](https://code.visualstudio.com/api/get-started/your-first-extension)?
 
 ## Thanks to
 
