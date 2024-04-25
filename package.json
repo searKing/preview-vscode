@@ -200,7 +200,7 @@
           "markdown.code-copy.enabled": {
             "type": "boolean",
             "default": true,
-            "description": "%config.markdown.code-block.enabled%"
+            "description": "%config.markdown.code-copy.enabled%"
           },
           "markdown.deflist.enabled": {
             "type": "boolean",
