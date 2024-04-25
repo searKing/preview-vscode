@@ -144,13 +144,13 @@
         "command": "preview-vscode.showPreview",
         "key": "shift+ctrl+v",
         "mac": "shift+cmd+v",
-        "when": "editorLangId != markdown && !notebookEditorFocused"
+        "when": "(editorTextFocus || (explorerViewletVisible && filesExplorerFocus)) && editorLangId != markdown && !notebookEditorFocused"
       },
       {
         "command": "preview-vscode.showPreviewToSide",
         "key": "ctrl+k v",
         "mac": "cmd+k v",
-        "when": "editorLangId != markdown && !notebookEditorFocused"
+        "when": "(editorTextFocus || (explorerViewletVisible && filesExplorerFocus)) && editorLangId != markdown && !notebookEditorFocused"
       }
     ],
     "configuration": [
