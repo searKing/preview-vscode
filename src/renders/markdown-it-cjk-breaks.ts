@@ -19,6 +19,7 @@ export namespace MarkdownItCjkBreaks {
         if (!config.get<boolean>('cjk-breaks.enabled', true)) {
             return md;
         }
-        return md.use(require('markdown-it-cjk-breaks'), {});
+        // TODO: revert to markdown-it-cjk-breaks when https://github.com/markdown-it/markdown-it-cjk-breaks/pull/5 is fixed
+        return md.use(require('@searking/markdown-it-cjk-breaks'), {});
     }
 }

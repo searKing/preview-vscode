@@ -105,7 +105,7 @@ export async function activate(ctx: RendererContext<void>) {
             use(require("markdown-it-bracketed-spans"), {}).
             use(require("markdown-it-highlightjs"), {}).
             use(require("markdown-it-attrs"), {}).
-            use(require("markdown-it-cjk-breaks"), {}).
+            use(require("@searking/markdown-it-cjk-breaks"), {}). // TODO: revert to markdown-it-cjk-breaks when https://github.com/markdown-it/markdown-it-cjk-breaks/pull/5 is fixed
             use(require("markdown-it-deflist"), {}).
             use(require('markdown-it-emoji').full, { shortcuts: {} }).
             use(require("markdown-it-expand-tabs"), { tabWidth: 2 }).
