@@ -2,7 +2,7 @@
   "name": "preview-vscode",
   "displayName": "%displayName%",
   "description": "%description%",
-  "version": "2.3.6",
+  "version": "2.3.7",
   "icon": "media/icon.png",
   "publisher": "searKing",
   "author": "Haixin Chen",
@@ -24,7 +24,6 @@
     "Other",
     "Programming Languages"
   ],
-  "enabledApiProposals": [],
   "capabilities": {
     "virtualWorkspaces": true,
     "untrustedWorkspaces": {
