@@ -362,6 +362,8 @@
     ]
   },
   "scripts": {
+    "vscode:publish": "vsce publish --pre-release",
+    "vscode:publish:stable": "vsce publish",
     "dist:stable": "vsce package",
     "dist": "vsce package --pre-release",
     "vscode:prepublish": "npm run package",
