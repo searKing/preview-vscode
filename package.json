@@ -261,6 +261,11 @@
             "default": true,
             "description": "%config.markdown.html.enabled%"
           },
+          "markdown.indented-code.enabled": {
+            "type": "boolean",
+            "default": true,
+            "description": "%config.markdown.indented-code.enabled%"
+          },
           "markdown.ins.enabled": {
             "type": "boolean",
             "default": true,

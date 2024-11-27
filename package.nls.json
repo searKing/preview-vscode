@@ -12,6 +12,7 @@
 	"config.markdown.bracketed-spans.enabled": "Enable/disable rendering Span (<span>) tag  in the built-in Markdown preview.",
 	"config.markdown.cjk-breaks.enabled": "Enable/disable suppressing linebreaks between east asian characters in the built-in Markdown preview.",
 	"config.markdown.code-copy.enabled": "Enable/disable adding a copy icon in code blocks to copy the code. in the built-in Markdown preview.",
+	"config.markdown.indented-code.enabled": "Enable/disable raw indented code blocks. in the built-in Markdown preview.",
 	"config.markdown.deflist.enabled": "Enable/disable rendering Definition list (<dl>) tag in the built-in Markdown preview.",
 	"config.markdown.emoji.enabled": "Enable/disable rendering emoji & emoticon & emoticons shortcuts in the built-in Markdown preview.",
 	"config.markdown.expand-tabs.enabled": "Enable/disable replaceing leading tabs with spaces in fenced code blocks in the built-in Markdown preview.",

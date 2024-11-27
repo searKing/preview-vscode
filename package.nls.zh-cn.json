@@ -12,6 +12,7 @@
 	"config.markdown.bracketed-spans.enabled": "在内置Markdown预览中span标签（<span>）生成。",
 	"config.markdown.cjk-breaks.enabled": "在内置Markdown预览中控制中文/日语/韩语(CJK)文本使用的断字规则（东亚字符无需空格分割单词）。",
 	"config.markdown.code-copy.enabled": "在内置Markdown预览中启用/禁止新增代码块复制按钮。",
+	"config.markdown.indented-code.enabled": "在内置Markdown预览中启用/禁止缩进代码块。",
 	"config.markdown.deflist.enabled": "在内置Markdown预览中启用/禁用描述列表元素（<dl>）生成。",
 	"config.markdown.emoji.enabled": "在内置Markdown预览中启用/禁用绘文字、颜文字（表情符号）及表情符号缩写渲染。",
 	"config.markdown.expand-tabs.enabled": "在内置Markdown预览中启用/禁用代码块中前置制表符转换为空格。",

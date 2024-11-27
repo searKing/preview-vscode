@@ -31,9 +31,11 @@ import { MarkdownItCjkBreaks } from './markdown-it-cjk-breaks';
 import { MarkdownItBracketedSpans } from './markdown-it-bracketed-spans';
 import { MarkdownItFencedFile } from './markdown-it-fenced-file';
 import { MarkdownItCodeCopy } from './markdown-it-code-copy';
+import { MarkdownItIndentedCode } from './markdown-it-indented-code';
 
 export function extendMarkdownIt<T = any>(context: vscode.ExtensionContext | undefined, md: MarkdownIt, options?: T): MarkdownIt {
     return join(
+        MarkdownItIndentedCode.extendMarkdownIt,
         MarkdownItFencedFile.extendMarkdownIt,
         MarkdownItAbbr.extendMarkdownIt,
         MarkdownItAnchor.extendMarkdownIt,
