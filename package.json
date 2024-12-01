@@ -2,7 +2,7 @@
   "name": "preview-vscode",
   "displayName": "%displayName%",
   "description": "%description%",
-  "version": "2.3.10",
+  "version": "2.3.11",
   "icon": "media/icon.png",
   "publisher": "searKing",
   "author": "Haixin Chen",
