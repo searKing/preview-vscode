@@ -319,7 +319,7 @@
           },
           "markdown.indented-code.enabled": {
             "type": "boolean",
-            "default": true,
+            "default": false,
             "description": "%config.markdown.indented-code.enabled%"
           },
           "markdown.ins.enabled": {
