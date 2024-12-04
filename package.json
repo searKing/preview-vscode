@@ -57,6 +57,65 @@
         ]
       }
     ],
+    "grammars": [
+      {
+        "scopeName": "text.html.markdown.indented-code",
+        "path": "./syntaxes/markdown-indented-code.tmLanguage.json",
+        "injectTo": [
+          "text.html.markdown"
+        ],
+        "tokenTypes": {
+          "string.quoted.double.html": "other"
+        },
+        "embeddedLanguages": {
+          "meta.embedded.block.html": "html",
+          "source.js": "javascript",
+          "source.css": "css",
+          "meta.embedded.block.frontmatter": "yaml",
+          "meta.embedded.block.css": "css",
+          "meta.embedded.block.ini": "ini",
+          "meta.embedded.block.java": "java",
+          "meta.embedded.block.lua": "lua",
+          "meta.embedded.block.makefile": "makefile",
+          "meta.embedded.block.perl": "perl",
+          "meta.embedded.block.r": "r",
+          "meta.embedded.block.ruby": "ruby",
+          "meta.embedded.block.php": "php",
+          "meta.embedded.block.sql": "sql",
+          "meta.embedded.block.vs_net": "vs_net",
+          "meta.embedded.block.xml": "xml",
+          "meta.embedded.block.xsl": "xsl",
+          "meta.embedded.block.yaml": "yaml",
+          "meta.embedded.block.dosbatch": "dosbatch",
+          "meta.embedded.block.clojure": "clojure",
+          "meta.embedded.block.coffee": "coffee",
+          "meta.embedded.block.c": "c",
+          "meta.embedded.block.cpp": "cpp",
+          "meta.embedded.block.diff": "diff",
+          "meta.embedded.block.dockerfile": "dockerfile",
+          "meta.embedded.block.go": "go",
+          "meta.embedded.block.groovy": "groovy",
+          "meta.embedded.block.pug": "jade",
+          "meta.embedded.block.javascript": "javascript",
+          "meta.embedded.block.json": "json",
+          "meta.embedded.block.jsonc": "jsonc",
+          "meta.embedded.block.latex": "latex",
+          "meta.embedded.block.less": "less",
+          "meta.embedded.block.objc": "objc",
+          "meta.embedded.block.scss": "scss",
+          "meta.embedded.block.perl6": "perl6",
+          "meta.embedded.block.powershell": "powershell",
+          "meta.embedded.block.python": "python",
+          "meta.embedded.block.rust": "rust",
+          "meta.embedded.block.scala": "scala",
+          "meta.embedded.block.shellscript": "shellscript",
+          "meta.embedded.block.typescript": "typescript",
+          "meta.embedded.block.typescriptreact": "typescriptreact",
+          "meta.embedded.block.csharp": "csharp",
+          "meta.embedded.block.fsharp": "fsharp"
+        }
+      }
+    ],
     "notebookRenderer": [
       {
         "id": "preview-vscode.markdown-it-renderer",
@@ -370,9 +429,10 @@
     "compile": "webpack --mode development --stats-error-details",
     "watch": "webpack --mode development --stats-error-details --watch",
     "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-syntaxes": "npx js-yaml syntaxes/markdown-indented-code.tmLanguage.yaml > syntaxes/markdown-indented-code.tmLanguage.json",
     "compile-tests": "tsc -p . --outDir dist",
     "watch-tests": "tsc -p . -w --outDir dist",
-    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "pretest": "npm run compile-syntaxes && npm run compile-tests && npm run compile && npm run lint",
     "lint": "eslint src --ext ts",
     "test": "vscode-test"
   },
@@ -394,6 +454,7 @@
     "fork-ts-checker-webpack-plugin": "^9.0.2",
     "highlight.js": "^11.10.0",
     "html-webpack-plugin": "^5.6.3",
+    "js-yaml": "^4.1.0",
     "markdown-it-abbr": "^2.0.0",
     "markdown-it-anchor": "^8.6.7",
     "markdown-it-attrs": "^4.2.0",

@@ -1,0 +1,5 @@
+name: Markdown-Preview
+scopeName: text.html.markdown.indented-code
+injectionSelector: L:markup.raw.block.markdown
+patterns:
+  - include: "text.html.markdown"
