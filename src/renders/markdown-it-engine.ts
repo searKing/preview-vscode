@@ -32,6 +32,7 @@ import { MarkdownItBracketedSpans } from './markdown-it-bracketed-spans';
 import { MarkdownItFencedFile } from './markdown-it-fenced-file';
 import { MarkdownItCodeCopy } from './markdown-it-code-copy';
 import { MarkdownItIndentedCode } from './markdown-it-indented-code';
+import { MarkdownItFileUri } from './markdown-it-file-uri';
 
 export function extendMarkdownIt<T = any>(context: vscode.ExtensionContext | undefined, md: MarkdownIt, options?: T): MarkdownIt {
     return join(
@@ -58,6 +59,7 @@ export function extendMarkdownIt<T = any>(context: vscode.ExtensionContext | und
         MarkdownItRst.extendMarkdownIt,
         MarkdownItMarkdown.extendMarkdownIt,
         MarkdownItHTML.extendMarkdownIt,
+        MarkdownItFileUri.extendMarkdownIt,
         MarkdownItCodeCopy.extendMarkdownIt, // should be the last one
     )(context, md, options);
 }
@@ -138,7 +140,7 @@ class MarkdownItEngine {
                 md.block.ruler.before('fence', 'front_matter', fontMatterRule, {
                     alt: ['paragraph', 'reference', 'blockquote', 'list']
                 });
-                this._addImageRenderer(md);
+				this._addImageRenderer(md);
                 this._addFencedRenderer(md);
                 this._addLinkNormalizer(md);
                 this._addLinkValidator(md);

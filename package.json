@@ -280,6 +280,11 @@
             "description": "%config.markdown.expand-tabs.tabWidth%",
             "scope": "resource"
           },
+          "markdown.file-uri.enabled": {
+            "type": "boolean",
+            "default": true,
+            "description": "%config.markdown.file-uri.enabled%"
+          },
           "markdown.footnote.enabled": {
             "type": "boolean",
             "default": true,

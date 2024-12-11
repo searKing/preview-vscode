@@ -18,6 +18,7 @@
 	"config.markdown.expand-tabs.enabled": "在内置Markdown预览中启用/禁用代码块中前置制表符转换为空格。",
 	"config.markdown.expand-tabs.tabWidth": "指定替换每个前置制表符的空格个数。",
 	"config.markdown.footnote.enabled": "在内置Markdown预览中启用/禁用脚注渲染。",
+	"config.markdown.file-uri.enabled": "在内置Markdown预览中启用/禁用本地文件路径（file://[文件绝对路径]）渲染。",
 	"config.markdown.highlightjs.enabled": "在内置Markdown预览中启用/禁用语法高亮。",
 	"config.markdown.highlightjs.auto": "若未设置，是否自动检测代码语言。",
 	"config.markdown.highlightjs.code": "是否添加“hljs”类名至“缩进代码块”（非”围栏代码块”）。",

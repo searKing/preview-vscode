@@ -18,6 +18,7 @@
 	"config.markdown.expand-tabs.enabled": "Enable/disable replaceing leading tabs with spaces in fenced code blocks in the built-in Markdown preview.",
 	"config.markdown.expand-tabs.tabWidth": "Specify the number of spaces per indentation-level to be replaced.",
 	"config.markdown.footnote.enabled": "Enable/disable rendering footnode in the built-in Markdown preview.",
+	"config.markdown.file-uri.enabled": "Enable/disable local file path(`file://[abs_file_path]`) uri in the built-in Markdown preview.",
 	"config.markdown.highlightjs.enabled": "Enable/disable highlight code blocks in the built-in Markdown preview.",
 	"config.markdown.highlightjs.auto": "Whether to automatically detect language if not specified.",
 	"config.markdown.highlightjs.code": "Whether to add the hljs class to raw code blocks (not fenced code blocks).",
