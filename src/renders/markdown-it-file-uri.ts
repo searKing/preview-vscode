@@ -36,13 +36,10 @@ export namespace MarkdownItFileUri {
 			try {
 				// Normalize VS Code file://local_abs_path to relative path to the workspace folder
 				if (isOfScheme(Schemes.file, link)) {
-					const doc = vscode.window.activeTextEditor?.document;
-					if (doc) {
-						const absolute_path = vscode.Uri.parse(link)?.fsPath;
-						const workspace_dir = vscode.workspace.getWorkspaceFolder(doc.uri)?.uri?.fsPath;
-						if (workspace_dir && absolute_path) {
-							link = path.relative(workspace_dir, absolute_path);
-						}
+					const link_file_path = vscode.Uri.parse(link)?.fsPath;
+					const doc_file_path = vscode.window.activeTextEditor?.document?.uri?.fsPath;
+					if (doc_file_path && link_file_path) {
+						link = path.relative(path.dirname(doc_file_path), link_file_path);
 					}
 				}
 			} catch (e) {
