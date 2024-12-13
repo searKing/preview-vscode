@@ -1,7 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
-import MarkdownIt = require('markdown-it');
+import type MarkdownIt = require('markdown-it');
 import { githubEngine } from './markdown-it-engine';
 
 export type ExtendMarkdownIt<T = any> = (context: vscode.ExtensionContext | undefined, md: MarkdownIt, options?: T) => MarkdownIt;
