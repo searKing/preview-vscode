@@ -32,8 +32,7 @@ export const MarkdownItAttrs = simplePlugin('attrs', () => require('markdown-it-
 
 export const MarkdownItBracketedSpans = simplePlugin('bracketed-spans', () => require('markdown-it-bracketed-spans'));
 
-// TODO: revert to markdown-it-cjk-breaks when https://github.com/markdown-it/markdown-it-cjk-breaks/pull/5 is fixed
-export const MarkdownItCjkBreaks = simplePlugin('cjk-breaks', () => require('@searking/markdown-it-cjk-breaks'));
+export const MarkdownItCjkBreaks = simplePlugin('cjk-breaks', () => require('markdown-it-cjk-breaks'));
 
 export const MarkdownItDeflist = simplePlugin('deflist', () => require('markdown-it-deflist'));
 
