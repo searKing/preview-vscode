@@ -7,19 +7,7 @@ import path = require('path');
 import { MarkdownPreviewManager } from './previewManager';
 
 export namespace MarkdownItFileUri {
-	const markdownUriSetting = 'markdown.file-uri';
-
-	// This method is called when your extension is activated
-	// Your extension is activated the very first time the command is executed
-	export function extendMarkdownIt<T = any>(context: vscode.ExtensionContext | undefined, md: MarkdownIt, options?: T): MarkdownIt {
-		if (!!context) {
-			vscode.workspace.onDidChangeConfiguration(e => {
-				if (e.affectsConfiguration(markdownUriSetting)) {
-					vscode.commands.executeCommand('markdown.api.reloadPlugins');
-				}
-			}, undefined, context.subscriptions);
-		}
-
+	export function extendMarkdownIt<T = any>(md: MarkdownIt, options?: T): MarkdownIt {
 		const config = vscode.workspace.getConfiguration('markdown', null);
 		if (!config.get<boolean>('file-uri.enabled', true)) {
 			return md;

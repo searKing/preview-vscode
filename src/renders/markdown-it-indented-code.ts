@@ -4,18 +4,7 @@ import * as vscode from 'vscode';
 import type MarkdownIt = require('markdown-it');
 
 export namespace MarkdownItIndentedCode {
-    const markdownIndentedCodeSetting = 'markdown.indented-code';
-
-    // This method is called when your extension is activated
-    // Your extension is activated the very first time the command is executed
-    export function extendMarkdownIt<T = any>(context: vscode.ExtensionContext | undefined, md: MarkdownIt, options?: T): MarkdownIt {
-        if (!!context) {
-            vscode.workspace.onDidChangeConfiguration(e => {
-                if (e.affectsConfiguration(markdownIndentedCodeSetting)) {
-                    vscode.commands.executeCommand('markdown.api.reloadPlugins');
-                }
-            }, undefined, context.subscriptions);
-        }
+    export function extendMarkdownIt<T = any>(md: MarkdownIt, options?: T): MarkdownIt {
         const config = vscode.workspace.getConfiguration('markdown', null);
         if (config.get<boolean>('indented-code.enabled', true)) {
             return md;

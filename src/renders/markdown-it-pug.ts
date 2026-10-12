@@ -5,19 +5,7 @@ import type MarkdownIt = require('markdown-it');
 import { dedent } from 'ts-dedent';
 
 export namespace MarkdownItPug {
-    const markdownPugSetting = 'markdown.pug';
-
-    // This method is called when your extension is activated
-    // Your extension is activated the very first time the command is executed
-    export function extendMarkdownIt(context: vscode.ExtensionContext | undefined, md: MarkdownIt): MarkdownIt {
-        if (!!context) {
-            vscode.workspace.onDidChangeConfiguration(e => {
-                if (e.affectsConfiguration(markdownPugSetting)) {
-                    vscode.commands.executeCommand('markdown.api.reloadPlugins');
-                }
-            }, undefined, context.subscriptions);
-        }
-
+    export function extendMarkdownIt(md: MarkdownIt): MarkdownIt {
         const config = vscode.workspace.getConfiguration('markdown', null);
         if (!config.get<boolean>('pug.enabled', true)) {
             return md;

@@ -6,8 +6,6 @@ import { dedent } from 'ts-dedent';
 
 
 export namespace MarkdownItCodeCopy {
-    const markdownCodeCopySetting = 'markdown.code-copy';
-
     // <clipboard-copy> is defined by the preview script, see src/preview/index.ts.
     const get_clipboardjs_header = (): string => `<style>
     .ClipboardButton {
@@ -73,16 +71,7 @@ export namespace MarkdownItCodeCopy {
     }
 </style>`;
 
-    // This method is called when your extension is activated
-    // Your extension is activated the very first time the command is executed
-    export function extendMarkdownIt(context: vscode.ExtensionContext | undefined, md: MarkdownIt): MarkdownIt {
-        if (!!context) {
-            vscode.workspace.onDidChangeConfiguration(e => {
-                if (e.affectsConfiguration(markdownCodeCopySetting)) {
-                    vscode.commands.executeCommand('markdown.api.reloadPlugins');
-                }
-            }, undefined, context.subscriptions);
-        }
+    export function extendMarkdownIt(md: MarkdownIt): MarkdownIt {
         const config = vscode.workspace.getConfiguration('markdown', null);
         if (!config.get<boolean>('code-copy.enabled', true)) {
             return md;

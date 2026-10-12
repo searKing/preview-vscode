@@ -10,18 +10,15 @@ import { CommandManager } from '../commands/commandManager';
 
 import { loadDefaultTelemetryReporter } from '../reporter/telemetryReporter';
 
+// All settings contributed in package.json, the markdown-it plugins read them on every reload.
+function contributedSettings(context: vscode.ExtensionContext): string[] {
+	const configurations: { properties?: Record<string, unknown> }[] = [context.extension.packageJSON?.contributes?.configuration ?? []].flat();
+	return configurations.flatMap(configuration => Object.keys(configuration.properties ?? {}));
+}
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "preview-vscode" is now active!');
-
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-
 	const telemetryReporter = loadDefaultTelemetryReporter();
 	context.subscriptions.push(telemetryReporter);
 
@@ -29,14 +26,22 @@ export function activate(context: vscode.ExtensionContext) {
 
 	const commandManager = new CommandManager();
 	context.subscriptions.push(registerMarkdownCommands(commandManager, markdownPreviewManager, telemetryReporter));
-	let settingListenersRegistered = false;
+
+	const reloadPlugins = () => vscode.commands.executeCommand('markdown.api.reloadPlugins');
+	const settings = contributedSettings(context);
+	context.subscriptions.push(
+		vscode.workspace.onDidChangeConfiguration(e => {
+			if (settings.some(setting => e.affectsConfiguration(setting))) {
+				reloadPlugins();
+			}
+		}),
+		// mermaid's "auto" theme follows the color theme.
+		vscode.window.onDidChangeActiveColorTheme(reloadPlugins),
+	);
+
 	return {
 		extendMarkdownIt(md: MarkdownIt) {
-			// Called again on every `markdown.api.reloadPlugins`; plugins register their
-			// setting listeners only when given a context, so pass it only once.
-			const pluginContext = settingListenersRegistered ? undefined : context;
-			settingListenersRegistered = true;
-			return extendMarkdownIt(pluginContext, md, { markdownPreviewManager: markdownPreviewManager });
+			return extendMarkdownIt(md, { markdownPreviewManager: markdownPreviewManager });
 		}
 	};
 }

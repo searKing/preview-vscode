@@ -5,20 +5,11 @@ import * as vscode from 'vscode';
 import type MarkdownIt = require('markdown-it');
 
 import { join } from './markdown-it';
-import { MarkdownItLazyHeaders } from './markdown-it-lazy-headers';
-import { MarkdownItEmoji } from './markdown-it-emoji';
-import { MarkdownItTaskLists } from './markdown-it-task-lists';
-import { MarkdownItExpandTabs } from './markdown-it-expand-tabs';
-import { MarkdownItAbbr } from './markdown-it-abbr';
-import { MarkdownItAnchor } from './markdown-it-anchor';
-import { MarkdownItAttrs } from './markdown-it-attrs';
-import { MarkdownItDeflist } from './markdown-it-deflist';
-import { MarkdownItFootnote } from './markdown-it-footnote';
-import { MarkdownItHighlightjs } from './markdown-it-highlightjs';
-import { MarkdownItIns } from './markdown-it-ins';
-import { MarkdownItMark } from './markdown-it-mark';
-import { MarkdownItSub } from './markdown-it-sub';
-import { MarkdownItSup } from './markdown-it-sup';
+import {
+    MarkdownItAbbr, MarkdownItAnchor, MarkdownItAttrs, MarkdownItBracketedSpans, MarkdownItCjkBreaks, MarkdownItDeflist,
+    MarkdownItEmoji, MarkdownItExpandTabs, MarkdownItFootnote, MarkdownItHighlightjs, MarkdownItIns, MarkdownItLazyHeaders,
+    MarkdownItMark, MarkdownItSub, MarkdownItSup, MarkdownItTaskLists,
+} from './markdown-it-plugins';
 import { MarkdownItMermaid } from './markdown-it-mermaid';
 import { MarkdownItPug } from './markdown-it-pug';
 import { MarkdownItRst } from './markdown-it-rst';
@@ -27,35 +18,33 @@ import { WebviewResourceProvider } from './util/resources';
 import { isOfScheme, Schemes } from './util/schemes';
 import { MarkdownItMarkdown } from './markdown-it-markdown';
 import { MarkdownItHTML } from './markdown-it-html';
-import { MarkdownItCjkBreaks } from './markdown-it-cjk-breaks';
-import { MarkdownItBracketedSpans } from './markdown-it-bracketed-spans';
 import { MarkdownItFencedFile } from './markdown-it-fenced-file';
 import { MarkdownItCodeCopy } from './markdown-it-code-copy';
 import { MarkdownItIndentedCode } from './markdown-it-indented-code';
 import { MarkdownItFileUri } from './markdown-it-file-uri';
 import { MarkdownItCurrentDocument } from './markdown-it-current-document';
 
-export function extendMarkdownIt<T = any>(context: vscode.ExtensionContext | undefined, md: MarkdownIt, options?: T): MarkdownIt {
+export function extendMarkdownIt<T = any>(md: MarkdownIt, options?: T): MarkdownIt {
     return join(
         MarkdownItCurrentDocument.extendMarkdownIt, // should be the first one
         MarkdownItIndentedCode.extendMarkdownIt,
         MarkdownItFencedFile.extendMarkdownIt,
-        MarkdownItAbbr.extendMarkdownIt,
-        MarkdownItAnchor.extendMarkdownIt,
-        MarkdownItBracketedSpans.extendMarkdownIt,
-        MarkdownItHighlightjs.extendMarkdownIt,
-        MarkdownItAttrs.extendMarkdownIt,
-        MarkdownItCjkBreaks.extendMarkdownIt,
-        MarkdownItLazyHeaders.extendMarkdownIt,
-        MarkdownItEmoji.extendMarkdownIt,
-        MarkdownItTaskLists.extendMarkdownIt,
-        MarkdownItExpandTabs.extendMarkdownIt,
-        MarkdownItDeflist.extendMarkdownIt,
-        MarkdownItFootnote.extendMarkdownIt,
-        MarkdownItIns.extendMarkdownIt,
-        MarkdownItMark.extendMarkdownIt,
-        MarkdownItSub.extendMarkdownIt,
-        MarkdownItSup.extendMarkdownIt,
+        MarkdownItAbbr,
+        MarkdownItAnchor,
+        MarkdownItBracketedSpans,
+        MarkdownItHighlightjs,
+        MarkdownItAttrs,
+        MarkdownItCjkBreaks,
+        MarkdownItLazyHeaders,
+        MarkdownItEmoji,
+        MarkdownItTaskLists,
+        MarkdownItExpandTabs,
+        MarkdownItDeflist,
+        MarkdownItFootnote,
+        MarkdownItIns,
+        MarkdownItMark,
+        MarkdownItSub,
+        MarkdownItSup,
         MarkdownItMermaid.extendMarkdownIt,
         MarkdownItPug.extendMarkdownIt,
         MarkdownItRst.extendMarkdownIt,
@@ -63,7 +52,7 @@ export function extendMarkdownIt<T = any>(context: vscode.ExtensionContext | und
         MarkdownItHTML.extendMarkdownIt,
         MarkdownItFileUri.extendMarkdownIt,
         MarkdownItCodeCopy.extendMarkdownIt, // should be the last one
-    )(context, md, options);
+    )(md, options);
 }
 
 /**
@@ -126,7 +115,7 @@ class MarkdownItEngine {
                 const markdownIt = require('markdown-it');
                 let md: MarkdownIt = markdownIt(getMarkdownOptions(() => md));
                 md.linkify.set({ fuzzyLink: false });
-                extendMarkdownIt(undefined, md);
+                extendMarkdownIt(md);
 
                 const frontMatterPlugin = require('markdown-it-front-matter');
                 // Extract rules from front matter plugin and apply at a lower precedence
