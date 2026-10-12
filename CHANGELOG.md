@@ -13,6 +13,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - Fix: Mermaid diagrams and the code copy button work with the default preview security, they no longer load scripts from CDN but are bundled and contributed by `markdown.previewScripts`.
 - Fix: Mermaid diagrams are rendered in notebook Markdown cells.
 - Fix: task list items keep inline markup such as footnotes and links instead of duplicating the raw text, in lists and definition lists ([#113](https://github.com/searKing/preview-vscode/issues/113)); `markdown-it-task-lists` is replaced by a built-in rule.
+- Fix: task list items are styled like GitHub, the checkbox replaces the list marker instead of being shown next to it.
 - Fix: Mermaid no longer shows "Syntax error in text" bombs: diagrams use the `preview-vscode-mermaid` class so VS Code's builtin Mermaid extension (which re-renders every `.mermaid` element) leaves them alone, auto rendering on load is disabled, errors are shown in place with the source, and stale renders are dropped.
 - Fix: Pug blocks are rendered as HTML instead of the compiled template function source.
 - Fix: "Open Locked Preview to the Side" opens a locked preview; previewing a file from the explorer no longer opens and closes an editor first.

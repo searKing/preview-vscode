@@ -28,6 +28,14 @@ export async function activate(ctx: RendererContext<void>) {
 		.preview-vscode-block {
 			counter-reset: mmlEqnNo;
 		}
+		.task-list-item {
+			list-style-type: none;
+		}
+		.task-list-item-checkbox {
+			margin-block: 0 0.25em;
+			margin-inline: -1.4em 0.2em;
+			vertical-align: middle;
+		}
 	`;
 
     // Put Everything into a template
