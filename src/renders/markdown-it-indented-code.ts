@@ -4,7 +4,7 @@ import * as vscode from 'vscode';
 import type MarkdownIt = require('markdown-it');
 
 export namespace MarkdownItIndentedCode {
-    const markdownIndentedCodeSetting = 'markdown-it-indented-code';
+    const markdownIndentedCodeSetting = 'markdown.indented-code';
 
     // This method is called when your extension is activated
     // Your extension is activated the very first time the command is executed
@@ -61,7 +61,7 @@ export namespace MarkdownItIndentedCode {
                     }
 
                     while (first < last && lineIndent < indent) {
-                        const ch = state.src.charCodeAt(first)
+                        const ch = state.src.charCodeAt(first);
 
                         if (isSpace(ch)) {
                             if (ch === 0x09) {

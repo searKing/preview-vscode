@@ -33,9 +33,11 @@ import { MarkdownItFencedFile } from './markdown-it-fenced-file';
 import { MarkdownItCodeCopy } from './markdown-it-code-copy';
 import { MarkdownItIndentedCode } from './markdown-it-indented-code';
 import { MarkdownItFileUri } from './markdown-it-file-uri';
+import { MarkdownItCurrentDocument } from './markdown-it-current-document';
 
 export function extendMarkdownIt<T = any>(context: vscode.ExtensionContext | undefined, md: MarkdownIt, options?: T): MarkdownIt {
     return join(
+        MarkdownItCurrentDocument.extendMarkdownIt, // should be the first one
         MarkdownItIndentedCode.extendMarkdownIt,
         MarkdownItFencedFile.extendMarkdownIt,
         MarkdownItAbbr.extendMarkdownIt,

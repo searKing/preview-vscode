@@ -3,59 +3,28 @@ import { Disposable } from "./util/dispose";
 
 export class MarkdownPreviewManager extends Disposable {
     private lastActiveEditor: vscode.TextEditor | undefined;
-    private lastActiveTextDocument: vscode.TextDocument | undefined;
+    private currentDocument: vscode.TextDocument | undefined;
     public constructor() {
         super();
         this.refresh();
-        vscode.workspace.onDidOpenTextDocument((doc: vscode.TextDocument) => {
-            this.lastActiveEditor = undefined;
-            this.lastActiveTextDocument = doc;
-        });
     }
-    public refresh(doc?: vscode.TextDocument) {
+    public refresh() {
         this.lastActiveEditor = vscode.window.activeTextEditor || this.lastActiveEditor;
-        this.lastActiveTextDocument = doc || vscode.window.activeTextEditor?.document || this.lastActiveTextDocument;
     }
-    public clear() {
-        this.lastActiveEditor = undefined;
-        this.lastActiveTextDocument = undefined;
-    }
-    public editor(): vscode.TextEditor | undefined {
-        return this.lastActiveEditor;
-    }
-    public uri(): vscode.Uri | undefined {
-        return this.lastActiveTextDocument?.uri || this.lastActiveEditor?.document.uri;
-    }
-    public languageId(editor?: vscode.TextEditor): string {
-        let doc = editor?.document || this.lastActiveTextDocument || this.lastActiveEditor?.document;
-        let id = doc?.languageId;
-        if (!!id) {
-            return id;
-        }
 
-        // fallback to uri, activeTextEditor      
-        let ext = this.uri()?.path.split('.').pop();
-        if (!ext) {
-            return "";
-        }
-        ext = `.${ext}`;
-        // https://github.com/microsoft/vscode/issues/17885#issuecomment-663934897
-        let ids = vscode.extensions.all
-            .map(i => <any[]>(i.packageJSON as any)?.contributes?.languages)
-            .filter(i => i)
-            .reduce((a, b) => a.concat(b), [])
-            .filter(i => i.extensions?.includes(ext))
-            .map(i => i?.id)
-            .filter((value, index, array) => array.indexOf(value) === index);
-        if (!ids) {
-            return "";
-        }
-
-        const supportIds = ["markdown", "html", "css", "mermaid", "restructuredtext", "jade", "pug"];
-        ids = ids.filter(i => i).filter(i => supportIds?.includes(i));
-        if (!!ids) {
-            return ids[0];
-        }
-        return "";
+    // The built-in Markdown engine parses `document.getText()` with an empty env,
+    // so the source text is the only hint of which document is being rendered.
+    public resolveDocument(src: string): vscode.TextDocument | undefined {
+        const docs = vscode.workspace.textDocuments.filter(doc => doc.getText() === src);
+        const preferred = this.lastActiveEditor?.document;
+        this.currentDocument = docs.find(doc => doc === preferred) ?? docs[0];
+        return this.currentDocument;
+    }
+    public document(): vscode.TextDocument | undefined {
+        return this.currentDocument;
+    }
+    public editor(doc: vscode.TextDocument): vscode.TextEditor | undefined {
+        return vscode.window.visibleTextEditors.find(editor => editor.document === doc)
+            ?? (this.lastActiveEditor?.document === doc ? this.lastActiveEditor : undefined);
     }
 }

@@ -28,18 +28,14 @@ export namespace MarkdownItFencedFile {
 
 	const fenced_file_render = <T = any>(md: MarkdownIt, options?: T): void => {
 		md.core.ruler.before('normalize', 'fenced-file', (state): void => {
-			let _options = options;
-			let languageId: string = "";
-			let markdownPreviewManager: MarkdownPreviewManager | undefined;
-			if (!!_options) {
-				markdownPreviewManager = (_options as any)['markdownPreviewManager'];
-				languageId = markdownPreviewManager?.languageId() || "markdown";
+			const markdownPreviewManager: MarkdownPreviewManager | undefined = (options as any)?.['markdownPreviewManager'];
+			const doc = markdownPreviewManager?.document();
+			if (!markdownPreviewManager || !doc) {
+				// not a document preview, e.g. markdown.api.render or nested render.
+				return;
 			}
-			let editor = markdownPreviewManager?.editor();
-			markdownPreviewManager?.clear();
-			switch (languageId) {
+			switch (doc.languageId) {
 				case "markdown":
-				case "":
 					// nop, use builtin Markdown.
 					return;
 				case "html":
@@ -59,6 +55,7 @@ export namespace MarkdownItFencedFile {
 				default:
 					break;
 			}
+			const editor = markdownPreviewManager.editor(doc);
 			if (!editor) {
 				return;
 			}

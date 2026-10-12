@@ -29,9 +29,14 @@ export function activate(context: vscode.ExtensionContext) {
 
 	const commandManager = new CommandManager();
 	context.subscriptions.push(registerMarkdownCommands(commandManager, markdownPreviewManager, telemetryReporter));
+	let settingListenersRegistered = false;
 	return {
 		extendMarkdownIt(md: MarkdownIt) {
-			return extendMarkdownIt(context, md, { markdownPreviewManager: markdownPreviewManager });
+			// Called again on every `markdown.api.reloadPlugins`; plugins register their
+			// setting listeners only when given a context, so pass it only once.
+			const pluginContext = settingListenersRegistered ? undefined : context;
+			settingListenersRegistered = true;
+			return extendMarkdownIt(pluginContext, md, { markdownPreviewManager: markdownPreviewManager });
 		}
 	};
 }
