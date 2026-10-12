@@ -1,10 +1,11 @@
 // Loaded into the built-in Markdown preview by `markdown.previewScripts`.
 // Inline <script> in the rendered Markdown never runs there, the preview's CSP only allows nonce scripts.
+import './nonce';
 import '@github/clipboard-copy-element';
 import { renderMermaid } from './mermaid';
 
 function renderMermaidBlocks() {
-    const elements = Array.from(document.querySelectorAll<HTMLElement>('pre.mermaid:not([data-processed])'));
+    const elements = Array.from(document.querySelectorAll<HTMLElement>('pre.preview-vscode-mermaid:not([data-processed])'));
     if (elements.length > 0) {
         renderMermaid(elements, elements[0].dataset.theme || 'default');
     }

@@ -92,7 +92,7 @@ function mermaidPlugin(md: MarkdownIt): void {
         if (token.info.trim() === 'mermaid') {
             const id = `preview-vscode-mermaid-block-${nextMermaidBlockId++}`;
             pending.push(id);
-            return `<pre class="mermaid" id="${id}">${md.utils.escapeHtml(token.content.trim())}</pre>`;
+            return `<pre class="preview-vscode-mermaid" id="${id}">${md.utils.escapeHtml(token.content.trim())}</pre>`;
         }
         return fence ? fence(tokens, idx, options, env, self) : self.renderToken(tokens, idx, options);
     };

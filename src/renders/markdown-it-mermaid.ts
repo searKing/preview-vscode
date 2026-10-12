@@ -5,22 +5,8 @@ import type MarkdownIt = require('markdown-it');
 import { dedent } from 'ts-dedent';
 
 export namespace MarkdownItMermaid {
-    const markdownMermaidSetting = 'markdown.mermaid';
-
-    // This method is called when your extension is activated
-    // Your extension is activated the very first time the command is executed
-    export function extendMarkdownIt(context: vscode.ExtensionContext | undefined, md: MarkdownIt): MarkdownIt {
-        if (!!context) {
-            vscode.window.onDidChangeActiveColorTheme(_e => {
-                vscode.commands.executeCommand('markdown.api.reloadPlugins');
-            }, undefined, context.subscriptions);
-            vscode.workspace.onDidChangeConfiguration(e => {
-                if (e.affectsConfiguration(markdownMermaidSetting)) {
-                    vscode.commands.executeCommand('markdown.api.reloadPlugins');
-                }
-            }, undefined, context.subscriptions);
-        }
-
+    // The "auto" theme follows the color theme, the plugins are reloaded when it changes.
+    export function extendMarkdownIt(md: MarkdownIt): MarkdownIt {
         const config = vscode.workspace.getConfiguration('markdown', null);
         if (!config.get<boolean>('mermaid.enabled', true)) {
             return md;
@@ -66,7 +52,8 @@ export namespace MarkdownItMermaid {
 
                 // Every Mermaid chart/graph/diagram definition should have separate <pre> tags.
                 // https://mermaid.js.org/intro/getting-started.html#examples
-                return `<pre class="mermaid" data-theme="${md.utils.escapeHtml(theme)}">${md.utils.escapeHtml(dedent_code)}</pre>`;
+                // Not `mermaid`: VS Code's builtin mermaid extension re-renders every `.mermaid` element.
+                return `<pre class="preview-vscode-mermaid" data-theme="${md.utils.escapeHtml(theme)}">${md.utils.escapeHtml(dedent_code)}</pre>`;
             }
             if (!!temp) {
                 return `${temp(tokens, idx, options, env, slf)}`;
