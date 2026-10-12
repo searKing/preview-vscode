@@ -4,7 +4,7 @@ All notable changes to the "preview-vscode" extension will be documented in this
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
-## [Unreleased]
+## [2.4.0] - 2026-10-13
 
 - Fix: preview type is detected from the document being rendered, so a Markdown preview is no longer rendered as HTML/Mermaid/... after another file was opened, and live updates of non-Markdown previews keep their type.
 - Fix: setting listeners are registered only once instead of on every plugin reload.
