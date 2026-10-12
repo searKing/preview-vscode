@@ -62,7 +62,7 @@ export const MarkdownItSub = simplePlugin('sub', () => require('markdown-it-sub'
 
 export const MarkdownItSup = simplePlugin('sup', () => require('markdown-it-sup'));
 
-export const MarkdownItTaskLists = simplePlugin('tasklists', () => require('markdown-it-task-lists'), config => ({
+export const MarkdownItTaskLists = simplePlugin('tasklists', () => require('./markdown-it-task-lists').default, config => ({
     enabled: config.get<boolean>('renderCheckboxes', true), // render checkboxes
     label: config.get<boolean>('label', true), // wrap the rendered list items in a <label> element for UX purposes
     labelAfter: config.get<boolean>('labelAfter', true), // add the <label> after the checkbox

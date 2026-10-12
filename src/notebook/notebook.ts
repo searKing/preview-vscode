@@ -52,7 +52,7 @@ export async function activate(ctx: RendererContext<void>) {
             use(require("markdown-it-mark"), {}).
             use(require("markdown-it-sub"), {}).
             use(require("markdown-it-sup"), {}).
-            use(require('markdown-it-task-lists'), {
+            use(require('../renders/markdown-it-task-lists').default, {
                 enabled: true, // render checkboxes
                 label: true, // wrap the rendered list items in a <label> element for UX purposes
                 labelAfter: false // add the <label> after the checkbox

@@ -481,7 +481,6 @@
     "markdown-it-mark": "^4.0.0",
     "markdown-it-sub": "^2.0.0",
     "markdown-it-sup": "^2.0.0",
-    "markdown-it-task-lists": "^2.1.1",
     "mermaid": "^12.1.0",
     "node-polyfill-webpack-plugin": "^4.1.0",
     "pug": "^3.0.4",

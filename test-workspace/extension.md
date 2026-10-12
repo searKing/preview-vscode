@@ -392,6 +392,13 @@ console.log(42);
 - [ ] GFM task list 4
   - [ ] GFM task list 4-1
   - [ ] GFM task list 4-2
+- [x] GFM task list 5 with **inline** [markup](https://github.com) and a footnote[^second]
+
+Task list in a definition list
+: 1. [x] Definition task with a footnote[^second]
+  2. [x] Definition task as a term[^second]
+
+     : Nested definition
 
 ### [Custom containers](https://github.com/markdown-it/markdown-it-container)
 
