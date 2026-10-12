@@ -7,62 +7,6 @@ import { dedent } from 'ts-dedent';
 export namespace MarkdownItPug {
     const markdownPugSetting = 'markdown.pug';
 
-    const get_pug_package = (): string => {
-        /*
-        // var pug_package = path.resolve(path.dirname(require.resolve("pug/package.json")));
-
-        // TODO: pug doesn't render if use npm/pug@3/lib/index.min.js
-        // Uncaught ReferenceError: require is not defined
-        // https://github.com/PythonLinks/pug/blob/master/README.md#installation-on-the-client
-        // https://github.com/pugjs/pug/issues/3094s
-        const REPO_ROOT = path.normalize(path.join(__dirname, '../../'));
-        let pug_package = path.join(REPO_ROOT, require.resolve("pug/package.json"), "../lib/index.js");
-        if (fs.existsSync(pug_package)) {
-            return `${pug_package}`;
-        }
-        return 'https://cdn.jsdelivr.net/npm/pug@3/lib/index.min.js';
-        */
-        return 'https://pugjs.org/js/pug.js';
-    };
-
-    const get_pug_header = (): string => `<script src="${get_pug_package()}"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', init, false);
-        function init() {
-            pug = require('pug');
-            $pug = document.querySelector('.pug');
-            // console.log('Ready');
-            nodesToProcess = document.querySelectorAll('.pug');
-            // console.log(\`Found \${nodesToProcess.length} diagrams\`);
-            let txt = '';
-            const errors = [];
-            // element is the current div with mermaid class
-            // eslint-disable-next-line unicorn/prefer-spread
-            for (const element of Array.from(nodesToProcess)) {
-                // console.log('Rendering diagram: ' + element.id);
-                /*! Check if previously processed */
-                if (element.getAttribute('data-processed')) {
-                    continue;
-                }
-                element.setAttribute('data-processed', 'true');
-    
-                // Fetch the graph definition including tags
-                txt = element.innerHTML;
-                txt = txt.trim();
-                try {
-                    element.innerHTML = pug.render(txt).trim();
-                } catch (error) {
-                    console.error(\`parse pug[\${element.id}] failed \${error}\`)
-                    errors.push(error)
-                }
-            }
-            if (errors.length > 0) {
-                // TODO: We should be throwing an error object.
-                throw errors[0];
-            }
-        }
-    </script>`;
-
     // This method is called when your extension is activated
     // Your extension is activated the very first time the command is executed
     export function extendMarkdownIt(context: vscode.ExtensionContext | undefined, md: MarkdownIt): MarkdownIt {
@@ -92,11 +36,6 @@ export namespace MarkdownItPug {
 
     const pug_render = (pug: any): MarkdownIt.PluginSimple => {
         return (md: MarkdownIt): void => {
-            // https://github.com/mermaid-js/mermaid/blob/579f1f9dc156dd72326efdb3880a351a3dee96a1/packages/mermaid/src/mermaid.ts#L162
-            // transforms the html to pure text
-            let dedent_header = dedent(require('entity-decode')(get_pug_header())) // removes indentation, required for Markdown parsing
-                .trim()
-                .replace(/<br\s*\/?>/gi, '<br/>');
             const temp = md.renderer.rules.fence?.bind(md.renderer.rules);
             md.renderer.rules.fence = (tokens, idx, options, env, slf) => {
                 const token = tokens[idx];
@@ -108,16 +47,15 @@ export namespace MarkdownItPug {
                         .trim()
                         .replace(/<br\s*\/?>/gi, '<br/>');
 
-                    // TODO: require('pug') returns {}, so use <script> instead for trick.
-                    // WARNING in ./node_modules/pug-filters/lib/run-filter.js 33:25-40
-                    // Critical dependency: the request of a dependency is an expression
-                    if (!!pug && !!pug.compile) {
-                        const html = pug.compile(dedent_code);
-                        return `<div>${html}</div>`;
+                    if (!!pug && !!pug.render) {
+                        try {
+                            return `<div>${pug.render(dedent_code)}</div>`;
+                        } catch (error) {
+                            return `<pre class="pug preview-vscode-error">${md.utils.escapeHtml(`${error}`)}</pre>`;
+                        }
                     }
-                    const header = !env.pug_header_added ? dedent_header : "";
-                    env.pug_header_added = true;
-                    return `${header}<pre class="pug">${dedent_code}</pre>`;
+                    // pug is unavailable in the browser (web extension), show the source instead.
+                    return `<pre class="pug">${md.utils.escapeHtml(dedent_code)}</pre>`;
                 }
                 if (!!temp) {
                     return temp(tokens, idx, options, env, slf);

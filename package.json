@@ -196,6 +196,9 @@
     "markdown.previewStyles": [
       "./preview-styles/index.css"
     ],
+    "markdown.previewScripts": [
+      "./dist/preview/index.js"
+    ],
     "keybindings": [
       {
         "command": "preview-vscode.showPreview",
@@ -279,6 +282,11 @@
             "default": 2,
             "description": "%config.markdown.expand-tabs.tabWidth%",
             "scope": "resource"
+          },
+          "markdown.fenced-file.enabled": {
+            "type": "boolean",
+            "default": true,
+            "description": "%config.markdown.fenced-file.enabled%"
           },
           "markdown.file-uri.enabled": {
             "type": "boolean",
@@ -437,10 +445,11 @@
     "compile-tests": "tsc -p . --outDir dist",
     "watch-tests": "tsc -p . -w --outDir dist",
     "pretest": "npm run compile-syntaxes && npm run compile-tests && npm run compile && npm run lint",
-    "lint": "eslint src --ext ts",
+    "lint": "eslint src",
     "test": "vscode-test"
   },
   "devDependencies": {
+    "@github/clipboard-copy-element": "^1.3.2",
     "@searking/markdown-it-cjk-breaks": "^2.0.1-0",
     "@types/markdown-it": "^14.1.2",
     "@types/mocha": "^10.0.10",

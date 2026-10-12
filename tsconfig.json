@@ -5,6 +5,9 @@
 		"path": "./src/notebook"
 	  },
 	  {
+		"path": "./src/preview"
+	  },
+	  {
 		"path": "./src/test"
 	  },
 	  {

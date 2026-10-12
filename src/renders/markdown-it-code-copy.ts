@@ -6,15 +6,10 @@ import { dedent } from 'ts-dedent';
 
 
 export namespace MarkdownItCodeCopy {
-    const markdownCodeCopySetting = 'markdown-it-code-copy';
+    const markdownCodeCopySetting = 'markdown.code-copy';
 
-    const get_clipboardjs_package = (): string => {
-        // https://github.com/zenorocha/clipboard.js/wiki/CDN-Providers
-        return 'https://unpkg.com/@github/clipboard-copy-element@latest';
-    };
-
-    const get_clipboardjs_header = (): string => `<script type="module" src="${get_clipboardjs_package()}"></script>
-<style>
+    // <clipboard-copy> is defined by the preview script, see src/preview/index.ts.
+    const get_clipboardjs_header = (): string => `<style>
     .ClipboardButton {
         position: relative;
     }
@@ -76,23 +71,7 @@ export namespace MarkdownItCodeCopy {
         stroke: #3fb950 !important;
         border-color: #3fb950 !important;
     }
-</style>
-<script>
-    document.addEventListener('clipboard-copy', function (event) {
-        const notice_clipboard_copy = event.target;
-        console.log(\`notice_clipboard_copy = \$\{notice_clipboard_copy\}\`)
-        const notice_copy = event.target.querySelector('.clipboard-copy-icon');
-        const notice_check = event.target.querySelector('.clipboard-check-icon');
-        notice_clipboard_copy.classList.add("color-fg-success");
-        notice_copy.classList.add("d-none");
-        notice_check.classList.remove("d-none");
-        setTimeout(function () {
-            notice_clipboard_copy.classList.remove("color-fg-success");
-            notice_copy.classList.remove("d-none");
-            notice_check.classList.add("d-none");
-        }, 1000)
-    })
-</script>`;
+</style>`;
 
     // This method is called when your extension is activated
     // Your extension is activated the very first time the command is executed

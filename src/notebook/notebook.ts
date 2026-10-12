@@ -4,42 +4,10 @@
  *--------------------------------------------------------------------------------------------*/
 import type MarkdownIt = require('markdown-it');
 import type { RendererContext } from 'vscode-notebook-renderer';
+import { renderMermaid } from '../preview/mermaid';
 
 interface MarkdownItRenderer {
     extendMarkdownIt(fn: (md: MarkdownIt) => void): void;
-}
-
-const styleHref = import.meta.url.replace(/index.js$/, 'index.min.css');
-
-const regex_mermaid = new RegExp(/^mermaid(\s+(.*)|)$/);
-
-function mermaid_render(tokens, idx): string {
-    // console.log('tokens = ' + JSON.stringify(tokens[idx]));
-    var m = tokens[idx].info.trim().match(regex_mermaid);
-
-    if (tokens[idx].nesting === 1) {
-        const token = tokens[idx];
-        // opening tag
-        // return '<details><summary>' + md.utils.escapeHtml(m[1]) + '</summary>\n';
-        let mermaidContent = tokens[idx].content;
-        for (let index = idx; index < tokens.length; index++) {
-            const token = tokens[index];
-            if (token.type === "inline" || token.type === "code_block") {
-                mermaidContent = token.content;
-                break;
-            }
-        }
-        // Every Mermaid chart/graph/diagram definition should have separate <pre> tags.
-        // https://mermaid.js.org/intro/getting-started.html#examples
-        return `<hr>
-<pre class="mermaid">
-	${mermaidContent.trim()}
-</pre>
-<!--`;
-    } else {
-        // closing tag
-        return '-->\n';
-    }
 }
 
 export async function activate(ctx: RendererContext<void>) {
@@ -50,36 +18,6 @@ export async function activate(ctx: RendererContext<void>) {
     const markdownItRenderer = await ctx.getRenderer('vscode.markdown-it-renderer') as MarkdownItRenderer | undefined;
     if (!markdownItRenderer) {
         throw new Error(`Could not load 'vscode.markdown-it-renderer'`);
-    }
-
-    // Add notebook styles to be copied to shadow dom
-    const link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.classList.add('markdown-style');
-    link.href = styleHref;
-
-    // Add same notebook style to root document.
-    // This is needed for the font to be loaded correctly inside the shadow dom.
-    //
-    // Seems like https://bugs.chromium.org/p/chromium/issues/detail?id=336876
-    const linkHead = document.createElement('link');
-    linkHead.rel = 'stylesheet';
-    linkHead.href = styleHref;
-    document.head.appendChild(linkHead);
-    // { // mermaid
-    // 	const scriptHead = document.createElement('script');
-    // 	scriptHead.src = mermaidSrc;
-    // 	scriptHead.type = 'text/javascript';
-    // 	scriptHead.text = 'mermaid.initialize({startOnLoad: true, theme: "forest"});';
-    // 	document.head.appendChild(scriptHead);
-    // }
-    { // mermaid
-        const scriptHead = document.createElement('script');
-        // scriptHead.src = mermaidSrc;
-        scriptHead.type = 'module';
-        scriptHead.text = `import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-		mermaid.initialize({ startOnLoad: true });`;
-        document.head.appendChild(scriptHead);
     }
 
     const style = document.createElement('style');
@@ -96,7 +34,6 @@ export async function activate(ctx: RendererContext<void>) {
     const styleTemplate = document.createElement('template');
     styleTemplate.classList.add('markdown-style');
     styleTemplate.content.appendChild(style);
-    styleTemplate.content.appendChild(link);
     document.head.appendChild(styleTemplate);
 
     markdownItRenderer.extendMarkdownIt((md: MarkdownIt) => {
@@ -119,6 +56,60 @@ export async function activate(ctx: RendererContext<void>) {
                 enabled: true, // render checkboxes
                 label: true, // wrap the rendered list items in a <label> element for UX purposes
                 labelAfter: false // add the <label> after the checkbox
-            });
+            }).
+            use(mermaidPlugin);
     });
+}
+
+let nextMermaidBlockId = 0;
+
+function mermaidTheme(): string {
+    const classList = document.body.classList;
+    return classList.contains('vscode-dark') || classList.contains('vscode-high-contrast') ? 'dark' : 'default';
+}
+
+// Cells are rendered into shadow roots, so the blocks must be looked up there.
+function findMermaidBlock(id: string, outputItemId: string | undefined): HTMLElement | null {
+    const owner = outputItemId ? document.getElementById(outputItemId) : null;
+    const found = owner?.shadowRoot?.getElementById(id);
+    if (found) {
+        return found;
+    }
+    for (const element of Array.from(document.querySelectorAll('*'))) {
+        const block = element.shadowRoot?.getElementById(id);
+        if (block) {
+            return block;
+        }
+    }
+    return document.getElementById(id);
+}
+
+function mermaidPlugin(md: MarkdownIt): void {
+    const pending: string[] = [];
+    const fence = md.renderer.rules.fence;
+    md.renderer.rules.fence = (tokens, idx, options, env, self) => {
+        const token = tokens[idx];
+        if (token.info.trim() === 'mermaid') {
+            const id = `preview-vscode-mermaid-block-${nextMermaidBlockId++}`;
+            pending.push(id);
+            return `<pre class="mermaid" id="${id}">${md.utils.escapeHtml(token.content.trim())}</pre>`;
+        }
+        return fence ? fence(tokens, idx, options, env, self) : self.renderToken(tokens, idx, options);
+    };
+
+    // The markdown-it renderer assigns the returned html to the cell synchronously,
+    // so the blocks exist in the DOM by the time the microtask runs.
+    const render = md.render;
+    md.render = function (src: string, env?: any): string {
+        const html = render.call(this, src, env);
+        const ids = pending.splice(0);
+        if (ids.length > 0) {
+            const outputItemId: string | undefined = env?.outputItem?.id;
+            queueMicrotask(() => {
+                const blocks = ids.map(id => findMermaidBlock(id, outputItemId)).filter((block): block is HTMLElement => !!block);
+                renderMermaid(blocks, mermaidTheme());
+            });
+        }
+        return html;
+    };
 }

@@ -12,7 +12,7 @@ const path = require('path');
 /** @typedef {import('webpack').Configuration} WebpackConfig **/
 
 // /** @type WebpackConfig */
-const makeConfig = (argv, { entry, out, target, library = 'commonjs' }) => ({
+const makeConfig = (argv, { entry, out, target, library = 'commonjs', asyncChunks = true }) => ({
   context: __dirname,
   target,//: 'node', // VS Code extensions run in a Node.js-context 📖 -> https://webpack.js.org/configuration/node/
   node: {
@@ -34,8 +34,9 @@ const makeConfig = (argv, { entry, out, target, library = 'commonjs' }) => ({
     filename: `${path.basename(out)}`,
     // chunkFilename: '[id].[chunkhash].js',
     publicPath: '',
-    libraryTarget: library,
-    chunkFormat: library,
+    ...(library ? { libraryTarget: library, chunkFormat: library } : {}),
+    // Webviews only allow scripts with a nonce, lazily loaded chunks would be blocked.
+    asyncChunks,
   },
   // externalsType: "script",
   externals: {
@@ -58,7 +59,8 @@ const makeConfig = (argv, { entry, out, target, library = 'commonjs' }) => ({
   optimization: {
     minimize: argv.mode !== 'development',
   },
-  // performance: { hints: false },
+  // bundles are loaded from the local disk, not the network.
+  performance: { hints: false },
   module: {
     rules: [
       // Allow importing ts(x) files:
@@ -116,9 +118,10 @@ const makeConfig = (argv, { entry, out, target, library = 'commonjs' }) => ({
     // See the example in webpack’s documentation:
     // https://webpack.js.org/configuration/resolve/?source=post_page-----9e7979125aac--------------------------------#resolvefallback
     // https://feixie1980.medium.com/fixing-node-js-modules-pollyfill-in-webpack-5-9e7979125aac
-    new NodePolyfillPlugin({
+    // Node itself provides these modules, the polyfilled `process` lacks `process.versions.node` which pug requires.
+    ...(target === 'node' ? [] : [new NodePolyfillPlugin({
       excludeAliases: ['console', 'Buffer']
-    }),
+    })]),
     // https://webpack.js.org/guides/code-splitting/
     new HtmlWebpackPlugin({
       title: 'Caching',
@@ -130,7 +133,8 @@ const makeConfig = (argv, { entry, out, target, library = 'commonjs' }) => ({
   },
 });
 module.exports = (env, argv) => [
-  makeConfig(argv, { entry: './src/notebook/notebook.ts', out: './dist/notebook/notebook.js', target: 'web', library: 'module' }),
+  makeConfig(argv, { entry: './src/notebook/notebook.ts', out: './dist/notebook/notebook.js', target: 'web', library: 'module', asyncChunks: false }),
+  makeConfig(argv, { entry: './src/preview/index.ts', out: './dist/preview/index.js', target: 'web', library: false, asyncChunks: false }),
   makeConfig(argv, { entry: './src/extension/extension.ts', out: './dist/extension/node/extension.js', target: 'node' }),
   makeConfig(argv, { entry: './src/extension/extension.ts', out: './dist/extension/browser/extension.js', target: 'webworker' }),
 ];
