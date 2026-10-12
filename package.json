@@ -457,7 +457,7 @@
     "compile": "webpack --mode development --stats-error-details",
     "watch": "webpack --mode development --stats-error-details --watch",
     "package": "webpack --mode production --devtool hidden-source-map",
-    "update-syntaxes": "node scripts/update-syntaxes.mjs",
+    "update-syntaxes": "node --use-env-proxy scripts/update-syntaxes.mjs",
     "compile-tests": "tsc -p . --outDir dist",
     "watch-tests": "tsc -p . -w --outDir dist",
     "pretest": "npm run compile-tests && npm run compile && npm run lint",
