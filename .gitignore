@@ -3,6 +3,7 @@ dist
 node_modules
 .vscode-test/
 *.vsix
+.DS_Store
 /.idea/codeStyles/codeStyleConfig.xml
 /.idea/codeStyles/Project.xml
 /.idea/inspectionProfiles/Project_Default.xml

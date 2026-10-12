@@ -31,11 +31,10 @@ class ExtensionReporter implements TelemetryReporter {
     ) {
         // This is the appender which the extension would contribute
         const sender: vscode.TelemetrySender = {
-            sendEventData: (eventName: string, data) => {
-                console.log(`${packageInfo.aiKey}, event: ${eventName}, data: ${JSON.stringify(data)}`);
-            },
+            // no telemetry backend, usage events are dropped.
+            sendEventData: () => { /* noop */ },
             sendErrorData: (exception, data) => {
-                console.error(`${packageInfo.aiKey}, exception: ${exception}, data: ${JSON.stringify(data)}`);
+                console.error(`${packageInfo.name}, exception: ${exception}, data: ${JSON.stringify(data)}`);
             },
             flush: () => { /* noop */ }
         };
