@@ -4,6 +4,12 @@ All notable changes to the "preview-vscode" extension will be documented in this
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [Unreleased]
+
+- Fix: the Markdown grammar is regenerated from the VS Code 1.141 builtin grammar by `npm run update-syntaxes`, so fenced `jsonl`, `restructuredtext`, `abap`, `yang` blocks are highlighted and strikethrough follows upstream, while indented lines are still highlighted as Markdown ([#96](https://github.com/searKing/preview-vscode/issues/96)).
+- Fix: bracket pair colorization no longer matches `=>`, `<`, `<<`, ... in C# and TypeScript code blocks, the grammar contribution declares the same embedded languages and unbalanced bracket scopes as the builtin one.
+- Chore: remove the unused indented code injection grammar and the `js-yaml` dev dependency.
+
 ## [2.4.0] - 2026-10-13
 
 - Fix: preview type is detected from the document being rendered, so a Markdown preview is no longer rendered as HTML/Mermaid/... after another file was opened, and live updates of non-Markdown previews keep their type.

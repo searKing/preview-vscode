@@ -17,5 +17,5 @@ vsc-extension-quickstart.md
 **/*.ts
 **/.vscode-test.*
 *.vsix
-syntaxes/*.yaml
+scripts/**
 media/demonstration.gif
