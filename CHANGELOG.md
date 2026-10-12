@@ -7,6 +7,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ## [Unreleased]
 
 - Fix: the Markdown grammar is regenerated from the VS Code 1.141 builtin grammar by `npm run update-syntaxes`, so fenced `jsonl`, `restructuredtext`, `abap`, `yang` blocks are highlighted and strikethrough follows upstream, while indented lines are still highlighted as Markdown ([#96](https://github.com/searKing/preview-vscode/issues/96)).
+- Fix: indented lines use the `meta.indented.block.markdown` scope instead of `markup.raw.block.markdown`, so themes that color raw code (e.g. Quiet Light) no longer show indented lists and paragraphs as code ([#96](https://github.com/searKing/preview-vscode/issues/96)).
 - Fix: bracket pair colorization no longer matches `=>`, `<`, `<<`, ... in C# and TypeScript code blocks, the grammar contribution declares the same embedded languages and unbalanced bracket scopes as the builtin one.
 - Chore: remove the unused indented code injection grammar and the `js-yaml` dev dependency.
 

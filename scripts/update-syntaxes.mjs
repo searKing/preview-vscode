@@ -37,7 +37,13 @@ grammar.name = 'Markdown-Preview';
 
 // Indented lines are highlighted as Markdown rather than code, matching the preview's default
 // `markdown.indented-code.enabled: false`; a grammar can't follow the setting, see #96.
-rule(grammar, 'raw_block').patterns = [
+// The `meta` scope is not colored by themes, unlike `markup.raw`.
+const rawBlock = rule(grammar, 'raw_block');
+if (rawBlock.name !== 'markup.raw.block.markdown') {
+    throw new Error(`unexpected raw_block scope: ${rawBlock.name}`);
+}
+rawBlock.name = 'meta.indented.block.markdown';
+rawBlock.patterns = [
     { include: 'text.html.derivative' },
     { include: 'text.html.markdown' },
 ];

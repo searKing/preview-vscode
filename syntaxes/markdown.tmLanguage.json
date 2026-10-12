@@ -2652,7 +2652,7 @@
         },
         "raw_block": {
             "begin": "(^|\\G)([ ]{4}|\\t)",
-            "name": "markup.raw.block.markdown",
+            "name": "meta.indented.block.markdown",
             "while": "(^|\\G)([ ]{4}|\\t)",
             "patterns": [
                 {
