@@ -36,48 +36,23 @@ async function showPreview(
 
     telemetryReporter?.sendTelemetryEvent('openPreview', {
         where: previewSettings.sideBySide ? 'sideBySide' : 'inPlace',
-        how: (uri instanceof vscode.Uri) ? 'action' : 'pallete'
+        how: (uri instanceof vscode.Uri) ? 'action' : 'palette'
     });
-    // await vscode.commands.executeCommand('editor.action.commentLine');
-    // await vscode.commands.executeCommand('editor.action.commentLine');
-    let editor = vscode.window.activeTextEditor;
-    // if (!editor) {
-    //     // this is most likely toggling the preview
-    //     return vscode.commands.executeCommand('markdown.showSource');
-    // }
-    if (!editor || editor.document.uri.toString() !== resource.toString()) {
-        // this is a different file
-        // so no need to show it again
-        // return;
-        await vscode.commands.executeCommand('vscode.open', uri, <vscode.TextDocumentShowOptions>{
-            preserveFocus: true,
-            preview: true,
-        });
-        editor = vscode.window.activeTextEditor;
-        _markdownPreviewManager.refresh();
-        editor?.hide();
-    } else {
-        _markdownPreviewManager.refresh();
-    }
+    _markdownPreviewManager.refresh();
     const supportIds = ["markdown", "html", "css", "mermaid", "restructuredtext", "jade", "pug"];
-    if (editor && !supportIds.includes(editor.document.languageId)) {
-        // defer set text editor dirty.
-        // await editor.edit((editBuilder) => {
-        //     editBuilder.insert(new vscode.Position(0, 0), " ");
-        // }, { undoStopBefore: false, undoStopAfter: false });
-
-        // await editor.edit((editBuilder) => {
-        //     editBuilder.delete(new vscode.Range(new vscode.Position(0, 0), new vscode.Position(0, 1)));
-        // }, { undoStopBefore: false, undoStopAfter: false });
+    const document = await vscode.workspace.openTextDocument(resource);
+    if (!supportIds.includes(document.languageId)) {
+        // the image URI under the cursor may have changed, while the document didn't.
         await vscode.commands.executeCommand('markdown.preview.refresh');
     }
 
+    // The built-in commands open the document by uri, no need to show it in an editor first.
     if (previewSettings.sideBySide) {
         // this is most likely show preview to side.
-        return vscode.commands.executeCommand('markdown.showPreviewToSide');
+        return vscode.commands.executeCommand(previewSettings.locked ? 'markdown.showLockedPreviewToSide' : 'markdown.showPreviewToSide', resource);
     }
     // this is most likely show preview inplace.
-    return vscode.commands.executeCommand('markdown.showPreview');
+    return vscode.commands.executeCommand('markdown.showPreview', resource, undefined, { locked: previewSettings.locked });
 }
 
 export class ShowPreviewCommand implements Command {
@@ -88,9 +63,10 @@ export class ShowPreviewCommand implements Command {
         private readonly _telemetryReporter?: TelemetryReporter
     ) { }
 
-    public execute(mainUri?: vscode.Uri, allUris?: vscode.Uri[], previewSettings?: ShowPreviewSettings) {
+    public async execute(mainUri?: vscode.Uri, allUris?: vscode.Uri[], previewSettings?: ShowPreviewSettings) {
+        // one by one, each preview depends on the active editor left by the previous one.
         for (const uri of Array.isArray(allUris) ? allUris : [mainUri]) {
-            showPreview(this._markdownPreviewManager, this._telemetryReporter, uri, {
+            await showPreview(this._markdownPreviewManager, this._telemetryReporter, uri, {
                 sideBySide: false,
                 locked: previewSettings && previewSettings.locked
             });
