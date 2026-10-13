@@ -280,23 +280,23 @@
           "markdown.code-copy.enabled": {
             "type": "boolean",
             "default": true,
-          "description": "%config.markdown.code-copy.enabled%"
-        },
-        "markdown.code-wrap.mode": {
-          "type": "string",
-          "default": "auto",
-          "description": "%config.markdown.code-wrap.mode%",
-          "enum": [
-            "auto",
-            "on",
-            "off"
-          ],
-          "enumDescriptions": [
-            "%config.markdown.code-wrap.mode.auto%",
-            "%config.markdown.code-wrap.mode.on%",
-            "%config.markdown.code-wrap.mode.off%"
-          ]
-        },
+            "description": "%config.markdown.code-copy.enabled%"
+          },
+          "markdown.code-wrap.mode": {
+            "type": "string",
+            "default": "auto",
+            "description": "%config.markdown.code-wrap.mode%",
+            "enum": [
+              "auto",
+              "on",
+              "off"
+            ],
+            "enumDescriptions": [
+              "%config.markdown.code-wrap.mode.auto%",
+              "%config.markdown.code-wrap.mode.on%",
+              "%config.markdown.code-wrap.mode.off%"
+            ]
+          },
           "markdown.deflist.enabled": {
             "type": "boolean",
             "default": true,
@@ -518,7 +518,7 @@
     "mermaid": "^12.1.0",
     "node-polyfill-webpack-plugin": "^4.1.0",
     "pug": "^3.0.4",
-    "rst2mdown": "^0.1.0",
+    "rst-compiler": "^0.5.9",
     "ts-dedent": "^2.3.0",
     "ts-loader": "^9.6.2",
     "typescript": "^6.0.3",

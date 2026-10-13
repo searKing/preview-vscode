@@ -16,6 +16,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - Add: `file://` URIs in `href` and `src` of raw HTML, e.g. `<link rel="stylesheet" href="file:///...">`, are rewritten to paths relative to the document like Markdown links, so they load in the preview of Markdown and HTML files (`markdown.file-uri.enabled`) ([#99](https://github.com/searKing/preview-vscode/issues/99)).
 - Add: `<script>` in the preview runs when the preview security is `Disable` (allow all content and script execution), e.g. scripts of an HTML file setting CSS variables, they never ran because VS Code inserts the content with `DOMParser` ([#108](https://github.com/searKing/preview-vscode/issues/108)).
 - Fix: the preview of HTML and CSS files ends with the page, without the extra screen of space added for `editor.scrollBeyondLastLine` ([#108](https://github.com/searKing/preview-vscode/issues/108)).
+- Fix: reStructuredText is rendered by [rst-compiler](https://github.com/Trinovantes/rst-compiler) instead of being converted to Markdown, so links, directives (`note`, `code-block`, ...), literal blocks, tables, enumerated lists, images, footnotes and references are rendered. Directives and roles it doesn't know (e.g. Sphinx's `toctree`, `:ref:` to other documents) are shown as source or text, and the `rst2mdown` dependency is removed ([#111](https://github.com/searKing/preview-vscode/issues/111)).
 - Chore: remove the unused indented code injection grammar and the `js-yaml` dev dependency.
 
 ## [2.4.0] - 2026-10-13

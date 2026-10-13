@@ -8,7 +8,11 @@
     "experimentalDecorators": true,
     "types": [
       "node"
-    ]
+    ],
+    "paths": {
+      // its `exports` has no `types`, which `require` resolution needs
+      "rst-compiler": ["../../node_modules/rst-compiler/dist/index.d.ts"]
+    }
     // "lib": [
     // 	"es2018",
     // 	"DOM",

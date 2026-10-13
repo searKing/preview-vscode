@@ -54,6 +54,7 @@ Just press the same key when you want to go back to the original view.
 
 * Notes
   * The preview only runs scripts carrying its CSP nonce, so inline `<script>` in rendered Markdown never runs with the default security settings, use `src/preview` instead. With the preview security `Disable`, `src/preview/scripts.ts` runs them, as VS Code inserts the content with `DOMParser`, which never runs scripts.
+  * reStructuredText is rendered by `rst-compiler` (`src/renders/markdown-it-rst.ts`), directives, roles and references it can't render fall back to their source or text, a document it still can't compile is shown as the error and its source. `shiki` is aliased to `src/renders/util/shiki-stub.ts` in `webpack.config.js`, `rst-compiler` only reads its language list.
   * Every setting in `contributes.configuration` reloads the markdown-it plugins when it changes.
   * `@types/vscode` must not be newer than `engines.vscode`.
 

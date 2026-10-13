@@ -42,8 +42,11 @@ const makeConfig = (argv, { entry, out, target, library = 'commonjs', polyfills 
   },
   resolve: {
     extensions: ['.ts', '.js'],
-    // pug depends on fs, it is required lazily and falls back to showing the source in the browser.
-    alias: target === 'node' ? {} : { pug: false },
+    alias: {
+      shiki: path.resolve(__dirname, 'src/renders/util/shiki-stub.ts'),
+      // pug depends on fs, it is required lazily and falls back to showing the source in the browser.
+      ...(target === 'node' ? {} : { pug: false }),
+    },
   },
   experiments: {
     outputModule: library === 'module',

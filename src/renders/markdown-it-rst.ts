@@ -2,8 +2,7 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import type MarkdownIt = require('markdown-it');
-import { dedent } from 'ts-dedent';
-import { githubEngine } from './markdown-it-engine';
+import { RstToHtmlCompiler, type RstDirective, type RstGeneratorState, type RstNode } from 'rst-compiler';
 
 export namespace MarkdownItRst {
     export function extendMarkdownIt(md: MarkdownIt): MarkdownIt {
@@ -11,34 +10,66 @@ export namespace MarkdownItRst {
         if (!config.get<boolean>('rst.enabled', true)) {
             return md;
         }
-        var rst = require('rst2mdown');
-        return md.use(rst_render(rst), {});
+        return md.use(rst_render);
     }
 
-    const rst_render = (rst: any): MarkdownIt.PluginSimple => {
-        return (md: MarkdownIt): void => {
-            const temp = md.renderer.rules.fence?.bind(md.renderer.rules);
-            md.renderer.rules.fence = (tokens, idx, options, env, slf) => {
-                const token = tokens[idx];
-                const code = token.content.trim();
-                if (token.info === 'rst') {
-                    // https://github.com/mermaid-js/mermaid/blob/579f1f9dc156dd72326efdb3880a351a3dee96a1/packages/mermaid/src/mermaid.ts#L162
-                    // transforms the html to pure text
-                    let dedent_code = dedent(require('entity-decode')(code)) // removes indentation, required for Markdown parsing
-                        .trim()
-                        .replace(/<br\s*\/?>/gi, '<br/>');
-
-                    if (!!rst) {
-                        const markdown = rst(dedent_code);
-                        const html = githubEngine.render(markdown)?.html; // markdown-it doesn't support async, so don't use embeded MarkdownRenderer. 
-                        return `<div>${html}</div>`;
-                    }
-                }
-                if (!!temp) {
-                    return temp(tokens, idx, options, env, slf);
-                }
-                return `<pre>${code}</pre>`;// never be here
-            };
+    const rst_render = (md: MarkdownIt): void => {
+        const temp = md.renderer.rules.fence?.bind(md.renderer.rules);
+        md.renderer.rules.fence = (tokens, idx, options, env, slf) => {
+            const token = tokens[idx];
+            if (token.info === 'rst') {
+                return `<div>${render(md, token.content)}</div>`;
+            }
+            if (!!temp) {
+                return temp(tokens, idx, options, env, slf);
+            }
+            return `<pre>${token.content}</pre>`;// never be here
         };
     };
+
+    function render(md: MarkdownIt, rst: string): string {
+        try {
+            const html = compiler(md).compile(rst, {}, { disableWarnings: true, disableErrors: true });
+            return html.header + html.body;
+        } catch (e) {
+            const escape = md.utils.escapeHtml;
+            return `<pre class="preview-vscode-error">${escape(String(e?.message ?? e))}</pre><pre>${escape(rst)}</pre>`;
+        }
+    }
+
+    // rst-compiler throws on directives and roles it doesn't know, e.g. Sphinx's `toctree`, and on references
+    // it can't resolve, e.g. `:ref:` and `:doc:` to other documents. Show their source or text instead.
+    function compiler(md: MarkdownIt): RstToHtmlCompiler {
+        const escape = md.utils.escapeHtml;
+        const rst = new RstToHtmlCompiler();
+        withFallback(rst.directiveGenerators, (state, node: RstDirective) => {
+            const source = `.. ${node.directive}:: ${node.initContentText}`.trimEnd() + (node.rawBodyText ? `\n${node.rawBodyText}` : '');
+            state.writeLineVisitor(() => state.writeText(`<pre class="preview-vscode-rst-directive">${escape(source)}</pre>`));
+        });
+        withFallback(rst.interpretedTextGenerators, (state, node: RstNode) => state.writeText(`<code>${escape(node.textContent)}</code>`));
+        withFallback(rst.nodeGenerators, (state, node: RstNode) => state.writeText(escape(node.textContent)));
+        return rst;
+    }
+
+    type Generate = (state: RstGeneratorState, node: any) => void;
+
+    function withFallback<K>(generators: Map<K, { generate: Generate }>, fallback: Generate): void {
+        const get = generators.get.bind(generators);
+        generators.get = (key: K) => {
+            const generator = get(key);
+            return {
+                ...generator,
+                generate: (state: RstGeneratorState, node: RstNode) => {
+                    if (!generator) {
+                        return fallback(state, node);
+                    }
+                    try {
+                        generator.generate(state, node);
+                    } catch (e) {
+                        fallback(state, node);
+                    }
+                },
+            };
+        };
+    }
 }
