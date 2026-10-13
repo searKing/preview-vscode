@@ -5,7 +5,7 @@ import type MarkdownIt from 'markdown-it';
 
 function extendMarkdownIt(md: MarkdownIt): MarkdownIt {
     const config = vscode.workspace.getConfiguration('markdown', null);
-    if (config.get<boolean>('indented-code.enabled', true)) {
+    if (config.get<boolean>('indented-code.enabled', false)) {
         return md;
     }
     return md.use(indented_code_render);
