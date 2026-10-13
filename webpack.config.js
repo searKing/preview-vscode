@@ -56,6 +56,8 @@ const makeConfig = (argv, { entry, out, target, library = 'commonjs', polyfills 
     extensions: ['.ts', '.js'],
     alias: {
       shiki: path.resolve(__dirname, 'src/renders/util/shiki-stub.ts'),
+      // its browser build decodes with `document`, which the web extension host (a worker) doesn't have.
+      'entity-decode$': path.resolve(__dirname, 'node_modules/entity-decode/node.js'),
       // pug depends on fs, it is required lazily and falls back to showing the source in the browser.
       ...(target === 'node' ? {} : { pug: false }),
     },
