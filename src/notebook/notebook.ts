@@ -2,9 +2,8 @@
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-import type MarkdownIt = require('markdown-it');
+import type MarkdownIt from 'markdown-it';
 import type { RendererContext } from 'vscode-notebook-renderer';
-import { renderMermaid } from '../preview/mermaid';
 
 interface MarkdownItRenderer {
     extendMarkdownIt(fn: (md: MarkdownIt) => void): void;
@@ -115,7 +114,8 @@ function mermaidPlugin(md: MarkdownIt): void {
             const outputItemId: string | undefined = env?.outputItem?.id;
             queueMicrotask(() => {
                 const blocks = ids.map(id => findMermaidBlock(id, outputItemId)).filter((block): block is HTMLElement => !!block);
-                renderMermaid(blocks, mermaidTheme());
+                // mermaid is loaded on demand, most cells have no diagrams.
+                import('../preview/mermaid').then(({ renderMermaid }) => renderMermaid(blocks, mermaidTheme()));
             });
         }
         return html;

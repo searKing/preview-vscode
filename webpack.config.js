@@ -107,7 +107,7 @@ const makeConfig = (argv, { entry, out, target, library = 'commonjs', polyfills 
 
 /** @param {unknown} _env @param {{ mode?: 'development' | 'production' }} argv */
 module.exports = (_env, argv) => [
-  makeConfig(argv, { entry: './src/notebook/notebook.ts', out: './dist/notebook/notebook.js', target: 'web', library: 'module' }),
+  makeConfig(argv, { entry: './src/notebook/notebook.ts', out: './dist/notebook/notebook.js', target: 'web', library: 'module', asyncChunks: true }),
   // mermaid loads its diagrams lazily, chunks get the preview's CSP nonce, see src/preview/nonce.ts.
   makeConfig(argv, { entry: './src/preview/index.ts', out: './dist/preview/index.js', target: 'web', library: false, asyncChunks: true }),
   makeConfig(argv, { entry: './src/extension/extension.ts', out: './dist/extension/node/extension.js', target: 'node' }),

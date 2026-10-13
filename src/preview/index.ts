@@ -4,12 +4,12 @@
 import './nonce';
 import './scripts';
 import '@github/clipboard-copy-element';
-import { renderMermaid } from './mermaid';
 
 function renderMermaidBlocks() {
     const elements = Array.from(document.querySelectorAll<HTMLElement>('pre.preview-vscode-mermaid:not([data-processed])'));
     if (elements.length > 0) {
-        renderMermaid(elements, elements[0].dataset.theme || 'default');
+        // mermaid is loaded on demand, most previews have no diagrams.
+        import('./mermaid').then(({ renderMermaid }) => renderMermaid(elements, elements[0].dataset.theme || 'default'));
     }
 }
 
@@ -27,9 +27,16 @@ document.addEventListener('clipboard-copy', (event) => {
     }, 1000);
 });
 
-window.addEventListener('vscode.markdown.updateContent', renderMermaidBlocks);
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', renderMermaidBlocks);
-} else {
-    renderMermaidBlocks();
-}
+// The preview appends its initial content some time after DOMContentLoaded (once styles are loaded),
+// without `vscode.markdown.updateContent`, and this async script may run before or after that.
+let scheduled = false;
+new MutationObserver(() => {
+    if (!scheduled) {
+        scheduled = true;
+        queueMicrotask(() => {
+            scheduled = false;
+            renderMermaidBlocks();
+        });
+    }
+}).observe(document.documentElement, { childList: true, subtree: true });
+renderMermaidBlocks();

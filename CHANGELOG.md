@@ -6,6 +6,8 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+- Perf: mermaid is loaded on demand in the preview and notebook Markdown cells, only when there are diagrams. The preview script shrinks from 740 KB to 7 KB, the notebook renderer from 6.3 MB to 1.2 MB.
+- Fix: mermaid diagrams are rendered when the preview appends its content after the preview script runs, e.g. when reopening or refreshing the preview, they could stay as source.
 - Chore: publish to [Open VSX](https://open-vsx.org/) too (`npm run ovsx:publish`), for VSCodium, Cursor, Gitpod, ...; add the `license` and `keywords` of the extension, and `@vscode/vsce` and `ovsx` as dev dependencies.
 - Test: `npm run test:unit` renders the samples in `test-workspace` like the preview and tokenizes the Markdown samples with the grammars, compared with snapshots, it runs in CI.
 - Chore: GitHub Actions lint and package every push and pull request, and publish a pushed `v*` tag to the VS Code Marketplace and Open VSX with a GitHub release.
