@@ -11,6 +11,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - Add: the message asking to reload the window after the fenced code highlighting changed is translated to Chinese, runtime strings are localized with `vscode.l10n` (`l10n/bundle.l10n.zh-cn.json`).
 - Fix: the preview works in VS Code for the Web (vscode.dev, github.dev), the plugins failed to load in the web extension host, which has no `document` to decode HTML entities with.
 - Chore: lint with the recommended rules of ESLint and typescript-eslint, `require()` and `namespace` are replaced by ES imports and modules, `any` by types, with no change to the rendering.
+- Chore: remove the scaffolding of the extension generator, `vsc-extension-quickstart.md` and the sample integration test with its `@vscode/test-cli`, `@vscode/test-electron` and `@types/mocha` dev dependencies, `npm test` runs `npm run test:unit`.
 - Chore: publish to [Open VSX](https://open-vsx.org/) too (`npm run ovsx:publish`), for VSCodium, Cursor, Gitpod, ...; add the `license` and `keywords` of the extension, and `@vscode/vsce` and `ovsx` as dev dependencies.
 - Test: `npm run test:unit` renders the samples in `test-workspace` like the preview and tokenizes the Markdown samples with the grammars, compared with snapshots, it runs in CI.
 - Chore: GitHub Actions lint and package every push and pull request, and publish a pushed `v*` tag to the VS Code Marketplace and Open VSX with a GitHub release.

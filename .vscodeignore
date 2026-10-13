@@ -1,6 +1,5 @@
 .vscode/**
 .github/**
-.vscode-test/**
 .idea/**
 out/**
 node_modules/**
@@ -13,11 +12,9 @@ test-workspace/**
 webpack.config.js
 eslint.config.mjs
 tsfmt.json
-vsc-extension-quickstart.md
 **/tsconfig*.json
 **/*.map
 **/*.ts
-**/.vscode-test.*
 *.vsix
 scripts/**
 media/demonstration.gif

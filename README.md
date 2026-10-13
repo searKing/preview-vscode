@@ -42,7 +42,7 @@ Just press the same key when you want to go back to the original view.
     npm install
     npm run watch   # or `npm run compile` once, then press F5 in VS Code to launch the Extension Development Host
     npm run lint
-    npm run test:unit                    # builds, then compares the samples in test-workspace with test/snapshots
+    npm test                             # npm run test:unit, builds, then compares the samples in test-workspace with test/snapshots
     UPDATE_SNAPSHOTS=1 npm run test:unit # rewrites the snapshots after an intended change, review them in git diff
     ```
 

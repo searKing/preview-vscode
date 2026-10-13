@@ -18,20 +18,6 @@
 			"debugWebviews": true,
 			"trace": true,
 			"preLaunchTask": "${defaultBuildTask}"
-		},
-        {
-            "name": "Run Extension Tests",
-            "type": "extensionHost",
-            "request": "launch",
-            "runtimeExecutable": "${execPath}",
-            "args": [
-                "--extensionDevelopmentPath=${workspaceFolder}",
-                "--extensionTestsPath=${workspaceFolder}/dist/test/suite/index"
-            ],
-            "outFiles": [
-                "${workspaceFolder}/dist/test/**/*.js"
-            ],
-			"preLaunchTask": "${defaultBuildTask}"
-        }
+		}
 	]
 }

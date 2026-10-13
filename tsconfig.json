@@ -8,9 +8,6 @@
 		"path": "./src/preview"
 	  },
 	  {
-		"path": "./src/test"
-	  },
-	  {
 		"path": "./src/extension"
 	  }
 	]
