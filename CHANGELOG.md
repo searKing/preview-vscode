@@ -4,6 +4,10 @@ All notable changes to the "preview-vscode" extension will be documented in this
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [Unreleased]
+
+- Chore: publish to [Open VSX](https://open-vsx.org/) too (`npm run ovsx:publish`), for VSCodium, Cursor, Gitpod, ...; add the `license` and `keywords` of the extension, and `@vscode/vsce` and `ovsx` as dev dependencies.
+
 ## [2.4.1] - 2026-10-13
 
 - Fix: the Markdown grammar is regenerated from the VS Code 1.141 builtin grammar by `npm run update-syntaxes`, so fenced `jsonl`, `restructuredtext`, `abap`, `yang` blocks are highlighted and strikethrough follows upstream, while indented lines are still highlighted as Markdown ([#96](https://github.com/searKing/preview-vscode/issues/96)).

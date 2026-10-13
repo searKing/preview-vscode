@@ -60,11 +60,12 @@ Just press the same key when you want to go back to the original view.
   * Every setting in `contributes.configuration` reloads the markdown-it plugins when it changes.
   * `@types/vscode` must not be newer than `engines.vscode`.
 
-* Package and publish, see [publishing-extension](https://code.visualstudio.com/api/working-with-extensions/publishing-extension)
+* Package and publish to the [VS Code Marketplace](https://code.visualstudio.com/api/working-with-extensions/publishing-extension) and [Open VSX](https://github.com/eclipse/openvsx/wiki/Publishing-Extensions) (used by VSCodium, Cursor, Gitpod, ...)
 
     ```bash
     npm run dist           # pre-release package, `npm run dist:stable` for stable
-    npm run vscode:publish # pre-release publish, `npm run vscode:publish:stable` for stable
+    npm run vscode:publish # pre-release publish, `npm run vscode:publish:stable` for stable, login by `npx vsce login searKing`
+    npm run ovsx:publish   # pre-release publish, `npm run ovsx:publish:stable` for stable, login by `npx ovsx login searKing` or pass `-- -p <token>`
     ```
 
 ## Thanks to

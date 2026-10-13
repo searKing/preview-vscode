@@ -6,6 +6,7 @@
   "icon": "media/icon.png",
   "publisher": "searKing",
   "author": "Haixin Chen",
+  "license": "MIT",
   "readme": "README.md",
   "repository": {
     "type": "git",
@@ -23,6 +24,18 @@
   "categories": [
     "Other",
     "Programming Languages"
+  ],
+  "keywords": [
+    "markdown",
+    "preview",
+    "html",
+    "css",
+    "mermaid",
+    "restructuredtext",
+    "rst",
+    "pug",
+    "jade",
+    "markdown-it"
   ],
   "capabilities": {
     "virtualWorkspaces": true,
@@ -488,6 +501,8 @@
     "vscode:publish": "vsce publish --pre-release",
     "vscode:publish:stable": "vsce publish",
     "dist:stable": "vsce package",
+    "ovsx:publish": "ovsx publish --pre-release",
+    "ovsx:publish:stable": "ovsx publish",
     "dist": "vsce package --pre-release",
     "vscode:prepublish": "npm run package",
     "compile": "webpack --mode development --stats-error-details",
@@ -511,6 +526,7 @@
     "@typescript-eslint/parser": "^8.71.1",
     "@vscode/test-cli": "^0.0.15",
     "@vscode/test-electron": "^3.1.0",
+    "@vscode/vsce": "^4.0.0",
     "entity-decode": "^3.0.0",
     "eslint": "^10.12.0",
     "fork-ts-checker-webpack-plugin": "^9.1.0",
@@ -534,6 +550,7 @@
     "markdown-it-sup": "^2.0.0",
     "mermaid": "^12.1.0",
     "node-polyfill-webpack-plugin": "^4.1.0",
+    "ovsx": "^1.2.0",
     "pug": "^3.0.4",
     "rst-compiler": "^0.5.9",
     "ts-dedent": "^2.3.0",
