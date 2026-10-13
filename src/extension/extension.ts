@@ -1,7 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
-import type MarkdownIt = require('markdown-it');
+import type MarkdownIt from 'markdown-it';
 
 import { extendMarkdownIt } from '../renders/markdown-it-engine';
 import { MarkdownPreviewManager } from '../renders/previewManager';

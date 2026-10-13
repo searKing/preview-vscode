@@ -17,16 +17,16 @@ export class TextEditorHelper {
         }
 
         // 获取当前页面文本
-        let text = doc.getText();
+        const text = doc.getText();
 
         regex = (regex.global) ? regex : new RegExp(regex.source, "g" + (regex.ignoreCase ? "i" : "") + (regex.multiline ? "m" : ""));
         startPos = startPos || 0;
         // [start, end)
-        var stringToWorkWith = text.substring(startPos);
-        var closestPosOfMarks = -1;
-        var closestMarkOfMarks = "";
-        var result: RegExpExecArray | null = null;
-        if ((result = regex.exec(stringToWorkWith)) !== null) {
+        const stringToWorkWith = text.substring(startPos);
+        let closestPosOfMarks = -1;
+        let closestMarkOfMarks = "";
+        const result = regex.exec(stringToWorkWith);
+        if (result !== null) {
             closestMarkOfMarks = result[0];
             closestPosOfMarks = result.index + startPos;
         }
@@ -38,7 +38,7 @@ export class TextEditorHelper {
             return TextEditorHelper.NoneTextUtilReturnTypeValue;
         }
         // 获取当前页面文本
-        let text = doc.getText();
+        const text = doc.getText();
         regex = (regex.global) ? regex : new RegExp(regex.source, "g" + (regex.ignoreCase ? "i" : "") + (regex.multiline ? "m" : ""));
         if (typeof (startPos) === "undefined") {
             startPos = text.length;
@@ -47,10 +47,10 @@ export class TextEditorHelper {
         }
 
         // [start, end)
-        var stringToWorkWith = text.substring(0, startPos + 1);
-        var closestPosOfMarks = -1;
-        var result: RegExpExecArray | null = null;
-        var closestMarkOfMarks = "";
+        const stringToWorkWith = text.substring(0, startPos + 1);
+        let closestPosOfMarks = -1;
+        let result: RegExpExecArray | null;
+        let closestMarkOfMarks = "";
         while ((result = regex.exec(stringToWorkWith)) !== null) {
             closestPosOfMarks = result.index;
             closestMarkOfMarks = result[0];

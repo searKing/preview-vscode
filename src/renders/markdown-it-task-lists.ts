@@ -1,4 +1,5 @@
-import type MarkdownIt = require('markdown-it');
+import type MarkdownIt from 'markdown-it';
+import type { Token } from 'markdown-it';
 
 // GitHub-style task lists, replaces markdown-it-task-lists: its labelAfter mode copies the raw
 // Markdown into the label, so inline syntax after the checkbox (footnotes, links, ...) is duplicated.
@@ -60,7 +61,7 @@ export default function taskLists(md: MarkdownIt, options: TaskListsOptions = {}
     });
 }
 
-function addClass(token: MarkdownIt.Token, name: string): void {
+function addClass(token: Token, name: string): void {
     const classes = (token.attrGet('class') ?? '').split(/\s+/).filter(Boolean);
     if (!classes.includes(name)) {
         token.attrSet('class', [...classes, name].join(' '));
@@ -69,7 +70,7 @@ function addClass(token: MarkdownIt.Token, name: string): void {
 
 // The list item whose first block holds the inline token at `index`: a paragraph, or the first term
 // of a definition list (`1. [x] term` followed by an indented `: definition`).
-function listItemIndex(tokens: MarkdownIt.Token[], index: number): number {
+function listItemIndex(tokens: Token[], index: number): number {
     if (tokens[index - 1].type === 'paragraph_open' && tokens[index - 2].type === 'list_item_open') {
         return index - 2;
     }
@@ -79,7 +80,7 @@ function listItemIndex(tokens: MarkdownIt.Token[], index: number): number {
     return -1;
 }
 
-function parentIndex(tokens: MarkdownIt.Token[], index: number): number {
+function parentIndex(tokens: Token[], index: number): number {
     const level = tokens[index].level - 1;
     for (let i = index - 1; i >= 0; i--) {
         if (tokens[i].level === level) {

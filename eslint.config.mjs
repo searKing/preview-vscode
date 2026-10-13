@@ -1,20 +1,13 @@
-import tsParser from "@typescript-eslint/parser";
-import tsPlugin from "@typescript-eslint/eslint-plugin";
+import js from "@eslint/js";
+import tseslint from "typescript-eslint";
 
-export default [
+export default tseslint.config(
     {
         ignores: ["out", "dist", "**/*.d.ts"],
     },
     {
         files: ["src/**/*.ts"],
-        languageOptions: {
-            parser: tsParser,
-            ecmaVersion: 6,
-            sourceType: "module",
-        },
-        plugins: {
-            "@typescript-eslint": tsPlugin,
-        },
+        extends: [js.configs.recommended, ...tseslint.configs.recommended],
         rules: {
             "@typescript-eslint/naming-convention": [
                 "warn",
@@ -29,4 +22,4 @@ export default [
             semi: "warn",
         },
     },
-];
+);

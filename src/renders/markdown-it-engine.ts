@@ -2,9 +2,11 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
-import type MarkdownIt = require('markdown-it');
+import MarkdownIt from 'markdown-it';
+import frontMatterPlugin from 'markdown-it-front-matter';
+import hljs from 'highlight.js';
 
-import { join } from './markdown-it';
+import { ExtendOptions, join } from './markdown-it';
 import {
     MarkdownItAbbr, MarkdownItAnchor, MarkdownItAttrs, MarkdownItBracketedSpans, MarkdownItCjkBreaks, MarkdownItDeflist,
     MarkdownItEmoji, MarkdownItExpandTabs, MarkdownItFootnote, MarkdownItHighlightjs, MarkdownItIns, MarkdownItLazyHeaders,
@@ -25,7 +27,7 @@ import { MarkdownItIndentedCode } from './markdown-it-indented-code';
 import { MarkdownItFileUri } from './markdown-it-file-uri';
 import { MarkdownItCurrentDocument } from './markdown-it-current-document';
 
-export function extendMarkdownIt<T = any>(md: MarkdownIt, options?: T): MarkdownIt {
+export function extendMarkdownIt(md: MarkdownIt, options?: ExtendOptions): MarkdownIt {
     return join(
         MarkdownItCurrentDocument.extendMarkdownIt, // should be the first one
         MarkdownItIndentedCode.extendMarkdownIt,
@@ -88,7 +90,11 @@ const pluginSourceMap: MarkdownIt.PluginSimple = (md: MarkdownIt): void => {
  */
 type MarkdownItConfig = MarkdownIt.Options;
 
-type RenderEnv = any;
+interface RenderEnv {
+    containingImages?: Set<string>;
+    currentDocument?: vscode.Uri;
+    resourceProvider?: WebviewResourceProvider;
+}
 
 export interface RenderOutput {
     html: string;
@@ -114,23 +120,21 @@ class MarkdownItEngine {
     private _getEngine(config: MarkdownItConfig): MarkdownIt {
         if (!this._md) {
             this._md = ((): MarkdownIt => {
-                const markdownIt = require('markdown-it');
-                let md: MarkdownIt = markdownIt(getMarkdownOptions(() => md));
+                const md: MarkdownIt = MarkdownIt(getMarkdownOptions(() => md));
                 md.linkify.set({ fuzzyLink: false });
                 extendMarkdownIt(md);
 
-                const frontMatterPlugin = require('markdown-it-front-matter');
                 // Extract rules from front matter plugin and apply at a lower precedence
-                let fontMatterRule: any;
+                let fontMatterRule: MarkdownIt.ParserBlock.RuleBlock | undefined;
                 frontMatterPlugin({
                     block: {
                         ruler: {
-                            before: (_id: any, _id2: any, rule: any) => { fontMatterRule = rule; }
+                            before: (_id: string, _id2: string, rule: MarkdownIt.ParserBlock.RuleBlock) => { fontMatterRule = rule; }
                         }
                     }
-                }, () => { /* noop */ });
+                } as unknown as MarkdownIt, () => { /* noop */ });
 
-                md.block.ruler.before('fence', 'front_matter', fontMatterRule, {
+                md.block.ruler.before('fence', 'front_matter', fontMatterRule!, {
                     alt: ['paragraph', 'reference', 'blockquote', 'list']
                 });
 				this._addImageRenderer(md);
@@ -169,8 +173,9 @@ class MarkdownItEngine {
 
         const tokens = this._tokenizeString(input, engine);
 
+        const containingImages = new Set<string>();
         const env: RenderEnv = {
-            containingImages: new Set<string>(),
+            containingImages,
             resourceProvider,
         };
 
@@ -181,7 +186,7 @@ class MarkdownItEngine {
 
         return {
             html,
-            containingImages: env.containingImages
+            containingImages
         };
     }
 
@@ -241,7 +246,7 @@ class MarkdownItEngine {
                     return normalizeLink(vscode.Uri.parse(link).with({ scheme: vscode.env.uriScheme }).toString());
                 }
 
-            } catch (e) {
+            } catch {
                 // noop
             }
             return normalizeLink(link);
@@ -313,7 +318,7 @@ class MarkdownItEngine {
             }
 
             // If original link doesn't look like a url with a scheme, assume it must be a link to a file in workspace
-            if (!/^[a-z\-]+:/i.test(href)) {
+            if (!/^[a-z-]+:/i.test(href)) {
                 // Use a fake scheme for parsing
                 let uri = vscode.Uri.parse('markdown-link:' + href);
 
@@ -346,7 +351,6 @@ class MarkdownItEngine {
 }
 
 function getMarkdownOptions(md: () => MarkdownIt): MarkdownIt.Options {
-    const hljs = require('highlight.js').default;
     return {
         html: true,
         highlight: (str: string, lang?: string) => {
@@ -358,7 +362,9 @@ function getMarkdownOptions(md: () => MarkdownIt): MarkdownIt.Options {
                         ignoreIllegals: true,
                     }).value;
                 }
-                catch (error) { }
+                catch {
+                    // falls back to escaping
+                }
             }
             return md().utils.escapeHtml(str);
         }

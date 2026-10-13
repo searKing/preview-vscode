@@ -1,38 +1,39 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
-import type MarkdownIt = require('markdown-it');
+import type MarkdownIt from 'markdown-it';
+import entityDecode from 'entity-decode';
 import { dedent } from 'ts-dedent';
 import { githubEngine } from './markdown-it-engine';
 
-export namespace MarkdownItMarkdown {
-    export function extendMarkdownIt(md: MarkdownIt): MarkdownIt {
-        const config = vscode.workspace.getConfiguration('markdown',null);
-        if (!config.get<boolean>('markdown.enabled', true)) {
-            return md;
-        }
-        return md.use(markdown_render, {});
+function extendMarkdownIt(md: MarkdownIt): MarkdownIt {
+    const config = vscode.workspace.getConfiguration('markdown',null);
+    if (!config.get<boolean>('markdown.enabled', true)) {
+        return md;
     }
-
-    const markdown_render = (md: MarkdownIt): void => {
-        const temp = md.renderer.rules.fence?.bind(md.renderer.rules);
-        md.renderer.rules.fence = (tokens, idx, options, env, slf) => {
-            const token = tokens[idx];
-            const code = token.content.trim();
-            if (token.info === 'md') {
-                // https://github.com/mermaid-js/mermaid/blob/579f1f9dc156dd72326efdb3880a351a3dee96a1/packages/mermaid/src/mermaid.ts#L162
-                // transforms the html to pure text
-                let dedent_code = dedent(require('entity-decode')(code)) // removes indentation, required for Markdown parsing
-                    .trim()
-                    .replace(/<br\s*\/?>/gi, '<br/>');
-
-                const html = githubEngine.render(dedent_code)?.html; // markdown-it doesn't support async, so don't use embeded MarkdownRenderer. 
-                return `<div>${html}</div>`;
-            }
-            if (!!temp) {
-                return temp(tokens, idx, options, env, slf);
-            }
-            return `<pre>${code}</pre>`;// never be here
-        };
-    };
+    return md.use(markdown_render, {});
 }
+
+const markdown_render = (md: MarkdownIt): void => {
+    const temp = md.renderer.rules.fence?.bind(md.renderer.rules);
+    md.renderer.rules.fence = (tokens, idx, options, env, slf) => {
+        const token = tokens[idx];
+        const code = token.content.trim();
+        if (token.info === 'md') {
+            // https://github.com/mermaid-js/mermaid/blob/579f1f9dc156dd72326efdb3880a351a3dee96a1/packages/mermaid/src/mermaid.ts#L162
+            // transforms the html to pure text
+            const dedent_code = dedent(entityDecode(code)) // removes indentation, required for Markdown parsing
+                .trim()
+                .replace(/<br\s*\/?>/gi, '<br/>');
+
+            const html = githubEngine.render(dedent_code)?.html; // markdown-it doesn't support async, so don't use embeded MarkdownRenderer. 
+            return `<div>${html}</div>`;
+        }
+        if (temp) {
+            return temp(tokens, idx, options, env, slf);
+        }
+        return `<pre>${code}</pre>`;// never be here
+    };
+};
+
+export const MarkdownItMarkdown = { extendMarkdownIt };

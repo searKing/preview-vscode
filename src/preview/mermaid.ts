@@ -1,4 +1,4 @@
-import mermaid from 'mermaid';
+import mermaid, { type MermaidConfig } from 'mermaid';
 
 // mermaid renders every `.mermaid` element on window load by itself, which races with us.
 mermaid.startOnLoad = false;
@@ -8,7 +8,7 @@ let nextId = 0;
 // Renders `<pre class="preview-vscode-mermaid">` blocks whose text is the (HTML escaped) diagram source.
 export async function renderMermaid(elements: Iterable<HTMLElement>, theme: string): Promise<void> {
     // without suppressErrorRendering, a syntax error is "rendered" as an error diagram instead of thrown.
-    mermaid.initialize({ startOnLoad: false, suppressErrorRendering: true, theme: theme as any });
+    mermaid.initialize({ startOnLoad: false, suppressErrorRendering: true, theme: theme as MermaidConfig['theme'] });
     for (const element of elements) {
         if (element.dataset.processed) {
             continue;

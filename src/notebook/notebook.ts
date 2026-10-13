@@ -3,7 +3,23 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import type MarkdownIt from 'markdown-it';
+import abbr from 'markdown-it-abbr';
+import anchor from 'markdown-it-anchor';
+import attrs from 'markdown-it-attrs';
+import bracketedSpans from 'markdown-it-bracketed-spans';
+import cjkBreaks from 'markdown-it-cjk-breaks';
+import deflist from 'markdown-it-deflist';
+import { full as emoji } from 'markdown-it-emoji';
+import expandTabs from 'markdown-it-expand-tabs';
+import footnote from 'markdown-it-footnote';
+import highlightjs from 'markdown-it-highlightjs';
+import ins from 'markdown-it-ins';
+import lazyHeaders from 'markdown-it-lazy-headers';
+import mark from 'markdown-it-mark';
+import sub from 'markdown-it-sub';
+import sup from 'markdown-it-sup';
 import type { RendererContext } from 'vscode-notebook-renderer';
+import taskLists from '../renders/markdown-it-task-lists';
 
 interface MarkdownItRenderer {
     extendMarkdownIt(fn: (md: MarkdownIt) => void): void;
@@ -44,22 +60,23 @@ export async function activate(ctx: RendererContext<void>) {
     document.head.appendChild(styleTemplate);
 
     markdownItRenderer.extendMarkdownIt((md: MarkdownIt) => {
-        return md.use(require("markdown-it-abbr"), {}).
-            use(require("markdown-it-anchor").default, {}).
-            use(require("markdown-it-bracketed-spans"), {}).
-            use(require("markdown-it-highlightjs"), {}).
-            use(require("markdown-it-attrs"), {}).
-            use(require("markdown-it-cjk-breaks"), {}).
-            use(require("markdown-it-deflist"), {}).
-            use(require('markdown-it-emoji').full, { shortcuts: {} }).
-            use(require("markdown-it-expand-tabs"), { tabWidth: 2 }).
-            use(require("markdown-it-footnote"), {}).
-            use(require("markdown-it-ins"), {}).
-            use(require("markdown-it-lazy-headers"), {}).
-            use(require("markdown-it-mark"), {}).
-            use(require("markdown-it-sub"), {}).
-            use(require("markdown-it-sup"), {}).
-            use(require('../renders/markdown-it-task-lists').default, {
+        return md.use(abbr, {}).
+            use(anchor, {}).
+            use(bracketedSpans, {}).
+            use(highlightjs, {}).
+            // its types are written against the CommonJS declarations of markdown-it, which don't match the ESM ones.
+            use(attrs as unknown as Parameters<MarkdownIt['use']>[0], {}).
+            use(cjkBreaks, {}).
+            use(deflist, {}).
+            use(emoji, { shortcuts: {} }).
+            use(expandTabs, { tabWidth: 2 }).
+            use(footnote, {}).
+            use(ins, {}).
+            use(lazyHeaders, {}).
+            use(mark, {}).
+            use(sub, {}).
+            use(sup, {}).
+            use(taskLists, {
                 enabled: true, // render checkboxes
                 label: true, // wrap the rendered list items in a <label> element for UX purposes
                 labelAfter: false // add the <label> after the checkbox
@@ -107,7 +124,7 @@ function mermaidPlugin(md: MarkdownIt): void {
     // The markdown-it renderer assigns the returned html to the cell synchronously,
     // so the blocks exist in the DOM by the time the microtask runs.
     const render = md.render;
-    md.render = function (src: string, env?: any): string {
+    md.render = function (src: string, env?: { outputItem?: { id?: string } }): string {
         const html = render.call(this, src, env);
         const ids = pending.splice(0);
         if (ids.length > 0) {

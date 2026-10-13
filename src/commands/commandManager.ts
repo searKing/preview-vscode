@@ -9,7 +9,7 @@ import * as vscode from 'vscode';
 export interface Command {
     readonly id: string;
 
-    execute(...args: any[]): void;
+    execute(...args: unknown[]): void;
 }
 
 export class CommandManager {
@@ -29,7 +29,7 @@ export class CommandManager {
         });
     }
 
-    private _registerCommand(id: string, impl: (...args: any[]) => void, thisArg?: any) {
+    private _registerCommand(id: string, impl: (...args: unknown[]) => void, thisArg?: unknown) {
         if (this._commands.has(id)) {
             return;
         }

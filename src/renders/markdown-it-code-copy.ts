@@ -1,13 +1,13 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
-import type MarkdownIt = require('markdown-it');
+import type MarkdownIt from 'markdown-it';
+import entityDecode from 'entity-decode';
 import { dedent } from 'ts-dedent';
 
 
-export namespace MarkdownItCodeCopy {
-    // <clipboard-copy> is defined by the preview script, see src/preview/index.ts.
-    const get_clipboardjs_header = (): string => `<style>
+// <clipboard-copy> is defined by the preview script, see src/preview/index.ts.
+const get_clipboardjs_header = (): string => `<style>
     .ClipboardButton {
         position: relative;
     }
@@ -71,44 +71,44 @@ export namespace MarkdownItCodeCopy {
     }
 </style>`;
 
-    export function extendMarkdownIt(md: MarkdownIt): MarkdownIt {
-        const config = vscode.workspace.getConfiguration('markdown', null);
-        if (!config.get<boolean>('code-copy.enabled', true)) {
-            return md;
+function extendMarkdownIt(md: MarkdownIt): MarkdownIt {
+    const config = vscode.workspace.getConfiguration('markdown', null);
+    if (!config.get<boolean>('code-copy.enabled', true)) {
+        return md;
+    }
+    // return md.use(require('markdown-it-code-copy'), {});
+    return md.use(codecopy_render);
+}
+const escapeHtml = (unsafe: string) => {
+    return unsafe.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#039;');
+};
+
+const codecopy_render = (md: MarkdownIt): void => {
+    // https://github.com/mermaid-js/mermaid/blob/579f1f9dc156dd72326efdb3880a351a3dee96a1/packages/mermaid/src/mermaid.ts#L162
+    // transforms the html to pure text
+    const dedent_header = dedent(entityDecode(get_clipboardjs_header())) // removes indentation, required for Markdown parsing
+        .trim()
+        .replace(/<br\s*\/?>/gi, '<br/>');
+    md.renderer.rules.code_block = copy_render(md.renderer.rules?.code_block, dedent_header);
+    md.renderer.rules.fence = copy_render(md.renderer.rules?.fence, dedent_header);
+    // md.renderer.rules.image = copy_render(md.renderer.rules?.image);
+    // md.renderer.rules.html_block = copy_render(md.renderer.rules?.html_block, dedent_header);
+};
+const copy_render = (rule: MarkdownIt.Renderer.RenderRule | undefined, dedent_header: string): MarkdownIt.Renderer.RenderRule => {
+    return (tokens, idx, options, env, self) => {
+        const token = tokens[idx];
+        if (!rule) {
+            return `<pre>${token.content}</pre>`;
         }
-        // return md.use(require('markdown-it-code-copy'), {});
-        return md.use(codecopy_render, {});
-    };
-    const escapeHtml = (unsafe: string) => {
-        return unsafe.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;').replaceAll("'", '&#039;');
-    };
+        let code = token.content;
+        if (token.type === 'image') {
+            code = token.attrGet('src') || token.attrGet('data-src') || token.content;
+        }
+        const quote_escaped_code = escapeHtml(code.trim()); // escape html, required for HTML parsing
 
-    const codecopy_render = (md: MarkdownIt, _o: any): void => {
-        // https://github.com/mermaid-js/mermaid/blob/579f1f9dc156dd72326efdb3880a351a3dee96a1/packages/mermaid/src/mermaid.ts#L162
-        // transforms the html to pure text
-        let dedent_header = dedent(require('entity-decode')(get_clipboardjs_header())) // removes indentation, required for Markdown parsing
-            .trim()
-            .replace(/<br\s*\/?>/gi, '<br/>');
-        md.renderer.rules.code_block = copy_render(md.renderer.rules?.code_block, dedent_header);
-        md.renderer.rules.fence = copy_render(md.renderer.rules?.fence, dedent_header);
-        // md.renderer.rules.image = copy_render(md.renderer.rules?.image);
-        // md.renderer.rules.html_block = copy_render(md.renderer.rules?.html_block, dedent_header);
-    };
-    const copy_render = (rule: MarkdownIt.Renderer.RenderRule | undefined, dedent_header: string): MarkdownIt.Renderer.RenderRule => {
-        return (tokens, idx, options, env, self) => {
-            const token = tokens[idx];
-            if (!rule) {
-                return `<pre>${token.content}</pre>`;
-            }
-            let code = token.content;
-            if (token.type === 'image') {
-                code = token.attrGet('src') || token.attrGet('data-src') || token.content;
-            }
-            let quote_escaped_code = escapeHtml(code.trim()); // escape html, required for HTML parsing
-
-            const header = !env.clipboardjs_header_added ? dedent_header : "";
-            env.clipboardjs_header_added = true;
-            return `${header}<div class="snippet-clipboard-content notranslate position-relative overflow-auto">
+        const header = !env.clipboardjs_header_added ? dedent_header : "";
+        env.clipboardjs_header_added = true;
+        return `${header}<div class="snippet-clipboard-content notranslate position-relative overflow-auto">
               ${rule(tokens, idx, options, env, self)}
               <div class="zeroclipboard-container position-absolute right-0 top-0">
                 <clipboard-copy aria-label="Copy" class="ClipboardButton clipboard-copy m-2 p-0 tooltipped-no-delay"
@@ -131,6 +131,7 @@ export namespace MarkdownItCodeCopy {
                 </clipboard-copy>
               </div>
             </div>`;
-        };
     };
-}
+};
+
+export const MarkdownItCodeCopy = { extendMarkdownIt };

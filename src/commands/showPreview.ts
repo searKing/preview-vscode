@@ -13,7 +13,7 @@ async function showPreview(
     telemetryReporter: TelemetryReporter | undefined,
     uri: vscode.Uri | undefined,
     previewSettings: ShowPreviewSettings,
-): Promise<any> {
+): Promise<unknown> {
     let resource = uri;
     if (!(resource instanceof vscode.Uri)) {
         if (vscode.window.activeTextEditor) {
@@ -91,7 +91,7 @@ async function inSphinxProject(uri: vscode.Uri): Promise<boolean> {
         try {
             await vscode.workspace.fs.stat(vscode.Uri.joinPath(dir, 'conf.py'));
             return true;
-        } catch (e) {
+        } catch {
             // no conf.py here
         }
         const parent = vscode.Uri.joinPath(dir, '..');

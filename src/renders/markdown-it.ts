@@ -1,6 +1,12 @@
-import type MarkdownIt = require('markdown-it');
+import type MarkdownIt from 'markdown-it';
+import type { MarkdownPreviewManager } from './previewManager';
 
-export type ExtendMarkdownIt<T = any> = (md: MarkdownIt, options?: T) => MarkdownIt;
+export interface ExtendOptions {
+    // unset when not rendering a document preview, e.g. markdown.api.render or nested renders.
+    markdownPreviewManager?: MarkdownPreviewManager;
+}
+
+export type ExtendMarkdownIt = (md: MarkdownIt, options?: ExtendOptions) => MarkdownIt;
 
 // Applies the plugins in order.
 export function join(...fns: ExtendMarkdownIt[]): ExtendMarkdownIt {
