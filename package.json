@@ -133,6 +133,13 @@
       {
         "scopeName": "source.shell.markdown-preview",
         "path": "./syntaxes/shell.tmLanguage.json"
+      },
+      {
+        "scopeName": "markdown.fenced-languages.injection",
+        "path": "./dist/syntaxes/markdown-fenced-languages.tmLanguage.json",
+        "injectTo": [
+          "text.html.markdown"
+        ]
       }
     ],
     "notebookRenderer": [
@@ -322,6 +329,11 @@
             "type": "boolean",
             "default": true,
             "description": "%config.markdown.fenced-file.enabled%"
+          },
+          "markdown.fenced-languages.enabled": {
+            "type": "boolean",
+            "default": true,
+            "description": "%config.markdown.fenced-languages.enabled%"
           },
           "markdown.file-uri.enabled": {
             "type": "boolean",

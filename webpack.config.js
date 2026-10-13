@@ -4,7 +4,19 @@
 
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
+const fs = require('fs');
 const path = require('path');
+
+// contributed in package.json and regenerated at runtime, see src/extension/fencedLanguages.ts.
+const fencedLanguagesGrammar = path.join(__dirname, 'dist/syntaxes/markdown-fenced-languages.tmLanguage.json');
+if (!fs.existsSync(fencedLanguagesGrammar)) {
+  fs.mkdirSync(path.dirname(fencedLanguagesGrammar), { recursive: true });
+  fs.writeFileSync(fencedLanguagesGrammar, JSON.stringify({
+    scopeName: 'markdown.fenced-languages.injection',
+    injectionSelector: 'L:markup.fenced_code.block.markdown',
+    patterns: [],
+  }, null, '\t') + '\n');
+}
 
 /** @typedef {import('webpack').Configuration} WebpackConfig **/
 

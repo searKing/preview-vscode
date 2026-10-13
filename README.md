@@ -31,6 +31,7 @@ Just press the same key when you want to go back to the original view.
     * Just do as the operation as mentioned and a showQuickPick will pop up to show choices.
 * With `markdown.rst.esbonio.enabled` (off by default), reStructuredText files of a Sphinx project (a `conf.py` in the directory of the file or above, up to the workspace folder) are previewed by [Esbonio](https://marketplace.visualstudio.com/items?itemName=swyddfa.esbonio) when it is installed and its language server is running, as it renders with Sphinx. Other files, or without Esbonio, are previewed by this extension.
 * Scripts in the previewed page, e.g. `<script>` of an HTML file, only run when the preview security is `Disable` (`Markdown: Change Preview Security Settings`), do it only for files you trust.
+* Fenced code blocks of languages the built-in Markdown grammar doesn't know, e.g. ```` ```desktop ````, are highlighted in the editor with the grammars of the installed extensions (e.g. [Linux Desktop File support](https://marketplace.visualstudio.com/items?itemName=nico-castell.linux-desktop-file)) (`markdown.fenced-languages.enabled`). The grammar is generated when the extensions change and takes effect after reloading the window, not in VS Code for the Web. How well it works depends on the grammar of the language, e.g. one anchored at the line start (`^Name`) doesn't highlight indented code blocks.
     * ![Demonstration](media/demonstration.gif)
 
 ## Contributing

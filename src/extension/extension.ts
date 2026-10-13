@@ -7,6 +7,7 @@ import { extendMarkdownIt } from '../renders/markdown-it-engine';
 import { MarkdownPreviewManager } from '../renders/previewManager';
 import { registerMarkdownCommands } from '../commands';
 import { CommandManager } from '../commands/commandManager';
+import { registerFencedLanguages } from './fencedLanguages';
 
 import { loadDefaultTelemetryReporter } from '../reporter/telemetryReporter';
 
@@ -26,6 +27,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 	const commandManager = new CommandManager();
 	context.subscriptions.push(registerMarkdownCommands(commandManager, markdownPreviewManager, telemetryReporter));
+	context.subscriptions.push(registerFencedLanguages(context));
 
 	const reloadPlugins = () => vscode.commands.executeCommand('markdown.api.reloadPlugins');
 	const settings = contributedSettings(context);

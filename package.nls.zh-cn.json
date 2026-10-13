@@ -23,6 +23,7 @@
 	"config.markdown.expand-tabs.tabWidth": "指定替换每个前置制表符的空格个数。",
 	"config.markdown.footnote.enabled": "在内置Markdown预览中启用/禁用脚注渲染。",
 	"config.markdown.fenced-file.enabled": "在内置Markdown预览中启用/禁用HTML、CSS、Mermaid、ReStructured Text、Jade、Pug文件及其他文件光标处图片URI的预览。",
+	"config.markdown.fenced-languages.enabled": "在Markdown编辑器中，使用已安装扩展的语法高亮内置Markdown语法不认识的语言（如 `desktop`）的代码块，重新加载窗口后生效。",
 	"config.markdown.file-uri.enabled": "在内置Markdown预览中启用/禁用本地文件路径（file://[文件绝对路径]）渲染。",
 	"config.markdown.highlightjs.enabled": "在内置Markdown预览中启用/禁用语法高亮。",
 	"config.markdown.highlightjs.auto": "若未设置，是否自动检测代码语言。",
