@@ -4,7 +4,7 @@ All notable changes to the "preview-vscode" extension will be documented in this
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
-## [Unreleased]
+## [2.5.1] - 2026-10-14
 
 - Fix: the YAML front matter at the start of a Markdown code block is highlighted as YAML in the preview and notebook Markdown cells, like in the editor, a `---` elsewhere is still a thematic break ([#103](https://github.com/searKing/preview-vscode/issues/103)).
 
