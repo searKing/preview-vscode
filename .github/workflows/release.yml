@@ -2,6 +2,7 @@ name: Release
 
 # Publishes the version in package.json to the VS Code Marketplace and Open VSX, and creates the GitHub release.
 # Secrets of the `release` environment: VSCE_PAT (Azure DevOps token with Marketplace > Manage), OVSX_PAT (Open VSX access token).
+# Stable releases are published by pushing a tag, a manual run only publishes a pre-release.
 on:
   push:
     tags: ['v*']
@@ -10,7 +11,7 @@ on:
       pre-release:
         description: Publish as a pre-release
         type: boolean
-        default: false
+        default: true
 
 permissions:
   contents: write
@@ -22,33 +23,44 @@ jobs:
     env:
       PRE_RELEASE: ${{ inputs.pre-release && '--pre-release' || '' }}
     steps:
+      - name: Only pre-releases are published manually
+        if: github.event_name == 'workflow_dispatch' && !inputs.pre-release
+        run: |
+          echo "::error::push the tag v<version> to publish a stable release"
+          exit 1
       - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
       - uses: actions/setup-node@v7
         with:
           node-version: 24
           cache: npm
-      - run: npm ci
-      - name: Check the tag matches package.json
+      - name: Check the tag and the CHANGELOG match package.json
         if: github.ref_type == 'tag'
-        run: test "v$(node -p 'require("./package.json").version')" = "$GITHUB_REF_NAME"
+        run: |
+          version="${GITHUB_REF_NAME#v}"
+          test "$(node -p 'require("./package.json").version')" = "$version"
+          awk -v v="$version" '$0 ~ "^## \\[" v "\\]" {f=1; next} /^## \[/ {f=0} f' CHANGELOG.md > "$RUNNER_TEMP/notes.md"
+          grep -q '[^[:space:]]' "$RUNNER_TEMP/notes.md" || { echo "::error::no section [$version] in CHANGELOG.md"; exit 1; }
+      - run: npm ci
       - run: npm run lint
       - run: npm run test:unit
       - run: npx vsce package $PRE_RELEASE -o preview-vscode.vsix
+      # --skip-duplicate lets a failed run be re-run after one of the marketplaces published it.
       - name: Publish to the VS Code Marketplace
         env:
           VSCE_PAT: ${{ secrets.VSCE_PAT }}
-        run: npx vsce publish $PRE_RELEASE --packagePath preview-vscode.vsix
+        run: npx vsce publish $PRE_RELEASE --skip-duplicate --packagePath preview-vscode.vsix
       - name: Publish to Open VSX
         env:
           OVSX_PAT: ${{ secrets.OVSX_PAT }}
         # ovsx takes the pre-release flag from the package
-        run: npx ovsx publish preview-vscode.vsix -p "$OVSX_PAT"
+        run: npx ovsx publish preview-vscode.vsix --skip-duplicate -p "$OVSX_PAT"
       - name: Create the GitHub release
         if: github.ref_type == 'tag'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           version="${GITHUB_REF_NAME#v}"
-          awk -v v="$version" '$0 ~ "^## \\[" v "\\]" {f=1; next} /^## \[/ {f=0} f' CHANGELOG.md > notes.md
           mv preview-vscode.vsix "preview-vscode-$version.vsix"
-          gh release create "$GITHUB_REF_NAME" --title "$GITHUB_REF_NAME" --notes-file notes.md --verify-tag "preview-vscode-$version.vsix"
+          gh release view "$GITHUB_REF_NAME" > /dev/null 2>&1 || gh release create "$GITHUB_REF_NAME" --title "$GITHUB_REF_NAME" --notes-file "$RUNNER_TEMP/notes.md" --verify-tag "preview-vscode-$version.vsix"
