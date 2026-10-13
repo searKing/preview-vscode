@@ -129,6 +129,10 @@
           "keyword.operator.bitwise.shift.tsx",
           "keyword.operator.assignment.compound.bitwise.tsx"
         ]
+      },
+      {
+        "scopeName": "source.shell.markdown-preview",
+        "path": "./syntaxes/shell.tmLanguage.json"
       }
     ],
     "notebookRenderer": [

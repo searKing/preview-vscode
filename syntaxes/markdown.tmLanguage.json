@@ -1547,7 +1547,7 @@
                     "contentName": "meta.embedded.block.shellscript",
                     "patterns": [
                         {
-                            "include": "source.shell"
+                            "include": "source.shell.markdown-preview"
                         }
                     ]
                 }
