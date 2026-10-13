@@ -135,6 +135,21 @@ var foo = function (bar) {
 console.log(foo(5));
 ```
 
+Indented fence in a list item ([#106](https://github.com/searKing/preview-vscode/issues/106))
+
+1.	<table>
+		<tr>
+			<th> Variable Assignment </th>
+			<td>
+
+				~~~sh
+				command.bin --argument --value-accepting-argument="escaped value"
+				~~~
+
+			</td>
+		</tr>
+	</table>
+
 ## Tables
 
 | Option | Description                                                               |

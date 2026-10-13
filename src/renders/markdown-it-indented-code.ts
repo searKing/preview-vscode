@@ -22,75 +22,47 @@ export namespace MarkdownItIndentedCode {
             // Since start is found, we can report success here in validation mode
             if (silent) { return true; }
 
-            let blkIndent = state.sCount[startLine];// tab expanded
+            // Dedent the over-indented lines down to the enclosing block's indent (not to 0, which
+            // would end an enclosing list item, see #106) and let the other rules parse them.
+            const blockIndent = state.sCount[startLine]; // tab expanded
+            const indent = blockIndent - state.blkIndent;
 
-            let nextLine = startLine;
-
-            while (nextLine < endLine) {
-                if (state.isEmpty(nextLine)) {
-                    nextLine++;
+            for (let line = startLine; line < endLine; line++) {
+                if (state.isEmpty(line)) {
                     continue;
                 }
+                if (state.sCount[line] < blockIndent) {
+                    break;
+                }
+                const lineStart = state.bMarks[line];
+                const last = state.eMarks[line];
+                let first = lineStart;
+                let lineIndent = 0; // tab expanded
 
-                if (state.sCount[nextLine] >= blkIndent) {
-                    // remove expanded tab
-                    let line = nextLine;
-                    let end = state.eMarks[nextLine];
-                    let indent = blkIndent;// tab expanded
-                    let lineIndent = 0; // tab expanded
-                    const lineStart = state.bMarks[line];
-                    let first = lineStart;
-                    let last;
-
-                    if (line + 1 < end) {
-                        // No need for bounds check because we have fake entry on tail.
-                        last = state.eMarks[line] + 1;
+                while (first < last) {
+                    const ch = state.src.charCodeAt(first);
+                    let width: number;
+                    if (ch === 0x09) {
+                        width = 4 - (lineIndent + state.bsCount[line]) % 4;
+                    } else if (ch === 0x20 || first - lineStart < state.tShift[line]) {
+                        // patched tShift masked characters look like spaces (blockquotes, list markers)
+                        width = 1;
                     } else {
-                        last = state.eMarks[line];
+                        break;
                     }
-
-                    while (first < last && lineIndent < indent) {
-                        const ch = state.src.charCodeAt(first);
-
-                        if (isSpace(ch)) {
-                            if (ch === 0x09) {
-                                lineIndent += 4 - (lineIndent + state.bsCount[line]) % 4;
-                            } else {
-                                lineIndent++;
-                            }
-                        } else if (first - lineStart < state.tShift[line]) {
-                            // patched tShift masked characters to look like spaces (blockquotes, list markers)
-                            lineIndent++;
-                        } else {
-                            break;
-                        }
-
-                        first++;
+                    if (lineIndent + width > indent) {
+                        break; // keep a tab that crosses the enclosing block's indent
                     }
-
-                    state.sCount[nextLine] -= lineIndent;
-                    state.bMarks[nextLine] = first;
-                    state.tShift[nextLine] -= (first - lineStart);
-
-                    nextLine++;
-                    continue;
+                    lineIndent += width;
+                    first++;
                 }
-                break;
+
+                state.sCount[line] -= lineIndent;
+                state.bsCount[line] += lineIndent;
+                state.bMarks[line] = first;
+                state.tShift[line] -= first - lineStart;
             }
-            // let pos = state.bMarks[startLine] + state.tShift[startLine];
-            // let max = state.eMarks[startLine];
-            // let lineText = state.src.slice(pos, max);
-            // let content = state.getLines(startLine, nextLine, state.blkIndent, true);
             return false;
         });
     };
-
-    function isSpace(code: number): boolean {
-        switch (code) {
-            case 0x09:
-            case 0x20:
-                return true;
-        }
-        return false;
-    }
 }
