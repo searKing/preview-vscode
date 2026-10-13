@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          # @vscode/vsce and ovsx require Node.js 22+
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npx vsce package -o preview-vscode.vsix
+      - uses: actions/upload-artifact@v7
+        with:
+          name: preview-vscode-${{ github.sha }}
+          path: preview-vscode.vsix

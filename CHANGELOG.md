@@ -7,6 +7,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ## [Unreleased]
 
 - Chore: publish to [Open VSX](https://open-vsx.org/) too (`npm run ovsx:publish`), for VSCodium, Cursor, Gitpod, ...; add the `license` and `keywords` of the extension, and `@vscode/vsce` and `ovsx` as dev dependencies.
+- Chore: GitHub Actions lint and package every push and pull request, and publish a pushed `v*` tag to the VS Code Marketplace and Open VSX with a GitHub release.
 
 ## [2.4.1] - 2026-10-13
 
