@@ -20,6 +20,7 @@ import { MarkdownItMarkdown } from './markdown-it-markdown';
 import { MarkdownItHTML } from './markdown-it-html';
 import { MarkdownItFencedFile } from './markdown-it-fenced-file';
 import { MarkdownItCodeCopy } from './markdown-it-code-copy';
+import { MarkdownItCodeWrap } from './markdown-it-code-wrap';
 import { MarkdownItIndentedCode } from './markdown-it-indented-code';
 import { MarkdownItFileUri } from './markdown-it-file-uri';
 import { MarkdownItCurrentDocument } from './markdown-it-current-document';
@@ -51,6 +52,7 @@ export function extendMarkdownIt<T = any>(md: MarkdownIt, options?: T): Markdown
         MarkdownItMarkdown.extendMarkdownIt,
         MarkdownItHTML.extendMarkdownIt,
         MarkdownItFileUri.extendMarkdownIt,
+        MarkdownItCodeWrap.extendMarkdownIt,
         MarkdownItCodeCopy.extendMarkdownIt, // should be the last one
     )(md, options);
 }

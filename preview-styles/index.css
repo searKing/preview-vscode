@@ -17,3 +17,12 @@
 	margin-inline: -1.4em 0.2em;
 	vertical-align: middle;
 }
+
+/* `markdown.code-wrap.mode`, overrides VS Code's `body.wordWrap pre` that follows `editor.wordWrap`. */
+body.vscode-body:has(.preview-vscode-code-wrap-on) pre {
+	white-space: pre-wrap;
+}
+
+body.vscode-body:has(.preview-vscode-code-wrap-off) pre {
+	white-space: pre;
+}

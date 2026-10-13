@@ -280,8 +280,23 @@
           "markdown.code-copy.enabled": {
             "type": "boolean",
             "default": true,
-            "description": "%config.markdown.code-copy.enabled%"
-          },
+          "description": "%config.markdown.code-copy.enabled%"
+        },
+        "markdown.code-wrap.mode": {
+          "type": "string",
+          "default": "auto",
+          "description": "%config.markdown.code-wrap.mode%",
+          "enum": [
+            "auto",
+            "on",
+            "off"
+          ],
+          "enumDescriptions": [
+            "%config.markdown.code-wrap.mode.auto%",
+            "%config.markdown.code-wrap.mode.on%",
+            "%config.markdown.code-wrap.mode.off%"
+          ]
+        },
           "markdown.deflist.enabled": {
             "type": "boolean",
             "default": true,
