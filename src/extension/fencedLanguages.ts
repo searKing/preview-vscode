@@ -86,8 +86,8 @@ async function update(context: vscode.ExtensionContext): Promise<void> {
 		return;
 	}
 	await vscode.workspace.fs.writeFile(uri, new TextEncoder().encode(grammar));
-	const reload = 'Reload Window';
-	if (await vscode.window.showInformationMessage('Highlighting of the fenced code blocks in Markdown changed, it takes effect after reloading the window.', reload) === reload) {
+	const reload = vscode.l10n.t('Reload Window');
+	if (await vscode.window.showInformationMessage(vscode.l10n.t('Highlighting of the fenced code blocks in Markdown changed, it takes effect after reloading the window.'), reload) === reload) {
 		await vscode.commands.executeCommand('workbench.action.reloadWindow');
 	}
 }

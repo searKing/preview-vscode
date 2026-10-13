@@ -21,6 +21,7 @@
   "engines": {
     "vscode": "^1.88.0"
   },
+  "l10n": "./l10n",
   "categories": [
     "Other",
     "Programming Languages"

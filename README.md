@@ -54,6 +54,7 @@ Just press the same key when you want to go back to the original view.
   * `syntaxes/markdown.tmLanguage.json`: VS Code's builtin Markdown grammar, patched so indented lines are highlighted as Markdown rather than code, and front matter in Markdown code blocks is highlighted as YAML.
   * `syntaxes/shell.tmLanguage.json`: VS Code's builtin shell grammar, used by shell code blocks in Markdown and patched so commands in list items are highlighted too.
   * Regenerate both with `npm run update-syntaxes [VS Code extensions directory]` (defaults to the latest `microsoft/vscode` main, honors `HTTPS_PROXY`, requires Node.js 24.5+), which also syncs the grammar contribution in `package.json`.
+  * `package.nls*.json`: translations of the `package.json` contributions, `l10n/bundle.l10n.*.json`: translations of the `vscode.l10n.t` strings, keyed by the English string.
   * `test-workspace`: sample files to preview.
   * `test`: renders the samples tracked by git like the preview with the bundled extension and a mocked `vscode` (`test/extension.cjs`), and tokenizes the Markdown samples with the grammars, compared with the snapshots in `test/snapshots`.
 
