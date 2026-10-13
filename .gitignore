@@ -4,6 +4,7 @@ node_modules
 .vscode-test/
 *.vsix
 .DS_Store
+*.local.md
 /.idea/codeStyles/codeStyleConfig.xml
 /.idea/codeStyles/Project.xml
 /.idea/inspectionProfiles/Project_Default.xml
