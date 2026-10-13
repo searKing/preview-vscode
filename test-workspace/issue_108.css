@@ -1,0 +1,28 @@
+html,
+body {
+    height: 100%;
+}
+
+.static-gradient,
+.gradient-animation {
+    position: fixed;
+    inset: 0;
+}
+
+.static-gradient {
+    background:
+        radial-gradient(circle at bottom, transparent, 90%, rgba(0, 0, 0, 0.5)), /* Dark region at the top */
+        radial-gradient(circle, #f1f1f1, #05ab75),
+        aliceblue;
+}
+
+.gradient-animation {
+    background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgb(255 255 255 / 0%), 75%, rgb(191 70 0 / 41%));
+    mix-blend-mode: hard-light;
+    pointer-events: none;
+}
+
+.status {
+    position: relative;
+    color: black;
+}

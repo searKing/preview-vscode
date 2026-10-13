@@ -14,6 +14,8 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - Fix: front matter at the start of a Markdown code block is highlighted as YAML instead of a separator and a heading ([#103](https://github.com/searKing/preview-vscode/issues/103)).
 - Add: `markdown.code-wrap.mode` setting, long lines in preview code blocks wrap like `editor.wordWrap` (`auto`, the default and VS Code's behavior), always (`on`) or never (`off`) ([#101](https://github.com/searKing/preview-vscode/issues/101)).
 - Add: `file://` URIs in `href` and `src` of raw HTML, e.g. `<link rel="stylesheet" href="file:///...">`, are rewritten to paths relative to the document like Markdown links, so they load in the preview of Markdown and HTML files (`markdown.file-uri.enabled`) ([#99](https://github.com/searKing/preview-vscode/issues/99)).
+- Add: `<script>` in the preview runs when the preview security is `Disable` (allow all content and script execution), e.g. scripts of an HTML file setting CSS variables, they never ran because VS Code inserts the content with `DOMParser` ([#108](https://github.com/searKing/preview-vscode/issues/108)).
+- Fix: the preview of HTML and CSS files ends with the page, without the extra screen of space added for `editor.scrollBeyondLastLine` ([#108](https://github.com/searKing/preview-vscode/issues/108)).
 - Chore: remove the unused indented code injection grammar and the `js-yaml` dev dependency.
 
 ## [2.4.0] - 2026-10-13

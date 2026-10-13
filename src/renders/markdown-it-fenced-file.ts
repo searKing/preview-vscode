@@ -28,7 +28,8 @@ export namespace MarkdownItFencedFile {
 					return;
 				case "html":
 				case "css":
-					state.src = '```html\n' + `${state.src}` + '\n```';
+					// The marker lets preview-styles drop the space the preview adds for editor.scrollBeyondLastLine, see #108.
+					state.src = '<div class="preview-vscode-html-document" hidden></div>\n\n```html\n' + `${state.src}` + '\n```';
 					return;
 				case "mermaid":
 					state.src = '```mermaid\n' + `${state.src}` + '\n```';

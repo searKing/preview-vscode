@@ -26,3 +26,8 @@ body.vscode-body:has(.preview-vscode-code-wrap-on) pre {
 body.vscode-body:has(.preview-vscode-code-wrap-off) pre {
 	white-space: pre;
 }
+
+/* HTML and CSS files are previewed as the page, without the space VS Code adds after it for `editor.scrollBeyondLastLine`. */
+body.vscode-body.scrollBeyondLastLine:has(.preview-vscode-html-document) {
+	margin-bottom: 0;
+}

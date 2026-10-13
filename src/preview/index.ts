@@ -1,6 +1,8 @@
 // Loaded into the built-in Markdown preview by `markdown.previewScripts`.
-// Inline <script> in the rendered Markdown never runs there, the preview's CSP only allows nonce scripts.
+// Inline <script> in the rendered Markdown never runs there, the preview's CSP only allows nonce scripts,
+// unless the preview security is "Disable", see ./scripts.
 import './nonce';
+import './scripts';
 import '@github/clipboard-copy-element';
 import { renderMermaid } from './mermaid';
 

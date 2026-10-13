@@ -29,6 +29,7 @@ Just press the same key when you want to go back to the original view.
       * for example: {color: blue}
     * others as Markdown, ReStructured Text, HTML, Jade or Mermaid
     * Just do as the operation as mentioned and a showQuickPick will pop up to show choices.
+* Scripts in the previewed page, e.g. `<script>` of an HTML file, only run when the preview security is `Disable` (`Markdown: Change Preview Security Settings`), do it only for files you trust.
     * ![Demonstration](media/demonstration.gif)
 
 ## Contributing
@@ -52,7 +53,7 @@ Just press the same key when you want to go back to the original view.
   * `test-workspace`: sample files to preview.
 
 * Notes
-  * The preview only runs scripts carrying its CSP nonce, so inline `<script>` in rendered Markdown never runs with the default security settings, use `src/preview` instead.
+  * The preview only runs scripts carrying its CSP nonce, so inline `<script>` in rendered Markdown never runs with the default security settings, use `src/preview` instead. With the preview security `Disable`, `src/preview/scripts.ts` runs them, as VS Code inserts the content with `DOMParser`, which never runs scripts.
   * Every setting in `contributes.configuration` reloads the markdown-it plugins when it changes.
   * `@types/vscode` must not be newer than `engines.vscode`.
 
