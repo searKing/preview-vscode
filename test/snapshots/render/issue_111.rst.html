@@ -1,0 +1,420 @@
+<style>
+    .ClipboardButton {
+        position: relative;
+    }
+
+    clipboard-copy {
+        /* padding: 0.4em 0.6em; */
+        font: 0.9rem system-ui, sans-serif;
+        display: inline-block;
+        cursor: default;
+        color: var(--vscode-button-foreground);
+        background-color: var(--vscode-button-border);
+        border-color: var(--vscode-textCodeBlock-background);
+        border-radius: 6px;
+        border: 1px solid var(--vscode-widget-border);
+        box-shadow: inset 0 -1px 0 var(--vscode-widget-shadow);
+        transition: 80ms cubic-bezier(0.33, 1, 0.68, 1);
+        transition-property: color,background-color,box-shadow,border-color;
+    }
+
+    clipboard-copy:hover {
+        background-color: var(--vscode-statusBarItem-hoverBackground);
+    }
+
+    clipboard-copy:active {
+        outline: 1px solid var(--vscode-contrastActiveBorder) !important;
+        outline-offset: -1px;
+    }
+
+    clipboard-copy:focus-visible {
+        outline: 1px solid var(--vscode-focusBorder);
+    }
+
+    .d-none {
+        display: none !important;
+    }
+
+    .position-relative {
+        position: relative !important;
+    }
+
+    .position-absolute {
+        position: absolute !important;
+    }
+
+    .right-0 {
+        right: 0 !important;
+    }
+
+    .top-0 {
+        top: 0 !important;
+    }
+
+    .m-2 {
+        margin: var(--base-size-8, 8px) !important;
+    }
+
+    .color-fg-success {
+        color: #3fb950 !important;
+        stroke: #3fb950 !important;
+        border-color: #3fb950 !important;
+    }
+</style><div class="snippet-clipboard-content notranslate position-relative overflow-auto">
+              <div><h1 id="restructuredtext-111">
+    reStructuredText (#111)
+</h1>
+
+<dl class="docinfo">
+    <dt class="author">
+        Author
+    </dt>
+    <dd class="author">
+        <p>
+            preview-vscode
+        </p>
+    </dd>
+
+    <dt class="version">
+        Version
+    </dt>
+    <dd class="version">
+        <p>
+            1.0
+        </p>
+    </dd>
+</dl>
+
+<h1 id="inline-markup">
+    Inline markup
+</h1>
+
+<p>
+    Some <em>emphasis</em>, <strong>strong</strong>, <span class="literal">inline literal</span>, a <a href="https://github.com/searKing/preview-vscode">link</a>,
+    a reference to <a href="#tables">Tables</a> and a footnote <a href="#footnotedef-1" id="footnoteref-1" class="footnote-reference">1</a>.
+</p>
+
+<dl class="footnotes">
+    <dt id="footnotedef-1">
+        <span class="footnote-definition">
+            1
+            <span class="backlinks">
+                <a href="#footnoteref-1">[1]</a>
+            </span>
+        </span>
+    </dt>
+    <dd>
+        <p>
+            The footnote.
+        </p>
+    </dd>
+</dl>
+
+<h1 id="lists">
+    Lists
+</h1>
+
+<ul>
+    <li>
+        <p>
+            Bullet item
+        </p>
+    </li>
+
+    <li>
+        <p>
+            Bullet item 2
+        </p>
+
+        <p>
+            Paragraph 2 of item 2.
+        </p>
+    </li>
+</ul>
+
+<ol>
+    <li>
+        <p>
+            Enumerated item
+        </p>
+    </li>
+
+    <li>
+        <p>
+            Enumerated item 2
+        </p>
+    </li>
+
+    <li>
+        <p>
+            Auto-enumerated item
+        </p>
+    </li>
+
+    <li>
+        <p>
+            Auto-enumerated item 2
+        </p>
+    </li>
+</ol>
+
+<dl>
+    <dt>
+        Term
+    </dt>
+    <dd>
+        <p>
+            Definition, indented by 4 spaces.
+        </p>
+    </dd>
+</dl>
+
+<h1 id="blocks">
+    Blocks
+</h1>
+
+<div class="admonition note">
+    <p>
+        This is a note.
+    </p>
+</div>
+
+<div class="admonition warning">
+    <p>
+        This is a warning.
+    </p>
+</div>
+
+<pre class="code">def hello():
+    print(&quot;hello&quot;)</pre>
+
+<p>
+    A literal block:
+</p>
+
+<div class="literal-block">
+    <pre class="code">$ echo literal</pre>
+</div>
+
+<p>
+    A paragraph before a block quote.
+</p>
+
+<blockquote>
+    <p>
+        A block quote.
+    </p>
+
+    <footer>
+        <cite>
+            &mdash; Author
+        </cite>
+    </footer>
+</blockquote>
+
+<div class="line-block">
+    <div class="line">Line block</div>
+    <div class="line-block">
+        <div class="line">indented line</div>
+    </div>
+</div>
+
+<h1 id="tables">
+    Tables
+</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>
+                <p>
+                    Grid
+                </p>
+            </th>
+            <th>
+                <p>
+                    Table
+                </p>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <p>
+                    1
+                </p>
+            </td>
+            <td>
+                <p>
+                    2
+                </p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<table>
+    <thead>
+        <tr>
+            <th colspan="2">
+                <p>
+                    Simple Table
+                </p>
+            </th>
+        </tr>
+        <tr>
+            <th>
+                <p>
+                    x
+                </p>
+            </th>
+            <th>
+                <p>
+                    y
+                </p>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <p>
+                    1
+                </p>
+            </td>
+            <td>
+                <p>
+                    2
+                </p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<img src="media/hello.gif" alt="hello" />
+
+<h1 id="sphinx">
+    Sphinx
+</h1>
+
+<p>
+    Directives and roles of Sphinx are shown as source, e.g. <code>a reference</code> and <code>hello</code>:
+</p>
+
+<ul class="toc-tree">
+    <li>
+        <a href="/index.html">reStructuredText (#111)</a>
+    </li>
+</ul>
+</div>
+              <div class="zeroclipboard-container position-absolute right-0 top-0">
+                <clipboard-copy aria-label="Copy" class="ClipboardButton clipboard-copy m-2 p-0 tooltipped-no-delay"
+                  value="==========================
+reStructuredText (#111)
+==========================
+
+:Author: preview-vscode
+:Version: 1.0
+
+Inline markup
+=============
+
+Some *emphasis*, **strong**, ``inline literal``, a `link &lt;https://github.com/searKing/preview-vscode&gt;`_,
+a reference to `Tables`_ and a footnote [#]_.
+
+.. [#] The footnote.
+
+Lists
+=====
+
+- Bullet item
+- Bullet item 2
+
+  Paragraph 2 of item 2.
+
+1. Enumerated item
+2. Enumerated item 2
+
+#. Auto-enumerated item
+#. Auto-enumerated item 2
+
+Term
+    Definition, indented by 4 spaces.
+
+Blocks
+======
+
+.. note::
+
+   This is a note.
+
+.. warning::
+
+   This is a warning.
+
+.. code-block:: python
+
+   def hello():
+       print(&quot;hello&quot;)
+
+A literal block::
+
+    $ echo literal
+
+A paragraph before a block quote.
+
+    A block quote.
+
+    -- Author
+
+| Line block
+|     indented line
+
+Tables
+======
+
++-------+-------+
+| Grid  | Table |
++=======+=======+
+| 1     | 2     |
++-------+-------+
+
+=====  =====
+Simple Table
+------------
+x      y
+=====  =====
+1      2
+=====  =====
+
+.. image:: media/hello.gif
+   :alt: hello
+
+Sphinx
+======
+
+Directives and roles of Sphinx are shown as source, e.g. :ref:`a reference` and :py:func:`hello`:
+
+.. toctree::
+   :maxdepth: 2
+
+   index" tabindex="0" role="button">
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
+                    class="octicon octicon-copy clipboard-copy-icon m-2">
+                    <path
+                      d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z">
+                    </path>
+                    <path
+                      d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z">
+                    </path>
+                  </svg>
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
+                    class="octicon octicon-check clipboard-check-icon color-fg-success d-none m-2">
+                    <path
+                      d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z">
+                    </path>
+                  </svg>
+                </clipboard-copy>
+              </div>
+            </div>

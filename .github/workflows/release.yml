@@ -32,6 +32,7 @@ jobs:
         if: github.ref_type == 'tag'
         run: test "v$(node -p 'require("./package.json").version')" = "$GITHUB_REF_NAME"
       - run: npm run lint
+      - run: npm run test:unit
       - run: npx vsce package $PRE_RELEASE -o preview-vscode.vsix
       - name: Publish to the VS Code Marketplace
         env:

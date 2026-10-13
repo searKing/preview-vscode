@@ -1,0 +1,96 @@
+1: "1." markup.list.numbered.markdown punctuation.definition.list.begin.markdown
+1: "\t" markup.list.numbered.markdown
+1: "##" markup.list.numbered.markdown markup.heading.markdown heading.2.markdown punctuation.definition.heading.markdown
+1: " " markup.list.numbered.markdown markup.heading.markdown heading.2.markdown
+1: "Conclusion" markup.list.numbered.markdown markup.heading.markdown heading.2.markdown entity.name.section.markdown
+2: "" markup.list.numbered.markdown
+3: "\t" markup.list.numbered.markdown
+3: "<table>" markup.list.numbered.markdown meta.paragraph.markdown
+4: "\t" markup.list.numbered.markdown
+4: "\t" markup.list.numbered.markdown meta.indented.block.markdown
+4: "<thead>" markup.list.numbered.markdown meta.indented.block.markdown meta.paragraph.markdown
+5: "\t" markup.list.numbered.markdown
+5: "\t" markup.list.numbered.markdown meta.indented.block.markdown
+5: "\t" markup.list.numbered.markdown meta.indented.block.markdown meta.indented.block.markdown
+5: "<tr>" markup.list.numbered.markdown meta.indented.block.markdown meta.indented.block.markdown meta.paragraph.markdown
+6: "\t" markup.list.numbered.markdown
+6: "\t" markup.list.numbered.markdown meta.indented.block.markdown
+6: "\t" markup.list.numbered.markdown meta.indented.block.markdown meta.indented.block.markdown
+6: "\t" markup.list.numbered.markdown meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown
+6: "<th> Type </th>" markup.list.numbered.markdown meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.paragraph.markdown
+7: "\t" markup.list.numbered.markdown
+7: "\t" markup.list.numbered.markdown meta.indented.block.markdown
+7: "\t" markup.list.numbered.markdown meta.indented.block.markdown meta.indented.block.markdown
+7: "\t" markup.list.numbered.markdown meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown
+7: "<th> Example </th>" markup.list.numbered.markdown meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.paragraph.markdown
+8: "\t" markup.list.numbered.markdown
+8: "\t" markup.list.numbered.markdown meta.indented.block.markdown
+8: "\t" markup.list.numbered.markdown meta.indented.block.markdown meta.indented.block.markdown
+8: "</tr>" markup.list.numbered.markdown meta.indented.block.markdown meta.indented.block.markdown meta.paragraph.markdown
+9: "\t" markup.list.numbered.markdown
+9: "\t" markup.list.numbered.markdown meta.indented.block.markdown
+9: "</thead>" markup.list.numbered.markdown meta.indented.block.markdown meta.paragraph.markdown
+10: "\t" markup.list.numbered.markdown
+10: "\t" markup.list.numbered.markdown meta.indented.block.markdown
+10: "<tbody>" markup.list.numbered.markdown meta.indented.block.markdown meta.paragraph.markdown
+11: "\t" markup.list.numbered.markdown
+11: "\t" markup.list.numbered.markdown meta.indented.block.markdown
+11: "\t" markup.list.numbered.markdown meta.indented.block.markdown meta.indented.block.markdown
+11: "<tr>" markup.list.numbered.markdown meta.indented.block.markdown meta.indented.block.markdown meta.paragraph.markdown
+12: "\t" markup.list.numbered.markdown
+12: "\t" markup.list.numbered.markdown meta.indented.block.markdown
+12: "\t" markup.list.numbered.markdown meta.indented.block.markdown meta.indented.block.markdown
+12: "\t" markup.list.numbered.markdown meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown
+12: "<th> Variable Assignment </th>" markup.list.numbered.markdown meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.paragraph.markdown
+13: "\t" markup.list.numbered.markdown
+13: "\t" markup.list.numbered.markdown meta.indented.block.markdown
+13: "\t" markup.list.numbered.markdown meta.indented.block.markdown meta.indented.block.markdown
+13: "\t" markup.list.numbered.markdown meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown
+13: "<td>" markup.list.numbered.markdown meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.paragraph.markdown
+14: "" markup.list.numbered.markdown
+15: "\t" markup.list.numbered.markdown
+15: "\t\t\t\t" markup.list.numbered.markdown markup.fenced_code.block.markdown
+15: "~~~" markup.list.numbered.markdown markup.fenced_code.block.markdown punctuation.definition.markdown
+15: "sh" markup.list.numbered.markdown markup.fenced_code.block.markdown fenced_code.block.language.markdown
+16: "\t" markup.list.numbered.markdown
+16: "\t\t\t\t" markup.list.numbered.markdown markup.fenced_code.block.markdown meta.embedded.block.shellscript meta.statement.shell meta.statement.command.shell
+16: "command" markup.list.numbered.markdown markup.fenced_code.block.markdown meta.embedded.block.shellscript meta.statement.shell meta.statement.command.shell meta.statement.command.name.shell entity.name.function.call.shell entity.name.command.shell support.function.builtin.shell
+16: "." markup.list.numbered.markdown markup.fenced_code.block.markdown meta.embedded.block.shellscript meta.statement.shell meta.statement.command.shell meta.statement.command.name.shell string.unquoted.shell
+16: "b" markup.list.numbered.markdown markup.fenced_code.block.markdown meta.embedded.block.shellscript meta.statement.shell meta.statement.command.shell meta.statement.command.name.shell string.unquoted.shell
+16: "i" markup.list.numbered.markdown markup.fenced_code.block.markdown meta.embedded.block.shellscript meta.statement.shell meta.statement.command.shell meta.statement.command.name.shell string.unquoted.shell
+16: "n" markup.list.numbered.markdown markup.fenced_code.block.markdown meta.embedded.block.shellscript meta.statement.shell meta.statement.command.shell meta.statement.command.name.shell string.unquoted.shell
+16: " " markup.list.numbered.markdown markup.fenced_code.block.markdown meta.embedded.block.shellscript meta.statement.shell meta.statement.command.shell
+16: "-" markup.list.numbered.markdown markup.fenced_code.block.markdown meta.embedded.block.shellscript meta.statement.shell meta.statement.command.shell string.unquoted.argument.shell constant.other.option.dash.shell
+16: "-argument" markup.list.numbered.markdown markup.fenced_code.block.markdown meta.embedded.block.shellscript meta.statement.shell meta.statement.command.shell string.unquoted.argument constant.other.option
+16: " " markup.list.numbered.markdown markup.fenced_code.block.markdown meta.embedded.block.shellscript meta.statement.shell meta.statement.command.shell
+16: "-" markup.list.numbered.markdown markup.fenced_code.block.markdown meta.embedded.block.shellscript meta.statement.shell meta.statement.command.shell string.unquoted.argument.shell constant.other.option.dash.shell
+16: "-value-accepting-argument=" markup.list.numbered.markdown markup.fenced_code.block.markdown meta.embedded.block.shellscript meta.statement.shell meta.statement.command.shell string.unquoted.argument constant.other.option
+16: "\"" markup.list.numbered.markdown markup.fenced_code.block.markdown meta.embedded.block.shellscript meta.statement.shell meta.statement.command.shell string.unquoted.argument constant.other.option string.quoted.double.shell punctuation.definition.string.begin.shell
+16: "escaped value" markup.list.numbered.markdown markup.fenced_code.block.markdown meta.embedded.block.shellscript meta.statement.shell meta.statement.command.shell string.unquoted.argument constant.other.option string.quoted.double.shell
+16: "\"" markup.list.numbered.markdown markup.fenced_code.block.markdown meta.embedded.block.shellscript meta.statement.shell meta.statement.command.shell string.unquoted.argument constant.other.option string.quoted.double.shell punctuation.definition.string.end.shell
+17: "\t" markup.list.numbered.markdown
+17: "\t\t\t\t" markup.list.numbered.markdown markup.fenced_code.block.markdown
+17: "~~~" markup.list.numbered.markdown markup.fenced_code.block.markdown punctuation.definition.markdown
+18: "\t" markup.list.numbered.markdown
+18: "\t\t\t\t" markup.list.numbered.markdown markup.fenced_code.block.markdown
+18: "```" markup.list.numbered.markdown markup.fenced_code.block.markdown punctuation.definition.markdown
+18: "go" markup.list.numbered.markdown markup.fenced_code.block.markdown fenced_code.block.language
+19: "\t" markup.list.numbered.markdown
+19: "\t\t\t\timport os;" markup.list.numbered.markdown markup.fenced_code.block.markdown
+20: "\t" markup.list.numbered.markdown
+20: "\t\t\t\t" markup.list.numbered.markdown markup.fenced_code.block.markdown
+20: "```" markup.list.numbered.markdown markup.fenced_code.block.markdown punctuation.definition.markdown
+21: "\t" markup.list.numbered.markdown
+21: "\t" markup.list.numbered.markdown meta.indented.block.markdown
+21: "\t" markup.list.numbered.markdown meta.indented.block.markdown meta.indented.block.markdown
+21: "\t" markup.list.numbered.markdown meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown
+21: "</td>" markup.list.numbered.markdown meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.paragraph.markdown
+22: "\t" markup.list.numbered.markdown
+22: "\t" markup.list.numbered.markdown meta.indented.block.markdown
+22: "\t" markup.list.numbered.markdown meta.indented.block.markdown meta.indented.block.markdown
+22: "</tr>" markup.list.numbered.markdown meta.indented.block.markdown meta.indented.block.markdown meta.paragraph.markdown
+23: "\t" markup.list.numbered.markdown
+23: "\t" markup.list.numbered.markdown meta.indented.block.markdown
+23: "</tbody>" markup.list.numbered.markdown meta.indented.block.markdown meta.paragraph.markdown
+24: "\t" markup.list.numbered.markdown
+24: "</table>" markup.list.numbered.markdown meta.paragraph.markdown

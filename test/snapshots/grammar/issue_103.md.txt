@@ -1,0 +1,36 @@
+1: "~~~" markup.fenced_code.block.markdown punctuation.definition.markdown
+1: "Markdown" markup.fenced_code.block.markdown fenced_code.block.language.markdown
+2: "---" markup.fenced_code.block.markdown punctuation.definition.begin.frontmatter
+3: "lang: \"<code>eng-GBR-oxendict</code>\"" markup.fenced_code.block.markdown
+4: "  # [^Added]" markup.fenced_code.block.markdown
+5: "author:" markup.fenced_code.block.markdown
+6: "  name:" markup.fenced_code.block.markdown
+7: "    3rd: \"Beedell\"         # \"Surname\"" markup.fenced_code.block.markdown
+8: "    1st: \"Roke\"            # \"Forename\"" markup.fenced_code.block.markdown
+9: "    2nd: \"Julian Lockhart\" # \"Middle name\"" markup.fenced_code.block.markdown
+10: "  email: \"mailTo:ef4uf956@rokejulianlockhart.addy.io\"" markup.fenced_code.block.markdown
+11: "    # <section>" markup.fenced_code.block.markdown
+12: "    #   <h2>" markup.fenced_code.block.markdown
+13: "    #     Citation" markup.fenced_code.block.markdown
+14: "    #   </h2>" markup.fenced_code.block.markdown
+15: "    #   <p>" markup.fenced_code.block.markdown
+16: "    #     <a href=\"https://app.addy.io/aliases/4c7718c1-0f47-429d-a6e5-235c15c68285/edit#:~:text=to%20your%20alias-,ef4uf956%40rokejulianlockhart.addy.io,-https%3A%2F%2Fgithub.com\">" markup.fenced_code.block.markdown
+17: "    #       <code>" markup.fenced_code.block.markdown
+18: "    #         Addy.IO" markup.fenced_code.block.markdown
+19: "    #       </code>" markup.fenced_code.block.markdown
+20: "    #     </a>" markup.fenced_code.block.markdown
+21: "    #   </p>" markup.fenced_code.block.markdown
+22: "    # </section>" markup.fenced_code.block.markdown
+23: "  summary: \"https://wim.nl.tab.digital/apps/contacts/All%20contacts/e1f2ec5c-074e-4875-ac62-53ff24770ffa~contacts#:~:text=First-name-,Middle%20names,Surname,-Suffix\"" markup.fenced_code.block.markdown
+24: "output:" markup.fenced_code.block.markdown
+25: "  # [^Added]" markup.fenced_code.block.markdown
+26: "  html_document:" markup.fenced_code.block.markdown
+27: "  # [^Added]" markup.fenced_code.block.markdown
+28: "    number_sections: true" markup.fenced_code.block.markdown
+29: "    # [^Added]" markup.fenced_code.block.markdown
+30: "    toc: true" markup.fenced_code.block.markdown
+31: "    # [^Added]" markup.fenced_code.block.markdown
+32: "    toc_depth: 6" markup.fenced_code.block.markdown
+33: "    # [^Added]" markup.fenced_code.block.markdown
+34: "---" markup.fenced_code.block.markdown punctuation.definition.end.frontmatter
+35: "~~~" markup.fenced_code.block.markdown punctuation.definition.markdown

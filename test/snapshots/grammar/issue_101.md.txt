@@ -1,0 +1,11 @@
+1: "~~~" markup.fenced_code.block.markdown punctuation.definition.markdown
+1: "pwsh" markup.fenced_code.block.markdown fenced_code.block.language
+2: "#!/usr/bin/env -S pwsh" markup.fenced_code.block.markdown
+3: "#Requires -PSEdition 'Core'" markup.fenced_code.block.markdown
+4: "#Requires -Version 7.5" markup.fenced_code.block.markdown
+5: "" markup.fenced_code.block.markdown
+6: "Install-Module -Name 'Microsoft.WinGet.Client'  # `-RequiredVersion 1.9.25190`" markup.fenced_code.block.markdown
+7: "Get-WinGetPackage 'Microsoft.MediaCreationTool' # `-Version \"$Unknown\"`" markup.fenced_code.block.markdown
+8: "" markup.fenced_code.block.markdown
+9: "If ($IsWindows) { Start-Process \"$Env:SystemDrive\\Users\\$([Environment]::UserName)\\AppData\\Local\\Microsoft\\WinGet\\Packages\\Microsoft.MediaCreationTool_Microsoft.Winget.Source_8wekyb3d8bbwe\" }" markup.fenced_code.block.markdown
+10: "~~~" markup.fenced_code.block.markdown punctuation.definition.markdown

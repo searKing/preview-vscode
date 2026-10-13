@@ -1,0 +1,1382 @@
+1: "#" markup.heading.markdown heading.1.markdown punctuation.definition.heading.markdown
+1: " " markup.heading.markdown heading.1.markdown
+1: "Your Custom Extension" markup.heading.markdown heading.1.markdown entity.name.section.markdown
+2: ""
+3: "This is a markdown file." meta.paragraph.markdown
+4: ""
+5: "##" markup.heading.markdown heading.2.markdown punctuation.definition.heading.markdown
+5: " " markup.heading.markdown heading.2.markdown
+5: "[" markup.heading.markdown heading.2.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.link.title.begin.markdown
+5: "Markdown" markup.heading.markdown heading.2.markdown entity.name.section.markdown meta.link.inline.markdown string.other.link.title.markdown
+5: "]" markup.heading.markdown heading.2.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.link.title.end.markdown
+5: "(" markup.heading.markdown heading.2.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+5: "https://markdown-it.github.io/" markup.heading.markdown heading.2.markdown entity.name.section.markdown meta.link.inline.markdown markup.underline.link.markdown
+5: ")" markup.heading.markdown heading.2.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+6: ""
+7: "---" meta.separator.markdown
+8: ""
+9: "**" meta.paragraph.markdown markup.bold.markdown punctuation.definition.bold.markdown
+9: "Advertisement :)" meta.paragraph.markdown markup.bold.markdown
+9: "**" meta.paragraph.markdown markup.bold.markdown punctuation.definition.bold.markdown
+10: ""
+11: "-" markup.list.unnumbered.markdown punctuation.definition.list.begin.markdown
+11: " " markup.list.unnumbered.markdown
+11: "**" markup.list.unnumbered.markdown meta.paragraph.markdown markup.bold.markdown punctuation.definition.bold.markdown
+11: "[" markup.list.unnumbered.markdown meta.paragraph.markdown markup.bold.markdown meta.link.inline.markdown punctuation.definition.link.title.begin.markdown
+11: "pica" markup.list.unnumbered.markdown meta.paragraph.markdown markup.bold.markdown meta.link.inline.markdown string.other.link.title.markdown
+11: "]" markup.list.unnumbered.markdown meta.paragraph.markdown markup.bold.markdown meta.link.inline.markdown punctuation.definition.link.title.end.markdown
+11: "(" markup.list.unnumbered.markdown meta.paragraph.markdown markup.bold.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+11: "https://nodeca.github.io/pica/demo/" markup.list.unnumbered.markdown meta.paragraph.markdown markup.bold.markdown meta.link.inline.markdown markup.underline.link.markdown
+11: ")" markup.list.unnumbered.markdown meta.paragraph.markdown markup.bold.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+11: "**" markup.list.unnumbered.markdown meta.paragraph.markdown markup.bold.markdown punctuation.definition.bold.markdown
+11: " - high quality and fast image" markup.list.unnumbered.markdown meta.paragraph.markdown
+12: "  " markup.list.unnumbered.markdown
+12: "resize in browser." markup.list.unnumbered.markdown meta.paragraph.markdown
+13: "-" markup.list.unnumbered.markdown punctuation.definition.list.begin.markdown
+13: " " markup.list.unnumbered.markdown
+13: "**" markup.list.unnumbered.markdown meta.paragraph.markdown markup.bold.markdown punctuation.definition.bold.markdown
+13: "[" markup.list.unnumbered.markdown meta.paragraph.markdown markup.bold.markdown meta.link.inline.markdown punctuation.definition.link.title.begin.markdown
+13: "babelfish" markup.list.unnumbered.markdown meta.paragraph.markdown markup.bold.markdown meta.link.inline.markdown string.other.link.title.markdown
+13: "]" markup.list.unnumbered.markdown meta.paragraph.markdown markup.bold.markdown meta.link.inline.markdown punctuation.definition.link.title.end.markdown
+13: "(" markup.list.unnumbered.markdown meta.paragraph.markdown markup.bold.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+13: "https://github.com/nodeca/babelfish/" markup.list.unnumbered.markdown meta.paragraph.markdown markup.bold.markdown meta.link.inline.markdown markup.underline.link.markdown
+13: ")" markup.list.unnumbered.markdown meta.paragraph.markdown markup.bold.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+13: "**" markup.list.unnumbered.markdown meta.paragraph.markdown markup.bold.markdown punctuation.definition.bold.markdown
+13: " - developer friendly" markup.list.unnumbered.markdown meta.paragraph.markdown
+14: "  " markup.list.unnumbered.markdown
+14: "i18n with plurals support and easy syntax." markup.list.unnumbered.markdown meta.paragraph.markdown
+15: "" markup.list.unnumbered.markdown
+16: "You will like those projects!" meta.paragraph.markdown
+17: ""
+18: "---" meta.separator.markdown
+19: ""
+20: "#" markup.heading.markdown heading.1.markdown punctuation.definition.heading.markdown
+20: " " markup.heading.markdown heading.1.markdown
+20: "h1 Heading 8-)" markup.heading.markdown heading.1.markdown entity.name.section.markdown
+21: ""
+22: "##" markup.heading.markdown heading.2.markdown punctuation.definition.heading.markdown
+22: " " markup.heading.markdown heading.2.markdown
+22: "h2 Heading" markup.heading.markdown heading.2.markdown entity.name.section.markdown
+23: ""
+24: "###" markup.heading.markdown heading.3.markdown punctuation.definition.heading.markdown
+24: " " markup.heading.markdown heading.3.markdown
+24: "h3 Heading" markup.heading.markdown heading.3.markdown entity.name.section.markdown
+25: ""
+26: "####" markup.heading.markdown heading.4.markdown punctuation.definition.heading.markdown
+26: " " markup.heading.markdown heading.4.markdown
+26: "h4 Heading" markup.heading.markdown heading.4.markdown entity.name.section.markdown
+27: ""
+28: "#####" markup.heading.markdown heading.5.markdown punctuation.definition.heading.markdown
+28: " " markup.heading.markdown heading.5.markdown
+28: "h5 Heading" markup.heading.markdown heading.5.markdown entity.name.section.markdown
+29: ""
+30: "######" markup.heading.markdown heading.6.markdown punctuation.definition.heading.markdown
+30: " " markup.heading.markdown heading.6.markdown
+30: "h6 Heading" markup.heading.markdown heading.6.markdown entity.name.section.markdown
+31: ""
+32: "##" markup.heading.markdown heading.2.markdown punctuation.definition.heading.markdown
+32: " " markup.heading.markdown heading.2.markdown
+32: "Horizontal Rules" markup.heading.markdown heading.2.markdown entity.name.section.markdown
+33: ""
+34: "---" meta.separator.markdown
+35: ""
+36: "---" meta.separator.markdown
+37: ""
+38: "---" meta.separator.markdown
+39: ""
+40: "##" markup.heading.markdown heading.2.markdown punctuation.definition.heading.markdown
+40: " " markup.heading.markdown heading.2.markdown
+40: "Typographic replacements" markup.heading.markdown heading.2.markdown entity.name.section.markdown
+41: ""
+42: "Enable typographer option to see result." meta.paragraph.markdown
+43: ""
+44: "(c) (C) (r) (R) (tm) (TM) (p) (P) +-" meta.paragraph.markdown
+45: ""
+46: "test.. test... test..... test?..... test!...." meta.paragraph.markdown
+47: ""
+48: "!!!!!! ???? , , -- ---" meta.paragraph.markdown
+49: ""
+50: "\"Smartypants, double quotes\" and 'single quotes'" meta.paragraph.markdown
+51: ""
+52: "##" markup.heading.markdown heading.2.markdown punctuation.definition.heading.markdown
+52: " " markup.heading.markdown heading.2.markdown
+52: "Emphasis" markup.heading.markdown heading.2.markdown entity.name.section.markdown
+53: ""
+54: "**" meta.paragraph.markdown markup.bold.markdown punctuation.definition.bold.markdown
+54: "This is bold text" meta.paragraph.markdown markup.bold.markdown
+54: "**" meta.paragraph.markdown markup.bold.markdown punctuation.definition.bold.markdown
+55: ""
+56: "**" meta.paragraph.markdown markup.bold.markdown punctuation.definition.bold.markdown
+56: "This is bold text" meta.paragraph.markdown markup.bold.markdown
+56: "**" meta.paragraph.markdown markup.bold.markdown punctuation.definition.bold.markdown
+57: ""
+58: "_" meta.paragraph.markdown markup.italic.markdown punctuation.definition.italic.markdown
+58: "This is italic text" meta.paragraph.markdown markup.italic.markdown
+58: "_" meta.paragraph.markdown markup.italic.markdown punctuation.definition.italic.markdown
+59: ""
+60: "_" meta.paragraph.markdown markup.italic.markdown punctuation.definition.italic.markdown
+60: "This is italic text" meta.paragraph.markdown markup.italic.markdown
+60: "_" meta.paragraph.markdown markup.italic.markdown punctuation.definition.italic.markdown
+61: ""
+62: "~~" meta.paragraph.markdown markup.strikethrough.markdown punctuation.definition.strikethrough.markdown
+62: "Strikethrough" meta.paragraph.markdown markup.strikethrough.markdown
+62: "~~" meta.paragraph.markdown markup.strikethrough.markdown punctuation.definition.strikethrough.markdown
+63: ""
+64: "##" markup.heading.markdown heading.2.markdown punctuation.definition.heading.markdown
+64: " " markup.heading.markdown heading.2.markdown
+64: "Blockquotes" markup.heading.markdown heading.2.markdown entity.name.section.markdown
+65: ""
+66: ">" markup.quote.markdown punctuation.definition.quote.begin.markdown
+66: " " markup.quote.markdown
+66: "Blockquotes can also be nested..." markup.quote.markdown meta.paragraph.markdown
+67: ">" markup.quote.markdown punctuation.definition.quote.begin.markdown
+68: ">" markup.quote.markdown punctuation.definition.quote.begin.markdown
+68: " " markup.quote.markdown
+68: ">" markup.quote.markdown markup.quote.markdown punctuation.definition.quote.begin.markdown
+68: " " markup.quote.markdown markup.quote.markdown
+68: "...by using additional greater-than signs right next to each other..." markup.quote.markdown markup.quote.markdown meta.paragraph.markdown
+69: ">" markup.quote.markdown punctuation.definition.quote.begin.markdown
+69: " " markup.quote.markdown
+69: ">" markup.quote.markdown markup.quote.markdown punctuation.definition.quote.begin.markdown
+70: ">" markup.quote.markdown punctuation.definition.quote.begin.markdown
+70: " " markup.quote.markdown
+70: ">" markup.quote.markdown markup.quote.markdown punctuation.definition.quote.begin.markdown
+70: " " markup.quote.markdown markup.quote.markdown
+70: ">" markup.quote.markdown markup.quote.markdown markup.quote.markdown punctuation.definition.quote.begin.markdown
+70: " " markup.quote.markdown markup.quote.markdown markup.quote.markdown
+70: "...or with spaces between arrows." markup.quote.markdown markup.quote.markdown markup.quote.markdown meta.paragraph.markdown
+71: ""
+72: "##" markup.heading.markdown heading.2.markdown punctuation.definition.heading.markdown
+72: " " markup.heading.markdown heading.2.markdown
+72: "Lists" markup.heading.markdown heading.2.markdown entity.name.section.markdown
+73: ""
+74: "Unordered" meta.paragraph.markdown
+75: ""
+76: "-" markup.list.unnumbered.markdown punctuation.definition.list.begin.markdown
+76: " " markup.list.unnumbered.markdown
+76: "Create a list by starting a line with " markup.list.unnumbered.markdown meta.paragraph.markdown
+76: "`" markup.list.unnumbered.markdown meta.paragraph.markdown markup.inline.raw.string.markdown punctuation.definition.raw.markdown
+76: "+" markup.list.unnumbered.markdown meta.paragraph.markdown markup.inline.raw.string.markdown
+76: "`" markup.list.unnumbered.markdown meta.paragraph.markdown markup.inline.raw.string.markdown punctuation.definition.raw.markdown
+76: ", " markup.list.unnumbered.markdown meta.paragraph.markdown
+76: "`" markup.list.unnumbered.markdown meta.paragraph.markdown markup.inline.raw.string.markdown punctuation.definition.raw.markdown
+76: "-" markup.list.unnumbered.markdown meta.paragraph.markdown markup.inline.raw.string.markdown
+76: "`" markup.list.unnumbered.markdown meta.paragraph.markdown markup.inline.raw.string.markdown punctuation.definition.raw.markdown
+76: ", or " markup.list.unnumbered.markdown meta.paragraph.markdown
+76: "`" markup.list.unnumbered.markdown meta.paragraph.markdown markup.inline.raw.string.markdown punctuation.definition.raw.markdown
+76: "*" markup.list.unnumbered.markdown meta.paragraph.markdown markup.inline.raw.string.markdown
+76: "`" markup.list.unnumbered.markdown meta.paragraph.markdown markup.inline.raw.string.markdown punctuation.definition.raw.markdown
+77: "-" markup.list.unnumbered.markdown punctuation.definition.list.begin.markdown
+77: " " markup.list.unnumbered.markdown
+77: "Sub-lists are made by indenting 2 spaces:" markup.list.unnumbered.markdown meta.paragraph.markdown
+78: "  " markup.list.unnumbered.markdown
+78: "-" markup.list.unnumbered.markdown markup.list.unnumbered.markdown punctuation.definition.list.begin.markdown
+78: " " markup.list.unnumbered.markdown markup.list.unnumbered.markdown
+78: "Marker character change forces new list start:" markup.list.unnumbered.markdown markup.list.unnumbered.markdown meta.paragraph.markdown
+79: "    " markup.list.unnumbered.markdown
+79: "-" markup.list.unnumbered.markdown markup.list.unnumbered.markdown punctuation.definition.list.begin.markdown
+79: " " markup.list.unnumbered.markdown markup.list.unnumbered.markdown
+79: "Ac tristique libero volutpat at" markup.list.unnumbered.markdown markup.list.unnumbered.markdown meta.paragraph.markdown
+80: "    " markup.list.unnumbered.markdown
+80: "-" markup.list.unnumbered.markdown markup.list.unnumbered.markdown punctuation.definition.list.begin.markdown
+80: " " markup.list.unnumbered.markdown markup.list.unnumbered.markdown
+80: "Facilisis in pretium nisl aliquet" markup.list.unnumbered.markdown markup.list.unnumbered.markdown meta.paragraph.markdown
+81: "    " markup.list.unnumbered.markdown
+81: "-" markup.list.unnumbered.markdown markup.list.unnumbered.markdown punctuation.definition.list.begin.markdown
+81: " " markup.list.unnumbered.markdown markup.list.unnumbered.markdown
+81: "Nulla volutpat aliquam velit" markup.list.unnumbered.markdown markup.list.unnumbered.markdown meta.paragraph.markdown
+82: "-" markup.list.unnumbered.markdown punctuation.definition.list.begin.markdown
+82: " " markup.list.unnumbered.markdown
+82: "Very easy!" markup.list.unnumbered.markdown meta.paragraph.markdown
+83: "" markup.list.unnumbered.markdown
+84: "Ordered" meta.paragraph.markdown
+85: ""
+86: "1." markup.list.numbered.markdown punctuation.definition.list.begin.markdown
+86: " " markup.list.numbered.markdown
+86: " " markup.list.numbered.markdown meta.paragraph.markdown
+86: "Lorem ipsum dolor sit amet" markup.list.numbered.markdown meta.paragraph.markdown
+87: "2." markup.list.numbered.markdown punctuation.definition.list.begin.markdown
+87: " " markup.list.numbered.markdown
+87: " " markup.list.numbered.markdown meta.paragraph.markdown
+87: "Consectetur adipiscing elit" markup.list.numbered.markdown meta.paragraph.markdown
+88: "3." markup.list.numbered.markdown punctuation.definition.list.begin.markdown
+88: " " markup.list.numbered.markdown
+88: " " markup.list.numbered.markdown meta.paragraph.markdown
+88: "Integer molestie lorem at massa" markup.list.numbered.markdown meta.paragraph.markdown
+89: "" markup.list.numbered.markdown
+90: "4." markup.list.numbered.markdown punctuation.definition.list.begin.markdown
+90: " " markup.list.numbered.markdown
+90: " " markup.list.numbered.markdown meta.paragraph.markdown
+90: "You can use sequential numbers..." markup.list.numbered.markdown meta.paragraph.markdown
+91: "5." markup.list.numbered.markdown punctuation.definition.list.begin.markdown
+91: " " markup.list.numbered.markdown
+91: " " markup.list.numbered.markdown meta.paragraph.markdown
+91: "...or keep all the numbers as " markup.list.numbered.markdown meta.paragraph.markdown
+91: "`" markup.list.numbered.markdown meta.paragraph.markdown markup.inline.raw.string.markdown punctuation.definition.raw.markdown
+91: "1." markup.list.numbered.markdown meta.paragraph.markdown markup.inline.raw.string.markdown
+91: "`" markup.list.numbered.markdown meta.paragraph.markdown markup.inline.raw.string.markdown punctuation.definition.raw.markdown
+92: "" markup.list.numbered.markdown
+93: "Start numbering with offset:" meta.paragraph.markdown
+94: ""
+95: "57." markup.list.numbered.markdown punctuation.definition.list.begin.markdown
+95: " " markup.list.numbered.markdown
+95: "foo" markup.list.numbered.markdown meta.paragraph.markdown
+96: "1." markup.list.numbered.markdown punctuation.definition.list.begin.markdown
+96: " " markup.list.numbered.markdown
+96: " " markup.list.numbered.markdown meta.paragraph.markdown
+96: "bar" markup.list.numbered.markdown meta.paragraph.markdown
+97: "" markup.list.numbered.markdown
+98: "#" markup.heading.markdown heading.1.markdown punctuation.definition.heading.markdown
+98: " " markup.heading.markdown heading.1.markdown
+98: "Math Rulez!" markup.heading.markdown heading.1.markdown entity.name.section.markdown
+99: ""
+100: "$\\sqrt{3x-1}+(1+x)^2$" meta.paragraph.markdown
+101: ""
+102: "$$" meta.paragraph.markdown
+103: "\\begin{array}{rl}" meta.paragraph.markdown
+104: "\\nabla \\times \\vec{\\mathbf{B}} -\\, \\frac1c\\, \\frac{\\partial\\vec{\\mathbf{E}}}{\\partial t} " meta.paragraph.markdown
+104: "&" meta.paragraph.markdown meta.other.valid-ampersand.markdown
+104: " = \\frac{4\\pi}{c}\\vec{\\mathbf{j}} " meta.paragraph.markdown
+104: "\\\\" meta.paragraph.markdown constant.character.escape.markdown
+105: "\\nabla \\cdot \\vec{\\mathbf{E}} " meta.paragraph.markdown
+105: "&" meta.paragraph.markdown meta.other.valid-ampersand.markdown
+105: " = 4 \\pi \\rho " meta.paragraph.markdown
+105: "\\\\" meta.paragraph.markdown constant.character.escape.markdown
+106: "\\nabla \\times \\vec{\\mathbf{E}}\\, +\\, \\frac1c\\, \\frac{\\partial\\vec{\\mathbf{B}}}{\\partial t} " meta.paragraph.markdown
+106: "&" meta.paragraph.markdown meta.other.valid-ampersand.markdown
+106: " = \\vec{\\mathbf{0}} " meta.paragraph.markdown
+106: "\\\\" meta.paragraph.markdown constant.character.escape.markdown
+107: "\\nabla \\cdot \\vec{\\mathbf{B}} " meta.paragraph.markdown
+107: "&" meta.paragraph.markdown meta.other.valid-ampersand.markdown
+107: " = 0" meta.paragraph.markdown
+108: "\\end{array}" meta.paragraph.markdown
+109: "$$" meta.paragraph.markdown
+110: ""
+111: "##" markup.heading.markdown heading.2.markdown punctuation.definition.heading.markdown
+111: " " markup.heading.markdown heading.2.markdown
+111: "Code" markup.heading.markdown heading.2.markdown entity.name.section.markdown
+112: ""
+113: "Inline " meta.paragraph.markdown
+113: "`" meta.paragraph.markdown markup.inline.raw.string.markdown punctuation.definition.raw.markdown
+113: "code" meta.paragraph.markdown markup.inline.raw.string.markdown
+113: "`" meta.paragraph.markdown markup.inline.raw.string.markdown punctuation.definition.raw.markdown
+114: ""
+115: "Indented code" meta.paragraph.markdown
+116: ""
+117: "    " meta.indented.block.markdown
+117: "// Some comments" meta.indented.block.markdown meta.paragraph.markdown
+118: "    " meta.indented.block.markdown
+118: "line 1 of code" meta.indented.block.markdown meta.paragraph.markdown
+119: "    " meta.indented.block.markdown
+119: "line 2 of code" meta.indented.block.markdown meta.paragraph.markdown
+120: "    " meta.indented.block.markdown
+120: "line 3 of code" meta.indented.block.markdown meta.paragraph.markdown
+121: ""
+122: "Block code \"fences\"" meta.paragraph.markdown
+123: ""
+124: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+125: "Sample text here..." markup.fenced_code.block.markdown
+126: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+127: ""
+128: "Syntax highlighting" meta.paragraph.markdown
+129: ""
+130: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+130: "js" markup.fenced_code.block.markdown fenced_code.block.language
+131: "var foo = function (bar) {" markup.fenced_code.block.markdown
+132: "\treturn bar++;" markup.fenced_code.block.markdown
+133: "};" markup.fenced_code.block.markdown
+134: "" markup.fenced_code.block.markdown
+135: "console.log(foo(5));" markup.fenced_code.block.markdown
+136: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+137: ""
+138: "Indented fence in a list item (" meta.paragraph.markdown
+138: "[" meta.paragraph.markdown meta.link.inline.markdown punctuation.definition.link.title.begin.markdown
+138: "#106" meta.paragraph.markdown meta.link.inline.markdown string.other.link.title.markdown
+138: "]" meta.paragraph.markdown meta.link.inline.markdown punctuation.definition.link.title.end.markdown
+138: "(" meta.paragraph.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+138: "https://github.com/searKing/preview-vscode/issues/106" meta.paragraph.markdown meta.link.inline.markdown markup.underline.link.markdown
+138: ")" meta.paragraph.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+138: ")" meta.paragraph.markdown
+139: ""
+140: "1." markup.list.numbered.markdown punctuation.definition.list.begin.markdown
+140: "\t" markup.list.numbered.markdown
+140: "<table>" markup.list.numbered.markdown meta.paragraph.markdown
+141: "\t" markup.list.numbered.markdown
+141: "\t" markup.list.numbered.markdown meta.indented.block.markdown
+141: "<tr>" markup.list.numbered.markdown meta.indented.block.markdown meta.paragraph.markdown
+142: "\t" markup.list.numbered.markdown
+142: "\t" markup.list.numbered.markdown meta.indented.block.markdown
+142: "\t" markup.list.numbered.markdown meta.indented.block.markdown meta.indented.block.markdown
+142: "<th> Variable Assignment </th>" markup.list.numbered.markdown meta.indented.block.markdown meta.indented.block.markdown meta.paragraph.markdown
+143: "\t" markup.list.numbered.markdown
+143: "\t" markup.list.numbered.markdown meta.indented.block.markdown
+143: "\t" markup.list.numbered.markdown meta.indented.block.markdown meta.indented.block.markdown
+143: "<td>" markup.list.numbered.markdown meta.indented.block.markdown meta.indented.block.markdown meta.paragraph.markdown
+144: "" markup.list.numbered.markdown
+145: "\t" markup.list.numbered.markdown
+145: "\t\t\t" markup.list.numbered.markdown markup.fenced_code.block.markdown
+145: "~~~" markup.list.numbered.markdown markup.fenced_code.block.markdown punctuation.definition.markdown
+145: "sh" markup.list.numbered.markdown markup.fenced_code.block.markdown fenced_code.block.language.markdown
+146: "\t" markup.list.numbered.markdown
+146: "\t\t\t" markup.list.numbered.markdown markup.fenced_code.block.markdown meta.embedded.block.shellscript meta.statement.shell meta.statement.command.shell
+146: "command" markup.list.numbered.markdown markup.fenced_code.block.markdown meta.embedded.block.shellscript meta.statement.shell meta.statement.command.shell meta.statement.command.name.shell entity.name.function.call.shell entity.name.command.shell support.function.builtin.shell
+146: "." markup.list.numbered.markdown markup.fenced_code.block.markdown meta.embedded.block.shellscript meta.statement.shell meta.statement.command.shell meta.statement.command.name.shell string.unquoted.shell
+146: "b" markup.list.numbered.markdown markup.fenced_code.block.markdown meta.embedded.block.shellscript meta.statement.shell meta.statement.command.shell meta.statement.command.name.shell string.unquoted.shell
+146: "i" markup.list.numbered.markdown markup.fenced_code.block.markdown meta.embedded.block.shellscript meta.statement.shell meta.statement.command.shell meta.statement.command.name.shell string.unquoted.shell
+146: "n" markup.list.numbered.markdown markup.fenced_code.block.markdown meta.embedded.block.shellscript meta.statement.shell meta.statement.command.shell meta.statement.command.name.shell string.unquoted.shell
+146: " " markup.list.numbered.markdown markup.fenced_code.block.markdown meta.embedded.block.shellscript meta.statement.shell meta.statement.command.shell
+146: "-" markup.list.numbered.markdown markup.fenced_code.block.markdown meta.embedded.block.shellscript meta.statement.shell meta.statement.command.shell string.unquoted.argument.shell constant.other.option.dash.shell
+146: "-argument" markup.list.numbered.markdown markup.fenced_code.block.markdown meta.embedded.block.shellscript meta.statement.shell meta.statement.command.shell string.unquoted.argument constant.other.option
+146: " " markup.list.numbered.markdown markup.fenced_code.block.markdown meta.embedded.block.shellscript meta.statement.shell meta.statement.command.shell
+146: "-" markup.list.numbered.markdown markup.fenced_code.block.markdown meta.embedded.block.shellscript meta.statement.shell meta.statement.command.shell string.unquoted.argument.shell constant.other.option.dash.shell
+146: "-value-accepting-argument=" markup.list.numbered.markdown markup.fenced_code.block.markdown meta.embedded.block.shellscript meta.statement.shell meta.statement.command.shell string.unquoted.argument constant.other.option
+146: "\"" markup.list.numbered.markdown markup.fenced_code.block.markdown meta.embedded.block.shellscript meta.statement.shell meta.statement.command.shell string.unquoted.argument constant.other.option string.quoted.double.shell punctuation.definition.string.begin.shell
+146: "escaped value" markup.list.numbered.markdown markup.fenced_code.block.markdown meta.embedded.block.shellscript meta.statement.shell meta.statement.command.shell string.unquoted.argument constant.other.option string.quoted.double.shell
+146: "\"" markup.list.numbered.markdown markup.fenced_code.block.markdown meta.embedded.block.shellscript meta.statement.shell meta.statement.command.shell string.unquoted.argument constant.other.option string.quoted.double.shell punctuation.definition.string.end.shell
+147: "\t" markup.list.numbered.markdown
+147: "\t\t\t" markup.list.numbered.markdown markup.fenced_code.block.markdown
+147: "~~~" markup.list.numbered.markdown markup.fenced_code.block.markdown punctuation.definition.markdown
+148: "" markup.list.numbered.markdown
+149: "\t" markup.list.numbered.markdown
+149: "\t" markup.list.numbered.markdown meta.indented.block.markdown
+149: "\t" markup.list.numbered.markdown meta.indented.block.markdown meta.indented.block.markdown
+149: "</td>" markup.list.numbered.markdown meta.indented.block.markdown meta.indented.block.markdown meta.paragraph.markdown
+150: "\t" markup.list.numbered.markdown
+150: "\t" markup.list.numbered.markdown meta.indented.block.markdown
+150: "</tr>" markup.list.numbered.markdown meta.indented.block.markdown meta.paragraph.markdown
+151: "\t" markup.list.numbered.markdown
+151: "</table>" markup.list.numbered.markdown meta.paragraph.markdown
+152: "" markup.list.numbered.markdown
+153: "##" markup.heading.markdown heading.2.markdown punctuation.definition.heading.markdown
+153: " " markup.heading.markdown heading.2.markdown
+153: "Tables" markup.heading.markdown heading.2.markdown entity.name.section.markdown
+154: ""
+155: "|" markup.table.markdown punctuation.definition.table.markdown
+155: " " markup.table.markdown
+155: "Option" markup.table.markdown
+155: " " markup.table.markdown
+155: "|" markup.table.markdown punctuation.definition.table.markdown
+155: " " markup.table.markdown
+155: "Description" markup.table.markdown
+155: "                                                               " markup.table.markdown
+155: "|" markup.table.markdown punctuation.definition.table.markdown
+156: "|" markup.table.markdown punctuation.definition.table.markdown
+156: " " markup.table.markdown
+156: "------" markup.table.markdown punctuation.separator.table.markdown
+156: " " markup.table.markdown
+156: "|" markup.table.markdown punctuation.definition.table.markdown
+156: " " markup.table.markdown
+156: "-------------------------------------------------------------------------" markup.table.markdown punctuation.separator.table.markdown
+156: " " markup.table.markdown
+156: "|" markup.table.markdown punctuation.definition.table.markdown
+157: "|" markup.table.markdown punctuation.definition.table.markdown
+157: " " markup.table.markdown
+157: "data" markup.table.markdown
+157: "   " markup.table.markdown
+157: "|" markup.table.markdown punctuation.definition.table.markdown
+157: " " markup.table.markdown
+157: "path to data files to supply the data that will be passed into templates." markup.table.markdown
+157: " " markup.table.markdown
+157: "|" markup.table.markdown punctuation.definition.table.markdown
+158: "|" markup.table.markdown punctuation.definition.table.markdown
+158: " " markup.table.markdown
+158: "engine" markup.table.markdown
+158: " " markup.table.markdown
+158: "|" markup.table.markdown punctuation.definition.table.markdown
+158: " " markup.table.markdown
+158: "engine to be used for processing templates. Handlebars is the default." markup.table.markdown
+158: "    " markup.table.markdown
+158: "|" markup.table.markdown punctuation.definition.table.markdown
+159: "|" markup.table.markdown punctuation.definition.table.markdown
+159: " " markup.table.markdown
+159: "ext" markup.table.markdown
+159: "    " markup.table.markdown
+159: "|" markup.table.markdown punctuation.definition.table.markdown
+159: " " markup.table.markdown
+159: "extension to be used for dest files." markup.table.markdown
+159: "                                      " markup.table.markdown
+159: "|" markup.table.markdown punctuation.definition.table.markdown
+160: ""
+161: "Right aligned columns" meta.paragraph.markdown
+162: ""
+163: "|" markup.table.markdown punctuation.definition.table.markdown
+163: " " markup.table.markdown
+163: "Option" markup.table.markdown
+163: " " markup.table.markdown
+163: "|" markup.table.markdown punctuation.definition.table.markdown
+163: "                                                               " markup.table.markdown
+163: "Description" markup.table.markdown
+163: " " markup.table.markdown
+163: "|" markup.table.markdown punctuation.definition.table.markdown
+164: "|" markup.table.markdown punctuation.definition.table.markdown
+164: " " markup.table.markdown
+164: "-----:" markup.table.markdown punctuation.separator.table.markdown
+164: " " markup.table.markdown
+164: "|" markup.table.markdown punctuation.definition.table.markdown
+164: " " markup.table.markdown
+164: "------------------------------------------------------------------------:" markup.table.markdown punctuation.separator.table.markdown
+164: " " markup.table.markdown
+164: "|" markup.table.markdown punctuation.definition.table.markdown
+165: "|" markup.table.markdown punctuation.definition.table.markdown
+165: "   " markup.table.markdown
+165: "data" markup.table.markdown
+165: " " markup.table.markdown
+165: "|" markup.table.markdown punctuation.definition.table.markdown
+165: " " markup.table.markdown
+165: "path to data files to supply the data that will be passed into templates." markup.table.markdown
+165: " " markup.table.markdown
+165: "|" markup.table.markdown punctuation.definition.table.markdown
+166: "|" markup.table.markdown punctuation.definition.table.markdown
+166: " " markup.table.markdown
+166: "engine" markup.table.markdown
+166: " " markup.table.markdown
+166: "|" markup.table.markdown punctuation.definition.table.markdown
+166: "    " markup.table.markdown
+166: "engine to be used for processing templates. Handlebars is the default." markup.table.markdown
+166: " " markup.table.markdown
+166: "|" markup.table.markdown punctuation.definition.table.markdown
+167: "|" markup.table.markdown punctuation.definition.table.markdown
+167: "    " markup.table.markdown
+167: "ext" markup.table.markdown
+167: " " markup.table.markdown
+167: "|" markup.table.markdown punctuation.definition.table.markdown
+167: "                                      " markup.table.markdown
+167: "extension to be used for dest files." markup.table.markdown
+167: " " markup.table.markdown
+167: "|" markup.table.markdown punctuation.definition.table.markdown
+168: ""
+169: "##" markup.heading.markdown heading.2.markdown punctuation.definition.heading.markdown
+169: " " markup.heading.markdown heading.2.markdown
+169: "Links" markup.heading.markdown heading.2.markdown entity.name.section.markdown
+170: ""
+171: "[" meta.paragraph.markdown meta.link.inline.markdown punctuation.definition.link.title.begin.markdown
+171: "link text" meta.paragraph.markdown meta.link.inline.markdown string.other.link.title.markdown
+171: "]" meta.paragraph.markdown meta.link.inline.markdown punctuation.definition.link.title.end.markdown
+171: "(" meta.paragraph.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+171: "http://dev.nodeca.com" meta.paragraph.markdown meta.link.inline.markdown markup.underline.link.markdown
+171: ")" meta.paragraph.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+172: ""
+173: "[" meta.paragraph.markdown meta.link.inline.markdown punctuation.definition.link.title.begin.markdown
+173: "link with title" meta.paragraph.markdown meta.link.inline.markdown string.other.link.title.markdown
+173: "]" meta.paragraph.markdown meta.link.inline.markdown punctuation.definition.link.title.end.markdown
+173: "(" meta.paragraph.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+173: "http://nodeca.github.io/pica/demo/" meta.paragraph.markdown meta.link.inline.markdown markup.underline.link.markdown
+173: " " meta.paragraph.markdown meta.link.inline.markdown
+173: "\"" meta.paragraph.markdown meta.link.inline.markdown string.other.link.description.title.markdown punctuation.definition.string.begin.markdown
+173: "title text!" meta.paragraph.markdown meta.link.inline.markdown string.other.link.description.title.markdown
+173: "\"" meta.paragraph.markdown meta.link.inline.markdown string.other.link.description.title.markdown punctuation.definition.string.end.markdown
+173: ")" meta.paragraph.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+174: ""
+175: "Autoconverted link https://github.com/nodeca/pica (enable linkify to see)" meta.paragraph.markdown
+176: ""
+177: "##" markup.heading.markdown heading.2.markdown punctuation.definition.heading.markdown
+177: " " markup.heading.markdown heading.2.markdown
+177: "Images" markup.heading.markdown heading.2.markdown entity.name.section.markdown
+178: ""
+179: "![" meta.paragraph.markdown meta.image.inline.markdown punctuation.definition.link.description.begin.markdown
+179: "Minion" meta.paragraph.markdown meta.image.inline.markdown string.other.link.description.markdown
+179: "]" meta.paragraph.markdown meta.image.inline.markdown punctuation.definition.link.description.end.markdown
+179: "(" meta.paragraph.markdown meta.image.inline.markdown punctuation.definition.metadata.markdown
+179: "https://octodex.github.com/images/minion.png" meta.paragraph.markdown meta.image.inline.markdown markup.underline.link.image.markdown
+179: ")" meta.paragraph.markdown meta.image.inline.markdown punctuation.definition.metadata.markdown
+180: ""
+181: "![" meta.paragraph.markdown meta.image.inline.markdown punctuation.definition.link.description.begin.markdown
+181: "Stormtroopocat" meta.paragraph.markdown meta.image.inline.markdown string.other.link.description.markdown
+181: "]" meta.paragraph.markdown meta.image.inline.markdown punctuation.definition.link.description.end.markdown
+181: "(" meta.paragraph.markdown meta.image.inline.markdown punctuation.definition.metadata.markdown
+181: "https://octodex.github.com/images/stormtroopocat.jpg" meta.paragraph.markdown meta.image.inline.markdown markup.underline.link.image.markdown
+181: " " meta.paragraph.markdown meta.image.inline.markdown
+181: "\"" meta.paragraph.markdown meta.image.inline.markdown string.other.link.description.title.markdown punctuation.definition.string.begin.markdown
+181: "The Stormtroopocat" meta.paragraph.markdown meta.image.inline.markdown string.other.link.description.title.markdown
+181: "\"" meta.paragraph.markdown meta.image.inline.markdown string.other.link.description.title.markdown punctuation.definition.string.end.markdown
+181: ")" meta.paragraph.markdown meta.image.inline.markdown punctuation.definition.metadata.markdown
+182: ""
+183: "Like links, Images also have a footnote style syntax" meta.paragraph.markdown
+184: ""
+185: "![" meta.paragraph.markdown meta.image.reference.markdown punctuation.definition.link.description.begin.markdown
+185: "Alt text" meta.paragraph.markdown meta.image.reference.markdown string.other.link.description.markdown
+185: "]" meta.paragraph.markdown meta.image.reference.markdown punctuation.definition.link.description.end.markdown
+185: "[" meta.paragraph.markdown meta.image.reference.markdown punctuation.definition.constant.markdown
+185: "id" meta.paragraph.markdown meta.image.reference.markdown constant.other.reference.link.markdown
+185: "]" meta.paragraph.markdown meta.image.reference.markdown punctuation.definition.constant.markdown
+186: ""
+187: "With a reference later in the document defining the URL location:" meta.paragraph.markdown
+188: ""
+189: "[" meta.link.reference.def.markdown punctuation.definition.constant.markdown
+189: "id" meta.link.reference.def.markdown constant.other.reference.link.markdown
+189: "]" meta.link.reference.def.markdown punctuation.definition.constant.markdown
+189: ":" meta.link.reference.def.markdown punctuation.separator.key-value.markdown
+189: " " meta.link.reference.def.markdown
+189: "https://octodex.github.com/images/dojocat.jpg" meta.link.reference.def.markdown markup.underline.link.markdown
+189: " " meta.link.reference.def.markdown
+189: "\"" meta.link.reference.def.markdown string.other.link.description.title.markdown punctuation.definition.string.begin.markdown
+189: "The Dojocat" meta.link.reference.def.markdown string.other.link.description.title.markdown
+189: "\"" meta.link.reference.def.markdown string.other.link.description.title.markdown punctuation.definition.string.end.markdown
+190: ""
+191: "##" markup.heading.markdown heading.2.markdown punctuation.definition.heading.markdown
+191: " " markup.heading.markdown heading.2.markdown
+191: "Plugins" markup.heading.markdown heading.2.markdown entity.name.section.markdown
+192: ""
+193: "The killer feature of " meta.paragraph.markdown
+193: "`" meta.paragraph.markdown markup.inline.raw.string.markdown punctuation.definition.raw.markdown
+193: "markdown-it" meta.paragraph.markdown markup.inline.raw.string.markdown
+193: "`" meta.paragraph.markdown markup.inline.raw.string.markdown punctuation.definition.raw.markdown
+193: " is very effective support of" meta.paragraph.markdown
+194: "[" meta.paragraph.markdown meta.link.inline.markdown punctuation.definition.link.title.begin.markdown
+194: "syntax plugins" meta.paragraph.markdown meta.link.inline.markdown string.other.link.title.markdown
+194: "]" meta.paragraph.markdown meta.link.inline.markdown punctuation.definition.link.title.end.markdown
+194: "(" meta.paragraph.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+194: "https://www.npmjs.org/browse/keyword/markdown-it-plugin" meta.paragraph.markdown meta.link.inline.markdown markup.underline.link.markdown
+194: ")" meta.paragraph.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+194: "." meta.paragraph.markdown
+195: ""
+196: "###" markup.heading.markdown heading.3.markdown punctuation.definition.heading.markdown
+196: " " markup.heading.markdown heading.3.markdown
+196: "[" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.link.title.begin.markdown
+196: "Abbreviations" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown string.other.link.title.markdown
+196: "]" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.link.title.end.markdown
+196: "(" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+196: "https://github.com/markdown-it/markdown-it-abbr" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown markup.underline.link.markdown
+196: ")" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+197: ""
+198: "This is HTML abbreviation example." meta.paragraph.markdown
+199: ""
+200: "It converts \"HTML\", but keep intact partial entries like \"xxxHTMLyyy\" and so on." meta.paragraph.markdown
+201: ""
+202: "\\*" meta.paragraph.markdown constant.character.escape.markdown
+202: "[" meta.paragraph.markdown meta.link.reference.markdown punctuation.definition.link.title.begin.markdown
+202: "HTML" meta.paragraph.markdown meta.link.reference.markdown string.other.link.title.markdown
+202: "]" meta.paragraph.markdown meta.link.reference.markdown punctuation.definition.link.title.end.markdown
+202: ": Hyper Text Markup Language" meta.paragraph.markdown
+203: ""
+204: "###" markup.heading.markdown heading.3.markdown punctuation.definition.heading.markdown
+204: " " markup.heading.markdown heading.3.markdown
+204: "[" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.link.title.begin.markdown
+204: "Attributes" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown string.other.link.title.markdown
+204: "]" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.link.title.end.markdown
+204: "(" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+204: "https://github.com/markdown-it/markdown-it-attr" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown markup.underline.link.markdown
+204: ")" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+205: ""
+206: "paragraph {.style-me data-toggle=modal}" meta.paragraph.markdown
+207: ""
+208: "Use the css-module green on this paragraph. {..green}" meta.paragraph.markdown
+209: ""
+210: "paragraph with [a style me span]{.red}" meta.paragraph.markdown
+211: ""
+212: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+212: "python {data=asdf}" markup.fenced_code.block.markdown fenced_code.block.language
+213: "nums = [x for x in range(10)]" markup.fenced_code.block.markdown
+214: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+215: ""
+216: "###" markup.heading.markdown heading.3.markdown punctuation.definition.heading.markdown
+216: " " markup.heading.markdown heading.3.markdown
+216: "[" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.link.title.begin.markdown
+216: "bracketed_spans" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown string.other.link.title.markdown
+216: "]" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.link.title.end.markdown
+216: "(" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+216: "https://github.com/markdown-it/markdown-it-bracketed-spans" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown markup.underline.link.markdown
+216: ")" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+217: ""
+218: "foo [bar " meta.paragraph.markdown
+218: "*" meta.paragraph.markdown markup.italic.markdown punctuation.definition.italic.markdown
+218: "bar" meta.paragraph.markdown markup.italic.markdown
+218: "*" meta.paragraph.markdown markup.italic.markdown punctuation.definition.italic.markdown
+218: "]{#id .class attr=value} baz" meta.paragraph.markdown
+219: ""
+220: "###" markup.heading.markdown heading.3.markdown punctuation.definition.heading.markdown
+220: " " markup.heading.markdown heading.3.markdown
+220: "[" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.link.title.begin.markdown
+220: "cjk-breaks" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown string.other.link.title.markdown
+220: "]" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.link.title.end.markdown
+220: "(" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+220: "https://github.com/markdown-it/markdown-it-cjk-breaks" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown markup.underline.link.markdown
+220: ")" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+221: ""
+222: "####" markup.heading.markdown heading.4.markdown punctuation.definition.heading.markdown
+222: " " markup.heading.markdown heading.4.markdown
+222: "Remove linebreaks near ZWSP" markup.heading.markdown heading.4.markdown entity.name.section.markdown
+223: ""
+224: "foo​" meta.paragraph.markdown
+225: "bar" meta.paragraph.markdown
+226: "​baz" meta.paragraph.markdown
+227: ""
+228: "####" markup.heading.markdown heading.4.markdown punctuation.definition.heading.markdown
+228: " " markup.heading.markdown heading.4.markdown
+228: "Remove linebreaks between hiragana (wide) characters" markup.heading.markdown heading.4.markdown entity.name.section.markdown
+229: ""
+230: "あおえ" meta.paragraph.markdown
+231: "いう" meta.paragraph.markdown
+232: ""
+233: "####" markup.heading.markdown heading.4.markdown punctuation.definition.heading.markdown
+233: " " markup.heading.markdown heading.4.markdown
+233: "Remove linebreaks between halfwidth katakana" markup.heading.markdown heading.4.markdown entity.name.section.markdown
+234: ""
+235: "ｱｵｴ" meta.paragraph.markdown
+236: "ｲｳ" meta.paragraph.markdown
+237: ""
+238: "####" markup.heading.markdown heading.4.markdown punctuation.definition.heading.markdown
+238: " " markup.heading.markdown heading.4.markdown
+238: "Remove linebreaks between fullwidth characters" markup.heading.markdown heading.4.markdown entity.name.section.markdown
+239: ""
+240: "！＂＃" meta.paragraph.markdown
+241: "＄％" meta.paragraph.markdown
+242: ""
+243: "####" markup.heading.markdown heading.4.markdown punctuation.definition.heading.markdown
+243: " " markup.heading.markdown heading.4.markdown
+243: "Keep linebreaks between hangul characters" markup.heading.markdown heading.4.markdown entity.name.section.markdown
+244: ""
+245: "ㅏㅗㅔ" meta.paragraph.markdown
+246: "ㅣㅜ" meta.paragraph.markdown
+247: "ￂￌￇ" meta.paragraph.markdown
+248: "ￜￓ" meta.paragraph.markdown
+249: ""
+250: "####" markup.heading.markdown heading.4.markdown punctuation.definition.heading.markdown
+250: " " markup.heading.markdown heading.4.markdown
+250: "Keep linebreaks between hiragana (wide) and english" markup.heading.markdown heading.4.markdown entity.name.section.markdown
+251: ""
+252: "あおえ" meta.paragraph.markdown
+253: "aoe" meta.paragraph.markdown
+254: "あおえ" meta.paragraph.markdown
+255: ""
+256: "####" markup.heading.markdown heading.4.markdown punctuation.definition.heading.markdown
+256: " " markup.heading.markdown heading.4.markdown
+256: "Emphasis tokens should be skipped" markup.heading.markdown heading.4.markdown entity.name.section.markdown
+257: ""
+258: "_" meta.paragraph.markdown markup.italic.markdown punctuation.definition.italic.markdown
+258: "あおえ" meta.paragraph.markdown markup.italic.markdown
+258: "_" meta.paragraph.markdown markup.italic.markdown punctuation.definition.italic.markdown
+259: "_" meta.paragraph.markdown markup.italic.markdown punctuation.definition.italic.markdown
+259: "いう" meta.paragraph.markdown markup.italic.markdown
+259: "_" meta.paragraph.markdown markup.italic.markdown punctuation.definition.italic.markdown
+260: ""
+261: "####" markup.heading.markdown heading.4.markdown punctuation.definition.heading.markdown
+261: " " markup.heading.markdown heading.4.markdown
+261: "Should recognize astral characters correctly" markup.heading.markdown heading.4.markdown entity.name.section.markdown
+262: ""
+263: "foo 🈀" meta.paragraph.markdown
+264: "🈀 foo" meta.paragraph.markdown
+265: ""
+266: "###" markup.heading.markdown heading.3.markdown punctuation.definition.heading.markdown
+266: " " markup.heading.markdown heading.3.markdown
+266: "[" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.link.title.begin.markdown
+266: "Definition lists" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown string.other.link.title.markdown
+266: "]" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.link.title.end.markdown
+266: "(" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+266: "https://github.com/markdown-it/markdown-it-deflist" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown markup.underline.link.markdown
+266: ")" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+267: ""
+268: "Term 1" meta.paragraph.markdown
+269: ""
+270: ": Definition 1" meta.paragraph.markdown
+271: "with lazy continuation." meta.paragraph.markdown
+272: ""
+273: "Term 2 with " meta.paragraph.markdown
+273: "_" meta.paragraph.markdown markup.italic.markdown punctuation.definition.italic.markdown
+273: "inline markup" meta.paragraph.markdown markup.italic.markdown
+273: "_" meta.paragraph.markdown markup.italic.markdown punctuation.definition.italic.markdown
+274: ""
+275: ": Definition 2" meta.paragraph.markdown
+276: ""
+277: "    " meta.indented.block.markdown
+277: "    " meta.indented.block.markdown meta.indented.block.markdown
+277: "{ some code, part of Definition 2 }" meta.indented.block.markdown meta.indented.block.markdown meta.paragraph.markdown
+278: ""
+279: "    " meta.indented.block.markdown
+279: "Third paragraph of definition 2." meta.indented.block.markdown meta.paragraph.markdown
+280: ""
+281: "_" meta.paragraph.markdown markup.italic.markdown punctuation.definition.italic.markdown
+281: "Compact style:" meta.paragraph.markdown markup.italic.markdown
+281: "_" meta.paragraph.markdown markup.italic.markdown punctuation.definition.italic.markdown
+282: ""
+283: "Term 1" meta.paragraph.markdown
+284: "~ Definition 1" meta.paragraph.markdown
+285: ""
+286: "Term 2" meta.paragraph.markdown
+287: "~ Definition 2a" meta.paragraph.markdown
+288: "~ Definition 2b" meta.paragraph.markdown
+289: ""
+290: "###" markup.heading.markdown heading.3.markdown punctuation.definition.heading.markdown
+290: " " markup.heading.markdown heading.3.markdown
+290: "[" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.link.title.begin.markdown
+290: "Emojies" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown string.other.link.title.markdown
+290: "]" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.link.title.end.markdown
+290: "(" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+290: "https://github.com/markdown-it/markdown-it-emoji" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown markup.underline.link.markdown
+290: ")" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+291: ""
+292: ">" markup.quote.markdown punctuation.definition.quote.begin.markdown
+292: " " markup.quote.markdown
+292: "Classic markup: :wink: :cry: :laughing: :yum:" markup.quote.markdown meta.paragraph.markdown
+293: ">" markup.quote.markdown punctuation.definition.quote.begin.markdown
+294: ">" markup.quote.markdown punctuation.definition.quote.begin.markdown
+294: " " markup.quote.markdown
+294: "Shortcuts (emoticons): :-) :-( 8-) ; )" markup.quote.markdown meta.paragraph.markdown
+295: ""
+296: "see " meta.paragraph.markdown
+296: "[" meta.paragraph.markdown meta.link.inline.markdown punctuation.definition.link.title.begin.markdown
+296: "how to change output" meta.paragraph.markdown meta.link.inline.markdown string.other.link.title.markdown
+296: "]" meta.paragraph.markdown meta.link.inline.markdown punctuation.definition.link.title.end.markdown
+296: "(" meta.paragraph.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+296: "https://github.com/markdown-it/markdown-it-emoji#change-output" meta.paragraph.markdown meta.link.inline.markdown markup.underline.link.markdown
+296: ")" meta.paragraph.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+296: " with twemoji." meta.paragraph.markdown
+297: ""
+298: "###" markup.heading.markdown heading.3.markdown punctuation.definition.heading.markdown
+298: " " markup.heading.markdown heading.3.markdown
+298: "[" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.link.title.begin.markdown
+298: "Expand Tabs" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown string.other.link.title.markdown
+298: "]" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.link.title.end.markdown
+298: "(" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+298: "https://github.com/markdown-it/markdown-it-expand-tabs" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown markup.underline.link.markdown
+298: ")" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+299: ""
+300: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+301: "function foo() {" markup.fenced_code.block.markdown
+302: "\tindentedOne();" markup.fenced_code.block.markdown
+303: "\tif (bar) {" markup.fenced_code.block.markdown
+304: "\t\t// line\twith\tinternal\ttabs" markup.fenced_code.block.markdown
+305: "\t\tlineWithTrailingTabs();" markup.fenced_code.block.markdown
+306: "\t\tindentedTwo();" markup.fenced_code.block.markdown
+307: "\t}" markup.fenced_code.block.markdown
+308: "}" markup.fenced_code.block.markdown
+309: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+310: ""
+311: "###" markup.heading.markdown heading.3.markdown punctuation.definition.heading.markdown
+311: " " markup.heading.markdown heading.3.markdown
+311: "[" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.link.title.begin.markdown
+311: "Footnotes" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown string.other.link.title.markdown
+311: "]" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.link.title.end.markdown
+311: "(" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+311: "https://github.com/markdown-it/markdown-it-footnote" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown markup.underline.link.markdown
+311: ")" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+312: ""
+313: "####" markup.heading.markdown heading.4.markdown punctuation.definition.heading.markdown
+313: " " markup.heading.markdown heading.4.markdown
+313: "Normal footnote:" markup.heading.markdown heading.4.markdown entity.name.section.markdown
+314: ""
+315: "Footnote 1 link" meta.paragraph.markdown
+315: "[" meta.paragraph.markdown meta.link.reference.markdown punctuation.definition.link.title.begin.markdown
+315: "^first" meta.paragraph.markdown meta.link.reference.markdown string.other.link.title.markdown
+315: "]" meta.paragraph.markdown meta.link.reference.markdown punctuation.definition.link.title.end.markdown
+315: "." meta.paragraph.markdown
+316: ""
+317: "Footnote 2 link" meta.paragraph.markdown
+317: "[" meta.paragraph.markdown meta.link.reference.markdown punctuation.definition.link.title.begin.markdown
+317: "^second" meta.paragraph.markdown meta.link.reference.markdown string.other.link.title.markdown
+317: "]" meta.paragraph.markdown meta.link.reference.markdown punctuation.definition.link.title.end.markdown
+317: "." meta.paragraph.markdown
+318: ""
+319: "Inline footnote^[Text of inline footnote] definition." meta.paragraph.markdown
+320: ""
+321: "Duplicated footnote reference" meta.paragraph.markdown
+321: "[" meta.paragraph.markdown meta.link.reference.markdown punctuation.definition.link.title.begin.markdown
+321: "^second" meta.paragraph.markdown meta.link.reference.markdown string.other.link.title.markdown
+321: "]" meta.paragraph.markdown meta.link.reference.markdown punctuation.definition.link.title.end.markdown
+321: "." meta.paragraph.markdown
+322: ""
+323: "[" meta.paragraph.markdown meta.link.reference.markdown punctuation.definition.link.title.begin.markdown
+323: "^first" meta.paragraph.markdown meta.link.reference.markdown string.other.link.title.markdown
+323: "]" meta.paragraph.markdown meta.link.reference.markdown punctuation.definition.link.title.end.markdown
+323: ": Footnote " meta.paragraph.markdown
+323: "**" meta.paragraph.markdown markup.bold.markdown punctuation.definition.bold.markdown
+323: "can have markup" meta.paragraph.markdown markup.bold.markdown
+323: "**" meta.paragraph.markdown markup.bold.markdown punctuation.definition.bold.markdown
+324: ""
+325: "    " meta.indented.block.markdown
+325: "and multiple paragraphs." meta.indented.block.markdown meta.paragraph.markdown
+326: ""
+327: "[" meta.paragraph.markdown meta.link.reference.markdown punctuation.definition.link.title.begin.markdown
+327: "^second" meta.paragraph.markdown meta.link.reference.markdown string.other.link.title.markdown
+327: "]" meta.paragraph.markdown meta.link.reference.markdown punctuation.definition.link.title.end.markdown
+327: ": Footnote text." meta.paragraph.markdown
+328: ""
+329: "####" markup.heading.markdown heading.4.markdown punctuation.definition.heading.markdown
+329: " " markup.heading.markdown heading.4.markdown
+329: "Inline Footnotes:" markup.heading.markdown heading.4.markdown entity.name.section.markdown
+330: ""
+331: "Here is an inline note.^[Inlines notes are easier to write, since" meta.paragraph.markdown
+332: "you don't have to pick an identifier and move down to type the" meta.paragraph.markdown
+333: "note.]" meta.paragraph.markdown
+334: ""
+335: "###" markup.heading.markdown heading.3.markdown punctuation.definition.heading.markdown
+335: " " markup.heading.markdown heading.3.markdown
+335: "[" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.link.title.begin.markdown
+335: "Highlightjs" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown string.other.link.title.markdown
+335: "]" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.link.title.end.markdown
+335: "(" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+335: "https://github.com/valeriangalliat/markdown-it-highlightjs" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown markup.underline.link.markdown
+335: ")" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+336: ""
+337: "####" markup.heading.markdown heading.4.markdown punctuation.definition.heading.markdown
+337: " " markup.heading.markdown heading.4.markdown
+337: "raw indented code block" markup.heading.markdown heading.4.markdown entity.name.section.markdown
+338: ""
+339: "    " meta.indented.block.markdown
+339: "console.log(42);" meta.indented.block.markdown meta.paragraph.markdown
+340: ""
+341: "####" markup.heading.markdown heading.4.markdown punctuation.definition.heading.markdown
+341: " " markup.heading.markdown heading.4.markdown
+341: "fenched code block" markup.heading.markdown heading.4.markdown entity.name.section.markdown
+342: ""
+343: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+343: "js" markup.fenced_code.block.markdown fenced_code.block.language
+344: "console.log(42);" markup.fenced_code.block.markdown
+345: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+346: ""
+347: "####" markup.heading.markdown heading.4.markdown punctuation.definition.heading.markdown
+347: " " markup.heading.markdown heading.4.markdown
+347: "auto" markup.heading.markdown heading.4.markdown entity.name.section.markdown
+348: ""
+349: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+350: "<?php echo 42;" markup.fenced_code.block.markdown
+351: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+352: ""
+353: "####" markup.heading.markdown heading.4.markdown punctuation.definition.heading.markdown
+353: " " markup.heading.markdown heading.4.markdown
+353: "inline with Pandoc format" markup.heading.markdown heading.4.markdown entity.name.section.markdown
+354: ""
+355: "`" meta.paragraph.markdown markup.inline.raw.string.markdown punctuation.definition.raw.markdown
+355: "console.log(42)" meta.paragraph.markdown markup.inline.raw.string.markdown
+355: "`" meta.paragraph.markdown markup.inline.raw.string.markdown punctuation.definition.raw.markdown
+355: "{.js}" meta.paragraph.markdown
+356: ""
+357: "####" markup.heading.markdown heading.4.markdown punctuation.definition.heading.markdown
+357: " " markup.heading.markdown heading.4.markdown
+357: "inline with kramdown format" markup.heading.markdown heading.4.markdown entity.name.section.markdown
+358: ""
+359: "`" meta.paragraph.markdown markup.inline.raw.string.markdown punctuation.definition.raw.markdown
+359: "console.log(42)" meta.paragraph.markdown markup.inline.raw.string.markdown
+359: "`" meta.paragraph.markdown markup.inline.raw.string.markdown punctuation.definition.raw.markdown
+359: "{:.js}" meta.paragraph.markdown
+360: ""
+361: "##" markup.heading.markdown heading.2.markdown punctuation.definition.heading.markdown
+361: " " markup.heading.markdown heading.2.markdown
+361: "HTML" markup.heading.markdown heading.2.markdown entity.name.section.markdown
+362: ""
+363: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+363: "html" markup.fenced_code.block.markdown fenced_code.block.language
+364: "<!DOCTYPE html>" markup.fenced_code.block.markdown
+365: "<html>" markup.fenced_code.block.markdown
+366: "\t<head>" markup.fenced_code.block.markdown
+367: "\t\t<title>Page Title</title>" markup.fenced_code.block.markdown
+368: "\t</head>" markup.fenced_code.block.markdown
+369: "" markup.fenced_code.block.markdown
+370: "\t<body>" markup.fenced_code.block.markdown
+371: "\t\t<h1>This is a Heading</h1>" markup.fenced_code.block.markdown
+372: "\t\t<p>This is a paragraph.</p>" markup.fenced_code.block.markdown
+373: "\t</body>" markup.fenced_code.block.markdown
+374: "</html>" markup.fenced_code.block.markdown
+375: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+376: ""
+377: "###" markup.heading.markdown heading.3.markdown punctuation.definition.heading.markdown
+377: " " markup.heading.markdown heading.3.markdown
+377: "[" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.link.title.begin.markdown
+377: "\\<ins>" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown string.other.link.title.markdown
+377: "]" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.link.title.end.markdown
+377: "(" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+377: "https://github.com/markdown-it/markdown-it-ins" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown markup.underline.link.markdown
+377: ")" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+378: ""
+379: "++Inserted text++" meta.paragraph.markdown
+380: ""
+381: "##" markup.heading.markdown heading.2.markdown punctuation.definition.heading.markdown
+381: " " markup.heading.markdown heading.2.markdown
+381: "Lazy Headers" markup.heading.markdown heading.2.markdown entity.name.section.markdown
+382: ""
+383: "#foo" meta.paragraph.markdown
+384: "##foo" meta.paragraph.markdown
+385: "###foo" meta.paragraph.markdown
+386: "####foo" meta.paragraph.markdown
+387: "#####foo" meta.paragraph.markdown
+388: "######foo" meta.paragraph.markdown
+389: ""
+390: "###" markup.heading.markdown heading.3.markdown punctuation.definition.heading.markdown
+390: " " markup.heading.markdown heading.3.markdown
+390: "[" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.link.title.begin.markdown
+390: "\\<mark>" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown string.other.link.title.markdown
+390: "]" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.link.title.end.markdown
+390: "(" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+390: "https://github.com/markdown-it/markdown-it-mark" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown markup.underline.link.markdown
+390: ")" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+391: ""
+392: "==Marked text==" meta.paragraph.markdown
+393: ""
+394: "###" markup.heading.markdown heading.3.markdown punctuation.definition.heading.markdown
+394: " " markup.heading.markdown heading.3.markdown
+394: "[" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.link.title.begin.markdown
+394: "Subscript" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown string.other.link.title.markdown
+394: "]" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.link.title.end.markdown
+394: "(" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+394: "https://github.com/markdown-it/markdown-it-sub" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown markup.underline.link.markdown
+394: ")" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+394: " / " markup.heading.markdown heading.3.markdown entity.name.section.markdown
+394: "[" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.link.title.begin.markdown
+394: "Superscript" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown string.other.link.title.markdown
+394: "]" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.link.title.end.markdown
+394: "(" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+394: "https://github.com/markdown-it/markdown-it-sup" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown markup.underline.link.markdown
+394: ")" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+395: ""
+396: "-" markup.list.unnumbered.markdown punctuation.definition.list.begin.markdown
+396: " " markup.list.unnumbered.markdown
+396: "19^th^" markup.list.unnumbered.markdown meta.paragraph.markdown
+397: "-" markup.list.unnumbered.markdown punctuation.definition.list.begin.markdown
+397: " " markup.list.unnumbered.markdown
+397: "H~2~O" markup.list.unnumbered.markdown meta.paragraph.markdown
+398: "" markup.list.unnumbered.markdown
+399: "##" markup.heading.markdown heading.2.markdown punctuation.definition.heading.markdown
+399: " " markup.heading.markdown heading.2.markdown
+399: "GFM task list" markup.heading.markdown heading.2.markdown entity.name.section.markdown
+400: ""
+401: "-" markup.list.unnumbered.markdown punctuation.definition.list.begin.markdown
+401: " " markup.list.unnumbered.markdown
+401: "[" markup.list.unnumbered.markdown meta.paragraph.markdown meta.link.reference.markdown punctuation.definition.link.title.begin.markdown
+401: "x" markup.list.unnumbered.markdown meta.paragraph.markdown meta.link.reference.markdown string.other.link.title.markdown
+401: "]" markup.list.unnumbered.markdown meta.paragraph.markdown meta.link.reference.markdown punctuation.definition.link.title.end.markdown
+401: " GFM task list 1" markup.list.unnumbered.markdown meta.paragraph.markdown
+402: "-" markup.list.unnumbered.markdown punctuation.definition.list.begin.markdown
+402: " " markup.list.unnumbered.markdown
+402: "[" markup.list.unnumbered.markdown meta.paragraph.markdown meta.link.reference.markdown punctuation.definition.link.title.begin.markdown
+402: "x" markup.list.unnumbered.markdown meta.paragraph.markdown meta.link.reference.markdown string.other.link.title.markdown
+402: "]" markup.list.unnumbered.markdown meta.paragraph.markdown meta.link.reference.markdown punctuation.definition.link.title.end.markdown
+402: " GFM task list 2" markup.list.unnumbered.markdown meta.paragraph.markdown
+403: "-" markup.list.unnumbered.markdown punctuation.definition.list.begin.markdown
+403: " " markup.list.unnumbered.markdown
+403: "[ ] GFM task list 3" markup.list.unnumbered.markdown meta.paragraph.markdown
+404: "  " markup.list.unnumbered.markdown
+404: "-" markup.list.unnumbered.markdown markup.list.unnumbered.markdown punctuation.definition.list.begin.markdown
+404: " " markup.list.unnumbered.markdown markup.list.unnumbered.markdown
+404: "[ ] GFM task list 3-1" markup.list.unnumbered.markdown markup.list.unnumbered.markdown meta.paragraph.markdown
+405: "  " markup.list.unnumbered.markdown
+405: "-" markup.list.unnumbered.markdown markup.list.unnumbered.markdown punctuation.definition.list.begin.markdown
+405: " " markup.list.unnumbered.markdown markup.list.unnumbered.markdown
+405: "[ ] GFM task list 3-2" markup.list.unnumbered.markdown markup.list.unnumbered.markdown meta.paragraph.markdown
+406: "  " markup.list.unnumbered.markdown
+406: "-" markup.list.unnumbered.markdown markup.list.unnumbered.markdown punctuation.definition.list.begin.markdown
+406: " " markup.list.unnumbered.markdown markup.list.unnumbered.markdown
+406: "[ ] GFM task list 3-3" markup.list.unnumbered.markdown markup.list.unnumbered.markdown meta.paragraph.markdown
+407: "-" markup.list.unnumbered.markdown punctuation.definition.list.begin.markdown
+407: " " markup.list.unnumbered.markdown
+407: "[ ] GFM task list 4" markup.list.unnumbered.markdown meta.paragraph.markdown
+408: "  " markup.list.unnumbered.markdown
+408: "-" markup.list.unnumbered.markdown markup.list.unnumbered.markdown punctuation.definition.list.begin.markdown
+408: " " markup.list.unnumbered.markdown markup.list.unnumbered.markdown
+408: "[ ] GFM task list 4-1" markup.list.unnumbered.markdown markup.list.unnumbered.markdown meta.paragraph.markdown
+409: "  " markup.list.unnumbered.markdown
+409: "-" markup.list.unnumbered.markdown markup.list.unnumbered.markdown punctuation.definition.list.begin.markdown
+409: " " markup.list.unnumbered.markdown markup.list.unnumbered.markdown
+409: "[ ] GFM task list 4-2" markup.list.unnumbered.markdown markup.list.unnumbered.markdown meta.paragraph.markdown
+410: "-" markup.list.unnumbered.markdown punctuation.definition.list.begin.markdown
+410: " " markup.list.unnumbered.markdown
+410: "[" markup.list.unnumbered.markdown meta.paragraph.markdown meta.link.reference.markdown punctuation.definition.link.title.begin.markdown
+410: "x" markup.list.unnumbered.markdown meta.paragraph.markdown meta.link.reference.markdown string.other.link.title.markdown
+410: "]" markup.list.unnumbered.markdown meta.paragraph.markdown meta.link.reference.markdown punctuation.definition.link.title.end.markdown
+410: " GFM task list 5 with " markup.list.unnumbered.markdown meta.paragraph.markdown
+410: "**" markup.list.unnumbered.markdown meta.paragraph.markdown markup.bold.markdown punctuation.definition.bold.markdown
+410: "inline" markup.list.unnumbered.markdown meta.paragraph.markdown markup.bold.markdown
+410: "**" markup.list.unnumbered.markdown meta.paragraph.markdown markup.bold.markdown punctuation.definition.bold.markdown
+410: " " markup.list.unnumbered.markdown meta.paragraph.markdown
+410: "[" markup.list.unnumbered.markdown meta.paragraph.markdown meta.link.inline.markdown punctuation.definition.link.title.begin.markdown
+410: "markup" markup.list.unnumbered.markdown meta.paragraph.markdown meta.link.inline.markdown string.other.link.title.markdown
+410: "]" markup.list.unnumbered.markdown meta.paragraph.markdown meta.link.inline.markdown punctuation.definition.link.title.end.markdown
+410: "(" markup.list.unnumbered.markdown meta.paragraph.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+410: "https://github.com" markup.list.unnumbered.markdown meta.paragraph.markdown meta.link.inline.markdown markup.underline.link.markdown
+410: ")" markup.list.unnumbered.markdown meta.paragraph.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+410: " and a footnote" markup.list.unnumbered.markdown meta.paragraph.markdown
+410: "[" markup.list.unnumbered.markdown meta.paragraph.markdown meta.link.reference.markdown punctuation.definition.link.title.begin.markdown
+410: "^second" markup.list.unnumbered.markdown meta.paragraph.markdown meta.link.reference.markdown string.other.link.title.markdown
+410: "]" markup.list.unnumbered.markdown meta.paragraph.markdown meta.link.reference.markdown punctuation.definition.link.title.end.markdown
+411: "" markup.list.unnumbered.markdown
+412: "Task list in a definition list" meta.paragraph.markdown
+413: ": 1. " meta.paragraph.markdown
+413: "[" meta.paragraph.markdown meta.link.reference.markdown punctuation.definition.link.title.begin.markdown
+413: "x" meta.paragraph.markdown meta.link.reference.markdown string.other.link.title.markdown
+413: "]" meta.paragraph.markdown meta.link.reference.markdown punctuation.definition.link.title.end.markdown
+413: " Definition task with a footnote" meta.paragraph.markdown
+413: "[" meta.paragraph.markdown meta.link.reference.markdown punctuation.definition.link.title.begin.markdown
+413: "^second" meta.paragraph.markdown meta.link.reference.markdown string.other.link.title.markdown
+413: "]" meta.paragraph.markdown meta.link.reference.markdown punctuation.definition.link.title.end.markdown
+414: "  " markup.list.numbered.markdown
+414: "2." markup.list.numbered.markdown punctuation.definition.list.begin.markdown
+414: " " markup.list.numbered.markdown
+414: "[" markup.list.numbered.markdown meta.paragraph.markdown meta.link.reference.markdown punctuation.definition.link.title.begin.markdown
+414: "x" markup.list.numbered.markdown meta.paragraph.markdown meta.link.reference.markdown string.other.link.title.markdown
+414: "]" markup.list.numbered.markdown meta.paragraph.markdown meta.link.reference.markdown punctuation.definition.link.title.end.markdown
+414: " Definition task as a term" markup.list.numbered.markdown meta.paragraph.markdown
+414: "[" markup.list.numbered.markdown meta.paragraph.markdown meta.link.reference.markdown punctuation.definition.link.title.begin.markdown
+414: "^second" markup.list.numbered.markdown meta.paragraph.markdown meta.link.reference.markdown string.other.link.title.markdown
+414: "]" markup.list.numbered.markdown meta.paragraph.markdown meta.link.reference.markdown punctuation.definition.link.title.end.markdown
+415: "" markup.list.numbered.markdown
+416: "    " markup.list.numbered.markdown
+416: " " markup.list.numbered.markdown meta.paragraph.markdown
+416: ": Nested definition" markup.list.numbered.markdown meta.paragraph.markdown
+417: "" markup.list.numbered.markdown
+418: "###" markup.heading.markdown heading.3.markdown punctuation.definition.heading.markdown
+418: " " markup.heading.markdown heading.3.markdown
+418: "[" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.link.title.begin.markdown
+418: "Custom containers" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown string.other.link.title.markdown
+418: "]" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.link.title.end.markdown
+418: "(" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+418: "https://github.com/markdown-it/markdown-it-container" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown markup.underline.link.markdown
+418: ")" markup.heading.markdown heading.3.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+419: ""
+420: "::: warning" meta.paragraph.markdown
+421: "_" meta.paragraph.markdown markup.italic.markdown punctuation.definition.italic.markdown
+421: "here be dragons" meta.paragraph.markdown markup.italic.markdown
+421: "_" meta.paragraph.markdown markup.italic.markdown punctuation.definition.italic.markdown
+422: ":::" meta.paragraph.markdown
+423: ""
+424: "##" markup.heading.markdown heading.2.markdown punctuation.definition.heading.markdown
+424: " " markup.heading.markdown heading.2.markdown
+424: "[" markup.heading.markdown heading.2.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.link.title.begin.markdown
+424: "mermaid" markup.heading.markdown heading.2.markdown entity.name.section.markdown meta.link.inline.markdown string.other.link.title.markdown
+424: "]" markup.heading.markdown heading.2.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.link.title.end.markdown
+424: "(" markup.heading.markdown heading.2.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+424: "https://mermaid.live/" markup.heading.markdown heading.2.markdown entity.name.section.markdown meta.link.inline.markdown markup.underline.link.markdown
+424: ")" markup.heading.markdown heading.2.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+425: ""
+426: "###" markup.heading.markdown heading.3.markdown punctuation.definition.heading.markdown
+426: " " markup.heading.markdown heading.3.markdown
+426: "Flow" markup.heading.markdown heading.3.markdown entity.name.section.markdown
+427: ""
+428: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+428: "mermaid" markup.fenced_code.block.markdown fenced_code.block.language
+429: "flowchart TD" markup.fenced_code.block.markdown
+430: "A[Christmas] -->|Get money| B(Go shopping)" markup.fenced_code.block.markdown
+431: "B --> C{Let me think}" markup.fenced_code.block.markdown
+432: "C -->|One| D[Laptop]" markup.fenced_code.block.markdown
+433: "C -->|Two| E[iPhone]" markup.fenced_code.block.markdown
+434: "C -->|Three| F[fa:fa-car Car]" markup.fenced_code.block.markdown
+435: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+436: ""
+437: "###" markup.heading.markdown heading.3.markdown punctuation.definition.heading.markdown
+437: " " markup.heading.markdown heading.3.markdown
+437: "Sequence" markup.heading.markdown heading.3.markdown entity.name.section.markdown
+438: ""
+439: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+439: "mermaid" markup.fenced_code.block.markdown fenced_code.block.language
+440: "sequenceDiagram" markup.fenced_code.block.markdown
+441: "    Alice->>+John: Hello John, how are you?" markup.fenced_code.block.markdown
+442: "    Alice->>+John: John, can you hear me?" markup.fenced_code.block.markdown
+443: "    John-->>-Alice: Hi Alice, I can hear you!" markup.fenced_code.block.markdown
+444: "    John-->>-Alice: I feel great!" markup.fenced_code.block.markdown
+445: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+446: ""
+447: "###" markup.heading.markdown heading.3.markdown punctuation.definition.heading.markdown
+447: " " markup.heading.markdown heading.3.markdown
+447: "Class" markup.heading.markdown heading.3.markdown entity.name.section.markdown
+448: ""
+449: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+449: "mermaid" markup.fenced_code.block.markdown fenced_code.block.language
+450: "classDiagram" markup.fenced_code.block.markdown
+451: "    Animal <|-- Duck" markup.fenced_code.block.markdown
+452: "    Animal <|-- Fish" markup.fenced_code.block.markdown
+453: "    Animal <|-- Zebra" markup.fenced_code.block.markdown
+454: "    Animal : +int age" markup.fenced_code.block.markdown
+455: "    Animal : +String gender" markup.fenced_code.block.markdown
+456: "    Animal: +isMammal()" markup.fenced_code.block.markdown
+457: "    Animal: +mate()" markup.fenced_code.block.markdown
+458: "    class Duck{" markup.fenced_code.block.markdown
+459: "      +String beakColor" markup.fenced_code.block.markdown
+460: "      +swim()" markup.fenced_code.block.markdown
+461: "      +quack()" markup.fenced_code.block.markdown
+462: "    }" markup.fenced_code.block.markdown
+463: "    class Fish{" markup.fenced_code.block.markdown
+464: "      -int sizeInFeet" markup.fenced_code.block.markdown
+465: "      -canEat()" markup.fenced_code.block.markdown
+466: "    }" markup.fenced_code.block.markdown
+467: "    class Zebra{" markup.fenced_code.block.markdown
+468: "      +bool is_wild" markup.fenced_code.block.markdown
+469: "      +run()" markup.fenced_code.block.markdown
+470: "    }" markup.fenced_code.block.markdown
+471: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+472: ""
+473: "###" markup.heading.markdown heading.3.markdown punctuation.definition.heading.markdown
+473: " " markup.heading.markdown heading.3.markdown
+473: "State" markup.heading.markdown heading.3.markdown entity.name.section.markdown
+474: ""
+475: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+475: "mermaid" markup.fenced_code.block.markdown fenced_code.block.language
+476: "stateDiagram-v2" markup.fenced_code.block.markdown
+477: "    [*] --> Still" markup.fenced_code.block.markdown
+478: "    Still --> [*]" markup.fenced_code.block.markdown
+479: "    Still --> Moving" markup.fenced_code.block.markdown
+480: "    Moving --> Still" markup.fenced_code.block.markdown
+481: "    Moving --> Crash" markup.fenced_code.block.markdown
+482: "    Crash --> [*]" markup.fenced_code.block.markdown
+483: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+484: ""
+485: "###" markup.heading.markdown heading.3.markdown punctuation.definition.heading.markdown
+485: " " markup.heading.markdown heading.3.markdown
+485: "ER" markup.heading.markdown heading.3.markdown entity.name.section.markdown
+486: ""
+487: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+487: "mermaid" markup.fenced_code.block.markdown fenced_code.block.language
+488: "erDiagram" markup.fenced_code.block.markdown
+489: "    CUSTOMER }|..|{ DELIVERY-ADDRESS : has" markup.fenced_code.block.markdown
+490: "    CUSTOMER ||--o{ ORDER : places" markup.fenced_code.block.markdown
+491: "    CUSTOMER ||--o{ INVOICE : \"liable for\"" markup.fenced_code.block.markdown
+492: "    DELIVERY-ADDRESS ||--o{ ORDER : receives" markup.fenced_code.block.markdown
+493: "    INVOICE ||--|{ ORDER : covers" markup.fenced_code.block.markdown
+494: "    ORDER ||--|{ ORDER-ITEM : includes" markup.fenced_code.block.markdown
+495: "    PRODUCT-CATEGORY ||--|{ PRODUCT : contains" markup.fenced_code.block.markdown
+496: "    PRODUCT ||--o{ ORDER-ITEM : \"ordered in\"" markup.fenced_code.block.markdown
+497: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+498: ""
+499: "###" markup.heading.markdown heading.3.markdown punctuation.definition.heading.markdown
+499: " " markup.heading.markdown heading.3.markdown
+499: "Gantt" markup.heading.markdown heading.3.markdown entity.name.section.markdown
+500: ""
+501: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+501: "mermaid" markup.fenced_code.block.markdown fenced_code.block.language
+502: "gantt" markup.fenced_code.block.markdown
+503: "section Section" markup.fenced_code.block.markdown
+504: "Completed :done,    des1, 2014-01-06,2014-01-08" markup.fenced_code.block.markdown
+505: "Active        :active,  des2, 2014-01-07, 3d" markup.fenced_code.block.markdown
+506: "Parallel 1   :         des3, after des1, 1d" markup.fenced_code.block.markdown
+507: "Parallel 2   :         des4, after des1, 1d" markup.fenced_code.block.markdown
+508: "Parallel 3   :         des5, after des3, 1d" markup.fenced_code.block.markdown
+509: "Parallel 4   :         des6, after des4, 1d" markup.fenced_code.block.markdown
+510: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+511: ""
+512: "###" markup.heading.markdown heading.3.markdown punctuation.definition.heading.markdown
+512: " " markup.heading.markdown heading.3.markdown
+512: "UserJourney" markup.heading.markdown heading.3.markdown entity.name.section.markdown
+513: ""
+514: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+514: "mermaid" markup.fenced_code.block.markdown fenced_code.block.language
+515: "journey" markup.fenced_code.block.markdown
+516: "    title My working day" markup.fenced_code.block.markdown
+517: "    section Go to work" markup.fenced_code.block.markdown
+518: "      Make tea: 5: Me" markup.fenced_code.block.markdown
+519: "      Go upstairs: 3: Me" markup.fenced_code.block.markdown
+520: "      Do work: 1: Me, Cat" markup.fenced_code.block.markdown
+521: "    section Go home" markup.fenced_code.block.markdown
+522: "      Go downstairs: 5: Me" markup.fenced_code.block.markdown
+523: "      Sit down: 3: Me" markup.fenced_code.block.markdown
+524: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+525: ""
+526: "###" markup.heading.markdown heading.3.markdown punctuation.definition.heading.markdown
+526: " " markup.heading.markdown heading.3.markdown
+526: "Git" markup.heading.markdown heading.3.markdown entity.name.section.markdown
+527: ""
+528: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+528: "mermaid" markup.fenced_code.block.markdown fenced_code.block.language
+529: "gitGraph" markup.fenced_code.block.markdown
+530: "    commit" markup.fenced_code.block.markdown
+531: "    commit" markup.fenced_code.block.markdown
+532: "    branch develop" markup.fenced_code.block.markdown
+533: "    checkout develop" markup.fenced_code.block.markdown
+534: "    commit" markup.fenced_code.block.markdown
+535: "    commit" markup.fenced_code.block.markdown
+536: "    checkout main" markup.fenced_code.block.markdown
+537: "    merge develop" markup.fenced_code.block.markdown
+538: "    commit" markup.fenced_code.block.markdown
+539: "    commit" markup.fenced_code.block.markdown
+540: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+541: ""
+542: "###" markup.heading.markdown heading.3.markdown punctuation.definition.heading.markdown
+542: " " markup.heading.markdown heading.3.markdown
+542: "Pie" markup.heading.markdown heading.3.markdown entity.name.section.markdown
+543: ""
+544: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+544: "mermaid" markup.fenced_code.block.markdown fenced_code.block.language
+545: "pie title Pets adopted by volunteers" markup.fenced_code.block.markdown
+546: "    \"Dogs\" : 386" markup.fenced_code.block.markdown
+547: "    \"Cats\" : 85" markup.fenced_code.block.markdown
+548: "    \"Rats\" : 15" markup.fenced_code.block.markdown
+549: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+550: ""
+551: "###" markup.heading.markdown heading.3.markdown punctuation.definition.heading.markdown
+551: " " markup.heading.markdown heading.3.markdown
+551: "Mindmap" markup.heading.markdown heading.3.markdown entity.name.section.markdown
+552: ""
+553: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+553: "mermaid" markup.fenced_code.block.markdown fenced_code.block.language
+554: "mindmap" markup.fenced_code.block.markdown
+555: "  root((mindmap))" markup.fenced_code.block.markdown
+556: "    Origins" markup.fenced_code.block.markdown
+557: "      Long history" markup.fenced_code.block.markdown
+558: "      ::icon(fa fa-book)" markup.fenced_code.block.markdown
+559: "      Popularisation" markup.fenced_code.block.markdown
+560: "        British popular psychology author Tony Buzan" markup.fenced_code.block.markdown
+561: "    Research" markup.fenced_code.block.markdown
+562: "      On effectivness<br/>and features" markup.fenced_code.block.markdown
+563: "      On Automatic creation" markup.fenced_code.block.markdown
+564: "        Uses" markup.fenced_code.block.markdown
+565: "            Creative techniques" markup.fenced_code.block.markdown
+566: "            Strategic planning" markup.fenced_code.block.markdown
+567: "            Argument mapping" markup.fenced_code.block.markdown
+568: "    Tools" markup.fenced_code.block.markdown
+569: "      Pen and paper" markup.fenced_code.block.markdown
+570: "      Mermaid" markup.fenced_code.block.markdown
+571: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+572: ""
+573: "###" markup.heading.markdown heading.3.markdown punctuation.definition.heading.markdown
+573: " " markup.heading.markdown heading.3.markdown
+573: "QuarrantChart" markup.heading.markdown heading.3.markdown entity.name.section.markdown
+574: ""
+575: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+575: "mermaid" markup.fenced_code.block.markdown fenced_code.block.language
+576: "quadrantChart" markup.fenced_code.block.markdown
+577: "    title Reach and engagement of campaigns" markup.fenced_code.block.markdown
+578: "    x-axis Low Reach --> High Reach" markup.fenced_code.block.markdown
+579: "    y-axis Low Engagement --> High Engagement" markup.fenced_code.block.markdown
+580: "    quadrant-1 We should expand" markup.fenced_code.block.markdown
+581: "    quadrant-2 Need to promote" markup.fenced_code.block.markdown
+582: "    quadrant-3 Re-evaluate" markup.fenced_code.block.markdown
+583: "    quadrant-4 May be improved" markup.fenced_code.block.markdown
+584: "    Campaign A: [0.3, 0.6]" markup.fenced_code.block.markdown
+585: "    Campaign B: [0.45, 0.23]" markup.fenced_code.block.markdown
+586: "    Campaign C: [0.57, 0.69]" markup.fenced_code.block.markdown
+587: "    Campaign D: [0.78, 0.34]" markup.fenced_code.block.markdown
+588: "    Campaign E: [0.40, 0.34]" markup.fenced_code.block.markdown
+589: "    Campaign F: [0.35, 0.78]" markup.fenced_code.block.markdown
+590: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+591: ""
+592: "###" markup.heading.markdown heading.3.markdown punctuation.definition.heading.markdown
+592: " " markup.heading.markdown heading.3.markdown
+592: "XYChart" markup.heading.markdown heading.3.markdown entity.name.section.markdown
+593: ""
+594: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+594: "mermaid" markup.fenced_code.block.markdown fenced_code.block.language
+595: "    xychart-beta" markup.fenced_code.block.markdown
+596: "    title \"Sales Revenue\"" markup.fenced_code.block.markdown
+597: "    x-axis [jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec]" markup.fenced_code.block.markdown
+598: "    y-axis \"Revenue (in $)\" 4000 --> 11000" markup.fenced_code.block.markdown
+599: "    bar [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]" markup.fenced_code.block.markdown
+600: "    line [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]" markup.fenced_code.block.markdown
+601: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+602: ""
+603: "###" markup.heading.markdown heading.3.markdown punctuation.definition.heading.markdown
+603: " " markup.heading.markdown heading.3.markdown
+603: "Block" markup.heading.markdown heading.3.markdown entity.name.section.markdown
+604: ""
+605: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+605: "mermaid" markup.fenced_code.block.markdown fenced_code.block.language
+606: "block-beta" markup.fenced_code.block.markdown
+607: "    columns 3" markup.fenced_code.block.markdown
+608: "    doc>\"Document\"]:3" markup.fenced_code.block.markdown
+609: "    space down1<[\" \"]>(down) space" markup.fenced_code.block.markdown
+610: "" markup.fenced_code.block.markdown
+611: "  block:e:3" markup.fenced_code.block.markdown
+612: "          l[\"left\"]" markup.fenced_code.block.markdown
+613: "          m(\"A wide one in the middle\")" markup.fenced_code.block.markdown
+614: "          r[\"right\"]" markup.fenced_code.block.markdown
+615: "  end" markup.fenced_code.block.markdown
+616: "    space down2<[\" \"]>(down) space" markup.fenced_code.block.markdown
+617: "    db[(\"DB\")]:3" markup.fenced_code.block.markdown
+618: "    space:3" markup.fenced_code.block.markdown
+619: "    D space C" markup.fenced_code.block.markdown
+620: "    db --> D" markup.fenced_code.block.markdown
+621: "    C --> db" markup.fenced_code.block.markdown
+622: "    D --> C" markup.fenced_code.block.markdown
+623: "    style m fill:#d6d,stroke:#333,stroke-width:4px" markup.fenced_code.block.markdown
+624: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+625: ""
+626: "##" markup.heading.markdown heading.2.markdown punctuation.definition.heading.markdown
+626: " " markup.heading.markdown heading.2.markdown
+626: "[" markup.heading.markdown heading.2.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.link.title.begin.markdown
+626: "pug" markup.heading.markdown heading.2.markdown entity.name.section.markdown meta.link.inline.markdown string.other.link.title.markdown
+626: "]" markup.heading.markdown heading.2.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.link.title.end.markdown
+626: "(" markup.heading.markdown heading.2.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+626: "https://github.com/pugjs/pug" markup.heading.markdown heading.2.markdown entity.name.section.markdown meta.link.inline.markdown markup.underline.link.markdown
+626: ")" markup.heading.markdown heading.2.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+627: ""
+628: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+628: "pug" markup.fenced_code.block.markdown fenced_code.block.language
+629: "doctype html" markup.fenced_code.block.markdown
+630: "html(lang=\"en\")" markup.fenced_code.block.markdown
+631: "  head" markup.fenced_code.block.markdown
+632: "    title= pageTitle" markup.fenced_code.block.markdown
+633: "    script(type='text/javascript')." markup.fenced_code.block.markdown
+634: "      if (typeof foo === 'function') foo(1 + 5);" markup.fenced_code.block.markdown
+635: "  body" markup.fenced_code.block.markdown
+636: "    h1 Pug - node template engine" markup.fenced_code.block.markdown
+637: "    #container.col" markup.fenced_code.block.markdown
+638: "      if youAreUsingPug" markup.fenced_code.block.markdown
+639: "        p You are amazing" markup.fenced_code.block.markdown
+640: "      else" markup.fenced_code.block.markdown
+641: "        p Get on it!" markup.fenced_code.block.markdown
+642: "      p." markup.fenced_code.block.markdown
+643: "        Pug is a terse and simple templating language with a" markup.fenced_code.block.markdown
+644: "        strong focus on performance and powerful features." markup.fenced_code.block.markdown
+645: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+646: ""
+647: "##" markup.heading.markdown heading.2.markdown punctuation.definition.heading.markdown
+647: " " markup.heading.markdown heading.2.markdown
+647: "[" markup.heading.markdown heading.2.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.link.title.begin.markdown
+647: "rst" markup.heading.markdown heading.2.markdown entity.name.section.markdown meta.link.inline.markdown string.other.link.title.markdown
+647: "]" markup.heading.markdown heading.2.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.link.title.end.markdown
+647: "(" markup.heading.markdown heading.2.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+647: "https://www.tutorialspoint.com/online_restructure_editor.php" markup.heading.markdown heading.2.markdown entity.name.section.markdown meta.link.inline.markdown markup.underline.link.markdown
+647: ")" markup.heading.markdown heading.2.markdown entity.name.section.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+648: ""
+649: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+649: "rst" markup.fenced_code.block.markdown fenced_code.block.language
+650: "=====" markup.fenced_code.block.markdown
+651: "Title" markup.fenced_code.block.markdown
+652: "=====" markup.fenced_code.block.markdown
+653: "" markup.fenced_code.block.markdown
+654: "This is a paragraph." markup.fenced_code.block.markdown
+655: "" markup.fenced_code.block.markdown
+656: "Paragraphs contain text and may contain inline markup: *emphasis*, **strong emphasis**, \\`\\`inline literals\\`\\`." markup.fenced_code.block.markdown
+657: "" markup.fenced_code.block.markdown
+658: "Bullet Lists" markup.fenced_code.block.markdown
+659: "------------" markup.fenced_code.block.markdown
+660: "" markup.fenced_code.block.markdown
+661: "- A bullet list" markup.fenced_code.block.markdown
+662: "" markup.fenced_code.block.markdown
+663: "  - Nested bullet list" markup.fenced_code.block.markdown
+664: "  - Nested item 2." markup.fenced_code.block.markdown
+665: "" markup.fenced_code.block.markdown
+666: "- Item 2." markup.fenced_code.block.markdown
+667: "" markup.fenced_code.block.markdown
+668: "  Paragraph 2 of item 2." markup.fenced_code.block.markdown
+669: "" markup.fenced_code.block.markdown
+670: "  - Nested bullet list." markup.fenced_code.block.markdown
+671: "" markup.fenced_code.block.markdown
+672: "Enumerated Lists" markup.fenced_code.block.markdown
+673: "----------------" markup.fenced_code.block.markdown
+674: "" markup.fenced_code.block.markdown
+675: "01. A enumerated list" markup.fenced_code.block.markdown
+676: "02. Item 2." markup.fenced_code.block.markdown
+677: "" markup.fenced_code.block.markdown
+678: "Definition Lists" markup.fenced_code.block.markdown
+679: "----------------" markup.fenced_code.block.markdown
+680: "" markup.fenced_code.block.markdown
+681: "Term" markup.fenced_code.block.markdown
+682: "  Definition" markup.fenced_code.block.markdown
+683: "" markup.fenced_code.block.markdown
+684: "Term" markup.fenced_code.block.markdown
+685: "  Definition paragraph 1." markup.fenced_code.block.markdown
+686: "" markup.fenced_code.block.markdown
+687: "  Definition paragraph 2." markup.fenced_code.block.markdown
+688: "" markup.fenced_code.block.markdown
+689: "Literal Blocks" markup.fenced_code.block.markdown
+690: "--------------" markup.fenced_code.block.markdown
+691: "" markup.fenced_code.block.markdown
+692: "::" markup.fenced_code.block.markdown
+693: "" markup.fenced_code.block.markdown
+694: "  console.log('Hello, world!');" markup.fenced_code.block.markdown
+695: "" markup.fenced_code.block.markdown
+696: "Line Blocks" markup.fenced_code.block.markdown
+697: "-----------" markup.fenced_code.block.markdown
+698: "" markup.fenced_code.block.markdown
+699: "| A one, two, a one two three four" markup.fenced_code.block.markdown
+700: "|" markup.fenced_code.block.markdown
+701: "| Half a bee, philosophically," markup.fenced_code.block.markdown
+702: "|   must, ipso facto, half not be." markup.fenced_code.block.markdown
+703: "" markup.fenced_code.block.markdown
+704: "Block Quotes" markup.fenced_code.block.markdown
+705: "------------" markup.fenced_code.block.markdown
+706: "" markup.fenced_code.block.markdown
+707: "Block quotes consist of indented body elements:" markup.fenced_code.block.markdown
+708: "" markup.fenced_code.block.markdown
+709: "  My theory by A. Elk. Brackets Miss, brackets." markup.fenced_code.block.markdown
+710: "  This theory goes as follows and begins now." markup.fenced_code.block.markdown
+711: "  All brontosauruses are thin at one end, much much thicker in the middle and then thin again at the far end." markup.fenced_code.block.markdown
+712: "  That is my theory, it is mine, and belongs to me and I own it, and what it is too." markup.fenced_code.block.markdown
+713: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+714: ""

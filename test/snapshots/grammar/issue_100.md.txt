@@ -1,0 +1,7 @@
+1: "~~~" markup.fenced_code.block.markdown punctuation.definition.markdown
+1: "desktop" markup.fenced_code.block.markdown fenced_code.block.language
+2: "[Desktop Entry]" markup.fenced_code.block.markdown
+3: "Name=Hardinfo2" markup.fenced_code.block.markdown
+4: "Name[zh_CN]=硬件信息" markup.fenced_code.block.markdown
+5: "~~~" markup.fenced_code.block.markdown punctuation.definition.markdown
+6: ""

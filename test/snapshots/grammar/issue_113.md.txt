@@ -1,0 +1,27 @@
+1: "Heading " meta.paragraph.markdown
+1: "[" meta.paragraph.markdown meta.link.reference.markdown punctuation.definition.link.title.begin.markdown
+1: "^1" meta.paragraph.markdown meta.link.reference.markdown string.other.link.title.markdown
+1: "]" meta.paragraph.markdown meta.link.reference.markdown punctuation.definition.link.title.end.markdown
+2: ""
+3: ":\t1.\t" meta.paragraph.markdown
+3: "[" meta.paragraph.markdown meta.link.reference.markdown punctuation.definition.link.title.begin.markdown
+3: "x" meta.paragraph.markdown meta.link.reference.markdown string.other.link.title.markdown
+3: "]" meta.paragraph.markdown meta.link.reference.markdown punctuation.definition.link.title.end.markdown
+3: " Content " meta.paragraph.markdown
+3: "[" meta.paragraph.markdown meta.link.reference.markdown punctuation.definition.link.title.begin.markdown
+3: "^1" meta.paragraph.markdown meta.link.reference.markdown string.other.link.title.markdown
+3: "]" meta.paragraph.markdown meta.link.reference.markdown punctuation.definition.link.title.end.markdown
+4: ""
+5: "\t" meta.indented.block.markdown
+5: "\t" meta.indented.block.markdown meta.indented.block.markdown
+5: ":\tContent " meta.indented.block.markdown meta.indented.block.markdown meta.paragraph.markdown
+5: "[" meta.indented.block.markdown meta.indented.block.markdown meta.paragraph.markdown meta.link.reference.markdown punctuation.definition.link.title.begin.markdown
+5: "^1" meta.indented.block.markdown meta.indented.block.markdown meta.paragraph.markdown meta.link.reference.markdown string.other.link.title.markdown
+5: "]" meta.indented.block.markdown meta.indented.block.markdown meta.paragraph.markdown meta.link.reference.markdown punctuation.definition.link.title.end.markdown
+6: ""
+7: "[" meta.link.reference.def.markdown punctuation.definition.constant.markdown
+7: "^1" meta.link.reference.def.markdown constant.other.reference.link.markdown
+7: "]" meta.link.reference.def.markdown punctuation.definition.constant.markdown
+7: ":" meta.link.reference.def.markdown punctuation.separator.key-value.markdown
+7: " " meta.link.reference.def.markdown
+7: "Footnote" meta.link.reference.def.markdown markup.underline.link.markdown

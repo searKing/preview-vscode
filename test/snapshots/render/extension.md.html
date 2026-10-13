@@ -1,0 +1,1414 @@
+<h1 id="your-custom-extension" tabindex="-1">Your Custom Extension</h1>
+<p>This is a markdown file.</p>
+<h2 id="markdown" tabindex="-1"><a href="https://markdown-it.github.io/">Markdown</a></h2>
+<hr>
+<p><strong>Advertisement 😃</strong></p>
+<ul>
+<li><strong><a href="https://nodeca.github.io/pica/demo/">pica</a></strong> - high quality and fast image
+resize in browser.</li>
+<li><strong><a href="https://github.com/nodeca/babelfish/">babelfish</a></strong> - developer friendly
+i18n with plurals support and easy syntax.</li>
+</ul>
+<p>You will like those projects!</p>
+<hr>
+<h1 id="h1-heading" tabindex="-1">h1 Heading 😎</h1>
+<h2 id="h2-heading" tabindex="-1">h2 Heading</h2>
+<h3 id="h3-heading" tabindex="-1">h3 Heading</h3>
+<h4 id="h4-heading" tabindex="-1">h4 Heading</h4>
+<h5 id="h5-heading" tabindex="-1">h5 Heading</h5>
+<h6 id="h6-heading" tabindex="-1">h6 Heading</h6>
+<h2 id="horizontal-rules" tabindex="-1">Horizontal Rules</h2>
+<hr>
+<hr>
+<hr>
+<h2 id="typographic-replacements" tabindex="-1">Typographic replacements</h2>
+<p>Enable typographer option to see result.</p>
+<p>(c) (C) (r) (R) (tm) (TM) (p) (P) +-</p>
+<p>test.. test... test..... test?..... test!....</p>
+<p>!!!!!! ???? , , -- ---</p>
+<p>&quot;Smartypants, double quotes&quot; and 'single quotes'</p>
+<h2 id="emphasis" tabindex="-1">Emphasis</h2>
+<p><strong>This is bold text</strong></p>
+<p><strong>This is bold text</strong></p>
+<p><em>This is italic text</em></p>
+<p><em>This is italic text</em></p>
+<p><s>Strikethrough</s></p>
+<h2 id="blockquotes" tabindex="-1">Blockquotes</h2>
+<blockquote>
+<p>Blockquotes can also be nested...</p>
+<blockquote>
+<p>...by using additional greater-than signs right next to each other...</p>
+<blockquote>
+<p>...or with spaces between arrows.</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h2 id="lists" tabindex="-1">Lists</h2>
+<p>Unordered</p>
+<ul>
+<li>Create a list by starting a line with <code class="hljs"><span class="hljs-addition">+</span></code>, <code class="hljs"><span class="hljs-deletion">-</span></code>, or <code class="hljs"><span class="hljs-comment">*</span></code></li>
+<li>Sub-lists are made by indenting 2 spaces:
+<ul>
+<li>Marker character change forces new list start:
+<ul>
+<li>Ac tristique libero volutpat at</li>
+<li>Facilisis in pretium nisl aliquet</li>
+<li>Nulla volutpat aliquam velit</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Very easy!</li>
+</ul>
+<p>Ordered</p>
+<ol>
+<li>
+<p>Lorem ipsum dolor sit amet</p>
+</li>
+<li>
+<p>Consectetur adipiscing elit</p>
+</li>
+<li>
+<p>Integer molestie lorem at massa</p>
+</li>
+<li>
+<p>You can use sequential numbers...</p>
+</li>
+<li>
+<p>...or keep all the numbers as <code class="hljs"><span class="hljs-number">1</span>.</code></p>
+</li>
+</ol>
+<p>Start numbering with offset:</p>
+<ol start="57">
+<li>foo</li>
+<li>bar</li>
+</ol>
+<h1 id="math-rulez!" tabindex="-1">Math Rulez!</h1>
+<p>$\sqrt{3x-1}+(1+x)^2$</p>
+<p>$$
+\begin{array}{rl}
+\nabla \times \vec{\mathbf{B}} -, \frac1c, \frac{\partial\vec{\mathbf{E}}}{\partial t} &amp; = \frac{4\pi}{c}\vec{\mathbf{j}} \
+\nabla \cdot \vec{\mathbf{E}} &amp; = 4 \pi \rho \
+\nabla \times \vec{\mathbf{E}}, +, \frac1c, \frac{\partial\vec{\mathbf{B}}}{\partial t} &amp; = \vec{\mathbf{0}} \
+\nabla \cdot \vec{\mathbf{B}} &amp; = 0
+\end{array}
+$$</p>
+<h2 id="code" tabindex="-1">Code</h2>
+<p>Inline <code class="hljs"><span class="hljs-keyword">code</span></code></p>
+<p>Indented code</p>
+<p>// Some comments
+line 1 of code
+line 2 of code
+line 3 of code</p>
+<p>Block code &quot;fences&quot;</p>
+<style>
+    .ClipboardButton {
+        position: relative;
+    }
+
+    clipboard-copy {
+        /* padding: 0.4em 0.6em; */
+        font: 0.9rem system-ui, sans-serif;
+        display: inline-block;
+        cursor: default;
+        color: var(--vscode-button-foreground);
+        background-color: var(--vscode-button-border);
+        border-color: var(--vscode-textCodeBlock-background);
+        border-radius: 6px;
+        border: 1px solid var(--vscode-widget-border);
+        box-shadow: inset 0 -1px 0 var(--vscode-widget-shadow);
+        transition: 80ms cubic-bezier(0.33, 1, 0.68, 1);
+        transition-property: color,background-color,box-shadow,border-color;
+    }
+
+    clipboard-copy:hover {
+        background-color: var(--vscode-statusBarItem-hoverBackground);
+    }
+
+    clipboard-copy:active {
+        outline: 1px solid var(--vscode-contrastActiveBorder) !important;
+        outline-offset: -1px;
+    }
+
+    clipboard-copy:focus-visible {
+        outline: 1px solid var(--vscode-focusBorder);
+    }
+
+    .d-none {
+        display: none !important;
+    }
+
+    .position-relative {
+        position: relative !important;
+    }
+
+    .position-absolute {
+        position: absolute !important;
+    }
+
+    .right-0 {
+        right: 0 !important;
+    }
+
+    .top-0 {
+        top: 0 !important;
+    }
+
+    .m-2 {
+        margin: var(--base-size-8, 8px) !important;
+    }
+
+    .color-fg-success {
+        color: #3fb950 !important;
+        stroke: #3fb950 !important;
+        border-color: #3fb950 !important;
+    }
+</style><div class="snippet-clipboard-content notranslate position-relative overflow-auto">
+              <pre><code class="hljs"><span class="hljs-function"><span class="hljs-title">Sample</span></span> text here...
+</code></pre>
+
+              <div class="zeroclipboard-container position-absolute right-0 top-0">
+                <clipboard-copy aria-label="Copy" class="ClipboardButton clipboard-copy m-2 p-0 tooltipped-no-delay"
+                  value="Sample text here..." tabindex="0" role="button">
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
+                    class="octicon octicon-copy clipboard-copy-icon m-2">
+                    <path
+                      d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z">
+                    </path>
+                    <path
+                      d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z">
+                    </path>
+                  </svg>
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
+                    class="octicon octicon-check clipboard-check-icon color-fg-success d-none m-2">
+                    <path
+                      d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z">
+                    </path>
+                  </svg>
+                </clipboard-copy>
+              </div>
+            </div><p>Syntax highlighting</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto">
+              <pre><code class="hljs language-js"><span class="hljs-keyword">var</span> foo = <span class="hljs-keyword">function</span> (<span class="hljs-params">bar</span>) {
+  <span class="hljs-keyword">return</span> bar++;
+};
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title function_">foo</span>(<span class="hljs-number">5</span>));
+</code></pre>
+
+              <div class="zeroclipboard-container position-absolute right-0 top-0">
+                <clipboard-copy aria-label="Copy" class="ClipboardButton clipboard-copy m-2 p-0 tooltipped-no-delay"
+                  value="var foo = function (bar) {
+	return bar++;
+};
+
+console.log(foo(5));" tabindex="0" role="button">
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
+                    class="octicon octicon-copy clipboard-copy-icon m-2">
+                    <path
+                      d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z">
+                    </path>
+                    <path
+                      d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z">
+                    </path>
+                  </svg>
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
+                    class="octicon octicon-check clipboard-check-icon color-fg-success d-none m-2">
+                    <path
+                      d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z">
+                    </path>
+                  </svg>
+                </clipboard-copy>
+              </div>
+            </div><p>Indented fence in a list item (<a href="https://github.com/searKing/preview-vscode/issues/106">#106</a>)</p>
+<ol>
+<li>
+<table>
+	<tr>
+		<th> Variable Assignment </th>
+		<td>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto">
+              <pre><code class="hljs language-sh">command.bin --argument --value-accepting-argument=<span class="hljs-string">&quot;escaped value&quot;</span>
+</code></pre>
+
+              <div class="zeroclipboard-container position-absolute right-0 top-0">
+                <clipboard-copy aria-label="Copy" class="ClipboardButton clipboard-copy m-2 p-0 tooltipped-no-delay"
+                  value="command.bin --argument --value-accepting-argument=&quot;escaped value&quot;" tabindex="0" role="button">
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
+                    class="octicon octicon-copy clipboard-copy-icon m-2">
+                    <path
+                      d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z">
+                    </path>
+                    <path
+                      d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z">
+                    </path>
+                  </svg>
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
+                    class="octicon octicon-check clipboard-check-icon color-fg-success d-none m-2">
+                    <path
+                      d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z">
+                    </path>
+                  </svg>
+                </clipboard-copy>
+              </div>
+            </div></td>
+	</tr>
+</table>
+</li>
+</ol>
+<h2 id="tables" tabindex="-1">Tables</h2>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td>path to data files to supply the data that will be passed into templates.</td>
+</tr>
+<tr>
+<td>engine</td>
+<td>engine to be used for processing templates. Handlebars is the default.</td>
+</tr>
+<tr>
+<td>ext</td>
+<td>extension to be used for dest files.</td>
+</tr>
+</tbody>
+</table>
+<p>Right aligned columns</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right">Option</th>
+<th style="text-align:right">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">data</td>
+<td style="text-align:right">path to data files to supply the data that will be passed into templates.</td>
+</tr>
+<tr>
+<td style="text-align:right">engine</td>
+<td style="text-align:right">engine to be used for processing templates. Handlebars is the default.</td>
+</tr>
+<tr>
+<td style="text-align:right">ext</td>
+<td style="text-align:right">extension to be used for dest files.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="links" tabindex="-1">Links</h2>
+<p><a href="http://dev.nodeca.com">link text</a></p>
+<p><a href="http://nodeca.github.io/pica/demo/" title="title text!">link with title</a></p>
+<p>Autoconverted link <a href="https://github.com/nodeca/pica">https://github.com/nodeca/pica</a> (enable linkify to see)</p>
+<h2 id="images" tabindex="-1">Images</h2>
+<p><img src="https://octodex.github.com/images/minion.png" alt="Minion"></p>
+<p><img src="https://octodex.github.com/images/stormtroopocat.jpg" alt="Stormtroopocat" title="The Stormtroopocat"></p>
+<p>Like links, Images also have a footnote style syntax</p>
+<p><img src="https://octodex.github.com/images/dojocat.jpg" alt="Alt text" title="The Dojocat"></p>
+<p>With a reference later in the document defining the URL location:</p>
+<h2 id="plugins" tabindex="-1">Plugins</h2>
+<p>The killer feature of <code class="hljs">markdown-<span class="hljs-keyword">it</span></code> is very effective support of
+<a href="https://www.npmjs.org/browse/keyword/markdown-it-plugin">syntax plugins</a>.</p>
+<h3 id="abbreviations" tabindex="-1"><a href="https://github.com/markdown-it/markdown-it-abbr">Abbreviations</a></h3>
+<p>This is HTML abbreviation example.</p>
+<p>It converts &quot;HTML&quot;, but keep intact partial entries like &quot;xxxHTMLyyy&quot; and so on.</p>
+<p>*[HTML]: Hyper Text Markup Language</p>
+<h3 id="attributes" tabindex="-1"><a href="https://github.com/markdown-it/markdown-it-attr">Attributes</a></h3>
+<p class="style-me" data-toggle="modal">paragraph</p>
+<p css-module="green">Use the css-module green on this paragraph.</p>
+<p>paragraph with <span class="red">a style me span</span></p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto">
+              <pre><code data="asdf" class="language-python">nums = [x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">10</span>)]
+</code></pre>
+
+              <div class="zeroclipboard-container position-absolute right-0 top-0">
+                <clipboard-copy aria-label="Copy" class="ClipboardButton clipboard-copy m-2 p-0 tooltipped-no-delay"
+                  value="nums = [x for x in range(10)]" tabindex="0" role="button">
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
+                    class="octicon octicon-copy clipboard-copy-icon m-2">
+                    <path
+                      d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z">
+                    </path>
+                    <path
+                      d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z">
+                    </path>
+                  </svg>
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
+                    class="octicon octicon-check clipboard-check-icon color-fg-success d-none m-2">
+                    <path
+                      d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z">
+                    </path>
+                  </svg>
+                </clipboard-copy>
+              </div>
+            </div><h3 id="bracketed_spans" tabindex="-1"><a href="https://github.com/markdown-it/markdown-it-bracketed-spans">bracketed_spans</a></h3>
+<p>foo <span id="id" class="class" attr="value">bar <em>bar</em></span> baz</p>
+<h3 id="cjk-breaks" tabindex="-1"><a href="https://github.com/markdown-it/markdown-it-cjk-breaks">cjk-breaks</a></h3>
+<h4 id="remove-linebreaks-near-zwsp" tabindex="-1">Remove linebreaks near ZWSP</h4>
+<p>foo​bar​baz</p>
+<h4 id="remove-linebreaks-between-hiragana-(wide)-characters" tabindex="-1">Remove linebreaks between hiragana (wide) characters</h4>
+<p>あおえいう</p>
+<h4 id="remove-linebreaks-between-halfwidth-katakana" tabindex="-1">Remove linebreaks between halfwidth katakana</h4>
+<p>ｱｵｴｲｳ</p>
+<h4 id="remove-linebreaks-between-fullwidth-characters" tabindex="-1">Remove linebreaks between fullwidth characters</h4>
+<p>！＂＃＄％</p>
+<h4 id="keep-linebreaks-between-hangul-characters" tabindex="-1">Keep linebreaks between hangul characters</h4>
+<p>ㅏㅗㅔ
+ㅣㅜ
+ￂￌￇ
+ￜￓ</p>
+<h4 id="keep-linebreaks-between-hiragana-(wide)-and-english" tabindex="-1">Keep linebreaks between hiragana (wide) and english</h4>
+<p>あおえ
+aoe
+あおえ</p>
+<h4 id="emphasis-tokens-should-be-skipped" tabindex="-1">Emphasis tokens should be skipped</h4>
+<p><em>あおえ</em><em>いう</em></p>
+<h4 id="should-recognize-astral-characters-correctly" tabindex="-1">Should recognize astral characters correctly</h4>
+<p>foo 🈀🈀 foo</p>
+<h3 id="definition-lists" tabindex="-1"><a href="https://github.com/markdown-it/markdown-it-deflist">Definition lists</a></h3>
+<dl>
+<dt>Term 1</dt>
+<dd>
+<p>Definition 1
+with lazy continuation.</p>
+</dd>
+<dt>Term 2 with <em>inline markup</em></dt>
+<dd>
+<p>Definition 2</p>
+<p some="" code,="" part="" of="" Definition="" 2=""></p>
+<p>Third paragraph of definition 2.</p>
+</dd>
+</dl>
+<p><em>Compact style:</em></p>
+<dl>
+<dt>Term 1</dt>
+<dd>Definition 1</dd>
+<dt>Term 2</dt>
+<dd>Definition 2a</dd>
+<dd>Definition 2b</dd>
+</dl>
+<h3 id="emojies" tabindex="-1"><a href="https://github.com/markdown-it/markdown-it-emoji">Emojies</a></h3>
+<blockquote>
+<p>Classic markup: 😉 😢 😆 😋</p>
+<p>Shortcuts (emoticons): 😃 😦 😎 ; )</p>
+</blockquote>
+<p>see <a href="https://github.com/markdown-it/markdown-it-emoji#change-output">how to change output</a> with twemoji.</p>
+<h3 id="expand-tabs" tabindex="-1"><a href="https://github.com/markdown-it/markdown-it-expand-tabs">Expand Tabs</a></h3>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto">
+              <pre><code class="hljs">function foo<span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span> {
+  indentedOne<span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span><span class="hljs-comment">;</span>
+  if <span class="hljs-punctuation">(</span>bar<span class="hljs-punctuation">)</span> {
+    // line	with	internal	tabs
+    lineWithTrailingTabs<span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span><span class="hljs-comment">;</span>
+    indentedTwo<span class="hljs-punctuation">(</span><span class="hljs-punctuation">)</span><span class="hljs-comment">;</span>
+  }
+}
+</code></pre>
+
+              <div class="zeroclipboard-container position-absolute right-0 top-0">
+                <clipboard-copy aria-label="Copy" class="ClipboardButton clipboard-copy m-2 p-0 tooltipped-no-delay"
+                  value="function foo() {
+	indentedOne();
+	if (bar) {
+		// line	with	internal	tabs
+		lineWithTrailingTabs();
+		indentedTwo();
+	}
+}" tabindex="0" role="button">
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
+                    class="octicon octicon-copy clipboard-copy-icon m-2">
+                    <path
+                      d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z">
+                    </path>
+                    <path
+                      d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z">
+                    </path>
+                  </svg>
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
+                    class="octicon octicon-check clipboard-check-icon color-fg-success d-none m-2">
+                    <path
+                      d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z">
+                    </path>
+                  </svg>
+                </clipboard-copy>
+              </div>
+            </div><h3 id="footnotes" tabindex="-1"><a href="https://github.com/markdown-it/markdown-it-footnote">Footnotes</a></h3>
+<h4 id="normal-footnote%3A" tabindex="-1">Normal footnote:</h4>
+<p>Footnote 1 link<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>.</p>
+<p>Footnote 2 link<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>.</p>
+<p>Inline footnote<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup> definition.</p>
+<p>Duplicated footnote reference<sup class="footnote-ref"><a href="#fn2" id="fnref2:1">[2:1]</a></sup>.</p>
+<h4 id="inline-footnotes%3A" tabindex="-1">Inline Footnotes:</h4>
+<p>Here is an inline note.<sup class="footnote-ref"><a href="#fn4" id="fnref4">[4]</a></sup></p>
+<h3 id="highlightjs" tabindex="-1"><a href="https://github.com/valeriangalliat/markdown-it-highlightjs">Highlightjs</a></h3>
+<h4 id="raw-indented-code-block" tabindex="-1">raw indented code block</h4>
+<p>console.log(42);</p>
+<h4 id="fenched-code-block" tabindex="-1">fenched code block</h4>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto">
+              <pre><code class="hljs language-js"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-number">42</span>);
+</code></pre>
+
+              <div class="zeroclipboard-container position-absolute right-0 top-0">
+                <clipboard-copy aria-label="Copy" class="ClipboardButton clipboard-copy m-2 p-0 tooltipped-no-delay"
+                  value="console.log(42);" tabindex="0" role="button">
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
+                    class="octicon octicon-copy clipboard-copy-icon m-2">
+                    <path
+                      d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z">
+                    </path>
+                    <path
+                      d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z">
+                    </path>
+                  </svg>
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
+                    class="octicon octicon-check clipboard-check-icon color-fg-success d-none m-2">
+                    <path
+                      d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z">
+                    </path>
+                  </svg>
+                </clipboard-copy>
+              </div>
+            </div><h4 id="auto" tabindex="-1">auto</h4>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto">
+              <pre><code class="hljs"><span class="hljs-meta">&lt;?php</span> <span class="hljs-keyword">echo</span> <span class="hljs-number">42</span>;
+</code></pre>
+
+              <div class="zeroclipboard-container position-absolute right-0 top-0">
+                <clipboard-copy aria-label="Copy" class="ClipboardButton clipboard-copy m-2 p-0 tooltipped-no-delay"
+                  value="&lt;?php echo 42;" tabindex="0" role="button">
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
+                    class="octicon octicon-copy clipboard-copy-icon m-2">
+                    <path
+                      d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z">
+                    </path>
+                    <path
+                      d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z">
+                    </path>
+                  </svg>
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
+                    class="octicon octicon-check clipboard-check-icon color-fg-success d-none m-2">
+                    <path
+                      d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z">
+                    </path>
+                  </svg>
+                </clipboard-copy>
+              </div>
+            </div><h4 id="inline-with-pandoc-format" tabindex="-1">inline with Pandoc format</h4>
+<p><code class="hljs language-js"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-number">42</span>)</code></p>
+<h4 id="inline-with-kramdown-format" tabindex="-1">inline with kramdown format</h4>
+<p><code class="hljs language-js"><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-number">42</span>)</code></p>
+<h2 id="html" tabindex="-1">HTML</h2>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto">
+              <div><!DOCTYPE html>
+<html>
+	<head>
+		<title>Page Title</title>
+	</head>
+
+	<body>
+		<h1>This is a Heading</h1>
+		<p>This is a paragraph.</p>
+	</body>
+</html></div>
+              <div class="zeroclipboard-container position-absolute right-0 top-0">
+                <clipboard-copy aria-label="Copy" class="ClipboardButton clipboard-copy m-2 p-0 tooltipped-no-delay"
+                  value="&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;title&gt;Page Title&lt;/title&gt;
+	&lt;/head&gt;
+
+	&lt;body&gt;
+		&lt;h1&gt;This is a Heading&lt;/h1&gt;
+		&lt;p&gt;This is a paragraph.&lt;/p&gt;
+	&lt;/body&gt;
+&lt;/html&gt;" tabindex="0" role="button">
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
+                    class="octicon octicon-copy clipboard-copy-icon m-2">
+                    <path
+                      d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z">
+                    </path>
+                    <path
+                      d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z">
+                    </path>
+                  </svg>
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
+                    class="octicon octicon-check clipboard-check-icon color-fg-success d-none m-2">
+                    <path
+                      d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z">
+                    </path>
+                  </svg>
+                </clipboard-copy>
+              </div>
+            </div><h3 id="%3Cins%3E" tabindex="-1"><a href="https://github.com/markdown-it/markdown-it-ins">&lt;ins&gt;</a></h3>
+<p><ins>Inserted text</ins></p>
+<h2 id="lazy-headers" tabindex="-1">Lazy Headers</h2>
+<h1 id="foo" tabindex="-1">foo</h1>
+<h2 id="foo-1" tabindex="-1">foo</h2>
+<h3 id="foo-2" tabindex="-1">foo</h3>
+<h4 id="foo-3" tabindex="-1">foo</h4>
+<h5 id="foo-4" tabindex="-1">foo</h5>
+<h6 id="foo-5" tabindex="-1">foo</h6>
+<h3 id="%3Cmark%3E" tabindex="-1"><a href="https://github.com/markdown-it/markdown-it-mark">&lt;mark&gt;</a></h3>
+<p><mark>Marked text</mark></p>
+<h3 id="subscript-%2F-superscript" tabindex="-1"><a href="https://github.com/markdown-it/markdown-it-sub">Subscript</a> / <a href="https://github.com/markdown-it/markdown-it-sup">Superscript</a></h3>
+<ul>
+<li>19<sup>th</sup></li>
+<li>H<sub>2</sub>O</li>
+</ul>
+<h2 id="gfm-task-list" tabindex="-1">GFM task list</h2>
+<ul class="contains-task-list">
+<li class="task-list-item enabled"><input class="task-list-item-checkbox" type="checkbox" checked="" id="task-item-0"><label class="task-list-item-label" for="task-item-0">GFM task list 1</label></li>
+<li class="task-list-item enabled"><input class="task-list-item-checkbox" type="checkbox" checked="" id="task-item-1"><label class="task-list-item-label" for="task-item-1">GFM task list 2</label></li>
+<li class="task-list-item enabled"><input class="task-list-item-checkbox" type="checkbox" id="task-item-2"><label class="task-list-item-label" for="task-item-2">GFM task list 3</label>
+<ul class="contains-task-list">
+<li class="task-list-item enabled"><input class="task-list-item-checkbox" type="checkbox" id="task-item-3"><label class="task-list-item-label" for="task-item-3">GFM task list 3-1</label></li>
+<li class="task-list-item enabled"><input class="task-list-item-checkbox" type="checkbox" id="task-item-4"><label class="task-list-item-label" for="task-item-4">GFM task list 3-2</label></li>
+<li class="task-list-item enabled"><input class="task-list-item-checkbox" type="checkbox" id="task-item-5"><label class="task-list-item-label" for="task-item-5">GFM task list 3-3</label></li>
+</ul>
+</li>
+<li class="task-list-item enabled"><input class="task-list-item-checkbox" type="checkbox" id="task-item-6"><label class="task-list-item-label" for="task-item-6">GFM task list 4</label>
+<ul class="contains-task-list">
+<li class="task-list-item enabled"><input class="task-list-item-checkbox" type="checkbox" id="task-item-7"><label class="task-list-item-label" for="task-item-7">GFM task list 4-1</label></li>
+<li class="task-list-item enabled"><input class="task-list-item-checkbox" type="checkbox" id="task-item-8"><label class="task-list-item-label" for="task-item-8">GFM task list 4-2</label></li>
+</ul>
+</li>
+<li class="task-list-item enabled"><input class="task-list-item-checkbox" type="checkbox" checked="" id="task-item-9"><label class="task-list-item-label" for="task-item-9">GFM task list 5 with <strong>inline</strong> <a href="https://github.com">markup</a> and a footnote<sup class="footnote-ref"><a href="#fn2" id="fnref2:2">[2:2]</a></sup></label></li>
+</ul>
+<dl>
+<dt>Task list in a definition list</dt>
+<dd>
+<ol class="contains-task-list">
+<li class="task-list-item enabled"><input class="task-list-item-checkbox" type="checkbox" checked="" id="task-item-10"><label class="task-list-item-label" for="task-item-10">Definition task with a footnote<sup class="footnote-ref"><a href="#fn2" id="fnref2:3">[2:3]</a></sup></label></li>
+<li class="task-list-item enabled">
+<dl>
+<dt><input class="task-list-item-checkbox" type="checkbox" checked="" id="task-item-11"><label class="task-list-item-label" for="task-item-11">Definition task as a term<sup class="footnote-ref"><a href="#fn2" id="fnref2:4">[2:4]</a></sup></label></dt>
+<dd>
+<p>Nested definition</p>
+</dd>
+</dl>
+</li>
+</ol>
+</dd>
+</dl>
+<h3 id="custom-containers" tabindex="-1"><a href="https://github.com/markdown-it/markdown-it-container">Custom containers</a></h3>
+<p>::: warning
+<em>here be dragons</em>
+:::</p>
+<h2 id="mermaid" tabindex="-1"><a href="https://mermaid.live/">mermaid</a></h2>
+<h3 id="flow" tabindex="-1">Flow</h3>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto">
+              <pre class="preview-vscode-mermaid" data-theme="dark">flowchart TD
+A[Christmas] --&gt;|Get money| B(Go shopping)
+B --&gt; C{Let me think}
+C --&gt;|One| D[Laptop]
+C --&gt;|Two| E[iPhone]
+C --&gt;|Three| F[fa:fa-car Car]</pre>
+              <div class="zeroclipboard-container position-absolute right-0 top-0">
+                <clipboard-copy aria-label="Copy" class="ClipboardButton clipboard-copy m-2 p-0 tooltipped-no-delay"
+                  value="flowchart TD
+A[Christmas] --&gt;|Get money| B(Go shopping)
+B --&gt; C{Let me think}
+C --&gt;|One| D[Laptop]
+C --&gt;|Two| E[iPhone]
+C --&gt;|Three| F[fa:fa-car Car]" tabindex="0" role="button">
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
+                    class="octicon octicon-copy clipboard-copy-icon m-2">
+                    <path
+                      d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z">
+                    </path>
+                    <path
+                      d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z">
+                    </path>
+                  </svg>
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
+                    class="octicon octicon-check clipboard-check-icon color-fg-success d-none m-2">
+                    <path
+                      d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z">
+                    </path>
+                  </svg>
+                </clipboard-copy>
+              </div>
+            </div><h3 id="sequence" tabindex="-1">Sequence</h3>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto">
+              <pre class="preview-vscode-mermaid" data-theme="dark">sequenceDiagram
+Alice-&gt;&gt;+John: Hello John, how are you?
+Alice-&gt;&gt;+John: John, can you hear me?
+John--&gt;&gt;-Alice: Hi Alice, I can hear you!
+John--&gt;&gt;-Alice: I feel great!</pre>
+              <div class="zeroclipboard-container position-absolute right-0 top-0">
+                <clipboard-copy aria-label="Copy" class="ClipboardButton clipboard-copy m-2 p-0 tooltipped-no-delay"
+                  value="sequenceDiagram
+    Alice-&gt;&gt;+John: Hello John, how are you?
+    Alice-&gt;&gt;+John: John, can you hear me?
+    John--&gt;&gt;-Alice: Hi Alice, I can hear you!
+    John--&gt;&gt;-Alice: I feel great!" tabindex="0" role="button">
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
+                    class="octicon octicon-copy clipboard-copy-icon m-2">
+                    <path
+                      d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z">
+                    </path>
+                    <path
+                      d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z">
+                    </path>
+                  </svg>
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
+                    class="octicon octicon-check clipboard-check-icon color-fg-success d-none m-2">
+                    <path
+                      d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z">
+                    </path>
+                  </svg>
+                </clipboard-copy>
+              </div>
+            </div><h3 id="class" tabindex="-1">Class</h3>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto">
+              <pre class="preview-vscode-mermaid" data-theme="dark">classDiagram
+Animal &lt;|-- Duck
+Animal &lt;|-- Fish
+Animal &lt;|-- Zebra
+Animal : +int age
+Animal : +String gender
+Animal: +isMammal()
+Animal: +mate()
+class Duck{
+  +String beakColor
+  +swim()
+  +quack()
+}
+class Fish{
+  -int sizeInFeet
+  -canEat()
+}
+class Zebra{
+  +bool is_wild
+  +run()
+}</pre>
+              <div class="zeroclipboard-container position-absolute right-0 top-0">
+                <clipboard-copy aria-label="Copy" class="ClipboardButton clipboard-copy m-2 p-0 tooltipped-no-delay"
+                  value="classDiagram
+    Animal &lt;|-- Duck
+    Animal &lt;|-- Fish
+    Animal &lt;|-- Zebra
+    Animal : +int age
+    Animal : +String gender
+    Animal: +isMammal()
+    Animal: +mate()
+    class Duck{
+      +String beakColor
+      +swim()
+      +quack()
+    }
+    class Fish{
+      -int sizeInFeet
+      -canEat()
+    }
+    class Zebra{
+      +bool is_wild
+      +run()
+    }" tabindex="0" role="button">
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
+                    class="octicon octicon-copy clipboard-copy-icon m-2">
+                    <path
+                      d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z">
+                    </path>
+                    <path
+                      d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z">
+                    </path>
+                  </svg>
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
+                    class="octicon octicon-check clipboard-check-icon color-fg-success d-none m-2">
+                    <path
+                      d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z">
+                    </path>
+                  </svg>
+                </clipboard-copy>
+              </div>
+            </div><h3 id="state" tabindex="-1">State</h3>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto">
+              <pre class="preview-vscode-mermaid" data-theme="dark">stateDiagram-v2
+[*] --&gt; Still
+Still --&gt; [*]
+Still --&gt; Moving
+Moving --&gt; Still
+Moving --&gt; Crash
+Crash --&gt; [*]</pre>
+              <div class="zeroclipboard-container position-absolute right-0 top-0">
+                <clipboard-copy aria-label="Copy" class="ClipboardButton clipboard-copy m-2 p-0 tooltipped-no-delay"
+                  value="stateDiagram-v2
+    [*] --&gt; Still
+    Still --&gt; [*]
+    Still --&gt; Moving
+    Moving --&gt; Still
+    Moving --&gt; Crash
+    Crash --&gt; [*]" tabindex="0" role="button">
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
+                    class="octicon octicon-copy clipboard-copy-icon m-2">
+                    <path
+                      d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z">
+                    </path>
+                    <path
+                      d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z">
+                    </path>
+                  </svg>
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
+                    class="octicon octicon-check clipboard-check-icon color-fg-success d-none m-2">
+                    <path
+                      d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z">
+                    </path>
+                  </svg>
+                </clipboard-copy>
+              </div>
+            </div><h3 id="er" tabindex="-1">ER</h3>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto">
+              <pre class="preview-vscode-mermaid" data-theme="dark">erDiagram
+CUSTOMER }|..|{ DELIVERY-ADDRESS : has
+CUSTOMER ||--o{ ORDER : places
+CUSTOMER ||--o{ INVOICE : &quot;liable for&quot;
+DELIVERY-ADDRESS ||--o{ ORDER : receives
+INVOICE ||--|{ ORDER : covers
+ORDER ||--|{ ORDER-ITEM : includes
+PRODUCT-CATEGORY ||--|{ PRODUCT : contains
+PRODUCT ||--o{ ORDER-ITEM : &quot;ordered in&quot;</pre>
+              <div class="zeroclipboard-container position-absolute right-0 top-0">
+                <clipboard-copy aria-label="Copy" class="ClipboardButton clipboard-copy m-2 p-0 tooltipped-no-delay"
+                  value="erDiagram
+    CUSTOMER }|..|{ DELIVERY-ADDRESS : has
+    CUSTOMER ||--o{ ORDER : places
+    CUSTOMER ||--o{ INVOICE : &quot;liable for&quot;
+    DELIVERY-ADDRESS ||--o{ ORDER : receives
+    INVOICE ||--|{ ORDER : covers
+    ORDER ||--|{ ORDER-ITEM : includes
+    PRODUCT-CATEGORY ||--|{ PRODUCT : contains
+    PRODUCT ||--o{ ORDER-ITEM : &quot;ordered in&quot;" tabindex="0" role="button">
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
+                    class="octicon octicon-copy clipboard-copy-icon m-2">
+                    <path
+                      d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z">
+                    </path>
+                    <path
+                      d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z">
+                    </path>
+                  </svg>
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
+                    class="octicon octicon-check clipboard-check-icon color-fg-success d-none m-2">
+                    <path
+                      d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z">
+                    </path>
+                  </svg>
+                </clipboard-copy>
+              </div>
+            </div><h3 id="gantt" tabindex="-1">Gantt</h3>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto">
+              <pre class="preview-vscode-mermaid" data-theme="dark">gantt
+section Section
+Completed :done,    des1, 2014-01-06,2014-01-08
+Active        :active,  des2, 2014-01-07, 3d
+Parallel 1   :         des3, after des1, 1d
+Parallel 2   :         des4, after des1, 1d
+Parallel 3   :         des5, after des3, 1d
+Parallel 4   :         des6, after des4, 1d</pre>
+              <div class="zeroclipboard-container position-absolute right-0 top-0">
+                <clipboard-copy aria-label="Copy" class="ClipboardButton clipboard-copy m-2 p-0 tooltipped-no-delay"
+                  value="gantt
+section Section
+Completed :done,    des1, 2014-01-06,2014-01-08
+Active        :active,  des2, 2014-01-07, 3d
+Parallel 1   :         des3, after des1, 1d
+Parallel 2   :         des4, after des1, 1d
+Parallel 3   :         des5, after des3, 1d
+Parallel 4   :         des6, after des4, 1d" tabindex="0" role="button">
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
+                    class="octicon octicon-copy clipboard-copy-icon m-2">
+                    <path
+                      d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z">
+                    </path>
+                    <path
+                      d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z">
+                    </path>
+                  </svg>
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
+                    class="octicon octicon-check clipboard-check-icon color-fg-success d-none m-2">
+                    <path
+                      d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z">
+                    </path>
+                  </svg>
+                </clipboard-copy>
+              </div>
+            </div><h3 id="userjourney" tabindex="-1">UserJourney</h3>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto">
+              <pre class="preview-vscode-mermaid" data-theme="dark">journey
+title My working day
+section Go to work
+  Make tea: 5: Me
+  Go upstairs: 3: Me
+  Do work: 1: Me, Cat
+section Go home
+  Go downstairs: 5: Me
+  Sit down: 3: Me</pre>
+              <div class="zeroclipboard-container position-absolute right-0 top-0">
+                <clipboard-copy aria-label="Copy" class="ClipboardButton clipboard-copy m-2 p-0 tooltipped-no-delay"
+                  value="journey
+    title My working day
+    section Go to work
+      Make tea: 5: Me
+      Go upstairs: 3: Me
+      Do work: 1: Me, Cat
+    section Go home
+      Go downstairs: 5: Me
+      Sit down: 3: Me" tabindex="0" role="button">
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
+                    class="octicon octicon-copy clipboard-copy-icon m-2">
+                    <path
+                      d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z">
+                    </path>
+                    <path
+                      d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z">
+                    </path>
+                  </svg>
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
+                    class="octicon octicon-check clipboard-check-icon color-fg-success d-none m-2">
+                    <path
+                      d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z">
+                    </path>
+                  </svg>
+                </clipboard-copy>
+              </div>
+            </div><h3 id="git" tabindex="-1">Git</h3>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto">
+              <pre class="preview-vscode-mermaid" data-theme="dark">gitGraph
+commit
+commit
+branch develop
+checkout develop
+commit
+commit
+checkout main
+merge develop
+commit
+commit</pre>
+              <div class="zeroclipboard-container position-absolute right-0 top-0">
+                <clipboard-copy aria-label="Copy" class="ClipboardButton clipboard-copy m-2 p-0 tooltipped-no-delay"
+                  value="gitGraph
+    commit
+    commit
+    branch develop
+    checkout develop
+    commit
+    commit
+    checkout main
+    merge develop
+    commit
+    commit" tabindex="0" role="button">
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
+                    class="octicon octicon-copy clipboard-copy-icon m-2">
+                    <path
+                      d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z">
+                    </path>
+                    <path
+                      d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z">
+                    </path>
+                  </svg>
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
+                    class="octicon octicon-check clipboard-check-icon color-fg-success d-none m-2">
+                    <path
+                      d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z">
+                    </path>
+                  </svg>
+                </clipboard-copy>
+              </div>
+            </div><h3 id="pie" tabindex="-1">Pie</h3>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto">
+              <pre class="preview-vscode-mermaid" data-theme="dark">pie title Pets adopted by volunteers
+&quot;Dogs&quot; : 386
+&quot;Cats&quot; : 85
+&quot;Rats&quot; : 15</pre>
+              <div class="zeroclipboard-container position-absolute right-0 top-0">
+                <clipboard-copy aria-label="Copy" class="ClipboardButton clipboard-copy m-2 p-0 tooltipped-no-delay"
+                  value="pie title Pets adopted by volunteers
+    &quot;Dogs&quot; : 386
+    &quot;Cats&quot; : 85
+    &quot;Rats&quot; : 15" tabindex="0" role="button">
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
+                    class="octicon octicon-copy clipboard-copy-icon m-2">
+                    <path
+                      d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z">
+                    </path>
+                    <path
+                      d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z">
+                    </path>
+                  </svg>
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
+                    class="octicon octicon-check clipboard-check-icon color-fg-success d-none m-2">
+                    <path
+                      d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z">
+                    </path>
+                  </svg>
+                </clipboard-copy>
+              </div>
+            </div><h3 id="mindmap" tabindex="-1">Mindmap</h3>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto">
+              <pre class="preview-vscode-mermaid" data-theme="dark">mindmap
+root((mindmap))
+  Origins
+    Long history
+    ::icon(fa fa-book)
+    Popularisation
+      British popular psychology author Tony Buzan
+  Research
+    On effectivness&lt;br/&gt;and features
+    On Automatic creation
+      Uses
+          Creative techniques
+          Strategic planning
+          Argument mapping
+  Tools
+    Pen and paper
+    Mermaid</pre>
+              <div class="zeroclipboard-container position-absolute right-0 top-0">
+                <clipboard-copy aria-label="Copy" class="ClipboardButton clipboard-copy m-2 p-0 tooltipped-no-delay"
+                  value="mindmap
+  root((mindmap))
+    Origins
+      Long history
+      ::icon(fa fa-book)
+      Popularisation
+        British popular psychology author Tony Buzan
+    Research
+      On effectivness&lt;br/&gt;and features
+      On Automatic creation
+        Uses
+            Creative techniques
+            Strategic planning
+            Argument mapping
+    Tools
+      Pen and paper
+      Mermaid" tabindex="0" role="button">
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
+                    class="octicon octicon-copy clipboard-copy-icon m-2">
+                    <path
+                      d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z">
+                    </path>
+                    <path
+                      d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z">
+                    </path>
+                  </svg>
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
+                    class="octicon octicon-check clipboard-check-icon color-fg-success d-none m-2">
+                    <path
+                      d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z">
+                    </path>
+                  </svg>
+                </clipboard-copy>
+              </div>
+            </div><h3 id="quarrantchart" tabindex="-1">QuarrantChart</h3>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto">
+              <pre class="preview-vscode-mermaid" data-theme="dark">quadrantChart
+title Reach and engagement of campaigns
+x-axis Low Reach --&gt; High Reach
+y-axis Low Engagement --&gt; High Engagement
+quadrant-1 We should expand
+quadrant-2 Need to promote
+quadrant-3 Re-evaluate
+quadrant-4 May be improved
+Campaign A: [0.3, 0.6]
+Campaign B: [0.45, 0.23]
+Campaign C: [0.57, 0.69]
+Campaign D: [0.78, 0.34]
+Campaign E: [0.40, 0.34]
+Campaign F: [0.35, 0.78]</pre>
+              <div class="zeroclipboard-container position-absolute right-0 top-0">
+                <clipboard-copy aria-label="Copy" class="ClipboardButton clipboard-copy m-2 p-0 tooltipped-no-delay"
+                  value="quadrantChart
+    title Reach and engagement of campaigns
+    x-axis Low Reach --&gt; High Reach
+    y-axis Low Engagement --&gt; High Engagement
+    quadrant-1 We should expand
+    quadrant-2 Need to promote
+    quadrant-3 Re-evaluate
+    quadrant-4 May be improved
+    Campaign A: [0.3, 0.6]
+    Campaign B: [0.45, 0.23]
+    Campaign C: [0.57, 0.69]
+    Campaign D: [0.78, 0.34]
+    Campaign E: [0.40, 0.34]
+    Campaign F: [0.35, 0.78]" tabindex="0" role="button">
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
+                    class="octicon octicon-copy clipboard-copy-icon m-2">
+                    <path
+                      d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z">
+                    </path>
+                    <path
+                      d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z">
+                    </path>
+                  </svg>
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
+                    class="octicon octicon-check clipboard-check-icon color-fg-success d-none m-2">
+                    <path
+                      d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z">
+                    </path>
+                  </svg>
+                </clipboard-copy>
+              </div>
+            </div><h3 id="xychart" tabindex="-1">XYChart</h3>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto">
+              <pre class="preview-vscode-mermaid" data-theme="dark">xychart-beta
+title &quot;Sales Revenue&quot;
+x-axis [jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec]
+y-axis &quot;Revenue (in $)&quot; 4000 --&gt; 11000
+bar [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]
+line [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]</pre>
+              <div class="zeroclipboard-container position-absolute right-0 top-0">
+                <clipboard-copy aria-label="Copy" class="ClipboardButton clipboard-copy m-2 p-0 tooltipped-no-delay"
+                  value="xychart-beta
+    title &quot;Sales Revenue&quot;
+    x-axis [jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec]
+    y-axis &quot;Revenue (in $)&quot; 4000 --&gt; 11000
+    bar [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]
+    line [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]" tabindex="0" role="button">
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
+                    class="octicon octicon-copy clipboard-copy-icon m-2">
+                    <path
+                      d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z">
+                    </path>
+                    <path
+                      d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z">
+                    </path>
+                  </svg>
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
+                    class="octicon octicon-check clipboard-check-icon color-fg-success d-none m-2">
+                    <path
+                      d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z">
+                    </path>
+                  </svg>
+                </clipboard-copy>
+              </div>
+            </div><h3 id="block" tabindex="-1">Block</h3>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto">
+              <pre class="preview-vscode-mermaid" data-theme="dark">block-beta
+  columns 3
+  doc&gt;&quot;Document&quot;]:3
+  space down1&lt;[&quot; &quot;]&gt;(down) space
+
+block:e:3
+        l[&quot;left&quot;]
+        m(&quot;A wide one in the middle&quot;)
+        r[&quot;right&quot;]
+end
+  space down2&lt;[&quot; &quot;]&gt;(down) space
+  db[(&quot;DB&quot;)]:3
+  space:3
+  D space C
+  db --&gt; D
+  C --&gt; db
+  D --&gt; C
+  style m fill:#d6d,stroke:#333,stroke-width:4px</pre>
+              <div class="zeroclipboard-container position-absolute right-0 top-0">
+                <clipboard-copy aria-label="Copy" class="ClipboardButton clipboard-copy m-2 p-0 tooltipped-no-delay"
+                  value="block-beta
+    columns 3
+    doc&gt;&quot;Document&quot;]:3
+    space down1&lt;[&quot; &quot;]&gt;(down) space
+
+  block:e:3
+          l[&quot;left&quot;]
+          m(&quot;A wide one in the middle&quot;)
+          r[&quot;right&quot;]
+  end
+    space down2&lt;[&quot; &quot;]&gt;(down) space
+    db[(&quot;DB&quot;)]:3
+    space:3
+    D space C
+    db --&gt; D
+    C --&gt; db
+    D --&gt; C
+    style m fill:#d6d,stroke:#333,stroke-width:4px" tabindex="0" role="button">
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
+                    class="octicon octicon-copy clipboard-copy-icon m-2">
+                    <path
+                      d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z">
+                    </path>
+                    <path
+                      d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z">
+                    </path>
+                  </svg>
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
+                    class="octicon octicon-check clipboard-check-icon color-fg-success d-none m-2">
+                    <path
+                      d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z">
+                    </path>
+                  </svg>
+                </clipboard-copy>
+              </div>
+            </div><h2 id="pug" tabindex="-1"><a href="https://github.com/pugjs/pug">pug</a></h2>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto">
+              <div><!DOCTYPE html><html lang="en"><head><title></title><script type="text/javascript">if (typeof foo === 'function') foo(1 + 5);</script></head><body><h1>Pug - node template engine</h1><div class="col" id="container"><p>Get on it!</p><p>Pug is a terse and simple templating language with a
+strong focus on performance and powerful features.</p></div></body></html></div>
+              <div class="zeroclipboard-container position-absolute right-0 top-0">
+                <clipboard-copy aria-label="Copy" class="ClipboardButton clipboard-copy m-2 p-0 tooltipped-no-delay"
+                  value="doctype html
+html(lang=&quot;en&quot;)
+  head
+    title= pageTitle
+    script(type=&#039;text/javascript&#039;).
+      if (typeof foo === &#039;function&#039;) foo(1 + 5);
+  body
+    h1 Pug - node template engine
+    #container.col
+      if youAreUsingPug
+        p You are amazing
+      else
+        p Get on it!
+      p.
+        Pug is a terse and simple templating language with a
+        strong focus on performance and powerful features." tabindex="0" role="button">
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
+                    class="octicon octicon-copy clipboard-copy-icon m-2">
+                    <path
+                      d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z">
+                    </path>
+                    <path
+                      d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z">
+                    </path>
+                  </svg>
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
+                    class="octicon octicon-check clipboard-check-icon color-fg-success d-none m-2">
+                    <path
+                      d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z">
+                    </path>
+                  </svg>
+                </clipboard-copy>
+              </div>
+            </div><h2 id="rst" tabindex="-1"><a href="https://www.tutorialspoint.com/online_restructure_editor.php">rst</a></h2>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto">
+              <div><h1 id="title">
+    Title
+</h1>
+
+<p>
+    This is a paragraph.
+</p>
+
+<p>
+    Paragraphs contain text and may contain inline markup: <em>emphasis</em>, <strong>strong emphasis</strong>, ``inline literals``.
+</p>
+
+<h2 id="bullet-lists">
+    Bullet Lists
+</h2>
+
+<ul>
+    <li>
+        <p>
+            A bullet list
+        </p>
+
+        <ul>
+            <li>
+                <p>
+                    Nested bullet list
+                </p>
+            </li>
+
+            <li>
+                <p>
+                    Nested item 2.
+                </p>
+            </li>
+        </ul>
+    </li>
+
+    <li>
+        <p>
+            Item 2.
+        </p>
+
+        <p>
+            Paragraph 2 of item 2.
+        </p>
+
+        <ul>
+            <li>
+                <p>
+                    Nested bullet list.
+                </p>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<h2 id="enumerated-lists">
+    Enumerated Lists
+</h2>
+
+<ol>
+    <li value="1">
+        <p>
+            A enumerated list
+        </p>
+    </li>
+
+    <li>
+        <p>
+            Item 2.
+        </p>
+    </li>
+</ol>
+
+<h2 id="definition-lists">
+    Definition Lists
+</h2>
+
+<p>
+    Term
+      Definition
+</p>
+
+<p>
+    Term
+      Definition paragraph 1.
+</p>
+
+<p>
+      Definition paragraph 2.
+</p>
+
+<h2 id="literal-blocks">
+    Literal Blocks
+</h2>
+
+<!-- :: -->
+
+<div class="literal-block">
+    <pre class="code">console.log(&apos;Hello, world!&apos;);</pre>
+</div>
+
+<h2 id="line-blocks">
+    Line Blocks
+</h2>
+
+<div class="line-block">
+    <div class="line">A one, two, a one two three four</div>
+    <div class="line"><br /></div>
+    <div class="line">Half a bee, philosophically,</div>
+    <div class="line">must, ipso facto, half not be.</div>
+</div>
+
+<h2 id="block-quotes">
+    Block Quotes
+</h2>
+
+<p>
+    Block quotes consist of indented body elements:
+</p>
+
+<p>
+      My theory by A. Elk. Brackets Miss, brackets.
+      This theory goes as follows and begins now.
+      All brontosauruses are thin at one end, much much thicker in the middle and then thin again at the far end.
+      That is my theory, it is mine, and belongs to me and I own it, and what it is too.
+</p>
+</div>
+              <div class="zeroclipboard-container position-absolute right-0 top-0">
+                <clipboard-copy aria-label="Copy" class="ClipboardButton clipboard-copy m-2 p-0 tooltipped-no-delay"
+                  value="=====
+Title
+=====
+
+This is a paragraph.
+
+Paragraphs contain text and may contain inline markup: *emphasis*, **strong emphasis**, \`\`inline literals\`\`.
+
+Bullet Lists
+------------
+
+- A bullet list
+
+  - Nested bullet list
+  - Nested item 2.
+
+- Item 2.
+
+  Paragraph 2 of item 2.
+
+  - Nested bullet list.
+
+Enumerated Lists
+----------------
+
+01. A enumerated list
+02. Item 2.
+
+Definition Lists
+----------------
+
+Term
+  Definition
+
+Term
+  Definition paragraph 1.
+
+  Definition paragraph 2.
+
+Literal Blocks
+--------------
+
+::
+
+  console.log(&#039;Hello, world!&#039;);
+
+Line Blocks
+-----------
+
+| A one, two, a one two three four
+|
+| Half a bee, philosophically,
+|   must, ipso facto, half not be.
+
+Block Quotes
+------------
+
+Block quotes consist of indented body elements:
+
+  My theory by A. Elk. Brackets Miss, brackets.
+  This theory goes as follows and begins now.
+  All brontosauruses are thin at one end, much much thicker in the middle and then thin again at the far end.
+  That is my theory, it is mine, and belongs to me and I own it, and what it is too." tabindex="0" role="button">
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
+                    class="octicon octicon-copy clipboard-copy-icon m-2">
+                    <path
+                      d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z">
+                    </path>
+                    <path
+                      d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z">
+                    </path>
+                  </svg>
+                  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true"
+                    class="octicon octicon-check clipboard-check-icon color-fg-success d-none m-2">
+                    <path
+                      d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z">
+                    </path>
+                  </svg>
+                </clipboard-copy>
+              </div>
+            </div><hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>Footnote <strong>can have markup</strong></p>
+<p>and multiple paragraphs. <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>Footnote text. <a href="#fnref2" class="footnote-backref">↩︎</a> <a href="#fnref2:1" class="footnote-backref">↩︎</a> <a href="#fnref2:2" class="footnote-backref">↩︎</a> <a href="#fnref2:3" class="footnote-backref">↩︎</a> <a href="#fnref2:4" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn3" class="footnote-item"><p>Text of inline footnote <a href="#fnref3" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn4" class="footnote-item"><p>Inlines notes are easier to write, since
+you don't have to pick an identifier and move down to type the
+note. <a href="#fnref4" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>

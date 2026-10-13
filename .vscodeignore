@@ -5,6 +5,7 @@
 out/**
 node_modules/**
 src/**
+test/**
 test-workspace/**
 .gitignore
 .npmignore

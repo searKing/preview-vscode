@@ -513,6 +513,8 @@
     "watch-tests": "tsc -p . -w --outDir dist",
     "pretest": "npm run compile-tests && npm run compile && npm run lint",
     "lint": "eslint src",
+    "pretest:unit": "npm run compile",
+    "test:unit": "node --test \"test/**/*.test.cjs\"",
     "test": "vscode-test"
   },
   "devDependencies": {
@@ -556,6 +558,9 @@
     "ts-dedent": "^2.3.0",
     "ts-loader": "^9.6.2",
     "typescript": "^6.0.3",
+    "vscode-oniguruma": "^2.0.1",
+    "vscode-textmate": "^9.3.2",
+    "vscode-uri": "^3.2.0",
     "webpack": "^5.111.1",
     "webpack-cli": "^7.2.3"
   }

@@ -1,0 +1,207 @@
+1: "<h1>" meta.paragraph.markdown
+2: "Standards" meta.paragraph.markdown
+3: "</h1>" meta.paragraph.markdown
+4: ""
+5: "<ol>" meta.paragraph.markdown
+6: ""
+7: "\t" meta.indented.block.markdown
+7: "<li>" meta.indented.block.markdown meta.paragraph.markdown
+8: "\t" meta.indented.block.markdown
+8: "<details open>" meta.indented.block.markdown meta.paragraph.markdown
+9: "\t" meta.indented.block.markdown
+9: "<summary>" meta.indented.block.markdown meta.paragraph.markdown
+10: "\t" meta.indented.block.markdown
+10: "<h2>" meta.indented.block.markdown meta.paragraph.markdown
+11: "\t" meta.indented.block.markdown
+11: "Spectacle" meta.indented.block.markdown meta.paragraph.markdown
+12: "\t" meta.indented.block.markdown
+12: "</h2>" meta.indented.block.markdown meta.paragraph.markdown
+13: "\t" meta.indented.block.markdown
+13: "</summary>" meta.indented.block.markdown meta.paragraph.markdown
+14: "\t" meta.indented.block.markdown
+14: "<div class=\"block-indent\">" meta.indented.block.markdown meta.paragraph.markdown
+15: ""
+16: "\t" meta.indented.block.markdown
+16: "<p>Unfortunately, all calendar names are hardcoded.</p>" meta.indented.block.markdown meta.paragraph.markdown
+17: ""
+18: "\t" meta.indented.block.markdown
+18: "<ol>" meta.indented.block.markdown meta.paragraph.markdown
+19: ""
+20: "\t" meta.indented.block.markdown
+20: "<li>" meta.indented.block.markdown meta.paragraph.markdown
+21: "\t" meta.indented.block.markdown
+21: "\t" meta.indented.block.markdown meta.indented.block.markdown
+21: "<details open>" meta.indented.block.markdown meta.indented.block.markdown meta.paragraph.markdown
+22: "\t" meta.indented.block.markdown
+22: "\t" meta.indented.block.markdown meta.indented.block.markdown
+22: "\t" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown
+22: "<summary>" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.paragraph.markdown
+23: "\t" meta.indented.block.markdown
+23: "\t" meta.indented.block.markdown meta.indented.block.markdown
+23: "\t" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown
+23: "\t" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown
+23: "<h2>" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.paragraph.markdown
+24: "\t" meta.indented.block.markdown
+24: "\t" meta.indented.block.markdown meta.indented.block.markdown
+24: "\t" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown
+24: "\t" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown
+24: "\t" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown
+24: "Screencast" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.paragraph.markdown
+25: "\t" meta.indented.block.markdown
+25: "\t" meta.indented.block.markdown meta.indented.block.markdown
+25: "\t" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown
+25: "\t" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown
+25: "</h2>" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.paragraph.markdown
+26: "\t" meta.indented.block.markdown
+26: "\t" meta.indented.block.markdown meta.indented.block.markdown
+26: "\t" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown
+26: "</summary>" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.paragraph.markdown
+27: "\t" meta.indented.block.markdown
+27: "\t" meta.indented.block.markdown meta.indented.block.markdown
+27: "\t" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown
+27: "<div class=\"block-indent\">" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.paragraph.markdown
+28: ""
+29: "\t" markup.fenced_code.block.markdown
+29: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+29: "PS1" markup.fenced_code.block.markdown fenced_code.block.language
+30: "\t@{'Type'='Screencast'; 'Date'='+<yyyy><MM><dd>T<hh><mm><ss><tt>'}#" markup.fenced_code.block.markdown
+31: "\t" markup.fenced_code.block.markdown
+31: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+32: ""
+33: "    " markup.fenced_code.block.markdown
+33: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+33: "go" markup.fenced_code.block.markdown fenced_code.block.language
+34: "    import time" markup.fenced_code.block.markdown
+35: "    " markup.fenced_code.block.markdown
+35: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+36: ""
+37: "\t" meta.indented.block.markdown
+37: "</div>" meta.indented.block.markdown meta.paragraph.markdown
+38: "\t" meta.indented.block.markdown
+38: "</details>" meta.indented.block.markdown meta.paragraph.markdown
+39: "\t" meta.indented.block.markdown
+39: "</li>" meta.indented.block.markdown meta.paragraph.markdown
+40: ""
+41: "\t" meta.indented.block.markdown
+41: "<li>" meta.indented.block.markdown meta.paragraph.markdown
+42: "\t" meta.indented.block.markdown
+42: "\t" meta.indented.block.markdown meta.indented.block.markdown
+42: "<details open>" meta.indented.block.markdown meta.indented.block.markdown meta.paragraph.markdown
+43: "\t" meta.indented.block.markdown
+43: "\t" meta.indented.block.markdown meta.indented.block.markdown
+43: "\t" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown
+43: "<summary>" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.paragraph.markdown
+44: "\t" meta.indented.block.markdown
+44: "\t" meta.indented.block.markdown meta.indented.block.markdown
+44: "\t" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown
+44: "\t" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown
+44: "<h2>" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.paragraph.markdown
+45: "\t" meta.indented.block.markdown
+45: "\t" meta.indented.block.markdown meta.indented.block.markdown
+45: "\t" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown
+45: "\t" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown
+45: "\t" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown
+45: "Screenshot" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.paragraph.markdown
+46: "\t" meta.indented.block.markdown
+46: "\t" meta.indented.block.markdown meta.indented.block.markdown
+46: "\t" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown
+46: "\t" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown
+46: "</h2>" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.paragraph.markdown
+47: "\t" meta.indented.block.markdown
+47: "\t" meta.indented.block.markdown meta.indented.block.markdown
+47: "\t" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown
+47: "</summary>" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.paragraph.markdown
+48: "\t" meta.indented.block.markdown
+48: "\t" meta.indented.block.markdown meta.indented.block.markdown
+48: "\t" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown
+48: "<div class=\"block-indent\">" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.paragraph.markdown
+49: ""
+50: "\t" markup.fenced_code.block.markdown
+50: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+50: "PS1" markup.fenced_code.block.markdown fenced_code.block.language
+51: "\t@{'Type'='Screenshot'; 'Date'='+<yyyy><MM><dd>T<hh><mm><ss><tt>'}#" markup.fenced_code.block.markdown
+52: "\t" markup.fenced_code.block.markdown
+52: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+53: ""
+54: "\t" meta.indented.block.markdown
+54: "</div>" meta.indented.block.markdown meta.paragraph.markdown
+55: "\t" meta.indented.block.markdown
+55: "</details>" meta.indented.block.markdown meta.paragraph.markdown
+56: "\t" meta.indented.block.markdown
+56: "</li>" meta.indented.block.markdown meta.paragraph.markdown
+57: ""
+58: "\t" meta.indented.block.markdown
+58: "</ol>" meta.indented.block.markdown meta.paragraph.markdown
+59: ""
+60: "\t" meta.indented.block.markdown
+60: "</div>" meta.indented.block.markdown meta.paragraph.markdown
+61: "\t" meta.indented.block.markdown
+61: "</details>" meta.indented.block.markdown meta.paragraph.markdown
+62: "\t" meta.indented.block.markdown
+62: "</li>" meta.indented.block.markdown meta.paragraph.markdown
+63: ""
+64: "\t" meta.indented.block.markdown
+64: "<li>" meta.indented.block.markdown meta.paragraph.markdown
+65: "\t" meta.indented.block.markdown
+65: "\t" meta.indented.block.markdown meta.indented.block.markdown
+65: "<details open>" meta.indented.block.markdown meta.indented.block.markdown meta.paragraph.markdown
+66: "\t" meta.indented.block.markdown
+66: "\t" meta.indented.block.markdown meta.indented.block.markdown
+66: "\t" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown
+66: "<summary>" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.paragraph.markdown
+67: "\t" meta.indented.block.markdown
+67: "\t" meta.indented.block.markdown meta.indented.block.markdown
+67: "\t" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown
+67: "\t" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown
+67: "<h2>" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.paragraph.markdown
+68: "\t" meta.indented.block.markdown
+68: "\t" meta.indented.block.markdown meta.indented.block.markdown
+68: "\t" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown
+68: "\t" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown
+68: "\t" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown
+68: "<code>" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.paragraph.markdown
+69: "\t" meta.indented.block.markdown
+69: "\t" meta.indented.block.markdown meta.indented.block.markdown
+69: "\t" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown
+69: "\t" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown
+69: "\t" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown
+69: "\t" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown
+69: "obs-studio" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.paragraph.markdown
+70: "\t" meta.indented.block.markdown
+70: "\t" meta.indented.block.markdown meta.indented.block.markdown
+70: "\t" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown
+70: "\t" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown
+70: "\t" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown
+70: "</code>" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.paragraph.markdown
+71: "\t" meta.indented.block.markdown
+71: "\t" meta.indented.block.markdown meta.indented.block.markdown
+71: "\t" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown
+71: "\t" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown
+71: "</h2>" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.paragraph.markdown
+72: "\t" meta.indented.block.markdown
+72: "\t" meta.indented.block.markdown meta.indented.block.markdown
+72: "\t" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown
+72: "</summary>" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.paragraph.markdown
+73: "\t" meta.indented.block.markdown
+73: "\t" meta.indented.block.markdown meta.indented.block.markdown
+73: "\t" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown
+73: "<div class=\"block-indent\">" meta.indented.block.markdown meta.indented.block.markdown meta.indented.block.markdown meta.paragraph.markdown
+74: ""
+75: "\t" markup.fenced_code.block.markdown
+75: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+75: "PS1" markup.fenced_code.block.markdown fenced_code.block.language
+76: "\t@{'Type'='Screencast'; 'Date'='+%CCYY%MM%DDT%hh%mm%ss%z'}#" markup.fenced_code.block.markdown
+77: "\t" markup.fenced_code.block.markdown
+77: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+78: ""
+79: "\t" meta.indented.block.markdown
+79: "<p>I don't know how to add a timezone name to this.</p>" meta.indented.block.markdown meta.paragraph.markdown
+80: ""
+81: "\t" meta.indented.block.markdown
+81: "</div>" meta.indented.block.markdown meta.paragraph.markdown
+82: "\t" meta.indented.block.markdown
+82: "</details>" meta.indented.block.markdown meta.paragraph.markdown
+83: "\t" meta.indented.block.markdown
+83: "</li>" meta.indented.block.markdown meta.paragraph.markdown
+84: ""
+85: "</ol>" meta.paragraph.markdown

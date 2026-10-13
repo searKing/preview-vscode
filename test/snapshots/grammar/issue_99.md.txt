@@ -1,0 +1,258 @@
+1: "<!--" comment.block.html punctuation.definition.comment.html
+1: " To test locally, copy this file to issue_99.local.md (git ignored) and replace /path/to/preview-vscode" comment.block.html
+2: "     with the absolute path of this repository:" comment.block.html
+3: "     sed \"s#/path/to/preview-vscode#$PWD#g\" test-workspace/issue_99.md > test-workspace/issue_99.local.md " comment.block.html
+3: "-->" comment.block.html punctuation.definition.comment.html
+4: ""
+5: "<link rel=\"stylesheet\" href=\"file:///path/to/preview-vscode/test-workspace/issue_99.css\">" meta.paragraph.markdown
+6: ""
+7: "#" markup.heading.markdown heading.1.markdown punctuation.definition.heading.markdown
+7: " " markup.heading.markdown heading.1.markdown
+7: "The heading is green when issue_99.css is loaded" markup.heading.markdown heading.1.markdown entity.name.section.markdown
+8: ""
+9: "<div class=\"issue-99\">This box has a dashed green border when issue_99.css is loaded.</div>" meta.paragraph.markdown
+10: ""
+11: "##" markup.heading.markdown heading.2.markdown punctuation.definition.heading.markdown
+11: " " markup.heading.markdown heading.2.markdown
+11: "Supported paths" markup.heading.markdown heading.2.markdown entity.name.section.markdown
+12: ""
+13: "A green check mark is shown when the image is loaded." meta.paragraph.markdown
+14: ""
+15: "|" markup.table.markdown punctuation.definition.table.markdown
+15: " " markup.table.markdown
+15: "Path" markup.table.markdown
+15: " " markup.table.markdown
+15: "|" markup.table.markdown punctuation.definition.table.markdown
+15: " " markup.table.markdown
+15: "Raw HTML " markup.table.markdown
+15: "`" markup.table.markdown markup.inline.raw.string.markdown punctuation.definition.raw.markdown
+15: "<img src>" markup.table.markdown markup.inline.raw.string.markdown
+15: "`" markup.table.markdown markup.inline.raw.string.markdown punctuation.definition.raw.markdown
+15: " " markup.table.markdown
+15: "|" markup.table.markdown punctuation.definition.table.markdown
+15: " " markup.table.markdown
+15: "Markdown image" markup.table.markdown
+15: " " markup.table.markdown
+15: "|" markup.table.markdown punctuation.definition.table.markdown
+16: "|" markup.table.markdown punctuation.definition.table.markdown
+16: "---" markup.table.markdown punctuation.separator.table.markdown
+16: "|" markup.table.markdown punctuation.definition.table.markdown
+16: "---" markup.table.markdown punctuation.separator.table.markdown
+16: "|" markup.table.markdown punctuation.definition.table.markdown
+16: "---" markup.table.markdown punctuation.separator.table.markdown
+16: "|" markup.table.markdown punctuation.definition.table.markdown
+17: "|" markup.table.markdown punctuation.definition.table.markdown
+17: " " markup.table.markdown
+17: "`" markup.table.markdown markup.inline.raw.string.markdown punctuation.definition.raw.markdown
+17: "file:///abs/path" markup.table.markdown markup.inline.raw.string.markdown
+17: "`" markup.table.markdown markup.inline.raw.string.markdown punctuation.definition.raw.markdown
+17: " " markup.table.markdown
+17: "|" markup.table.markdown punctuation.definition.table.markdown
+17: " " markup.table.markdown
+17: "<img src=\"file:///path/to/preview-vscode/test-workspace/issue_99.svg\">" markup.table.markdown
+17: " " markup.table.markdown
+17: "|" markup.table.markdown punctuation.definition.table.markdown
+17: " " markup.table.markdown
+17: "![" markup.table.markdown meta.image.inline.markdown punctuation.definition.link.description.begin.markdown
+17: "]" markup.table.markdown meta.image.inline.markdown punctuation.definition.link.description.end.markdown
+17: "(" markup.table.markdown meta.image.inline.markdown punctuation.definition.metadata.markdown
+17: "file:///path/to/preview-vscode/test-workspace/issue_99.svg" markup.table.markdown meta.image.inline.markdown markup.underline.link.image.markdown
+17: ")" markup.table.markdown meta.image.inline.markdown punctuation.definition.metadata.markdown
+17: " " markup.table.markdown
+17: "|" markup.table.markdown punctuation.definition.table.markdown
+18: "|" markup.table.markdown punctuation.definition.table.markdown
+18: " " markup.table.markdown
+18: "`" markup.table.markdown markup.inline.raw.string.markdown punctuation.definition.raw.markdown
+18: "file://localhost/abs/path" markup.table.markdown markup.inline.raw.string.markdown
+18: "`" markup.table.markdown markup.inline.raw.string.markdown punctuation.definition.raw.markdown
+18: " " markup.table.markdown
+18: "|" markup.table.markdown punctuation.definition.table.markdown
+18: " " markup.table.markdown
+18: "<img src=\"file://localhost/path/to/preview-vscode/test-workspace/issue_99.svg\">" markup.table.markdown
+18: " " markup.table.markdown
+18: "|" markup.table.markdown punctuation.definition.table.markdown
+18: " " markup.table.markdown
+18: "![" markup.table.markdown meta.image.inline.markdown punctuation.definition.link.description.begin.markdown
+18: "]" markup.table.markdown meta.image.inline.markdown punctuation.definition.link.description.end.markdown
+18: "(" markup.table.markdown meta.image.inline.markdown punctuation.definition.metadata.markdown
+18: "file://localhost/path/to/preview-vscode/test-workspace/issue_99.svg" markup.table.markdown meta.image.inline.markdown markup.underline.link.image.markdown
+18: ")" markup.table.markdown meta.image.inline.markdown punctuation.definition.metadata.markdown
+18: " " markup.table.markdown
+18: "|" markup.table.markdown punctuation.definition.table.markdown
+19: "|" markup.table.markdown punctuation.definition.table.markdown
+19: " " markup.table.markdown
+19: "`" markup.table.markdown markup.inline.raw.string.markdown punctuation.definition.raw.markdown
+19: "file://LOCALHOST/abs/path" markup.table.markdown markup.inline.raw.string.markdown
+19: "`" markup.table.markdown markup.inline.raw.string.markdown punctuation.definition.raw.markdown
+19: " " markup.table.markdown
+19: "|" markup.table.markdown punctuation.definition.table.markdown
+19: " " markup.table.markdown
+19: "<img src=\"file://LOCALHOST/path/to/preview-vscode/test-workspace/issue_99.svg\">" markup.table.markdown
+19: " " markup.table.markdown
+19: "|" markup.table.markdown punctuation.definition.table.markdown
+19: " " markup.table.markdown
+19: "![" markup.table.markdown meta.image.inline.markdown punctuation.definition.link.description.begin.markdown
+19: "]" markup.table.markdown meta.image.inline.markdown punctuation.definition.link.description.end.markdown
+19: "(" markup.table.markdown meta.image.inline.markdown punctuation.definition.metadata.markdown
+19: "file://LOCALHOST/path/to/preview-vscode/test-workspace/issue_99.svg" markup.table.markdown meta.image.inline.markdown markup.underline.link.image.markdown
+19: ")" markup.table.markdown meta.image.inline.markdown punctuation.definition.metadata.markdown
+19: " " markup.table.markdown
+19: "|" markup.table.markdown punctuation.definition.table.markdown
+20: "|" markup.table.markdown punctuation.definition.table.markdown
+20: " " markup.table.markdown
+20: "`" markup.table.markdown markup.inline.raw.string.markdown punctuation.definition.raw.markdown
+20: "name" markup.table.markdown markup.inline.raw.string.markdown
+20: "`" markup.table.markdown markup.inline.raw.string.markdown punctuation.definition.raw.markdown
+20: " (relative, no rewrite needed)" markup.table.markdown
+20: " " markup.table.markdown
+20: "|" markup.table.markdown punctuation.definition.table.markdown
+20: " " markup.table.markdown
+20: "<img src=\"issue_99.svg\">" markup.table.markdown
+20: " " markup.table.markdown
+20: "|" markup.table.markdown punctuation.definition.table.markdown
+20: " " markup.table.markdown
+20: "![" markup.table.markdown meta.image.inline.markdown punctuation.definition.link.description.begin.markdown
+20: "]" markup.table.markdown meta.image.inline.markdown punctuation.definition.link.description.end.markdown
+20: "(" markup.table.markdown meta.image.inline.markdown punctuation.definition.metadata.markdown
+20: "issue_99.svg" markup.table.markdown meta.image.inline.markdown markup.underline.link.image.markdown
+20: ")" markup.table.markdown meta.image.inline.markdown punctuation.definition.metadata.markdown
+20: " " markup.table.markdown
+20: "|" markup.table.markdown punctuation.definition.table.markdown
+21: "|" markup.table.markdown punctuation.definition.table.markdown
+21: " " markup.table.markdown
+21: "`" markup.table.markdown markup.inline.raw.string.markdown punctuation.definition.raw.markdown
+21: "./name" markup.table.markdown markup.inline.raw.string.markdown
+21: "`" markup.table.markdown markup.inline.raw.string.markdown punctuation.definition.raw.markdown
+21: " " markup.table.markdown
+21: "|" markup.table.markdown punctuation.definition.table.markdown
+21: " " markup.table.markdown
+21: "<img src=\"./issue_99.svg\">" markup.table.markdown
+21: " " markup.table.markdown
+21: "|" markup.table.markdown punctuation.definition.table.markdown
+21: " " markup.table.markdown
+21: "![" markup.table.markdown meta.image.inline.markdown punctuation.definition.link.description.begin.markdown
+21: "]" markup.table.markdown meta.image.inline.markdown punctuation.definition.link.description.end.markdown
+21: "(" markup.table.markdown meta.image.inline.markdown punctuation.definition.metadata.markdown
+21: "./issue_99.svg" markup.table.markdown meta.image.inline.markdown markup.underline.link.image.markdown
+21: ")" markup.table.markdown meta.image.inline.markdown punctuation.definition.metadata.markdown
+21: " " markup.table.markdown
+21: "|" markup.table.markdown punctuation.definition.table.markdown
+22: "|" markup.table.markdown punctuation.definition.table.markdown
+22: " " markup.table.markdown
+22: "`" markup.table.markdown markup.inline.raw.string.markdown punctuation.definition.raw.markdown
+22: "../dir/name" markup.table.markdown markup.inline.raw.string.markdown
+22: "`" markup.table.markdown markup.inline.raw.string.markdown punctuation.definition.raw.markdown
+22: " " markup.table.markdown
+22: "|" markup.table.markdown punctuation.definition.table.markdown
+22: " " markup.table.markdown
+22: "<img src=\"../test-workspace/issue_99.svg\">" markup.table.markdown
+22: " " markup.table.markdown
+22: "|" markup.table.markdown punctuation.definition.table.markdown
+22: " " markup.table.markdown
+22: "![" markup.table.markdown meta.image.inline.markdown punctuation.definition.link.description.begin.markdown
+22: "]" markup.table.markdown meta.image.inline.markdown punctuation.definition.link.description.end.markdown
+22: "(" markup.table.markdown meta.image.inline.markdown punctuation.definition.metadata.markdown
+22: "../test-workspace/issue_99.svg" markup.table.markdown meta.image.inline.markdown markup.underline.link.image.markdown
+22: ")" markup.table.markdown meta.image.inline.markdown punctuation.definition.metadata.markdown
+22: " " markup.table.markdown
+22: "|" markup.table.markdown punctuation.definition.table.markdown
+23: ""
+24: "Links: <a href=\"file:///path/to/preview-vscode/test-workspace/issue_101.md\">raw HTML file:///</a>," meta.paragraph.markdown
+25: "<a href=\"file://localhost/path/to/preview-vscode/test-workspace/issue_101.md\">raw HTML file://localhost/</a>," meta.paragraph.markdown
+26: "[" meta.paragraph.markdown meta.link.inline.markdown punctuation.definition.link.title.begin.markdown
+26: "Markdown file:///" meta.paragraph.markdown meta.link.inline.markdown string.other.link.title.markdown
+26: "]" meta.paragraph.markdown meta.link.inline.markdown punctuation.definition.link.title.end.markdown
+26: "(" meta.paragraph.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+26: "file:///path/to/preview-vscode/test-workspace/issue_101.md" meta.paragraph.markdown meta.link.inline.markdown markup.underline.link.markdown
+26: ")" meta.paragraph.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+26: "," meta.paragraph.markdown
+27: "[" meta.paragraph.markdown meta.link.inline.markdown punctuation.definition.link.title.begin.markdown
+27: "Markdown file://localhost/" meta.paragraph.markdown meta.link.inline.markdown string.other.link.title.markdown
+27: "]" meta.paragraph.markdown meta.link.inline.markdown punctuation.definition.link.title.end.markdown
+27: "(" meta.paragraph.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+27: "file://localhost/path/to/preview-vscode/test-workspace/issue_101.md" meta.paragraph.markdown meta.link.inline.markdown markup.underline.link.markdown
+27: ")" meta.paragraph.markdown meta.link.inline.markdown punctuation.definition.metadata.markdown
+27: "." meta.paragraph.markdown
+28: ""
+29: "##" markup.heading.markdown heading.2.markdown punctuation.definition.heading.markdown
+29: " " markup.heading.markdown heading.2.markdown
+29: "Unsupported paths" markup.heading.markdown heading.2.markdown entity.name.section.markdown
+30: ""
+31: "The part after " meta.paragraph.markdown
+31: "`" meta.paragraph.markdown markup.inline.raw.string.markdown punctuation.definition.raw.markdown
+31: "file://" meta.paragraph.markdown markup.inline.raw.string.markdown
+31: "`" meta.paragraph.markdown markup.inline.raw.string.markdown punctuation.definition.raw.markdown
+31: " is the host, so these are not paths relative to this file and are left unchanged (broken image)." meta.paragraph.markdown
+32: ""
+33: "|" markup.table.markdown punctuation.definition.table.markdown
+33: " " markup.table.markdown
+33: "Path" markup.table.markdown
+33: " " markup.table.markdown
+33: "|" markup.table.markdown punctuation.definition.table.markdown
+33: " " markup.table.markdown
+33: "Raw HTML " markup.table.markdown
+33: "`" markup.table.markdown markup.inline.raw.string.markdown punctuation.definition.raw.markdown
+33: "<img src>" markup.table.markdown markup.inline.raw.string.markdown
+33: "`" markup.table.markdown markup.inline.raw.string.markdown punctuation.definition.raw.markdown
+33: " " markup.table.markdown
+33: "|" markup.table.markdown punctuation.definition.table.markdown
+34: "|" markup.table.markdown punctuation.definition.table.markdown
+34: "---" markup.table.markdown punctuation.separator.table.markdown
+34: "|" markup.table.markdown punctuation.definition.table.markdown
+34: "---" markup.table.markdown punctuation.separator.table.markdown
+34: "|" markup.table.markdown punctuation.definition.table.markdown
+35: "|" markup.table.markdown punctuation.definition.table.markdown
+35: " " markup.table.markdown
+35: "`" markup.table.markdown markup.inline.raw.string.markdown punctuation.definition.raw.markdown
+35: "file://../dir/name" markup.table.markdown markup.inline.raw.string.markdown
+35: "`" markup.table.markdown markup.inline.raw.string.markdown punctuation.definition.raw.markdown
+35: " (host " markup.table.markdown
+35: "`" markup.table.markdown markup.inline.raw.string.markdown punctuation.definition.raw.markdown
+35: ".." markup.table.markdown markup.inline.raw.string.markdown
+35: "`" markup.table.markdown markup.inline.raw.string.markdown punctuation.definition.raw.markdown
+35: ")" markup.table.markdown
+35: " " markup.table.markdown
+35: "|" markup.table.markdown punctuation.definition.table.markdown
+35: " " markup.table.markdown
+35: "<img src=\"file://../test-workspace/issue_99.svg\">" markup.table.markdown
+35: " " markup.table.markdown
+35: "|" markup.table.markdown punctuation.definition.table.markdown
+36: "|" markup.table.markdown punctuation.definition.table.markdown
+36: " " markup.table.markdown
+36: "`" markup.table.markdown markup.inline.raw.string.markdown punctuation.definition.raw.markdown
+36: "file://server/share/name" markup.table.markdown markup.inline.raw.string.markdown
+36: "`" markup.table.markdown markup.inline.raw.string.markdown punctuation.definition.raw.markdown
+36: " (host " markup.table.markdown
+36: "`" markup.table.markdown markup.inline.raw.string.markdown punctuation.definition.raw.markdown
+36: "server" markup.table.markdown markup.inline.raw.string.markdown
+36: "`" markup.table.markdown markup.inline.raw.string.markdown punctuation.definition.raw.markdown
+36: ")" markup.table.markdown
+36: " " markup.table.markdown
+36: "|" markup.table.markdown punctuation.definition.table.markdown
+36: " " markup.table.markdown
+36: "<img src=\"file://server/share/issue_99.svg\">" markup.table.markdown
+36: " " markup.table.markdown
+36: "|" markup.table.markdown punctuation.definition.table.markdown
+37: ""
+38: "##" markup.heading.markdown heading.2.markdown punctuation.definition.heading.markdown
+38: " " markup.heading.markdown heading.2.markdown
+38: "Code blocks" markup.heading.markdown heading.2.markdown entity.name.section.markdown
+39: ""
+40: "An " meta.paragraph.markdown
+40: "`" meta.paragraph.markdown markup.inline.raw.string.markdown punctuation.definition.raw.markdown
+40: "html" meta.paragraph.markdown markup.inline.raw.string.markdown
+40: "`" meta.paragraph.markdown markup.inline.raw.string.markdown punctuation.definition.raw.markdown
+40: " code block is rendered as HTML, so it is rewritten too:" meta.paragraph.markdown
+41: ""
+42: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+42: "html" markup.fenced_code.block.markdown fenced_code.block.language
+43: "<img src=\"file:///path/to/preview-vscode/test-workspace/issue_99.svg\">" markup.fenced_code.block.markdown
+44: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+45: ""
+46: "Other code blocks are left alone:" meta.paragraph.markdown
+47: ""
+48: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+48: "text" markup.fenced_code.block.markdown fenced_code.block.language
+49: "<link rel=\"stylesheet\" href=\"file:///path/to/preview-vscode/test-workspace/issue_99.css\">" markup.fenced_code.block.markdown
+50: "```" markup.fenced_code.block.markdown punctuation.definition.markdown
+51: ""

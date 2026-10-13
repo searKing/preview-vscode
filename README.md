@@ -42,6 +42,8 @@ Just press the same key when you want to go back to the original view.
     npm install
     npm run watch   # or `npm run compile` once, then press F5 in VS Code to launch the Extension Development Host
     npm run lint
+    npm run test:unit                    # builds, then compares the samples in test-workspace with test/snapshots
+    UPDATE_SNAPSHOTS=1 npm run test:unit # rewrites the snapshots after an intended change, review them in git diff
     ```
 
 * Layout
@@ -53,6 +55,7 @@ Just press the same key when you want to go back to the original view.
   * `syntaxes/shell.tmLanguage.json`: VS Code's builtin shell grammar, used by shell code blocks in Markdown and patched so commands in list items are highlighted too.
   * Regenerate both with `npm run update-syntaxes [VS Code extensions directory]` (defaults to the latest `microsoft/vscode` main, honors `HTTPS_PROXY`, requires Node.js 24.5+), which also syncs the grammar contribution in `package.json`.
   * `test-workspace`: sample files to preview.
+  * `test`: renders the samples tracked by git like the preview with the bundled extension and a mocked `vscode` (`test/extension.cjs`), and tokenizes the Markdown samples with the grammars, compared with the snapshots in `test/snapshots`.
 
 * Notes
   * The preview only runs scripts carrying its CSP nonce, so inline `<script>` in rendered Markdown never runs with the default security settings, use `src/preview` instead. With the preview security `Disable`, `src/preview/scripts.ts` runs them, as VS Code inserts the content with `DOMParser`, which never runs scripts.
