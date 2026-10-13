@@ -4,7 +4,7 @@ All notable changes to the "preview-vscode" extension will be documented in this
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
-## [Unreleased]
+## [2.5.0] - 2026-10-14
 
 - Perf: mermaid is loaded on demand in the preview and notebook Markdown cells, only when there are diagrams. The preview script shrinks from 740 KB to 7 KB, the notebook renderer from 6.3 MB to 1.2 MB.
 - Fix: mermaid diagrams are rendered when the preview appends its content after the preview script runs, e.g. when reopening or refreshing the preview, they could stay as source.
