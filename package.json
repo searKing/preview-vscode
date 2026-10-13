@@ -430,6 +430,11 @@
             "default": true,
             "description": "%config.markdown.rst.enabled%"
           },
+          "markdown.rst.esbonio.enabled": {
+            "type": "boolean",
+            "default": false,
+            "description": "%config.markdown.rst.esbonio.enabled%"
+          },
           "markdown.sub.enabled": {
             "type": "boolean",
             "default": true,

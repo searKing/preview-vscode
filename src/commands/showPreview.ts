@@ -41,6 +41,9 @@ async function showPreview(
     _markdownPreviewManager.refresh();
     const supportIds = ["markdown", "html", "css", "mermaid", "restructuredtext", "jade", "pug"];
     const document = await vscode.workspace.openTextDocument(resource);
+    if (document.languageId === 'restructuredtext' && await showEsbonioPreview(document, previewSettings)) {
+        return;
+    }
     if (!supportIds.includes(document.languageId)) {
         // the image URI under the cursor may have changed, while the document didn't.
         await vscode.commands.executeCommand('markdown.preview.refresh');
@@ -53,6 +56,50 @@ async function showPreview(
     }
     // this is most likely show preview inplace.
     return vscode.commands.executeCommand('markdown.showPreview', resource, undefined, { locked: previewSettings.locked });
+}
+
+// Esbonio renders reStructuredText with Sphinx, with `markdown.rst.esbonio.enabled` prefer its preview for
+// files of a Sphinx project when its language server is running, its preview commands exist even if the server failed to start, e.g. without
+// its Python package, and it previews nothing for other files. Its commands preview the active editor.
+async function showEsbonioPreview(document: vscode.TextDocument, previewSettings: ShowPreviewSettings): Promise<boolean> {
+    if (!vscode.workspace.getConfiguration('markdown', document.uri).get<boolean>('rst.esbonio.enabled', false)) {
+        return false;
+    }
+    const esbonio = vscode.extensions.getExtension('swyddfa.esbonio');
+    if (!esbonio || !(await inSphinxProject(document.uri))) {
+        return false;
+    }
+    const api = await Promise.resolve(esbonio.activate()).catch(() => undefined);
+    const LANGUAGE_CLIENT_RUNNING = 2; // vscode-languageclient's State.Running
+    if (api?.client?.server?.state !== LANGUAGE_CLIENT_RUNNING) {
+        return false;
+    }
+    const command = previewSettings.sideBySide ? 'esbonio.preview.openSide' : 'esbonio.preview.open';
+    if (!(await vscode.commands.getCommands(true)).includes(command)) {
+        return false;
+    }
+    await vscode.window.showTextDocument(document);
+    await vscode.commands.executeCommand(command);
+    return true;
+}
+
+// A Sphinx project has a conf.py in the directory of the file or above, up to the workspace folder.
+async function inSphinxProject(uri: vscode.Uri): Promise<boolean> {
+    const root = vscode.workspace.getWorkspaceFolder(uri)?.uri.path;
+    let dir = vscode.Uri.joinPath(uri, '..');
+    while (true) {
+        try {
+            await vscode.workspace.fs.stat(vscode.Uri.joinPath(dir, 'conf.py'));
+            return true;
+        } catch (e) {
+            // no conf.py here
+        }
+        const parent = vscode.Uri.joinPath(dir, '..');
+        if (dir.path === root || parent.path === dir.path) {
+            return false;
+        }
+        dir = parent;
+    }
 }
 
 export class ShowPreviewCommand implements Command {

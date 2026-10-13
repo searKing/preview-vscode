@@ -29,6 +29,7 @@ Just press the same key when you want to go back to the original view.
       * for example: {color: blue}
     * others as Markdown, ReStructured Text, HTML, Jade or Mermaid
     * Just do as the operation as mentioned and a showQuickPick will pop up to show choices.
+* With `markdown.rst.esbonio.enabled` (off by default), reStructuredText files of a Sphinx project (a `conf.py` in the directory of the file or above, up to the workspace folder) are previewed by [Esbonio](https://marketplace.visualstudio.com/items?itemName=swyddfa.esbonio) when it is installed and its language server is running, as it renders with Sphinx. Other files, or without Esbonio, are previewed by this extension.
 * Scripts in the previewed page, e.g. `<script>` of an HTML file, only run when the preview security is `Disable` (`Markdown: Change Preview Security Settings`), do it only for files you trust.
     * ![Demonstration](media/demonstration.gif)
 

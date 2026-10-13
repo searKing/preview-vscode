@@ -44,6 +44,7 @@
 	"config.markdown.mermaid.theme.null": "可以用来禁用使用任何主题",
 	"config.markdown.pug.enabled": "在内置Markdown预览中启用/禁用围栏代码块”Pug/Jade“绘图渲染。",
 	"config.markdown.rst.enabled": "在内置Markdown预览中启用/禁用围栏代码块”reStructuredText“绘图渲染。",
+	"config.markdown.rst.esbonio.enabled": "使用 Esbonio 预览 Sphinx 项目（文件所在目录或上级目录有 conf.py）中的 reStructuredText 文件，需已安装 Esbonio 且其语言服务器正在运行。",
 	"config.markdown.sub.enabled": "在内置Markdown预览中启用/禁用下标元素（<sub>）生成。",
 	"config.markdown.sup.enabled": "在内置Markdown预览中启用/禁用上标元素（<sup>）生成。",
 	"config.markdown.task-lists.enabled": "在内置Markdown预览中启用/禁用GitHub风格的任务列表渲染。",

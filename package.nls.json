@@ -44,6 +44,7 @@
 	"config.markdown.mermaid.theme.null": "Can be set to disable any pre-defined mermaid theme.",
 	"config.markdown.pug.enabled": "Enable/disable rendering ”Pug/Jade“ inside fenced code blocks in the built-in Markdown preview.",
 	"config.markdown.rst.enabled": "Enable/disable rendering ”reStructuredText“ inside fenced code blocks in the built-in Markdown preview.",
+	"config.markdown.rst.esbonio.enabled": "Preview reStructuredText files of a Sphinx project (a conf.py in the directory of the file or above) with Esbonio, when it is installed and its language server is running.",
 	"config.markdown.sub.enabled": "Enable/disable rendering Abbreviation (<sub>) tag in the built-in Markdown preview.",
 	"config.markdown.sup.enabled": "Enable/disable rendering Superscript (<sup>) tag in the built-in Markdown preview.",
 	"config.markdown.task-lists.enabled": "Enable/disable rendering GitHub-style task lists in the built-in Markdown preview.",
