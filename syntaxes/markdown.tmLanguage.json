@@ -1773,6 +1773,61 @@
             },
             "patterns": [
                 {
+                    "begin": "\\G$",
+                    "while": "(^|\\G)(?!\\s*([`~]{3,})\\s*$)",
+                    "patterns": [
+                        {
+                            "begin": "(?:^|\\G)\\s*(-{3,})(.*)$",
+                            "beginCaptures": {
+                                "1": {
+                                    "name": "punctuation.definition.begin.frontmatter"
+                                },
+                                "2": {
+                                    "name": "comment.frontmatter"
+                                }
+                            },
+                            "while": "(?:^|\\G)",
+                            "patterns": [
+                                {
+                                    "begin": "\\G$",
+                                    "while": "(?:^|\\G)(?!\\s*-{3,}[ \\t]*$|[ \\t]*\\.{3}$)",
+                                    "contentName": "meta.embedded.block.frontmatter",
+                                    "patterns": [
+                                        {
+                                            "include": "source.yaml"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "begin": "(?:^|\\G)(?:\\s*-{3,}[ \\t]*$|[ \\t]*\\.{3}$)",
+                                    "beginCaptures": {
+                                        "0": {
+                                            "name": "punctuation.definition.end.frontmatter"
+                                        }
+                                    },
+                                    "while": "(?:^|\\G)",
+                                    "contentName": "meta.embedded.block.markdown",
+                                    "patterns": [
+                                        {
+                                            "include": "text.html.markdown"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "begin": "(?:^(?!\\z)|\\G(?!$)|\\G(?<=[ \\t>]))",
+                            "while": "(?:^|\\G)",
+                            "contentName": "meta.embedded.block.markdown",
+                            "patterns": [
+                                {
+                                    "include": "text.html.markdown"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
                     "begin": "(^|\\G)(\\s*)(.*)",
                     "while": "(^|\\G)(?!\\s*([`~]{3,})\\s*$)",
                     "contentName": "meta.embedded.block.markdown",

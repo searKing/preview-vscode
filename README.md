@@ -46,7 +46,7 @@ Just press the same key when you want to go back to the original view.
   * `src/renders`: markdown-it plugins, simple third-party plugins are configured in `src/renders/markdown-it-plugins.ts`.
   * `src/preview`: script loaded into the preview by `markdown.previewScripts`, renders Mermaid diagrams and the code copy button.
   * `src/notebook`: notebook renderer, extends `vscode.markdown-it-renderer`.
-  * `syntaxes/markdown.tmLanguage.json`: VS Code's builtin Markdown grammar, patched so indented lines are highlighted as Markdown rather than code.
+  * `syntaxes/markdown.tmLanguage.json`: VS Code's builtin Markdown grammar, patched so indented lines are highlighted as Markdown rather than code, and front matter in Markdown code blocks is highlighted as YAML.
   * `syntaxes/shell.tmLanguage.json`: VS Code's builtin shell grammar, used by shell code blocks in Markdown and patched so commands in list items are highlighted too.
   * Regenerate both with `npm run update-syntaxes [VS Code extensions directory]` (defaults to the latest `microsoft/vscode` main, honors `HTTPS_PROXY`, requires Node.js 24.5+), which also syncs the grammar contribution in `package.json`.
   * `test-workspace`: sample files to preview.

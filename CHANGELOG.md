@@ -11,6 +11,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - Fix: bracket pair colorization no longer matches `=>`, `<`, `<<`, ... in C# and TypeScript code blocks, the grammar contribution declares the same embedded languages and unbalanced bracket scopes as the builtin one.
 - Fix: over-indented lines in a list item or block quote are dedented only to the enclosing block, so an indented fence in an HTML table inside a list item is rendered as code instead of breaking the list and the rest of the document ([#106](https://github.com/searKing/preview-vscode/issues/106)).
 - Fix: shell code blocks in list items are highlighted in the editor, they use a copy of the builtin shell grammar that also starts a command after the list indent ([#106](https://github.com/searKing/preview-vscode/issues/106)).
+- Fix: front matter at the start of a Markdown code block is highlighted as YAML instead of a separator and a heading ([#103](https://github.com/searKing/preview-vscode/issues/103)).
 - Chore: remove the unused indented code injection grammar and the `js-yaml` dev dependency.
 
 ## [2.4.0] - 2026-10-13

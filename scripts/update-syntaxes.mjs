@@ -76,6 +76,57 @@ if (!shellBlock) {
 }
 shellBlock.include = shellScope;
 
+// Front matter only starts the document (\A), so in a Markdown code block it was highlighted as a
+// separator and a setext heading, see #103. The code block may also start with front matter.
+// The rule below starts at the end of the opening fence line (`\G$`, where the upstream content rule
+// starts too) and lasts until the closing fence, so front matter is only recognized on the first
+// line; the upstream content rule is kept for the lines it restarts on.
+const markdownBlock = rule(grammar, 'fenced_code_block_markdown');
+const [markdownContent] = markdownBlock.patterns;
+if (markdownBlock.patterns.length !== 1 || markdownContent.begin !== '(^|\\G)(\\s*)(.*)'
+    || markdownContent.contentName !== 'meta.embedded.block.markdown') {
+    throw new Error(`unexpected fenced_code_block_markdown patterns: ${JSON.stringify(markdownBlock.patterns)}`);
+}
+const frontMatter = rule(grammar, 'frontMatter');
+const [frontMatterContent] = frontMatter.patterns;
+if (frontMatter.begin !== '\\A(?=(-{3,}))' || frontMatterContent?.contentName !== 'meta.embedded.block.frontmatter') {
+    throw new Error(`unexpected frontMatter: ${JSON.stringify(frontMatter)}`);
+}
+const frontMatterEnd = '\\s*-{3,}[ \\t]*$|[ \\t]*\\.{3}$';
+const markdownUntilClosingFence = (begin, captures) => ({
+    begin,
+    beginCaptures: captures,
+    while: '(?:^|\\G)',
+    contentName: markdownContent.contentName,
+    patterns: markdownContent.patterns,
+});
+markdownBlock.patterns = [
+    {
+        begin: '\\G$',
+        while: markdownContent.while,
+        patterns: [
+            {
+                begin: '(?:^|\\G)\\s*(-{3,})(.*)$',
+                beginCaptures: frontMatterContent.beginCaptures,
+                while: '(?:^|\\G)',
+                patterns: [
+                    {
+                        // The end of the `---` line, a closing `---` line is matched by the next rule.
+                        begin: '\\G$',
+                        while: `(?:^|\\G)(?!${frontMatterEnd})`,
+                        contentName: frontMatterContent.contentName,
+                        patterns: frontMatterContent.patterns,
+                    },
+                    markdownUntilClosingFence(`(?:^|\\G)(?:${frontMatterEnd})`, frontMatter.endCaptures),
+                ],
+            },
+            // Not at the end of the opening fence line: line start, or after a consumed list or quote indent.
+            markdownUntilClosingFence('(?:^(?!\\z)|\\G(?!$)|\\G(?<=[ \\t>]))'),
+        ],
+    },
+    markdownContent,
+];
+
 // Our grammar replaces the builtin one, so its contribution must declare the same embedded languages.
 const pkg = JSON.parse(await readFile(packageTarget, 'utf8'));
 const contribution = pkg.contributes.grammars.find((contribution) => contribution.language === 'markdown');
