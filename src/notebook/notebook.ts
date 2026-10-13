@@ -19,6 +19,7 @@ import mark from 'markdown-it-mark';
 import sub from 'markdown-it-sub';
 import sup from 'markdown-it-sup';
 import type { RendererContext } from 'vscode-notebook-renderer';
+import { markdownWithFrontMatter } from '../renders/highlightjs-markdown';
 import taskLists from '../renders/markdown-it-task-lists';
 
 interface MarkdownItRenderer {
@@ -63,7 +64,7 @@ export async function activate(ctx: RendererContext<void>) {
         return md.use(abbr, {}).
             use(anchor, {}).
             use(bracketedSpans, {}).
-            use(highlightjs, {}).
+            use(highlightjs, { register: { markdown: markdownWithFrontMatter } }).
             // its types are written against the CommonJS declarations of markdown-it, which don't match the ESM ones.
             use(attrs as unknown as Parameters<MarkdownIt['use']>[0], {}).
             use(cjkBreaks, {}).

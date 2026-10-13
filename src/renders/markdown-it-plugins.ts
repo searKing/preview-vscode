@@ -17,6 +17,7 @@ import lazyHeaders from 'markdown-it-lazy-headers';
 import mark from 'markdown-it-mark';
 import sub from 'markdown-it-sub';
 import sup from 'markdown-it-sup';
+import { markdownWithFrontMatter } from './highlightjs-markdown';
 import { ExtendMarkdownIt } from './markdown-it';
 import taskLists from './markdown-it-task-lists';
 
@@ -66,6 +67,7 @@ export const MarkdownItHighlightjs = simplePlugin('highlightjs', highlightjs, co
     code: config.get<boolean>('code', true),
     inline: config.get<boolean>('inline', true),
     ignoreIllegals: config.get<boolean>('ignoreIllegals', true),
+    register: { markdown: markdownWithFrontMatter },
 }));
 
 export const MarkdownItIns = simplePlugin('ins', ins);
