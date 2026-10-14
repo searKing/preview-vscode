@@ -64,7 +64,7 @@ Just press the same key when you want to go back to the original view.
   * Every setting in `contributes.configuration` reloads the markdown-it plugins when it changes.
   * `@types/vscode` must not be newer than `engines.vscode`.
 
-* Release: bump `version` in `package.json` and the `[Unreleased]` section of `CHANGELOG.md`, commit, then push the tag `v<version>`. `.github/workflows/release.yml` publishes it to the VS Code Marketplace and Open VSX and creates the GitHub release with the vsix, it needs the secrets `VSCE_PAT` and `OVSX_PAT` of the `release` environment. Run it manually to publish a pre-release. `.github/workflows/ci.yml` lints and packages every push and pull request.
+* Release: bump `version` in `package.json` and the `[Unreleased]` section of `CHANGELOG.md`, commit, then push the tag `v<version>`. `.github/workflows/release.yml` publishes it to the VS Code Marketplace and Open VSX and creates the GitHub release with the vsix, it needs the secret `VSCE_PAT` of the `release` environment, Open VSX is published by [trusted publishing](https://github.com/eclipse-openvsx/openvsx/wiki/Trusted-Publishing) of this workflow in the `release` environment, falling back to the secret `OVSX_PAT`. Run it manually to publish a pre-release. `.github/workflows/ci.yml` lints and packages every push and pull request.
 
 * Package and publish manually to the [VS Code Marketplace](https://code.visualstudio.com/api/working-with-extensions/publishing-extension) and [Open VSX](https://github.com/eclipse/openvsx/wiki/Publishing-Extensions) (used by VSCodium, Cursor, Gitpod, ...)
 

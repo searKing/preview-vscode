@@ -1,7 +1,8 @@
 name: Release
 
 # Publishes the version in package.json to the VS Code Marketplace and Open VSX, and creates the GitHub release.
-# Secrets of the `release` environment: VSCE_PAT (Azure DevOps token with Marketplace > Manage), OVSX_PAT (Open VSX access token).
+# Secrets of the `release` environment: VSCE_PAT (Azure DevOps token with Marketplace > Manage), OVSX_PAT (Open VSX access token,
+# only used when the trusted publishing of Open VSX for this workflow in the `release` environment fails).
 # Stable releases are published by pushing a tag, a manual run only publishes a pre-release.
 on:
   push:
@@ -15,6 +16,8 @@ on:
 
 permissions:
   contents: write
+  # OIDC ID token for the trusted publishing of Open VSX
+  id-token: write
 
 jobs:
   publish:
@@ -51,11 +54,17 @@ jobs:
         env:
           VSCE_PAT: ${{ secrets.VSCE_PAT }}
         run: npx vsce publish $PRE_RELEASE --skip-duplicate --packagePath preview-vscode.vsix
+      # ovsx takes the pre-release flag from the package. It prefers OVSX_PAT to trusted publishing, so the token
+      # is passed by another name, as a fallback until open-vsx.org accepts the publisher `searKing` for the namespace
+      # `searking` (eclipse-openvsx/openvsx#2279).
       - name: Publish to Open VSX
         env:
-          OVSX_PAT: ${{ secrets.OVSX_PAT }}
-        # ovsx takes the pre-release flag from the package
-        run: npx ovsx publish preview-vscode.vsix --skip-duplicate -p "$OVSX_PAT"
+          OVSX_FALLBACK_PAT: ${{ secrets.OVSX_PAT }}
+        run: |
+          npx ovsx publish preview-vscode.vsix --skip-duplicate --trusted-publishing && exit 0
+          test -n "$OVSX_FALLBACK_PAT" || exit 1
+          echo "::warning::trusted publishing failed, publishing with OVSX_PAT"
+          npx ovsx publish preview-vscode.vsix --skip-duplicate -p "$OVSX_FALLBACK_PAT"
       - name: Create the GitHub release
         if: github.ref_type == 'tag'
         env:
